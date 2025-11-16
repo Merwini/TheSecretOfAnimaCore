@@ -1,0 +1,18 @@
+
+
+Rituals
+	- Harvest anima grass as a resource
+		- Requires a research (logic in RitualBehaviorWorker.CanStartRitualNow)
+		- Up to 5 cutters, must be capable of plants work, have natural focus type, be psychically sensitive
+		- Participants also must have natural focus type
+		- Cutters will randomly move from grass to grass, playing plant cutting sound
+		- Success will give anima grass as a percent of total anima grass for that tree. Based on total plant skill + psychic sensitivity of cutters
+		- Cutters will get negative moodlet based on how much grass was wasted, but can be reduced by participants
+	- Harvest anima sap as a resource
+	- relocate anima tree
+	- produce anima tree seed
+
+
+
+Anima boons:
+	- Artificial buildings no longer reduce anima grass growth
