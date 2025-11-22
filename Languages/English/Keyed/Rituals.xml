@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<TSOA_CapableOfPlants>Must be a colonist capable of the Plants work type.</TSOA_CapableOfPlants>
+	<TSOA_AnaimaGrassHarvestExplanationBase>Harvesting anima grass must be done carefully, as improper harvest will ruin the grass and cause a weak psychic scream which lowers the mood of the harvesters. Higher combined plant skill for the harvesters will increase successes, producing more usable anima grass and reducing psychic screams. Adding participants will also help reduce the effect of the psychic screams.\n\nThis ritual will attempt to harvest {0} anima grass. With {1} combined plants skill, harvesters will produce {2} usable anima grass and lose {3} to botched harvests. Participants will reduce the psychic screams suffered by harvesters to {4} each.</TSOA_AnaimaGrassHarvestExplanationBase>
+	<TSOA_RitualMustTargetAnimaTree>Ritual must begin at an anima tree.</TSOA_RitualMustTargetAnimaTree>
+	<TSOA_RitualNeedsAnimaGrass>Anima Grass Harvest requires at least one anima grass.</TSOA_RitualNeedsAnimaGrass>
+</LanguageData>

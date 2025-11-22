@@ -1,17 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
+	<PreceptDef>
+		<defName>TSOA_AnimaGrassHarvestPrecept</defName>
+		<label>anima grass harvest</label>
+		<description>Up to five colonists will harvest anima grass. Spectators will attempt to shield them from the psychic screams of botched harvests.</description>
+		<issue>Ritual</issue>
+		<preceptClass>Precept_Ritual</preceptClass>
+		<visible>false</visible>
+		<classic>true</classic>
+		<countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+		<selectionWeight>1.0</selectionWeight>
+		<ritualPatternBase>TSOA_AnimaGrassHarvestPattern</ritualPatternBase>
+		<!-- todo icon -->
+		<iconPath>UI/Icons/Rituals/AnimaTreeLinking</iconPath>
+		<usesIdeoVisualEffects>false</usesIdeoVisualEffects>
+		<mergeRitualGizmosFromAllIdeos>true</mergeRitualGizmosFromAllIdeos>
+		<useRepeatPenalty>false</useRepeatPenalty>
+		<showRitualFloatMenuOption>false</showRitualFloatMenuOption>
+	</PreceptDef>
+
+	<RitualPatternDef>
+		<defName>TSOA_AnimaGrassHarvestPattern</defName>
+		<ritualOnlyForIdeoMembers>false</ritualOnlyForIdeoMembers>
+		<ritualBehavior>TSOA_AnimaGrassHarvestBehavior</ritualBehavior>
+		<ritualTargetFilter>SelectedThing</ritualTargetFilter>
+		<ritualObligationTargetFilter>TSOA_AnimaTreeObligation</ritualObligationTargetFilter>
+		<ritualOutcomeEffect>TSOA_AnimaGrassHarvestOutcome</ritualOutcomeEffect>
+		<playsIdeoMusic>false</playsIdeoMusic>
+		<alwaysStartAnytime>true</alwaysStartAnytime>
+	</RitualPatternDef>
+	
 	<RitualBehaviorDef>
-		<defName>TSOA_AnimaGrassHarvest</defName>
-		<durationTicks>15000</durationTicks>
-		<workerClass>RitualBehaviorWorker_AnimaLinking</workerClass>
+		<defName>TSOA_AnimaGrassHarvestBehavior</defName>
+		<durationTicks>5000</durationTicks>
+		<workerClass>nuff.tsoa.core.RitualBehaviorWorker_AnimaGrassHarvest</workerClass>
 		<roles>
-			<li Class="RitualRoleAnimaGrassCutter">
-				<label>grass cutter</label>
-				<id>cutter</id>
+			<li Class="nuff.tsoa.core.RitualRoleAnimaGrassHarvester">
+				<label>grass harvester</label>
+				<id>harvester</id>
 				<required>true</required>
 				<maxCount>5</maxCount>
 				<defaultForSelectedColonist>true</defaultForSelectedColonist>
-				<noCandidatesGizmoDesc>Need a colonist who is capable of the plants work type, has the Natural focus type, and who is also psychically sensitive.</noCandidatesGizmoDesc>
+				<noCandidatesGizmoDesc>Need a colonist who is capable of the plants work type, has the Natural focus type, and is psychically sensitive.</noCandidatesGizmoDesc>
 				<allowChild>true</allowChild>
 			</li>
 		</roles>
@@ -21,24 +51,123 @@
 		<spectatorsLabel>Participants</spectatorsLabel>
 		<spectatorGerund>participate</spectatorGerund>
 		<stages>
-			<li Class="RitualStage_AnimaTreeLinking">   TODO
-				<defaultDuty>LinkWithAnimaTreeSecondary</defaultDuty>   TODO
+			<li Class="nuff.tsoa.core.RitualStage_AnimaGrassHarvest">
+				<defaultDuty>TSOA_HarvestAnimaGrassSpectatorDuty</defaultDuty>
 				<endTriggers>
-					<li Class="StageEndTrigger_DurationPercentage">   TODO
+					<li Class="StageEndTrigger_DurationPercentage">
 						<percentage>1</percentage>
 					</li>
 				</endTriggers>
 				<spectateDistanceOverride>4~9</spectateDistanceOverride>
 				<roleBehaviors>
 					<li>
-						<roleId>cutter</roleId>
-						<dutyDef>LinkWithAnimaTree</dutyDef>  TODO
-						<customPositions>
-							<li Class="RitualPosition_AnimaLinkingSpot" />   TODO
-						</customPositions>
+						<roleId>harvester</roleId>
+						<dutyDef>TSOA_HarvestAnimaGrassDuty</dutyDef>
+						<!--<customPositions>
+							<li Class="nuff.tsoa.core.RitualPosition_AnimaGrassHarvesters" />
+						</customPositions>-->
 					</li>
 				</roleBehaviors>
 			</li>
 		</stages>
 	</RitualBehaviorDef>
+
+	<RitualObligationTargetFilterDef>
+		<defName>TSOA_AnimaTreeObligation</defName>
+		<workerClass>nuff.tsoa.core.RitualObligationTargetWorker_AnimaGrass</workerClass>
+	</RitualObligationTargetFilterDef>
+
+	<RitualOutcomeEffectDef>
+		<defName>TSOA_AnimaGrassHarvestOutcome</defName>
+		<workerClass>nuff.tsoa.core.RitualOutcomeEffectWorker_AnimaGrassHarvest</workerClass>
+		<warnOnLowQuality>true</warnOnLowQuality>
+		<givesDevelopmentPoints>false</givesDevelopmentPoints>
+		<comps>
+			<li Class="nuff.tsoa.core.RitualOutcomeComp_Skill">
+				<label>harvester plant skill</label>
+				<skill>Plants</skill>
+				<skillMax>100</skillMax>
+				<curve>
+					<points>
+						<li>(0, 0.0)</li>
+						<li>(20, 0.5)</li>
+						<li>(90, 0.8)</li>
+						<li>(100, 1)</li>
+					</points>
+				</curve>
+			</li>
+		</comps>
+	</RitualOutcomeEffectDef>
+
+	<DutyDef>
+		<defName>TSOA_HarvestAnimaGrassDuty</defName>
+		<socialModeMax>Off</socialModeMax>
+		<thinkNode Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="nuff.tsoa.core.JobGiver_AnimaGrassHarvest">
+				</li>
+			</subNodes>
+		</thinkNode>
+	</DutyDef>
+
+	<DutyDef>
+		<defName>TSOA_HarvestAnimaGrassSpectatorDuty</defName>
+		<hook>MediumPriority</hook>
+		<socialModeMax>Off</socialModeMax>
+		<thinkNode Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="JobGiver_SpectateInCircleDuty" />
+			</subNodes>
+		</thinkNode>
+	</DutyDef>
+
+	<JobDef>
+		<defName>TSOA_HarvestAnimaGrassJob</defName>
+		<driverClass>nuff.tsoa.core.JobDriver_AnimaGrassHarvest</driverClass>
+		<reportString>harvesting anima grass</reportString>
+		<neverShowWeapon>true</neverShowWeapon>
+	</JobDef>
+	
+	<ThoughtDef>
+		<defName>TSOA_AnimaGrassScream</defName>
+		<durationDays>3</durationDays>
+		<stackLimit>999</stackLimit>
+		<effectMultiplyingStat>PsychicSensitivity</effectMultiplyingStat>
+		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+		<stages>
+			<li>
+				<label>anima yelp</label>
+				<description>The screams from the anima grass aren't as bad as the tree itself, but there are so many...</description>
+				<baseMoodEffect>-3</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>TSOA_AnimaGrassResource</defName>
+		<label>anima grass</label>
+		<description>A bundle of harvested anima grass, still faintly humming with psychic resonance. It can be used in specialized crafting or ritual work.</description>
+		<graphicData>
+			<texPath>Things/Plant/Grass_Anima</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<stackLimit>75</stackLimit>
+		<tradeability>Sellable</tradeability>
+		<statBases>
+			<MarketValue>25</MarketValue>
+			<Mass>0.05</Mass>
+			<Flammability>0.8</Flammability>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<tradeTags>
+			<li>IndustrialSpareParts</li>
+		</tradeTags>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<soundPickup>Standard_Pickup</soundPickup>
+	</ThingDef>
+	
 </Defs>

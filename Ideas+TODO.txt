@@ -16,3 +16,7 @@ Rituals
 
 Anima boons:
 	- Artificial buildings no longer reduce anima grass growth
+	- anima grass auto-grows without meditation
+	- reduce effects of anima screams/yelps
+	- farmable anima grass?
+	- screamer arrows (probably in Arsenal)
