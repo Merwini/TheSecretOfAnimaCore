@@ -142,32 +142,4 @@
 			</li>
 		</stages>
 	</ThoughtDef>
-
-	<ThingDef ParentName="ResourceBase">
-		<defName>TSOA_AnimaGrassResource</defName>
-		<label>anima grass</label>
-		<description>A bundle of harvested anima grass, still faintly humming with psychic resonance. It can be used in specialized crafting or ritual work.</description>
-		<graphicData>
-			<texPath>Things/Plant/Grass_Anima</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-		</graphicData>
-		<thingCategories>
-			<li>Manufactured</li>
-		</thingCategories>
-		<stackLimit>75</stackLimit>
-		<tradeability>Sellable</tradeability>
-		<statBases>
-			<MarketValue>25</MarketValue>
-			<Mass>0.05</Mass>
-			<Flammability>0.8</Flammability>
-		</statBases>
-		<techLevel>Neolithic</techLevel>
-		<tradeTags>
-			<li>IndustrialSpareParts</li>
-		</tradeTags>
-		<soundInteract>Standard_Drop</soundInteract>
-		<soundDrop>Standard_Drop</soundDrop>
-		<soundPickup>Standard_Pickup</soundPickup>
-	</ThingDef>
-	
 </Defs>

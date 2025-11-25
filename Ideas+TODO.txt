@@ -1,22 +1,22 @@
+	
+Some way to get anima seed, to produce sapling
+	- requires a pawn sacrifice?
 
+Buildings:
+	- Anima sap tap
+		- produces anima sap over time
+		- can be set to different rates of production, higher rates produce more sap but damage the tree to varying degrees (also produce screams)
 
-Rituals
-	- Harvest anima grass as a resource
-		- Requires a research (logic in RitualBehaviorWorker.CanStartRitualNow)
-		- Up to 5 cutters, must be capable of plants work, have natural focus type, be psychically sensitive
-		- Participants also must have natural focus type
-		- Cutters will randomly move from grass to grass, playing plant cutting sound
-		- Success will give anima grass as a percent of total anima grass for that tree. Based on total plant skill + psychic sensitivity of cutters
-		- Cutters will get negative moodlet based on how much grass was wasted, but can be reduced by participants
-	- Harvest anima sap as a resource
-	- relocate anima tree
-	- produce anima tree seed
+Process to refine sap into amber
 
+Creatures (submod):
+	- kodama, small tree spirits
+	- Kukonochi, the kami of trees
 
-
-Anima boons:
-	- Artificial buildings no longer reduce anima grass growth
-	- anima grass auto-grows without meditation
-	- reduce effects of anima screams/yelps
-	- farmable anima grass?
-	- screamer arrows (probably in Arsenal)
+Other:
+		- Anima tree no longer affected by all artificial buildings, only those that use electricity
+	- Killing anima trees gives relations penalty with witches of mind, bonus with witches of body, once I make factions
+	- researches will be gated by story events, once I make story mod
+	- lineage submod for generations playthrough?
+		- weapons and armor bind to pawn, can only be passed down to children, get stronger with each generation
+		- ritual to sacrifice a pawn, give strong long-term buffs to bloodline (sacrifice grandma when she is too old to contribute)

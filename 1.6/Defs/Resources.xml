@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="ResourceBase">
+		<defName>TSOA_AnimaGrassResource</defName>
+		<label>anima grass</label>
+		<description>A bundle of anima grass. Harvested properly, the grass somehow remains alive, faintly humming with psychic resonance. It can be used in specialized crafting or ritual work.</description>
+		<graphicData>
+			<texPath>Things/Plant/Grass_Anima</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<stackLimit>75</stackLimit>
+		<tradeability>Sellable</tradeability>
+		<statBases>
+			<MarketValue>25</MarketValue>
+			<Mass>0.05</Mass>
+			<Flammability>0.8</Flammability>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tradeTags>
+			<li>ExoticMisc</li>
+		</tradeTags>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<soundPickup>Standard_Pickup</soundPickup>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>TSOA_AnimaBark</defName>
+		<label>anima bark</label>
+		<description>A chunk of tough bark shed by an anima tree. The outside is as smooth as skin, but the inside is lined with mysterious patterns that seem to shift when viewed indirectly. The bark remains warm regardless of ambient temperature, and gently resists being moved. When held by psychically-sensitive individuals, the patterns glow faintly, seeming to attune to their psychic aura. This makes it a valuable resource for crafting weapons and armor.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/ComponentIndustrial</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>
+		<stackLimit>50</stackLimit>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<statBases>
+			<MaxHitPoints>70</MaxHitPoints>
+			<MarketValue>32</MarketValue>
+			<Mass>0.6</Mass>
+			<Flammability>0.8</Flammability>
+			<DeteriorationRate>2.0</DeteriorationRate>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tradeTags>
+			<li>ExoticMisc</li>
+		</tradeTags>
+		<allowedArchonexusCount>10</allowedArchonexusCount>
+		<stuffProps>
+			<color>(112,89,43)</color>
+		</stuffProps>
+	</ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>TSOA_AnimaSap</defName>
+		<label>anima sap</label>
+		<description>Viscous, faintly glowing sap tapped from an anima tree. Unprotected contact with it produces the unsettling feeling of closeness with something far larger and more powerful than oneself. Properly harnessed, its great psychic potential can be used for powerful crafts and rituals.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/ComponentSpacer</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>25</stackLimit>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<intricate>true</intricate>
+		<statBases>
+			<MaxHitPoints>70</MaxHitPoints>
+			<MarketValue>200</MarketValue>
+			<Mass>0.6</Mass>
+			<Flammability>0.8</Flammability>
+			<DeteriorationRate>2.0</DeteriorationRate>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tradeTags>
+			<li>ExoticMisc</li>
+		</tradeTags>
+		<thingSetMakerTags>
+			<li>RewardStandardCore</li>
+		</thingSetMakerTags>
+		<allowedArchonexusCount>5</allowedArchonexusCount>
+	</ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>TSOA_AnimaAmber</defName>
+		<label>anima amber</label>
+		<description>Crystalized anima sap, distilled and purified into a gemstone that glows with inner power. Merely being in its presence is uncomfortable, as it thrums with a resonance that is felt like a pressure on the mind. Its immense power can fuel the mightiest of crafts and rituals.</description>
+		<graphicData>
+			<texPath>Things/Item/Special/AIPersonaCore</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<stackLimit>1</stackLimit>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MarketValue>4000</MarketValue>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>2</Mass>
+			<Flammability>0.2</Flammability>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<drawGUIOverlay>false</drawGUIOverlay>
+		<tradeability>Sellable</tradeability>
+		<techLevel>Tribal</techLevel>
+		<tradeTags>
+			<li>ExoticMisc</li>
+		</tradeTags>
+	</ThingDef>
+
+</Defs>
