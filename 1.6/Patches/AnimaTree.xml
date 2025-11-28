@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps</xpath>
+		<value>
+			<li Class="nuff.tsoa.core.CompProperties_AffectedByGroupedFacilities">
+				<linkGroups>
+					<li Class="nuff.tsoa.core.FacilityLinkGroup">
+						<categoryTag>TSOA_AnimaTap</categoryTag>
+						<label>anima sap taps</label>
+						<maxLinks>1</maxLinks>
+					</li>
+					<li Class="nuff.tsoa.core.FacilityLinkGroup">
+						<categoryTag>TSOA_AnimaGrave</categoryTag>
+						<label>anima graves</label>
+						<maxLinks>4</maxLinks>
+					</li>
+				</linkGroups>
+			</li>
+		</value>
+	</Operation>
+	
+</Patch>

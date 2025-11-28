@@ -9,6 +9,7 @@ using Verse;
 
 namespace nuff.tsoa.core
 {
+    [StaticConstructorOnStartup]
     public class CompAffectedByGroupedFacilities : ThingComp
     {
         private List<Thing> linkedFacilities = new List<Thing>();
@@ -370,23 +371,30 @@ namespace nuff.tsoa.core
 
         private bool IsBetter(ThingDef facilityDef, IntVec3 facilityPos, Rot4 facilityRot, Thing thanThisFacility)
         {
-            if (facilityDef != thanThisFacility.def)
+            CompProperties_GroupedFacility newProps = facilityDef.GetCompProperties<CompProperties_GroupedFacility>();
+            CompProperties_GroupedFacility oldProps = thanThisFacility.def.GetCompProperties<CompProperties_GroupedFacility>();
+
+            if (newProps == null || oldProps == null || newProps.categoryTag != oldProps.categoryTag)
             {
-                Log.Error("Comparing two different facility defs.");
+                Log.Error("Comparing two facilities in different category tags.");
                 return false;
             }
+
             Vector3 b = GenThing.TrueCenter(facilityPos, facilityRot, facilityDef.size, facilityDef.Altitude);
             Vector3 a = parent.TrueCenter();
             float num = Vector3.Distance(a, b);
             float num2 = Vector3.Distance(a, thanThisFacility.TrueCenter());
+
             if (num != num2)
             {
                 return num < num2;
             }
+
             if (facilityPos.x != thanThisFacility.Position.x)
             {
                 return facilityPos.x < thanThisFacility.Position.x;
             }
+
             return facilityPos.z < thanThisFacility.Position.z;
         }
 
