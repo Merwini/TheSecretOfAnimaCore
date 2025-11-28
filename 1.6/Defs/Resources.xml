@@ -119,7 +119,6 @@
 		</thingCategories>
 		<drawGUIOverlay>false</drawGUIOverlay>
 		<tradeability>Sellable</tradeability>
-		<techLevel>Tribal</techLevel>
 		<tradeTags>
 			<li>ExoticMisc</li>
 		</tradeTags>
