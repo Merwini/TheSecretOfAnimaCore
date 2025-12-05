@@ -5,7 +5,6 @@ Some way to get anima seed, to produce sapling
 Buildings:
 	- Anima sap tap
 		- produces anima sap over time
-		- can be set to different rates of production, higher rates produce more sap but damage the tree to varying degrees (also produce screams)
 
 Process to refine sap into amber
 
@@ -20,3 +19,7 @@ Other:
 	- lineage submod for generations playthrough?
 		- weapons and armor bind to pawn, can only be passed down to children, get stronger with each generation
 		- ritual to sacrifice a pawn, give strong long-term buffs to bloodline (sacrifice grandma when she is too old to contribute)
+
+Evolving anima tree in the style of anomaly monolith
+	- monolith breakpoints are based on entities encountered, so need something different for tree
+	- quests to capture special psychically-attuned world pawns and merge them with the tree?

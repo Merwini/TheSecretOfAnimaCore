@@ -79,6 +79,9 @@
 			<li Class="nuff.tsoa.core.CompProperties_GroupedFacility">
 				<categoryTag>TSOA_AnimaGrave</categoryTag>
 			</li>
+			<li>
+				<compClass>nuff.tsoa.core.CompAnimaRootGrave</compClass>
+			</li>
 		</comps>
 		<placeWorkers>
 			<li>nuff.tsoa.core.PlaceWorker_ShowGroupedFacilitiesConnections</li>
