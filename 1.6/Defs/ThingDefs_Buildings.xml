@@ -45,7 +45,7 @@
 			<fixedStorageSettings>
 				<filter>
 					<categories>
-						<li>Corpses</li>
+						<li>CorpsesHumanlike</li>
 					</categories>
 					<disallowedCategories>
 						<li MayRequire="Ludeon.RimWorld.Odyssey">CorpsesDrone</li>
@@ -127,11 +127,8 @@
 			<fixedStorageSettings>
 				<filter>
 					<categories>
-						<li>Corpses</li>
+						<li>CorpsesHumanlike</li>
 					</categories>
-					<disallowedCategories>
-						<li MayRequire="Ludeon.RimWorld.Odyssey">CorpsesDrone</li>
-					</disallowedCategories>
 				</filter>
 			</fixedStorageSettings>
 			<defaultStorageSettings>

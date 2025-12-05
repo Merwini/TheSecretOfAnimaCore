@@ -134,20 +134,42 @@ namespace nuff.tsoa.core
                 }
             }
 
+            int facilityExistingLinks = 0;
+
+            if (facilityProps.maxAffected > 0)
+            {
+                if (facilityPos.InBounds(parent.Map))
+                {
+                    Thing facilityThing = facilityPos.GetThingList(parent.Map).FirstOrDefault(t => t.def == facilityDef);
+
+                    if (facilityThing != null)
+                    {
+                        CompGroupedFacility facilityComp = facilityThing.TryGetComp<CompGroupedFacility>();
+                        if (facilityComp != null)
+                        {
+                            facilityExistingLinks = facilityComp.LinkedThings.Count;
+                        }
+                    }
+                }
+            }
+
             if (betterCandidateExists)
             {
                 return true;
             }
 
-            // Get the link group on the parent that corresponds to this tag
             FacilityLinkGroup relevantGroup = Props.GetLinkGroupForTag(tag);
             if (relevantGroup == null)
             {
                 return false;
             }
 
-            // Enforce parent’s per-group link limit
             if (countInSameGroup + 1 > relevantGroup.maxLinks)
+            {
+                return false;
+            }
+
+            if (facilityProps.maxAffected > 0 && facilityExistingLinks + 1 > facilityProps.maxAffected)
             {
                 return false;
             }

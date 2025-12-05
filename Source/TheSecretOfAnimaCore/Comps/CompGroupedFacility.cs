@@ -6,13 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
-using static RimWorld.Planet.WorldGenStep_Roads;
 
 namespace nuff.tsoa.core
 {
     public class CompGroupedFacility : ThingComp
     {
-
         private List<Thing> linkedThings = new List<Thing>();
 
         private const int UpdateRateIntervalTicks = 120;
@@ -32,7 +30,7 @@ namespace nuff.tsoa.core
             }
         }
 
-        public List<Thing> LinkedBuildings => linkedThings;
+        public List<Thing> LinkedThings => linkedThings;
 
         public virtual List<StatModifier> StatOffsets => Props.statOffsets;
 
@@ -46,23 +44,54 @@ namespace nuff.tsoa.core
 
         public static void DrawLinesToPotentialThingsToLinkTo(ThingDef myDef, IntVec3 myPos, Rot4 myRot, Map map)
         {
+
             CompProperties_GroupedFacility compProperties = myDef.GetCompProperties<CompProperties_GroupedFacility>();
-            if (compProperties?.linkableThings == null)
-            {
+            if (compProperties?.linkableThingDefs == null)
                 return;
-            }
-            Vector3 a = GenThing.TrueCenter(myPos, myRot, myDef.size, myDef.Altitude);
-            for (int i = 0; i < compProperties.linkableThings.Count; i++)
+
+            int max = compProperties.maxAffected > 0 ? compProperties.maxAffected : int.MaxValue;
+
+            Vector3 myCenter = GenThing.TrueCenter(myPos, myRot, myDef.size, myDef.Altitude);
+
+            List<Thing> potentialThings = new List<Thing>();
+
+            for (int i = 0; i < compProperties.linkableThingDefs.Count; i++)
             {
-                foreach (Thing item in map.listerThings.ThingsOfDef(compProperties.linkableThings[i]))
+                foreach (Thing item in map.listerThings.ThingsOfDef(compProperties.linkableThingDefs[i]))
                 {
-                    CompAffectedByGroupedFacilities compAffectedByFacilities = item.TryGetComp<CompAffectedByGroupedFacilities>();
-                    if (compAffectedByFacilities != null && compAffectedByFacilities.CanPotentiallyLinkTo(myDef, myPos, myRot))
+                    CompAffectedByGroupedFacilities compAffectee = item.TryGetComp<CompAffectedByGroupedFacilities>();
+
+                    if (compAffectee != null &&
+                        compAffectee.CanPotentiallyLinkTo(myDef, myPos, myRot))
                     {
-                        GenDraw.DrawLineBetween(a, item.TrueCenter());
-                        compAffectedByFacilities.DrawRedLineToPotentiallySupplantedFacility(myDef, myPos, myRot);
+                        potentialThings.Add(item);
                     }
                 }
+            }
+
+            if (potentialThings.Count == 0)
+                return;
+
+            potentialThings.Sort((a, b) =>
+                Vector3.Distance(myCenter, a.TrueCenter())
+                .CompareTo(Vector3.Distance(myCenter, b.TrueCenter())));
+
+            int drawn = 0;
+
+            foreach (Thing candidate in potentialThings)
+            {
+                if (drawn >= max)
+                    break;
+
+                Vector3 targetCenter = candidate.TrueCenter();
+
+                GenDraw.DrawLineBetween(myCenter, targetCenter);
+
+                CompAffectedByGroupedFacilities compAffectee = candidate.TryGetComp<CompAffectedByGroupedFacilities>();
+
+                compAffectee?.DrawRedLineToPotentiallySupplantedFacility(myDef, myPos, myRot);
+
+                drawn++;
             }
         }
 
@@ -70,9 +99,9 @@ namespace nuff.tsoa.core
         {
             CompProperties_GroupedFacility compProperties = myDef.GetCompProperties<CompProperties_GroupedFacility>();
             int num = 0;
-            for (int i = 0; i < compProperties.linkableThings.Count; i++)
+            for (int i = 0; i < compProperties.linkableThingDefs.Count; i++)
             {
-                foreach (Thing item in map.listerThings.ThingsOfDef(compProperties.linkableThings[i]))
+                foreach (Thing item in map.listerThings.ThingsOfDef(compProperties.linkableThingDefs[i]))
                 {
                     CompAffectedByGroupedFacilities compAffectedByFacilities = item.TryGetComp<CompAffectedByGroupedFacilities>();
                     if (compAffectedByFacilities != null && compAffectedByFacilities.CanPotentiallyLinkTo(myDef, myPos, myRot))
@@ -266,23 +295,40 @@ namespace nuff.tsoa.core
         private void LinkToNearbyBuildings()
         {
             UnlinkAll();
+
             CompProperties_GroupedFacility compProperties_GroupedFacility = Props;
-            if (compProperties_GroupedFacility.linkableThings == null)
-            {
+
+            if (compProperties_GroupedFacility.linkableThingDefs == null)
                 return;
-            }
-            for (int i = 0; i < compProperties_GroupedFacility.linkableThings.Count; i++)
+
+            List<Thing> potentiallyAffected = new List<Thing>(); 
+
+            foreach (ThingDef affectedDef in Props.linkableThingDefs)
             {
-                foreach (Thing item in parent.Map.listerThings.ThingsOfDef(compProperties_GroupedFacility.linkableThings[i]))
+                potentiallyAffected.AddRange(parent.Map.listerThings.ThingsOfDef(affectedDef));
+            }
+
+            potentiallyAffected = potentiallyAffected.Where(t =>
                 {
-                    CompAffectedByGroupedFacilities compAffectedByFacilities = item.TryGetComp<CompAffectedByGroupedFacilities>();
-                    if (compAffectedByFacilities != null && compAffectedByFacilities.CanLinkTo(parent))
-                    {
-                        linkedThings.Add(item);
-                        compAffectedByFacilities.Notify_NewLink(parent);
-                        this.OnLinkAdded?.Invoke(this, compAffectedByFacilities.parent);
-                    }
-                }
+                    CompAffectedByGroupedFacilities comp = t.TryGetComp<CompAffectedByGroupedFacilities>();
+                    return comp != null && comp.CanLinkTo(parent);
+                }).ToList();
+
+            Vector3 center = parent.TrueCenter();
+
+            potentiallyAffected.Sort((a, b) =>
+                Vector3.Distance(center, a.TrueCenter())
+                .CompareTo(Vector3.Distance(center, b.TrueCenter())));
+
+            int linkLimit = Props.maxAffected > 0 ? Props.maxAffected : int.MaxValue;
+
+            foreach (Thing target in potentiallyAffected.Take(linkLimit))
+            {
+                CompAffectedByGroupedFacilities comp = target.TryGetComp<CompAffectedByGroupedFacilities>();
+                linkedThings.Add(target);
+                comp.Notify_NewLink(parent);
+
+                OnLinkAdded?.Invoke(this, target);
             }
         }
 

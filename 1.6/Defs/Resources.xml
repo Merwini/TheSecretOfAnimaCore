@@ -30,7 +30,7 @@
 	<ThingDef ParentName="ResourceBase">
 		<defName>TSOA_AnimaBark</defName>
 		<label>anima bark</label>
-		<description>A chunk of tough bark shed by an anima tree. The outside is as smooth as skin, but the inside is lined with mysterious patterns that seem to shift when viewed indirectly. The bark remains warm regardless of ambient temperature, and gently resists being moved. When held by psychically-sensitive individuals, the patterns glow faintly, seeming to attune to their psychic aura. This makes it a valuable resource for crafting weapons and armor.</description>
+		<description>A chunk of tough bark shed by an anima tree. The outside is as smooth as skin, but the inside is lined with mysterious patterns that seem to shift when viewed indirectly. The bark remains warm regardless of ambient temperature, and gently resists being moved. When held by psychically-sensitive individuals, the patterns glow faintly, seeming to attune to their psychic aura. This makes it a valuable resource for crafting weapons and armor. In addition, applying anima sap to regular wood causes it to take on the properties of anima bark.</description>
 		<graphicData>
 			<texPath>Things/Item/Resource/ComponentIndustrial</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
@@ -70,7 +70,7 @@
 		</graphicData>
 		<soundInteract>Standard_Drop</soundInteract>
 		<soundDrop>Standard_Drop</soundDrop>
-		<stackLimit>25</stackLimit>
+		<stackLimit>75</stackLimit>
 		<healthAffectsPrice>false</healthAffectsPrice>
 		<intricate>true</intricate>
 		<statBases>
@@ -105,7 +105,7 @@
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<soundInteract>Metal_Drop</soundInteract>
 		<soundDrop>Metal_Drop</soundDrop>
-		<stackLimit>1</stackLimit>
+		<stackLimit>25</stackLimit>
 		<useHitPoints>true</useHitPoints>
 		<statBases>
 			<MarketValue>4000</MarketValue>
@@ -117,7 +117,6 @@
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
-		<drawGUIOverlay>false</drawGUIOverlay>
 		<tradeability>Sellable</tradeability>
 		<tradeTags>
 			<li>ExoticMisc</li>

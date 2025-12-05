@@ -16,7 +16,7 @@ namespace nuff.tsoa.core
         public static Dictionary<string, List<ThingDef>> cachedFacilities;
 
         [Unsaved(false)]
-        public List<ThingDef> linkableThings;
+        public List<ThingDef> linkableThingDefs;
 
         public string categoryTag;
 
@@ -35,6 +35,8 @@ namespace nuff.tsoa.core
         public float minDistance = 0f;
 
         public float maxDistance = 8f;
+
+        public int maxAffected = 1;
 
         public bool showMaxSimultaneous = true;
 
@@ -101,7 +103,7 @@ namespace nuff.tsoa.core
         {
             base.ResolveReferences(parentDef); // Does nothing, but just in case someone Harmony patches it
 
-            linkableThings = new List<ThingDef>();
+            linkableThingDefs = new List<ThingDef>();
 
             CacheDictionaries();
 
@@ -109,7 +111,7 @@ namespace nuff.tsoa.core
             List<ThingDef> cachedList = cachedAffectees.TryGetValue(categoryTag);
             foreach (ThingDef def in cachedList ?? Enumerable.Empty<ThingDef>())
             {
-                linkableThings.Add(def);
+                linkableThingDefs.Add(def);
             }
         }
     }
