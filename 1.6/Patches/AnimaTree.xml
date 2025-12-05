@@ -18,6 +18,12 @@
 					</li>
 				</linkGroups>
 			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps</xpath>
+		<value>
 			<li Class="nuff.tsoa.core.CompProperties_AnimaTreeEssence" />
 		</value>
 	</Operation>

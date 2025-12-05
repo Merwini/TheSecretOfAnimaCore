@@ -40,7 +40,6 @@ namespace nuff.tsoa.core
                     }
                     linkedTree = firstTree;
                 }
-
                 return linkedTree;
             }
         }
@@ -59,6 +58,7 @@ namespace nuff.tsoa.core
                         Log.Error("CompAnimaRootGrave linked to Tree without CompAnimaTreeEssence"); // I don't think this could happen without LinkedTree erroring first, just want to cover bases
                         return null;
                     }
+                    compEssence = comp;
                 }
 
                 return compEssence;
@@ -75,7 +75,6 @@ namespace nuff.tsoa.core
             {
                 return;
             }
-
             if (currentCorpse != cachedCorpse)
             {
                 cachedCorpse = currentCorpse;
@@ -84,7 +83,6 @@ namespace nuff.tsoa.core
             }
 
             ticksWithCorpse += checkInterval;
-
             if (ticksWithCorpse >= consumeTicks && CompEssence != null)
             {
                 AddEssence();
@@ -113,10 +111,13 @@ namespace nuff.tsoa.core
                 if (grave.innerContainer.Contains(corpse))
                 {
                     grave.innerContainer.Remove(corpse);
+                    grave.Map.mapDrawer.MapMeshDirty(grave.Position, MapMeshFlagDefOf.Things);
                 }
             }
 
             corpse.Destroy(DestroyMode.Vanish);
+            cachedCorpse = null;
+            
 
             FleckMaker.ThrowLightningGlow(parent.TrueCenter(), parent.Map, 1.5f);
         }
@@ -169,6 +170,28 @@ namespace nuff.tsoa.core
             }
 
             return sb.ToString().TrimEnd();
+        }
+
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        {
+            foreach (var g in base.CompGetGizmosExtra())
+                yield return g;
+
+            if (!Prefs.DevMode) yield break;
+
+            Corpse corpse = GetCorpse();
+            if (corpse == null)
+                yield break;
+
+            yield return new Command_Action
+            {
+                defaultLabel = "DEV: Set timer to 1",
+                defaultDesc = "Sets countdown until corpse is consumed to 1 tick.",
+                action = () =>
+                {
+                    ticksWithCorpse = 59999;
+                }
+            };
         }
     }
 }

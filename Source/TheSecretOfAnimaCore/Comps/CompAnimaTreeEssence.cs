@@ -18,10 +18,19 @@ namespace nuff.tsoa.core
         public void AddEssence(int amount)
         {
             storedEssence += amount;
-            if (storedEssence > Props.maximumEssense)
+            if (storedEssence > Props.maximumEssence)
             {
-                storedEssence = Props.maximumEssense;
+                storedEssence = Props.maximumEssence;
             }
+        }
+
+        public override string CompInspectStringExtra()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"Stored essence: {storedEssence} / {Props.maximumEssence}");
+
+            return sb.ToString().TrimEnd();
         }
     }
 }

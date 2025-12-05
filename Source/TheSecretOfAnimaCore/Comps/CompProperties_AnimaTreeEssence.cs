@@ -9,8 +9,7 @@ namespace nuff.tsoa.core
 {
     public class CompProperties_AnimaTreeEssence : CompProperties
     {
-        public int maximumEssense = 1000;
-
+        public int maximumEssence = 1000;
 
         public CompProperties_AnimaTreeEssence()
         {
