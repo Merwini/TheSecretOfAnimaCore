@@ -102,6 +102,11 @@ namespace nuff.tsoa.core
 
         public override string CompInspectStringExtra()
         {
+            if (CompEssence == null)
+            {
+                return "TSOA_NotLinked".Translate();
+            }
+
             StringBuilder sb = new StringBuilder();
 
             Corpse corpse = GetCorpse();

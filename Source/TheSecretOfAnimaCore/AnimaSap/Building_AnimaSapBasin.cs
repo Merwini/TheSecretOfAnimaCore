@@ -31,22 +31,21 @@ namespace nuff.tsoa.core
         {
             get
             {
+                if (linkedTree != null && (linkedTree.Destroyed || !linkedTree.Spawned))
+                {
+                    linkedTree = null;
+                }
+
                 if (linkedTree == null)
                 {
+                    
                     CompGroupedFacility compFac = this.TryGetComp<CompGroupedFacility>();
                     if (compFac == null)
                     {
-                        Log.Error($"{this.Label} unable to get CompGroupedFacility");
                         return null;
                     }
 
-                    Thing firstTree = compFac.LinkedThings.FirstOrDefault(t => t.HasComp<CompAnimaTreeEssence>());
-                    if (firstTree == null)
-                    {
-                        Log.Error($"{this.Label} linked to Thing without CompAnimaTreeEssence");
-                        return null;
-                    }
-                    linkedTree = firstTree;
+                    linkedTree = compFac.LinkedThings.FirstOrDefault(t => t?.TryGetComp<CompAnimaTreeEssence>() != null);
                 }
                 return linkedTree;
             }
@@ -58,15 +57,18 @@ namespace nuff.tsoa.core
         {
             get
             {
+                if (compEssence != null && (compEssence.parent.Destroyed || !compEssence.parent.Spawned))
+                {
+                    compEssence = null;
+                }
+
                 if (compEssence == null)
                 {
-                    CompAnimaTreeEssence comp = LinkedTree.TryGetComp<CompAnimaTreeEssence>();
-                    if (comp == null)
-                    {
-                        Log.Error($"{this.Label} linked to Tree without CompAnimaTreeEssence"); // I don't think this could happen without LinkedTree erroring first, just want to cover bases
+                    Thing tree = LinkedTree;
+                    if (tree == null)
                         return null;
-                    }
-                    compEssence = comp;
+
+                    compEssence = LinkedTree.TryGetComp<CompAnimaTreeEssence>();
                 }
 
                 return compEssence;
@@ -118,7 +120,16 @@ namespace nuff.tsoa.core
 
         public bool StorageFull => CurrentSapCount >= maximumSap;
 
-        public float TreeEssencePercent => (float)CompEssence.StoredEssence / CompEssence.Props.maximumEssence;
+        public float TreeEssencePercent
+        {
+            get
+            {
+                if (CompEssence == null)
+                    return 0f;
+
+                return (float)CompEssence.StoredEssence / CompEssence.Props.maximumEssence;
+            }
+        }
 
         public Building_AnimaSapBasin()
         {
@@ -141,9 +152,11 @@ namespace nuff.tsoa.core
 
             if (ticksSinceHarvest >= drainTicks)
             {
-                if (CompEssence != null && CompEssence.TryRemoveEssence(essencePerSap))
+                ticksSinceHarvest = 0;
+
+                CompAnimaTreeEssence comp = CompEssence;
+                if (comp != null && comp.TryRemoveEssence(essencePerSap))
                 {
-                    ticksSinceHarvest = 0;
                     TryAddSap(); 
                     if (StorageFull)
                     {
@@ -211,12 +224,18 @@ namespace nuff.tsoa.core
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.GetInspectString());
 
+            if (innerContainer.Count > 0)
+                sb.AppendLine("TSOA_StoredSap".Translate(innerContainer[0].stackCount, maximumSap));
+
+            if (CompEssence == null)
+            {
+                sb.AppendLine("TSOA_NotLinked".Translate());
+                return sb.ToString();
+            }
+
             sb.AppendLine(harvesting ? "TSOA_SapCurrentlyHarvesting".Translate() : "TSOA_SapNotCurrentlyHarvesting".Translate());
             sb.AppendLine(allowEmptying ? "TSOA_SapEmptyingAllowed".Translate() : "TSOA_SapEmptyingDisallowed".Translate());
             sb.AppendLine("TSOA_SapThresholdsInspect".Translate((harvestRange.min * 100f).ToString("F0"), (harvestRange.max * 100f).ToString("F0")));
-
-            if (innerContainer.Count > 0)
-                sb.AppendLine("TSOA_StoredSap".Translate(innerContainer[0].stackCount, maximumSap));
 
             return sb.ToString().Trim();
         }

@@ -31,8 +31,12 @@
 			</li>
 			<li Class="nuff.tsoa.core.CompProperties_GroupedFacility">
 				<categoryTag>TSOA_AnimaTap</categoryTag>
+				<mustBePlacedAdjacent>true</mustBePlacedAdjacent>
 			</li>
 		</comps>
+		<placeWorkers>
+			<li>nuff.tsoa.core.PlaceWorker_ShowGroupedFacilitiesConnections</li>
+		</placeWorkers>
 		<building>
 			<buildingTags>
 				<li>Production</li>

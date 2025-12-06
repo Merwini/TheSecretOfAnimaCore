@@ -14,22 +14,21 @@ namespace nuff.tsoa.core
         {
             get
             {
+                if (linkedTree != null && (linkedTree.Destroyed || !linkedTree.Spawned))
+                {
+                    linkedTree = null;
+                }
+
                 if (linkedTree == null)
                 {
+
                     CompGroupedFacility compFac = parent.TryGetComp<CompGroupedFacility>();
                     if (compFac == null)
                     {
-                        Log.Error($"CompAnimaTreeLinkee from {parent.Label} unable to get CompGroupedFacility");
                         return null;
                     }
 
-                    Thing firstTree = compFac.LinkedThings.FirstOrDefault(t => t.HasComp<CompAnimaTreeEssence>());
-                    if (firstTree == null)
-                    {
-                        Log.Error($"CompAnimaTreeLinkee from {parent.Label} linked to Thing without CompAnimaTreeEssence");
-                        return null;
-                    }
-                    linkedTree = firstTree;
+                    linkedTree = compFac.LinkedThings.FirstOrDefault(t => t?.TryGetComp<CompAnimaTreeEssence>() != null);
                 }
                 return linkedTree;
             }
@@ -41,15 +40,18 @@ namespace nuff.tsoa.core
         {
             get
             {
+                if (compEssence != null && (compEssence.parent.Destroyed || !compEssence.parent.Spawned))
+                {
+                    compEssence = null;
+                }
+
                 if (compEssence == null)
                 {
-                    CompAnimaTreeEssence comp = LinkedTree.TryGetComp<CompAnimaTreeEssence>();
-                    if (comp == null)
-                    {
-                        Log.Error($"CompAnimaTreeLinkee from {parent.Label} linked to Tree without CompAnimaTreeEssence"); // I don't think this could happen without LinkedTree erroring first, just want to cover bases
+                    Thing tree = LinkedTree;
+                    if (tree == null)
                         return null;
-                    }
-                    compEssence = comp;
+
+                    compEssence = LinkedTree.TryGetComp<CompAnimaTreeEssence>();
                 }
 
                 return compEssence;
