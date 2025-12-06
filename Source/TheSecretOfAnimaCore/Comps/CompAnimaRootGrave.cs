@@ -135,21 +135,22 @@ namespace nuff.tsoa.core
             foreach (var g in base.CompGetGizmosExtra())
                 yield return g;
 
-            if (!Prefs.DevMode) yield break;
-
-            Corpse corpse = GetCorpse();
-            if (corpse == null)
-                yield break;
-
-            yield return new Command_Action
+            if (DebugSettings.godMode)
             {
-                defaultLabel = "DEV: Set timer to 1",
-                defaultDesc = "Sets countdown until corpse is consumed to 1 tick.",
-                action = () =>
+                Corpse corpse = GetCorpse();
+                if (corpse == null)
+                    yield break;
+
+                yield return new Command_Action
                 {
-                    ticksWithCorpse = 59999;
-                }
-            };
+                    defaultLabel = "DEV: Set timer to 1",
+                    defaultDesc = "Sets countdown until corpse is consumed to 1 tick.",
+                    action = () =>
+                    {
+                        ticksWithCorpse = 59999;
+                    }
+                };
+            }
         }
     }
 }
