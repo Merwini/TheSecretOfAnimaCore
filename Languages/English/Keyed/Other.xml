@@ -5,4 +5,22 @@
 	<TSOA_Linked>linked</TSOA_Linked>
 	<TSOA_CorpseConsumptionIn>Corpse consumption in: {0} hours</TSOA_CorpseConsumptionIn>
 	<TSOA_EssenceYield>Essence yield: {0}</TSOA_EssenceYield>
+	<TSOA_StoredEssence>Stored essence: {0} / {1}</TSOA_StoredEssence>
+	
+	<TSOA_StoredSap>Stored anima sap: {0} / {1}</TSOA_StoredSap>
+	<TSOA_SapCurrentlyHarvesting>Currently harvesting</TSOA_SapCurrentlyHarvesting>
+	<TSOA_SapNotCurrentlyHarvesting>Not currently harvesting</TSOA_SapNotCurrentlyHarvesting>
+	<TSOA_SapEmptyingAllowed>Emptying allowed</TSOA_SapEmptyingAllowed>
+	<TSOA_SapEmptyingDisallowed>Emptying disallowed</TSOA_SapEmptyingDisallowed>
+	<TSOA_SetTapRangeLabel>Set tap range</TSOA_SetTapRangeLabel>
+	<TSOA_SetTapRangeDescription>Set the range that the tap will be active in. Will allow essence to build up until it hits the upper bound, then drain until it hits the lower bound.</TSOA_SetTapRangeDescription>
+	<TSOA_SapToggleEmptyingLabel>Toggle sap emptying</TSOA_SapToggleEmptyingLabel>
+	<TSOA_SapToggleEmptyingDescription>When active, colonists will automatically empty anima sap from the basin when it is more than half full.</TSOA_SapToggleEmptyingDescription>
+	<TSOA_SapEmptyNowLabel>empty sap now</TSOA_SapEmptyNowLabel>
+	<TSOA_SapEmptyNowDescription>When active, colonists will priorize emptying the sap regardless of fullness.</TSOA_SapEmptyNowDescription>
+	<TSOA_SapThresholdsHeader>Sap Harvest Thresholds</TSOA_SapThresholdsHeader>
+	<TSOA_SapThresholdsTooltip>Drag to adjust the lower and upper percentage bounds.</TSOA_SapThresholdsTooltip>
+	<TSOA_SapThresholdsCurrent>Harvest between: {0}% – {1}%</TSOA_SapThresholdsCurrent>
+	<TSOA_SapThresholdsInspect>Harvest when tree essence reaches {0}% then stop at {1}%.</TSOA_SapThresholdsInspect>
+	
 </LanguageData>

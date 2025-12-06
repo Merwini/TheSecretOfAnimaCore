@@ -10,6 +10,8 @@ namespace nuff.tsoa.core
     public class CompProperties_AnimaTreeEssence : CompProperties
     {
         public int maximumEssence = 1000;
+        public int refillRate = 1;
+        public int autoRefillTicks = 6000; // 10 per day
 
         public CompProperties_AnimaTreeEssence()
         {

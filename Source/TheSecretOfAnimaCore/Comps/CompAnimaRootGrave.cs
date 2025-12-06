@@ -9,7 +9,7 @@ using static HarmonyLib.Code;
 
 namespace nuff.tsoa.core
 {
-    public class CompAnimaRootGrave : ThingComp
+    public class CompAnimaRootGrave : CompAnimaTreeLinkee
     {
         private const int checkInterval = 250;
         private const int consumeTicks = 60000;
@@ -17,53 +17,6 @@ namespace nuff.tsoa.core
 
         private int ticksWithCorpse;
         private Corpse cachedCorpse;
-
-        private Thing linkedTree;
-        public Thing LinkedTree
-        {
-            get
-            {
-                if (linkedTree == null)
-                {
-                    CompGroupedFacility compFac = parent.TryGetComp<CompGroupedFacility>();
-                    if (compFac == null)
-                    {
-                        Log.Error("CompAnimaRootGrave unable to get CompGroupedFacility");
-                        return null;
-                    }
-
-                    Thing firstTree = compFac.LinkedThings.FirstOrDefault(t => t.HasComp<CompAnimaTreeEssence>());
-                    if (firstTree == null)
-                    {
-                        Log.Error("CompAnimaRootGrave linked to Thing without CompAnimaTreeEssence");
-                        return null;
-                    }
-                    linkedTree = firstTree;
-                }
-                return linkedTree;
-            }
-        }
-
-        CompAnimaTreeEssence compEssence;
-
-        CompAnimaTreeEssence CompEssence
-        {
-            get
-            {
-                if (compEssence == null)
-                {
-                    CompAnimaTreeEssence comp = LinkedTree.TryGetComp<CompAnimaTreeEssence>();
-                    if (comp == null)
-                    {
-                        Log.Error("CompAnimaRootGrave linked to Tree without CompAnimaTreeEssence"); // I don't think this could happen without LinkedTree erroring first, just want to cover bases
-                        return null;
-                    }
-                    compEssence = comp;
-                }
-
-                return compEssence;
-            }
-        }
 
         public override void CompTickRare()
         {

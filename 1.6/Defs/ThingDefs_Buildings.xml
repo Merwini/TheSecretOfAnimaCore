@@ -1,10 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	
-	<ThingDef ParentName="BuildingBase">
-		<defName>TSOA_AnimaTap</defName>
+	<ThingDef ParentName="CrateBase">
+		<defName>TSOA_AnimaSapTap</defName>
 		<label>anima sap tap</label>
 		<description>A spigot and basin for draining and collecting sap from an anima tree.</description>
+		<thingClass>nuff.tsoa.core.Building_AnimaSapBasin</thingClass>
+		<size>(1, 1)</size>
+		<fillPercent>0.40</fillPercent>
+		<graphicData>
+			<texPath>Things/Building/Ruins/AncientHermeticCrate</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1, 1)</drawSize>
+			<shadowData>
+				<volume>(1, 0.45, 2)</volume>
+			</shadowData>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>42</pathCost>
+		<canOverlapZones>true</canOverlapZones>
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_EmptyStateGraphic">
+				<graphicData>
+					<texPath>Things/Building/Ruins/AncientHermeticCrateOpen</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(1, 1)</drawSize>
+				</graphicData>
+			</li>
+			<li Class="nuff.tsoa.core.CompProperties_GroupedFacility">
+				<categoryTag>TSOA_AnimaTap</categoryTag>
+			</li>
+		</comps>
+		<building>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+		</building>
+		<designationCategory>Production</designationCategory>
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
@@ -47,9 +81,6 @@
 					<categories>
 						<li>CorpsesHumanlike</li>
 					</categories>
-					<disallowedCategories>
-						<li MayRequire="Ludeon.RimWorld.Odyssey">CorpsesDrone</li>
-					</disallowedCategories>
 				</filter>
 			</fixedStorageSettings>
 			<defaultStorageSettings>
@@ -81,85 +112,6 @@
 			</li>
 			<li>
 				<compClass>nuff.tsoa.core.CompAnimaRootGrave</compClass>
-			</li>
-		</comps>
-		<placeWorkers>
-			<li>nuff.tsoa.core.PlaceWorker_ShowGroupedFacilitiesConnections</li>
-		</placeWorkers>
-		<ritualFocus>
-			<spectateDistance>1</spectateDistance>
-			<allowedSpectateSides>Vertical</allowedSpectateSides>
-		</ritualFocus>
-	</ThingDef>
-
-	<ThingDef ParentName="BuildingBase">
-		<defName>TSOA_AnimaRootGraveDuplicate</defName>
-		<label>anima root grave duplicate</label>
-		<description>A grave dug close to the roots of an anima tree. The roots connect to human bodies and absorb some sort of essence from them. This refills the sap of the tree, and rapidly decomposes the body.</description>
-		<thingClass>Building_Grave</thingClass>
-		<containedPawnsSelectable>true</containedPawnsSelectable>
-		<graphicData>
-			<texPath>Things/Building/Misc/GraveEmpty</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(3,4)</drawSize>
-		</graphicData>
-		<constructEffect>ConstructDirt</constructEffect>
-		<altitudeLayer>FloorEmplacement</altitudeLayer>
-		<useHitPoints>false</useHitPoints>
-		<size>(1,2)</size>
-		<tickerType>Rare</tickerType>
-		<canOverlapZones>false</canOverlapZones>
-		<statBases>
-			<WorkToBuild>800</WorkToBuild>
-		</statBases>
-		<passability>Standable</passability>
-		<defaultPlacingRot>North</defaultPlacingRot>
-		<building>
-			<ai_chillDestination>false</ai_chillDestination>
-			<expandHomeArea>false</expandHomeArea>
-			<isInert>true</isInert>
-			<preventDeteriorationInside>true</preventDeteriorationInside>
-			<haulToContainerDuration>500</haulToContainerDuration>
-			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
-			<isEscapableContainer>true</isEscapableContainer>
-			<fullGraveGraphicData>
-				<texPath>Things/Building/Misc/GraveFull</texPath>
-				<graphicClass>Graphic_Multi</graphicClass>
-				<drawSize>(3,4)</drawSize>
-			</fullGraveGraphicData>
-			<fixedStorageSettings>
-				<filter>
-					<categories>
-						<li>CorpsesHumanlike</li>
-					</categories>
-				</filter>
-			</fixedStorageSettings>
-			<defaultStorageSettings>
-				<priority>Important</priority>
-				<filter>
-					<categories>
-						<li>CorpsesHumanlike</li>
-					</categories>
-				</filter>
-			</defaultStorageSettings>
-			<buildingTags>
-				<li>RitualFocus</li>
-			</buildingTags>
-		</building>
-		<inspectorTabs>
-			<li>ITab_Storage</li>
-		</inspectorTabs>
-		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
-		<designationCategory>Misc</designationCategory>
-		<uiOrder>2050</uiOrder>
-		<designationHotKey>Misc8</designationHotKey>
-		<comps>
-			<li Class="CompProperties_AssignableToPawn">
-				<drawAssignmentOverlay>false</drawAssignmentOverlay>
-				<compClass>CompAssignableToPawn_Grave</compClass>
-			</li>
-			<li Class="nuff.tsoa.core.CompProperties_GroupedFacility">
-				<categoryTag>TSOA_AnimaGrave</categoryTag>
 			</li>
 		</comps>
 		<placeWorkers>

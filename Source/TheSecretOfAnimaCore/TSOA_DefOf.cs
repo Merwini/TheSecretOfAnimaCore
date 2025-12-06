@@ -13,10 +13,18 @@ namespace nuff.tsoa.core
     {
         public static ThingDef TSOA_AnimaGrassResource;
 
+        public static ThingDef TSOA_AnimaSap;
+
+        public static ThingDef TSOA_AnimaSapTap;
+
         public static ThoughtDef TSOA_AnimaGrassScream;
 
         public static JobDef TSOA_HarvestAnimaGrassJob;
 
+        public static JobDef TSOA_TakeAnimaSapOutOfBasinJob;
+
         public static SoundDef AnimaTreeScream;
+
+        public static DesignationDef TSOA_EmptyNowSapBasin;
     }
 }

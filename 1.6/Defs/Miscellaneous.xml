@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<DesignationDef>
+		<defName>TSOA_EmptyNowSapBasin</defName>
+		<!-- TODO placeholder. Once I have Sap texture, make an icon with an arrow pointing up overlayed over it -->
+		<texturePath>Designations/Open</texturePath>
+		<targetType>Thing</targetType>
+	</DesignationDef>
+</Defs>
