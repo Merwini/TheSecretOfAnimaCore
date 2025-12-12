@@ -1,0 +1,12 @@
+<Defs>
+	<DamageDef>
+		<defName>TSOA_EntropyExtraDamage</defName>
+		<label>psychic burn</label>
+		<workerClass>nuff.tsoa.core.DamageWorker_EntropyExtraDamage</workerClass>
+		<armorCategory>Sharp</armorCategory>
+		<hediff>Burn</hediff>
+		<defaultDamage>1</defaultDamage>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} has died from discharged neural heat.</deathMessage>
+	</DamageDef>
+</Defs>

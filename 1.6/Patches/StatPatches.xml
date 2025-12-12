@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/StatDef[defName="MeleeWeapon_DamageMultiplier"]/parts</xpath>
+		<value>
+			<li Class="nuff.tsoa.core.StatPart_PsyScaling"/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/StatDef[defName="ArmorRating_Sharp"]/parts</xpath>
+		<value>
+			<li Class="nuff.tsoa.core.StatPart_PsyScaling"/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/StatDef[defName="ArmorRating_Blunt"]/parts</xpath>
+		<value>
+			<li Class="nuff.tsoa.core.StatPart_PsyScaling"/>
+		</value>
+	</Operation>
+
+	<!--<Operation Class="PatchOperationReplace">
+		<xpath>Defs/StatDef[@Name="ArmorRatingBase"]/maxValue</xpath>
+		<value>
+			<maxValue>8</maxValue>
+		</value>
+	</Operation>-->
+	
+</Patch>

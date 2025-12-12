@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ResearchTabDef>
+		<defName>TSOA_ResearchTab</defName>
+		<label>The Secret of Anima</label>
+	</ResearchTabDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_AnimaOne</defName>
+		<label>The Dawn of Anima</label>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>0.00</researchViewX>
+		<researchViewY>1.60</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">
+		<defName>TSOA_VoidOne</defName>
+		<label>The Dusk of Void</label>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>0.00</researchViewX>
+		<researchViewY>4.60</researchViewY>
+	</ResearchProjectDef>
+	
+</Defs>

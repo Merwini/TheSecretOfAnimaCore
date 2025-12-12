@@ -26,5 +26,9 @@ namespace nuff.tsoa.core
         public static SoundDef AnimaTreeScream;
 
         public static DesignationDef TSOA_EmptyNowSapBasin;
+
+        public static StatDef TSOA_PsyScaling;
+
+        public static DamageDef TSOA_EntropyExtraDamage;
     }
 }

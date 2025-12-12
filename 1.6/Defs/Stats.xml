@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<StatDef>
+		<defName>TSOA_PsyScaling</defName>
+		<label>psychic scaling</label>
+		<description>Shows how this equipment scales with the wearer's psychic sensitivity.</description>
+		<defaultBaseValue>0</defaultBaseValue>
+		<category>CapacityEffects</category>
+		<displayPriorityInCategory>5</displayPriorityInCategory>
+		<toStringStyle>PercentZero</toStringStyle>
+		<workerClass>nuff.tsoa.core.StatWorker_PsyScalingDisplay</workerClass>
+	</StatDef>
+</Defs>
