@@ -1,4 +1,5 @@
 <Defs>
+	
 	<!-- Should never actually have damage applied with this def, DamageWorker will convert it into a different damage -->
 	<DamageDef>
 		<defName>TSOA_EntropyExtraDamage</defName>
@@ -10,4 +11,16 @@
 		<externalViolence>true</externalViolence>
 		<deathMessage>{0} has died from discharged neural heat.</deathMessage>
 	</DamageDef>
+
+	<DamageDef>
+		<defName>TSOA_EntropicDischarge</defName>
+		<label>entropic discharge</label>
+		<externalViolence>true</externalViolence>
+		<workerClass>DamageWorker_AddInjury</workerClass>
+		<deathMessage>{0} was overwhelmed by discharged psychic entropy.</deathMessage>
+		<hediff>TSOA_EntropicDischarge_Injury</hediff>
+		<hediffSkin>TSOA_EntropicDischarge_Skin</hediffSkin>
+		<hediffSolid>TSOA_EntropicDischarge_Solid</hediffSolid>
+	</DamageDef>
+	
 </Defs>

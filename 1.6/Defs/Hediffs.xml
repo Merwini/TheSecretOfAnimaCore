@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<HediffDef ParentName="InjuryBase">
+		<defName>TSOA_EntropicDischarge_Injury</defName>
+		<label>entropic scorch</label>
+		<labelNoun>an entropic scorch</labelNoun>
+		<description>a scorch caused by discharged psychic entropy</description>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<labelTendedWell>treated</labelTendedWell>
+				<labelTendedWellInner>treated</labelTendedWellInner>
+				<labelSolidTendedWell>treated</labelSolidTendedWell>
+			</li>
+			<li Class="HediffCompProperties_GetsPermanent">
+				<permanentLabel>neural scarring</permanentLabel>
+			</li>
+		</comps>
+		<injuryProps>
+			<painPerSeverity>0.015</painPerSeverity>
+			<averagePainPerSeverityPermanent>0.0075</averagePainPerSeverityPermanent>
+			<canMerge>true</canMerge>
+			<destroyedLabel>Entropically destroyed</destroyedLabel>
+			<alwaysUseDestroyedLabel>true</alwaysUseDestroyedLabel>
+		</injuryProps>
+	</HediffDef>
+
+	<HediffDef ParentName="InjuryBase">
+		<defName>TSOA_EntropicDischarge_Skin</defName>
+		<label>entropic scorch</label>
+		<labelNoun>an entropic scorch</labelNoun>
+		<description>a scorch caused by discharged psychic entropy</description>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<labelTendedWell>bandaged</labelTendedWell>
+				<labelTendedWellInner>dressed</labelTendedWellInner>
+				<labelSolidTendedWell>treated</labelSolidTendedWell>
+			</li>
+			<li Class="HediffCompProperties_Infecter">
+				<infectionChance>0.1</infectionChance>
+			</li>
+			<li Class="HediffCompProperties_GetsPermanent">
+				<permanentLabel>entropic scarring</permanentLabel>
+			</li>
+		</comps>
+		<injuryProps>
+			<painPerSeverity>0.012</painPerSeverity>
+			<averagePainPerSeverityPermanent>0.006</averagePainPerSeverityPermanent>
+			<canMerge>true</canMerge>
+			<destroyedLabel>Entropically destroyed</destroyedLabel>
+			<alwaysUseDestroyedLabel>true</alwaysUseDestroyedLabel>
+		</injuryProps>
+	</HediffDef>
+
+	<HediffDef ParentName="InjuryBase">
+		<defName>TSOA_EntropicDischarge_Solid</defName>
+		<label>entropic scorch</label>
+		<labelNoun>an entropic scorch</labelNoun>
+		<description>a scorch caused by discharged psychic entropy</description>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<labelTendedWell>treated</labelTendedWell>
+				<labelTendedWellInner>treated</labelTendedWellInner>
+				<labelSolidTendedWell>treated</labelSolidTendedWell>
+			</li>
+			<li Class="HediffCompProperties_GetsPermanent">
+				<permanentLabel>permanent entropic scarring</permanentLabel>
+			</li>
+		</comps>
+		<injuryProps>
+			<painPerSeverity>0.0125</painPerSeverity>
+			<averagePainPerSeverityPermanent>0.0065</averagePainPerSeverityPermanent>
+			<destroyedLabel>Entropically destroyed</destroyedLabel>
+			<alwaysUseDestroyedLabel>true</alwaysUseDestroyedLabel>
+		</injuryProps>
+	</HediffDef>
+	
+</Defs>

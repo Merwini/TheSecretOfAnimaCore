@@ -8,7 +8,7 @@ using RimWorld;
 
 namespace nuff.tsoa.core
 {
-    internal class DamageWorker_EntropyExtraDamage : DamageWorker
+    public class DamageWorker_EntropyExtraDamage : DamageWorker_AddInjury
     {
         public override DamageResult Apply(DamageInfo dinfo, Thing victim)
         {
@@ -34,7 +34,7 @@ namespace nuff.tsoa.core
 
             pawn.psychicEntropy.TryAddEntropy(-heatCost, null);
 
-            var newDinfo = new DamageInfo(dinfo);
+            DamageInfo newDinfo = new DamageInfo(dinfo);
             newDinfo.Def = extension.damageDef;
             newDinfo.SetAmount(bonusDamage);
 
