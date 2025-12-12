@@ -1,4 +1,5 @@
 <Defs>
+	<!-- Should never actually have damage applied with this def, DamageWorker will convert it into a different damage -->
 	<DamageDef>
 		<defName>TSOA_EntropyExtraDamage</defName>
 		<label>psychic burn</label>

@@ -35,7 +35,7 @@ namespace nuff.tsoa.core
             pawn.psychicEntropy.TryAddEntropy(-heatCost, null);
 
             var newDinfo = new DamageInfo(dinfo);
-            newDinfo.Def = extension.damageDef ?? TSOA_DefOf.TSOA_EntropyExtraDamage;
+            newDinfo.Def = extension.damageDef;
             newDinfo.SetAmount(bonusDamage);
 
             if (Prefs.DevMode)
