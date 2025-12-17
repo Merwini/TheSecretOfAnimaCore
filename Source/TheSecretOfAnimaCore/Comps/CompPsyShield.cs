@@ -23,8 +23,6 @@ namespace nuff.tsoa.core
 
         private int KeepDisplayingTicks = 1000;
 
-        private bool isBroken = false;
-
         private static readonly Material PsyBubbleMat = MaterialPool.MatFrom("Other/ShieldBubble", ShaderDatabase.Transparent, Color.green);
 
         public CompProperties_PsyShield Props => (CompProperties_PsyShield)props;
@@ -34,11 +32,11 @@ namespace nuff.tsoa.core
         {
             get
             {
-                if (!isBroken)
+                if (ticksUntilReset > 0)
                 {
-                    return ShieldState.Active;
-                }
-                return ShieldState.Resetting;
+                    return ShieldState.Resetting;
+                } 
+                return ShieldState.Active;
             }
         }
 
@@ -133,7 +131,6 @@ namespace nuff.tsoa.core
                     FleckMaker.ThrowDustPuff(PawnOwner.TrueCenter() + Vector3Utility.HorizontalVectorFromAngle(Rand.Range(0, 360)) * Rand.Range(0.3f, 0.6f), PawnOwner.Map, Rand.Range(0.8f, 1.2f));
                 }
             }
-            isBroken = true;
             ticksUntilReset = Props.resetDelayTicks;
         }
 
@@ -144,7 +141,7 @@ namespace nuff.tsoa.core
                 SoundDefOf.EnergyShield_Reset.PlayOneShot(new TargetInfo(PawnOwner.Position, PawnOwner.Map));
                 FleckMaker.ThrowLightningGlow(PawnOwner.TrueCenter(), PawnOwner.Map, 3f);
             }
-            isBroken = false;
+            ticksUntilReset = 0;
         }
 
         // copied from CompShield
@@ -192,7 +189,7 @@ namespace nuff.tsoa.core
         public override void CompTick()
         {
             base.CompTick();
-            if (isBroken && PawnOwner.psychicEntropy.EntropyRelativeValue < Props.resetHeatPercent)
+            if (ticksUntilReset > 0 && PawnOwner.psychicEntropy.EntropyRelativeValue < Props.resetHeatPercent)
             {
                 ticksUntilReset--;
                 if (ticksUntilReset <= 0)
@@ -205,7 +202,7 @@ namespace nuff.tsoa.core
         public override void PostPreApplyDamage(ref DamageInfo dinfo, out bool absorbed)
         {
             absorbed = false;
-            if (PawnOwner == null || PawnOwner.psychicEntropy == null || PawnOwner.GetPsylinkLevel() <= 0 || isBroken)
+            if (ShieldState != ShieldState.Active || PawnOwner == null || PawnOwner.psychicEntropy == null || PawnOwner.GetPsylinkLevel() <= 0)
                 return;
 
             float damage = dinfo.Amount;
@@ -224,6 +221,14 @@ namespace nuff.tsoa.core
             absorbed = true;
 
             PawnOwner.psychicEntropy.TryAddEntropy(heatToAdd, null, false);
+        }
+
+        public override void PostExposeData()
+        {
+            base.PostExposeData();
+
+            Scribe_Values.Look(ref ticksUntilReset, "ticksUntilReset", 0);
+            Scribe_Values.Look(ref lastKeepDisplayTick, "lastKeepDisplayTick", 0);
         }
     }
 }
