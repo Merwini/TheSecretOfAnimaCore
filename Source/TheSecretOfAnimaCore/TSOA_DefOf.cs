@@ -23,6 +23,10 @@ namespace nuff.tsoa.core
 
         public static JobDef TSOA_TakeAnimaSapOutOfBasinJob;
 
+        public static JobDef TSOA_StatExchangeLink;
+
+        public static JobDef TSOA_StatExchangeUnlink;
+
         public static SoundDef AnimaTreeScream;
 
         public static DesignationDef TSOA_EmptyNowSapBasin;

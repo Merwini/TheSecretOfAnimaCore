@@ -23,5 +23,25 @@
 	<TSOA_SapThresholdsTooltip>Drag to adjust the lower and upper percentage bounds.</TSOA_SapThresholdsTooltip>
 	<TSOA_SapThresholdsCurrent>Harvest between: {0}% – {1}%</TSOA_SapThresholdsCurrent>
 	<TSOA_SapThresholdsInspect>Harvest when tree essence reaches {0}% then stop at {1}%.</TSOA_SapThresholdsInspect>
-	
+
+	<!-- Arsenal stuff -->
+	<TSOA_OutOfEntropy>Too much neural heat!</TSOA_OutOfEntropy>
+	<TSOA_NotACaster>Not a psycaster!</TSOA_NotACaster>
+	<TSOA_PsyScalingWorkerExplanation>This equipment scales its effectiveness based on psychic sensitivity.\nscaling factor: {0}\n\nFor example, at 150% psychic sensitivity and 50% scaling:\nArmor or weapon damage is increased by 25%.</TSOA_PsyScalingWorkerExplanation>
+	<TSOA_PsyScaling_StatPartExplanation>Psychic sensitivity: {0}\nScaling factor: {1}\nEffective multiplier: {2}</TSOA_PsyScaling_StatPartExplanation>
+	<TSOA_StatExchangerNoComp>Can't form psychic bond, target lacks a matching crown implant.</TSOA_StatExchangerNoComp>
+	<TSOA_StatExchangerAlreadyLinked>Can't form psychic bond, target is already linked to {0}.</TSOA_StatExchangerAlreadyLinked>
+	<TSOA_StatExchangerAtCapacity>{0} already has the maximum number of psychic links.</TSOA_StatExchangerAtCapacity>
+	<TSOA_StatExchangerUnlinkDeath>{0} has lost their psychic link to {1}, because {0} has died.</TSOA_StatExchangerUnlinkDeath>
+	<TSOA_StatExchangerUnlinkSurgery>{0} has lost their psychic link to {1}, because {0}'s crown has been removed.</TSOA_StatExchangerUnlinkSurgery>
+	<TSOA_StatExchangeGizmoLinkLabel>Form link to:</TSOA_StatExchangeGizmoLinkLabel>
+	<TSOA_StatExchangeGizmoLinkDescription>Select a pawn to form a psychic link.</TSOA_StatExchangeGizmoLinkDescription>
+	<TSOA_StatExchangeGizmoUnlinkLabel>Break link with:</TSOA_StatExchangeGizmoUnlinkLabel>
+	<TSOA_StatExchangeGizmoUnlinkDescription>Break an existing psychic link.</TSOA_StatExchangeGizmoUnlinkDescription>
+	<TSOA_StatExchangeGizmoNoLinks>No links</TSOA_StatExchangeGizmoNoLinks>
+	<TSOA_StatExchangeHediffLabelExtraLinked>linked</TSOA_StatExchangeHediffLabelExtraLinked>
+	<TSOA_StatExchangeHediffLabelExtraUnlinked></TSOA_StatExchangeHediffLabelExtraUnlinked>
+	<TSOA_StatExchangeHediffLabelExtraLinkCount>{0} links</TSOA_StatExchangeHediffLabelExtraLinkCount>
+	<TSOA_StatPartExchangerExplanation>Stat Exchange: </TSOA_StatPartExchangerExplanation>
+	<TSOA_StatExchangeInactive> (inactive)</TSOA_StatExchangeInactive>
 </LanguageData>

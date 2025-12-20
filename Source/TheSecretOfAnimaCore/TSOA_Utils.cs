@@ -12,7 +12,6 @@ namespace nuff.tsoa.core
         public static float GetPsyScalingFactor(float psyScaling, float sensitivity)
         {
             float val = psyScaling * (sensitivity - 1);
-            Log.Warning($"GetPsyScalingFactor value: {val}");
             //return psyScaling * (1 - sensitivity);
             return val;
         }
@@ -20,7 +19,6 @@ namespace nuff.tsoa.core
         public static float GetPsyScaledValue(float initialVal, float psyScaling, float sensitivity)
         {
             float val = initialVal * (1 + GetPsyScalingFactor(psyScaling, sensitivity));
-            Log.Warning($"GetPsyScaledValue: {val}");
             return val;
             //return initialVal * GetPsyScalingFactor(psyScaling, sensitivity);
         }

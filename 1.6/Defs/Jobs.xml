@@ -20,4 +20,19 @@
 		</requiredCapacities>
 		<canBeDoneByMechs>false</canBeDoneByMechs>
 	</WorkGiverDef>
+
+	<JobDef>
+		<defName>TSOA_StatExchangeLink</defName>
+		<driverClass>nuff.tsoa.core.JobDriver_StatExchangeLink</driverClass>
+		<reportString>linking psychic essence</reportString>
+		<casualInterruptible>true</casualInterruptible>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+
+	<JobDef>
+		<defName>TSOA_StatExchangeUnlink</defName>
+		<driverClass>nuff.tsoa.core.JobDriver_StatExchangeUnlink</driverClass>
+		<reportString>breaking psychic link</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
 </Defs>
