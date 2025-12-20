@@ -35,7 +35,7 @@ namespace nuff.tsoa.core
         public float unlinkCompleteEffecterScale = 1;
         public SoundDef unlinkCompleteSound;
 
-        public int maxLinks;
+        public int maxLinks = 1;
 
         public string bondLabel;
 

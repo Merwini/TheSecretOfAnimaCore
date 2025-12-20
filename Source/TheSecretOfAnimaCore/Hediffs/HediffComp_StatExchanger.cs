@@ -38,7 +38,14 @@ namespace nuff.tsoa.core
                     Recache();
                 }
 
-                return cachedAmount;
+                if (IsDonor)
+                {
+                    return -cachedAmount;
+                }
+                else
+                {
+                    return cachedAmount;
+                }
             }
         }
         
@@ -272,7 +279,7 @@ namespace nuff.tsoa.core
                 }
             }
 
-            cachedAmount = value * Props.donorLossPercent * -1;
+            cachedAmount = value * Props.donorLossPercent;
         }
 
         public void CacheReceivedAmount()
@@ -370,7 +377,7 @@ namespace nuff.tsoa.core
         {
             get
             {
-                if (IsDonor)
+                if (Props.maxLinks == 1)
                 {
                     return IsLinked ? "TSOA_StatExchangeHediffLabelExtraLinked".Translate() : "TSOA_StatExchangeHediffLabelExtraUnlinked".Translate();
                 }
