@@ -14,6 +14,6 @@ namespace nuff.tsoa.core
 
         public float damagePerHeatConsumed = 4f;
 
-        public DamageDef damageDef = DamageDefOf.Cut;
+        public DamageDef damageDef;
     }
 }
