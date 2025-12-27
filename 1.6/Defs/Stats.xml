@@ -10,4 +10,17 @@
 		<toStringStyle>PercentZero</toStringStyle>
 		<workerClass>nuff.tsoa.core.StatWorker_PsyScalingDisplay</workerClass>
 	</StatDef>
+
+	<StatDef>
+		<defName>TSOA_ComfortGainFactor</defName>
+		<label>comfort gain</label>
+		<description>A multiplier on the comfort level that a person experiences.</description>
+		<category>PawnHealth</category>
+		<toStringStyle>PercentZero</toStringStyle>
+		<defaultBaseValue>1</defaultBaseValue>
+		<hideAtValue>1</hideAtValue>
+		<minValue>0.0001</minValue>
+		<showOnAnimals>false</showOnAnimals>
+		<showOnDrones>false</showOnDrones>
+	</StatDef>
 </Defs>

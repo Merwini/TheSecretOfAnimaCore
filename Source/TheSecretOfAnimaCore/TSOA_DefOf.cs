@@ -33,6 +33,8 @@ namespace nuff.tsoa.core
 
         public static StatDef TSOA_PsyScaling;
 
+        public static StatDef TSOA_ComfortGainFactor;
+
         public static DamageDef TSOA_EntropyExtraDamage;
     }
 }

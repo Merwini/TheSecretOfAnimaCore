@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HarmonyLib;
+using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
-using RimWorld;
-using HarmonyLib;
 
 namespace nuff.tsoa.core
 {
@@ -38,6 +39,16 @@ namespace nuff.tsoa.core
 
                 __result = hasPower;
                 return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(Need_Comfort), nameof(Need_Comfort.ComfortUsed))]
+        public static class Need_Comfort_ComfortUsed_Patch
+        {
+            [HarmonyPrefix]
+            public static void Prefix(Need_Comfort __instance, ref float comfort)
+            {
+                comfort *= __instance.pawn.GetStatValue(TSOA_DefOf.TSOA_ComfortGainFactor);
             }
         }
     }
