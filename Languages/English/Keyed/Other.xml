@@ -24,6 +24,8 @@
 	<TSOA_SapThresholdsCurrent>Harvest between: {0}% – {1}%</TSOA_SapThresholdsCurrent>
 	<TSOA_SapThresholdsInspect>Harvest when tree essence reaches {0}% then stop at {1}%.</TSOA_SapThresholdsInspect>
 
+	<TSOA_BillPsylinkTooLow>Worker's psylink level was lower than recipe requirement of {0}.</TSOA_BillPsylinkTooLow>
+
 	<!-- Arsenal stuff -->
 	<TSOA_OutOfEntropy>Too much neural heat!</TSOA_OutOfEntropy>
 	<TSOA_NotACaster>Not a psycaster!</TSOA_NotACaster>
