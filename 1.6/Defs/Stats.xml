@@ -12,8 +12,8 @@
 	</StatDef>
 
 	<StatDef>
-		<defName>TSOA_ComfortGainFactor</defName>
-		<label>comfort gain</label>
+		<defName>TSOA_ComfortFactor</defName>
+		<label>comfort factor</label>
 		<description>A multiplier on the comfort level that a person experiences.</description>
 		<category>PawnHealth</category>
 		<toStringStyle>PercentZero</toStringStyle>

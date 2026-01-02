@@ -51,7 +51,7 @@ namespace nuff.tsoa.core
         {
             public static void Prefix(Need_Comfort __instance, ref float comfort)
             {
-                comfort *= __instance.pawn.GetStatValue(TSOA_DefOf.TSOA_ComfortGainFactor);
+                comfort *= __instance.pawn.GetStatValue(TSOA_DefOf.TSOA_ComfortFactor);
             }
         }
 
@@ -146,8 +146,6 @@ namespace nuff.tsoa.core
 
                 return codes.AsEnumerable();
             }
-
-            
         }
 
         // returns false if bill does not have extension
