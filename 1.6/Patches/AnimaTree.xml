@@ -27,5 +27,12 @@
 			<li Class="nuff.tsoa.core.CompProperties_AnimaTreeEssence" />
 		</value>
 	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps/li[@Class="CompProperties_SpawnSubplant"]</xpath>
+		<value>
+			<initialGrowthRange>0.1~0.2</initialGrowthRange>
+		</value>
+	</Operation>
 	
 </Patch>
