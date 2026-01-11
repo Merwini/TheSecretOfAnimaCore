@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
+	<HediffDef>
+		<defName>TSOA_AnimaLinkHediff</defName>
+		<hediffClass>nuff.tsoa.core.Hediff_AnimaTreeLink</hediffClass>
+		<label>anima tree link</label>
+		<description>This person's psychic sensitivity is being bolstered by their link to an anima tree.</description>
+		<isBad>false</isBad>
+	</HediffDef>
+
 	<HediffDef ParentName="InjuryBase">
 		<defName>TSOA_EntropicDischarge_Injury</defName>
 		<label>entropic scorch</label>

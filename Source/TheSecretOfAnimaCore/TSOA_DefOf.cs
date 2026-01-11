@@ -17,9 +17,9 @@ namespace nuff.tsoa.core
 
         public static ThingDef TSOA_AnimaSapTap;
 
-        public static ThoughtDef TSOA_AnimaGrassScream;
+        //public static ThoughtDef TSOA_AnimaGrassScream;
 
-        public static JobDef TSOA_HarvestAnimaGrassJob;
+        //public static JobDef TSOA_HarvestAnimaGrassJob;
 
         public static JobDef TSOA_TakeAnimaSapOutOfBasinJob;
 
@@ -36,5 +36,7 @@ namespace nuff.tsoa.core
         public static StatDef TSOA_ComfortFactor;
 
         public static DamageDef TSOA_EntropyExtraDamage;
+
+        public static HediffDef TSOA_AnimaLinkHediff;
     }
 }

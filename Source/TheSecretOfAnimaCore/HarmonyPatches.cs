@@ -3,6 +3,7 @@ using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -55,6 +56,30 @@ namespace nuff.tsoa.core
             }
         }
 
+        [HarmonyPatch(typeof(RitualOutcomeEffectWorker_AnimaTreeLinking), nameof(RitualOutcomeEffectWorker_AnimaTreeLinking.Apply))]
+        public static class RitualOutcomeEffectWorker_AnimaTreeLinking_Apply_Patch
+        {
+            public static bool Prefix(RitualOutcomeEffectWorker_AnimaTreeLinking __instance, float progress, LordJob_Ritual jobRitual)
+            {
+                Pawn pawn = jobRitual.PawnWithRole("organizer");
+                CompPsylinkable obj = jobRitual.selectedTarget.Thing?.TryGetComp<CompPsylinkable>();
+                float quality = __instance.GetQuality(jobRitual, progress);
+                int num = (int)RitualOutcomeEffectWorker_AnimaTreeLinking.RestoredGrassFromQuality.Evaluate(quality);
+                obj?.FinishLinkingRitual(pawn, num);
+
+                Hediff hediff = HediffMaker.MakeHediff(TSOA_DefOf.TSOA_AnimaLinkHediff, pawn);
+
+                Thing animaTree = jobRitual.selectedTarget.Thing;
+                ((Hediff_AnimaTreeLink)hediff).animaTree = animaTree;
+                pawn.health.AddHediff(hediff);
+                CompAnimaTreePawnLink comp = animaTree.TryGetComp<CompAnimaTreePawnLink>();
+                if (comp!= null)
+                {
+                    comp.linkedPawns.Add(pawn);
+                }
+                return false;
+            }
+        }
 
         /*
 			SkillRequirement skillRequirement = bill.recipe.FirstSkillRequirementPawnDoesntSatisfy(pawn);
