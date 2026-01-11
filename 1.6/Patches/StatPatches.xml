@@ -28,12 +28,5 @@
 			<li Class="nuff.tsoa.core.StatPart_Exchanger"/>
 		</value>
 	</Operation>
-
-	<!--<Operation Class="PatchOperationReplace">
-		<xpath>Defs/StatDef[@Name="ArmorRatingBase"]/maxValue</xpath>
-		<value>
-			<maxValue>8</maxValue>
-		</value>
-	</Operation>-->
 	
 </Patch>
