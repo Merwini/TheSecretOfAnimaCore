@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 
 namespace nuff.tsoa.core
@@ -13,9 +13,12 @@ namespace nuff.tsoa.core
     {
         private const int CheckInterval = 120;
 
-        public Thing animaTree;
+        private Thing animaTree;
 
-        public Thing AnimaTree => animaTree;
+        public Thing AnimaTree
+        {
+            get; set; // not sure if I'll ever need custom logic, maybe just make animaTree public?
+        }
 
         private float cachedBonus = 0;
 
@@ -56,18 +59,22 @@ namespace nuff.tsoa.core
 
         public void RecacheBonus()
         {
-            float num = cachedBonus;
+            float old = cachedBonus;
             cachedBonus = 0;
-            CompSpawnSubplant compSubplant = AnimaTree?.TryGetComp<CompSpawnSubplant>() as CompSpawnSubplant;
-            CompAnimaTreePawnLink compAnimaTreePawnLink = AnimaTree?.TryGetComp<CompAnimaTreePawnLink>() as CompAnimaTreePawnLink;
+
+            CompSpawnSubplant compSubplant = AnimaTree?.TryGetComp<CompSpawnSubplant>();
+            CompAnimaTreePawnLink compAnimaTreePawnLink = AnimaTree?.TryGetComp<CompAnimaTreePawnLink>();
             if (compSubplant != null && compAnimaTreePawnLink != null)
             {
-                float num2 = compSubplant.SubplantsForReading.Count;
-                num2 /= compAnimaTreePawnLink.linkedPawns.Count;
-                num2 *= compAnimaTreePawnLink.Props.psychicSensitivityPerSubplant;
-                cachedBonus = num2;
+                if (!compAnimaTreePawnLink.linkedPawns.NullOrEmpty() && compAnimaTreePawnLink.linkedPawns.Contains(pawn)) // maybe 
+                {
+                    float num2 = compSubplant.SubplantsForReading.Count;
+                    num2 /= compAnimaTreePawnLink.linkedPawns.Count;
+                    num2 *= compAnimaTreePawnLink.Props.psychicSensitivityPerSubplant;
+                    cachedBonus = num2;
+                }
             }
-            if (num != cachedBonus)
+            if (!Mathf.Approximately(old, cachedBonus))
             {
                 curStage = null;
             }

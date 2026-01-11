@@ -70,7 +70,7 @@ namespace nuff.tsoa.core
                 Hediff hediff = HediffMaker.MakeHediff(TSOA_DefOf.TSOA_AnimaLinkHediff, pawn);
 
                 Thing animaTree = jobRitual.selectedTarget.Thing;
-                ((Hediff_AnimaTreeLink)hediff).animaTree = animaTree;
+                ((Hediff_AnimaTreeLink)hediff).AnimaTree = animaTree;
                 pawn.health.AddHediff(hediff);
                 CompAnimaTreePawnLink comp = animaTree.TryGetComp<CompAnimaTreePawnLink>();
                 if (comp!= null)
