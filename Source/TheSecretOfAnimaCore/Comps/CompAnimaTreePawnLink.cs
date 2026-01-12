@@ -36,7 +36,7 @@ namespace nuff.tsoa.core
         {
             base.PostExposeData();
 
-            Scribe_Collections.Look<Pawn>(ref linkedPawns, "linkedPawns", LookMode.Reference);
+            Scribe_Collections.Look(ref linkedPawns, "linkedPawns", LookMode.Reference);
         }
     }
 }
