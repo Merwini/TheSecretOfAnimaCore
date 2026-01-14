@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using RimWorld.BaseGen;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -44,6 +45,34 @@ namespace nuff.tsoa.core
 
                 __result = hasPower;
                 return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(CompSpawnSubplant), nameof(CompSpawnSubplant.AddProgress))]
+        public class CompSpawnSubplant_AddProgress_Prefix
+        {
+            public static bool Prefix(CompSpawnSubplant __instance, ref float progressPerTick, bool ignoreMultiplier = false)
+            {
+                if (__instance.parent.def != ThingDefOf.Plant_TreeAnima)
+                    return true;
+
+                CompAffectedByGroupedFacilities compABGF = __instance.parent.TryGetComp<CompAffectedByGroupedFacilities>();
+                if (compABGF == null || compABGF.LinkedFacilities.NullOrEmpty())
+                    return true;
+
+                float initialProgressPerTick = progressPerTick;
+
+                foreach (Thing thing in compABGF.LinkedFacilities)
+                {
+                    if (thing is Building_AnimaSapBasin basin && !ignoreMultiplier && basin.IsHarvesting)
+                    {
+                        float progressToRemove = Mathf.Min(progressPerTick, initialProgressPerTick * basin.harvestPercent);
+                        progressPerTick -= progressToRemove;
+                        basin.AddProgress(progressToRemove);
+                    }
+                }
+
+                return true;
             }
         }
 

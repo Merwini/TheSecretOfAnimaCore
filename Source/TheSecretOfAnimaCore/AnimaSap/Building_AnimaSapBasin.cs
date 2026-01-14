@@ -16,10 +16,14 @@ namespace nuff.tsoa.core
         public ThingOwner innerContainer;
 
         public bool harvesting;
+        public float progress = 0f;
+        public float harvestPercent = 0.1f;
+        public bool IsHarvesting => harvesting && progress < 1f;
+
         public FloatRange harvestRange = new FloatRange(0.5f, 0.95f);
         public bool allowEmptying = true;
         public bool emptyNow;
-        public int ticksSinceHarvest; 
+        public int ticksSinceHarvest;
 
         public const int drainTicks = 1250;
         public const int essencePerSap = 50;
@@ -168,6 +172,13 @@ namespace nuff.tsoa.core
                     harvesting = false; //tree must be empty
                 }
             }
+        }
+
+        public void AddProgress(float progressToAdd)
+        {
+            progress += progressToAdd;
+            if (progress > 1f)
+                progress = 1f;
         }
 
         private void TryAddSap()
