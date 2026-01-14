@@ -22,8 +22,6 @@ namespace nuff.tsoa.core
 
         private List<ThingDef> alreadyUsed = new List<ThingDef>();
 
-        public List<Thing> LinkedFacilitiesListForReading => linkedFacilities;
-
         public CompProperties_AffectedByGroupedFacilities Props => (CompProperties_AffectedByGroupedFacilities)props;
 
         private IEnumerable<Thing> ThingsICanLinkTo
