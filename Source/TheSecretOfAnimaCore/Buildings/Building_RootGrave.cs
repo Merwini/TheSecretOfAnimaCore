@@ -124,7 +124,7 @@ namespace nuff.tsoa.core
                 corpse.Destroy();
             }
             FleckMaker.ThrowLightningGlow(this.TrueCenter(), this.Map, 1.5f);
-            this.Map.mapDrawer.MapMeshDirty(this.Position, MapMeshFlagDefOf.Things);
+            this.DirtyMapMesh(Map);
         }
 
         public override void ExposeData()

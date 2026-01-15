@@ -114,9 +114,14 @@ namespace nuff.tsoa.core
 
         private void TryAddSap()
         {
+            bool addingFirst = CurrentSap == 0;
             Thing sap = ThingMaker.MakeThing(TSOA_DefOf.TSOA_AnimaSap);
             sap.stackCount = 1;
             innerContainer.TryAddOrTransfer(sap);
+            if (addingFirst)
+            {
+                this.DirtyMapMesh(Map);
+            }
         }
 
         public override IEnumerable<Gizmo> GetGizmos()
