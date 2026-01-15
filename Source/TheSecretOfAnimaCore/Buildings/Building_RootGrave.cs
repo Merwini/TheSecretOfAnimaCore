@@ -83,6 +83,7 @@ namespace nuff.tsoa.core
         }
         public override void TickRare()
         {
+            base.TickRare();
             TickInterval(250);
         }
 

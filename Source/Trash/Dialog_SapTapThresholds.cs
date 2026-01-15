@@ -36,7 +36,7 @@ namespace nuff.tsoa.core
                 range: ref basin.harvestRange,
                 min: 0f,
                 max: 1f
-                //labelKey: "TSOA_SapThresholdsTooltip".Translate()
+            //labelKey: "TSOA_SapThresholdsTooltip".Translate()
             );
 
             // Show exact percentages

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
-using static HarmonyLib.Code;
 
 namespace nuff.tsoa.core
 {
@@ -15,19 +14,18 @@ namespace nuff.tsoa.core
     {
         public ThingOwner innerContainer;
 
-        public bool harvesting;
+        public bool harvestingToggled = true;
         public float progress = 0f;
         public float harvestPercent = 0.1f;
-        public bool IsHarvesting => harvesting && progress < 1f;
+        public bool IsHarvesting => harvestingToggled && !IsFull;
+        public bool IsFull => CurrentSap >= MaximumSap;
+        public int CurrentSap => (!innerContainer.NullOrEmpty() && innerContainer[0] != null) ? innerContainer[0].stackCount : 0;
+        public int MaximumSap => TSOA_DefOf.TSOA_AnimaSap.stackLimit;
 
-        public FloatRange harvestRange = new FloatRange(0.5f, 0.95f);
         public bool allowEmptying = true;
         public bool emptyNow;
-        public int ticksSinceHarvest;
 
         public const int drainTicks = 1250;
-        public const int essencePerSap = 50;
-        public const int maximumSap = 50;
         public const int workThreshhold = 25;
 
         private Thing linkedTree;
@@ -42,40 +40,17 @@ namespace nuff.tsoa.core
 
                 if (linkedTree == null)
                 {
-                    
+
                     CompGroupedFacility compFac = this.TryGetComp<CompGroupedFacility>();
                     if (compFac == null)
                     {
                         return null;
                     }
 
-                    linkedTree = compFac.LinkedThings.FirstOrDefault(t => t?.TryGetComp<CompAnimaTreeEssence>() != null);
+                    linkedTree = compFac.LinkedThings.FirstOrDefault(t => t?.TryGetComp<CompSpawnSubplant>() != null);
                 }
+
                 return linkedTree;
-            }
-        }
-
-        CompAnimaTreeEssence compEssence;
-
-        public virtual CompAnimaTreeEssence CompEssence
-        {
-            get
-            {
-                if (compEssence != null && (compEssence.parent.Destroyed || !compEssence.parent.Spawned))
-                {
-                    compEssence = null;
-                }
-
-                if (compEssence == null)
-                {
-                    Thing tree = LinkedTree;
-                    if (tree == null)
-                        return null;
-
-                    compEssence = LinkedTree.TryGetComp<CompAnimaTreeEssence>();
-                }
-
-                return compEssence;
             }
         }
 
@@ -97,44 +72,6 @@ namespace nuff.tsoa.core
             }
         }
 
-        private bool ShouldHarvest
-        {
-            get
-            {
-                if (CompEssence == null)
-                    return false;
-
-                if (StorageFull)
-                    return false;
-
-                float percent = TreeEssencePercent;
-
-                if (!harvesting)
-                {
-                    return percent >= harvestRange.max;
-                }
-                else
-                {
-                    return percent > harvestRange.min;
-                }
-            }
-        }
-
-        public int CurrentSapCount => (innerContainer.Count > 0 && innerContainer[0] != null) ? innerContainer[0].stackCount : 0;
-
-        public bool StorageFull => CurrentSapCount >= maximumSap;
-
-        public float TreeEssencePercent
-        {
-            get
-            {
-                if (CompEssence == null)
-                    return 0f;
-
-                return (float)CompEssence.StoredEssence / CompEssence.Props.maximumEssence;
-            }
-        }
-
         public Building_AnimaSapBasin()
         {
             innerContainer = new ThingOwner<Thing>(this, oneStackOnly: false, LookMode.Deep);
@@ -147,38 +84,32 @@ namespace nuff.tsoa.core
         {
             base.TickRare();
 
-            harvesting = ShouldHarvest;
+            TickInterval(250);
+        }
 
-            if (!harvesting)
-                return;
+        public override void TickInterval(int delta)
+        {
+            base.TickInterval(delta);
 
-            ticksSinceHarvest += 250;
-
-            if (ticksSinceHarvest >= drainTicks)
-            {
-                ticksSinceHarvest = 0;
-
-                CompAnimaTreeEssence comp = CompEssence;
-                if (comp != null && comp.TryRemoveEssence(essencePerSap))
-                {
-                    TryAddSap(); 
-                    if (StorageFull)
-                    {
-                        harvesting = false;
-                    }
-                }
-                else
-                {
-                    harvesting = false; //tree must be empty
-                }
-            }
+            TryConsumeProgress();
         }
 
         public void AddProgress(float progressToAdd)
         {
             progress += progressToAdd;
-            if (progress > 1f)
-                progress = 1f;
+            TryConsumeProgress();
+        }
+
+        public void TryConsumeProgress()
+        {
+            if (IsFull)
+                return;
+
+            while (progress >= 1f && !IsFull)
+            {
+                TryAddSap();
+                progress -= 1;
+            }
         }
 
         private void TryAddSap()
@@ -193,15 +124,24 @@ namespace nuff.tsoa.core
             foreach (var g in base.GetGizmos())
                 yield return g;
 
-            yield return new Command_Action
+            // TODO dialog to set harvestPercent
+
+            //yield return new Command_Action
+            //{
+            //    defaultLabel = "TSOA_SetTapRangeLabel".Translate(),
+            //    defaultDesc = "TSOA_SetTapRangeDescription".Translate(),
+            //    // TODO icon. Anima tree?
+            //    action = () =>
+            //    {
+            //        Find.WindowStack.Add(new Dialog_SapTapThresholds(this));
+            //    }
+            //};
+            yield return new Command_Toggle
             {
-                defaultLabel = "TSOA_SetTapRangeLabel".Translate(),
-                defaultDesc = "TSOA_SetTapRangeDescription".Translate(),
-                // TODO icon. Anima tree?
-                action = () =>
-                {
-                    Find.WindowStack.Add(new Dialog_SapTapThresholds(this));
-                }
+                defaultLabel = "TSOA_SapHarvestToggleLabel".Translate(),
+                defaultDesc = "TSOA_SapHarvestToggleDesc".Translate(),
+                isActive = () => harvestingToggled,
+                toggleAction = () => harvestingToggled = !harvestingToggled
             };
 
             yield return new Command_Action()
@@ -227,6 +167,12 @@ namespace nuff.tsoa.core
                     defaultLabel = "DEV: Add 1 sap",
                     action = () => TryAddSap()
                 };
+
+                yield return new Command_Action()
+                {
+                    defaultLabel = "DEV: Fill progress",
+                    action = () => progress = 1f
+                };
             }
         }
 
@@ -236,24 +182,24 @@ namespace nuff.tsoa.core
             sb.AppendLine(base.GetInspectString());
 
             if (innerContainer.Count > 0)
-                sb.AppendLine("TSOA_StoredSap".Translate(innerContainer[0].stackCount, maximumSap));
+                sb.AppendLine("TSOA_StoredSap".Translate(CurrentSap, MaximumSap));
 
-            if (CompEssence == null)
+            if (LinkedTree == null)
             {
                 sb.AppendLine("TSOA_NotLinked".Translate());
                 return sb.ToString();
             }
 
-            sb.AppendLine(harvesting ? "TSOA_SapCurrentlyHarvesting".Translate() : "TSOA_SapNotCurrentlyHarvesting".Translate());
+            sb.AppendLine(harvestingToggled ? "TSOA_SapCurrentlyHarvesting".Translate() : "TSOA_SapNotCurrentlyHarvesting".Translate());
             sb.AppendLine(allowEmptying ? "TSOA_SapEmptyingAllowed".Translate() : "TSOA_SapEmptyingDisallowed".Translate());
-            sb.AppendLine("TSOA_SapThresholdsInspect".Translate((harvestRange.min * 100f).ToString("F0"), (harvestRange.max * 100f).ToString("F0")));
+            sb.AppendLine("TSOA_SapHarvestProgress".Translate((progress * 100).ToString("F2")));
 
             return sb.ToString().Trim();
         }
 
         private void ToggleEmptyNow()
         {
-            if (!emptyNow && CurrentSapCount > 0)
+            if (!emptyNow && CurrentSap > 0)
             {
                 emptyNow = true;
                 allowEmptying = true;
@@ -289,11 +235,17 @@ namespace nuff.tsoa.core
 
             Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
 
-            Scribe_Values.Look(ref harvesting, "harvesting", false);
-            Scribe_Values.Look(ref harvestRange, "harvestRange", new FloatRange(0.5f, 0.95f));
+            Scribe_Values.Look(ref progress, "progress", 0);
+            Scribe_Values.Look(ref harvestPercent, "harvestPercent", 0);
+            Scribe_Values.Look(ref harvestingToggled, "harvestingToggled", false);
             Scribe_Values.Look(ref allowEmptying, "allowEmptying", true);
             Scribe_Values.Look(ref emptyNow, "emptyNow", false);
-            Scribe_Values.Look(ref ticksSinceHarvest, "rareTicksSinceHarvest", 0);
+        }
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            UpdateDesignation();
         }
     }
 }

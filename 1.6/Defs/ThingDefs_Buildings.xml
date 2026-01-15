@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	
-	<!--<ThingDef ParentName="CrateBase">
+	<ThingDef ParentName="CrateBase">
 		<defName>TSOA_AnimaSapTap</defName>
 		<label>anima sap tap</label>
 		<description>A spigot and basin for draining and collecting sap from an anima tree.</description>
@@ -43,7 +43,7 @@
 			</buildingTags>
 		</building>
 		<designationCategory>Production</designationCategory>
-	</ThingDef>-->
+	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>TSOA_AnimaRootGrave</defName>

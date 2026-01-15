@@ -1,15 +1,10 @@
 ﻿using HarmonyLib;
 using RimWorld;
-using RimWorld.BaseGen;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -53,7 +48,7 @@ namespace nuff.tsoa.core
         {
             public static bool Prefix(CompSpawnSubplant __instance, ref float progressPerTick, bool ignoreMultiplier = false)
             {
-                if (__instance.parent.def != ThingDefOf.Plant_TreeAnima)
+                if (__instance.parent.def != ThingDefOf.Plant_TreeAnima) // TODO mke it work with different anima tree growth stages which will be different ThingDefs
                     return true;
 
                 CompAffectedByGroupedFacilities compABGF = __instance.parent.TryGetComp<CompAffectedByGroupedFacilities>();
