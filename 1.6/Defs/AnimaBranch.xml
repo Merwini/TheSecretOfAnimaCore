@@ -6,7 +6,7 @@
 		<targetTags>
 			<li>Map_PlayerHome</li>
 		</targetTags>
-		<workerClass>nuff.tsoa.core.IncidentWorker_AnimaBranchDrop</workerClass>
+		<workerClass>tsoa.core.IncidentWorker_AnimaBranchDrop</workerClass>
 		<category>ShipChunkDrop</category>
 		<baseChance>3</baseChance>
 		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>

@@ -4,14 +4,14 @@
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps</xpath>
 		<value>
-			<li Class="nuff.tsoa.core.CompProperties_AffectedByGroupedFacilities">
+			<li Class="tsoa.core.CompProperties_AffectedByGroupedFacilities">
 				<linkGroups>
-					<li Class="nuff.tsoa.core.FacilityLinkGroup">
+					<li Class="tsoa.core.FacilityLinkGroup">
 						<categoryTag>TSOA_AnimaTap</categoryTag>
 						<label>anima sap taps</label>
 						<maxLinks>1</maxLinks>
 					</li>
-					<li Class="nuff.tsoa.core.FacilityLinkGroup">
+					<li Class="tsoa.core.FacilityLinkGroup">
 						<categoryTag>TSOA_AnimaGrave</categoryTag>
 						<label>anima graves</label>
 						<maxLinks>4</maxLinks>
@@ -24,14 +24,14 @@
 	<!--<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps</xpath>
 		<value>
-			<li Class="nuff.tsoa.core.CompProperties_AnimaTreeEssence" />
+			<li Class="tsoa.core.CompProperties_AnimaTreeEssence" />
 		</value>
 	</Operation>-->
 
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps</xpath>
 		<value>
-			<li Class="nuff.tsoa.core.CompProperties_AnimaTreePawnLink" />
+			<li Class="tsoa.core.CompProperties_AnimaTreePawnLink" />
 		</value>
 	</Operation>
 

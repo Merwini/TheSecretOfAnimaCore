@@ -8,7 +8,7 @@ using Verse;
 using Verse.Noise;
 using Verse.Sound;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class RitualOutcomeEffectWorker_AnimaGrassHarvest : RitualOutcomeEffectWorker
     {

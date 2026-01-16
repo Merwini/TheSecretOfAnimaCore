@@ -9,14 +9,14 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     [StaticConstructorOnStartup]
     public class HarmonyPatches
     {
         static HarmonyPatches()
         {
-            Harmony harmony = new Harmony("nuff.tsoa.core");
+            Harmony harmony = new Harmony("tsoa.core");
 
             harmony.PatchAll();
         }

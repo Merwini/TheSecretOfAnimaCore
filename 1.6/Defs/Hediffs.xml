@@ -3,7 +3,7 @@
 
 	<HediffDef>
 		<defName>TSOA_AnimaLinkHediff</defName>
-		<hediffClass>nuff.tsoa.core.Hediff_AnimaTreeLink</hediffClass>
+		<hediffClass>tsoa.core.Hediff_AnimaTreeLink</hediffClass>
 		<label>anima tree link</label>
 		<description>This person's psychic sensitivity is being bolstered by their link to an anima tree.</description>
 		<isBad>false</isBad>

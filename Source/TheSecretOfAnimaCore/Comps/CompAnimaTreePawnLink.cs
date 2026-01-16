@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class CompAnimaTreePawnLink : ThingComp
     {

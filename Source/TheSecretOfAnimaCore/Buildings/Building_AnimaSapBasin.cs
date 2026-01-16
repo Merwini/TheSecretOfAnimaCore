@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     [StaticConstructorOnStartup]
     public class Building_AnimaSapBasin : Building, IThingHolder

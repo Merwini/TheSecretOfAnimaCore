@@ -7,7 +7,7 @@ using Verse;
 using Verse.AI;
 using Verse.Sound;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class JobDriver_StatExchangeUnlink : JobDriver
     {

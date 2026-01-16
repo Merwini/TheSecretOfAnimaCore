@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Verse;
 using Verse.AI;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     // I think I may not actually need this at all, since harvesters will be moving around
     public class RitualPosition_AnimaGrassHarvesters : RitualPosition

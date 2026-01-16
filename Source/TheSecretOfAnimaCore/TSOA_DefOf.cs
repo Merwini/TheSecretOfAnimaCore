@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Verse;
 using RimWorld;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     [DefOf]
     public class TSOA_DefOf

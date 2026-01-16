@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using Verse;
 using Verse.AI;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class WorkGiver_TakeAnimaSapOutOfBasin : WorkGiver_Scanner
     {

@@ -7,7 +7,7 @@
 //using Verse;
 //using static HarmonyLib.Code;
 
-//namespace nuff.tsoa.core
+//namespace tsoa.core
 //{
 //    public class CompAnimaRootGrave : CompAnimaTreeLinkee
 //    {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Verse;
 using UnityEngine;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class PlaceWorker_ShowGroupedFacilitiesConnections : PlaceWorker
     {

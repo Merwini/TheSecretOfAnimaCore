@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class CompProperties_GroupedFacility : CompProperties  
     {

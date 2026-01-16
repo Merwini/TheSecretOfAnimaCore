@@ -8,7 +8,7 @@
 		<category>CapacityEffects</category>
 		<displayPriorityInCategory>5</displayPriorityInCategory>
 		<toStringStyle>PercentZero</toStringStyle>
-		<workerClass>nuff.tsoa.core.StatWorker_PsyScalingDisplay</workerClass>
+		<workerClass>tsoa.core.StatWorker_PsyScalingDisplay</workerClass>
 	</StatDef>
 
 	<StatDef>

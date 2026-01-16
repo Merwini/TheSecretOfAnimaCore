@@ -2,7 +2,7 @@
 <Defs>
 	<JobDef>
 		<defName>TSOA_TakeAnimaSapOutOfBasinJob</defName>
-		<driverClass>nuff.tsoa.core.JobDriver_TakeAnimaSapOutOfBasin</driverClass>
+		<driverClass>tsoa.core.JobDriver_TakeAnimaSapOutOfBasin</driverClass>
 		<reportString>taking anima sap out of TargetA.</reportString>
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
 	</JobDef>
@@ -10,7 +10,7 @@
 	<WorkGiverDef>
 		<defName>TSOA_TakeAnimaSapOutOfBasinGiver</defName>
 		<label>take anima sap out of sap basin</label>
-		<giverClass>nuff.tsoa.core.WorkGiver_TakeAnimaSapOutOfBasin</giverClass>
+		<giverClass>tsoa.core.WorkGiver_TakeAnimaSapOutOfBasin</giverClass>
 		<workType>Hauling</workType>
 		<verb>take anima sap</verb>
 		<gerund>taking anima sap from</gerund>
@@ -23,7 +23,7 @@
 
 	<JobDef>
 		<defName>TSOA_StatExchangeLink</defName>
-		<driverClass>nuff.tsoa.core.JobDriver_StatExchangeLink</driverClass>
+		<driverClass>tsoa.core.JobDriver_StatExchangeLink</driverClass>
 		<reportString>linking psychic essence</reportString>
 		<casualInterruptible>true</casualInterruptible>
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
@@ -31,7 +31,7 @@
 
 	<JobDef>
 		<defName>TSOA_StatExchangeUnlink</defName>
-		<driverClass>nuff.tsoa.core.JobDriver_StatExchangeUnlink</driverClass>
+		<driverClass>tsoa.core.JobDriver_StatExchangeUnlink</driverClass>
 		<reportString>breaking psychic link</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>

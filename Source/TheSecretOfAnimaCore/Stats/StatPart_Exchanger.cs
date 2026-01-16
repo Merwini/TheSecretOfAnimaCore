@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class StatPart_Exchanger : StatPart
     {

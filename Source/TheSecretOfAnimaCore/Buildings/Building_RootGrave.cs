@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class Building_RootGrave : Building_Grave
     {

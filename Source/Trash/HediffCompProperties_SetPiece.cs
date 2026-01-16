@@ -6,7 +6,7 @@
 //using Verse;
 //using RimWorld;
 
-//namespace nuff.tsoa.core
+//namespace tsoa.core
 //{
 //    public class HediffCompProperties_SetPiece : HediffCompProperties
 //    {

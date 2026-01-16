@@ -4,7 +4,7 @@
 	<DamageDef>
 		<defName>TSOA_EntropyExtraDamage</defName>
 		<label>psychic burn</label>
-		<workerClass>nuff.tsoa.core.DamageWorker_EntropyExtraDamage</workerClass>
+		<workerClass>tsoa.core.DamageWorker_EntropyExtraDamage</workerClass>
 		<armorCategory>Sharp</armorCategory>
 		<hediff>Burn</hediff>
 		<defaultDamage>1</defaultDamage>

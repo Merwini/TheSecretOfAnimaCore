@@ -5,7 +5,7 @@
 		<defName>TSOA_AnimaSapTap</defName>
 		<label>anima sap tap</label>
 		<description>A spigot and basin for draining and collecting sap from an anima tree.</description>
-		<thingClass>nuff.tsoa.core.Building_AnimaSapBasin</thingClass>
+		<thingClass>tsoa.core.Building_AnimaSapBasin</thingClass>
 		<size>(1, 1)</size>
 		<fillPercent>0.40</fillPercent>
 		<graphicData>
@@ -29,13 +29,13 @@
 					<drawSize>(1, 1)</drawSize>
 				</graphicData>
 			</li>
-			<li Class="nuff.tsoa.core.CompProperties_GroupedFacility">
+			<li Class="tsoa.core.CompProperties_GroupedFacility">
 				<categoryTag>TSOA_AnimaTap</categoryTag>
 				<mustBePlacedAdjacent>true</mustBePlacedAdjacent>
 			</li>
 		</comps>
 		<placeWorkers>
-			<li>nuff.tsoa.core.PlaceWorker_ShowGroupedFacilitiesConnections</li>
+			<li>tsoa.core.PlaceWorker_ShowGroupedFacilitiesConnections</li>
 		</placeWorkers>
 		<building>
 			<buildingTags>
@@ -49,7 +49,7 @@
 		<defName>TSOA_AnimaRootGrave</defName>
 		<label>anima root grave</label>
 		<description>A grave dug close to the roots of an anima tree. The roots connect to human bodies and absorb some sort of essence from them. This refills the sap of the tree, and rapidly decomposes the body.</description>
-		<thingClass>nuff.tsoa.core.Building_RootGrave</thingClass>
+		<thingClass>tsoa.core.Building_RootGrave</thingClass>
 		<containedPawnsSelectable>true</containedPawnsSelectable>
 		<graphicData>
 			<texPath>Things/Building/Misc/GraveEmpty</texPath>
@@ -111,12 +111,12 @@
 				<drawAssignmentOverlay>false</drawAssignmentOverlay>
 				<compClass>CompAssignableToPawn_Grave</compClass>
 			</li>
-			<li Class="nuff.tsoa.core.CompProperties_GroupedFacility">
+			<li Class="tsoa.core.CompProperties_GroupedFacility">
 				<categoryTag>TSOA_AnimaGrave</categoryTag>
 			</li>
 		</comps>
 		<placeWorkers>
-			<li>nuff.tsoa.core.PlaceWorker_ShowGroupedFacilitiesConnections</li>
+			<li>tsoa.core.PlaceWorker_ShowGroupedFacilitiesConnections</li>
 		</placeWorkers>
 		<ritualFocus>
 			<spectateDistance>1</spectateDistance>

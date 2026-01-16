@@ -33,9 +33,9 @@
 	<RitualBehaviorDef>
 		<defName>TSOA_AnimaGrassHarvestBehavior</defName>
 		<durationTicks>5000</durationTicks>
-		<workerClass>nuff.tsoa.core.RitualBehaviorWorker_AnimaGrassHarvest</workerClass>
+		<workerClass>tsoa.core.RitualBehaviorWorker_AnimaGrassHarvest</workerClass>
 		<roles>
-			<li Class="nuff.tsoa.core.RitualRoleAnimaGrassHarvester">
+			<li Class="tsoa.core.RitualRoleAnimaGrassHarvester">
 				<label>grass harvester</label>
 				<id>harvester</id>
 				<required>true</required>
@@ -51,7 +51,7 @@
 		<spectatorsLabel>Participants</spectatorsLabel>
 		<spectatorGerund>participate</spectatorGerund>
 		<stages>
-			<li Class="nuff.tsoa.core.RitualStage_AnimaGrassHarvest">
+			<li Class="tsoa.core.RitualStage_AnimaGrassHarvest">
 				<defaultDuty>TSOA_HarvestAnimaGrassSpectatorDuty</defaultDuty>
 				<endTriggers>
 					<li Class="StageEndTrigger_DurationPercentage">
@@ -64,7 +64,7 @@
 						<roleId>harvester</roleId>
 						<dutyDef>TSOA_HarvestAnimaGrassDuty</dutyDef>
 						<!--<customPositions>
-							<li Class="nuff.tsoa.core.RitualPosition_AnimaGrassHarvesters" />
+							<li Class="tsoa.core.RitualPosition_AnimaGrassHarvesters" />
 						</customPositions>-->
 					</li>
 				</roleBehaviors>
@@ -74,16 +74,16 @@
 
 	<RitualObligationTargetFilterDef>
 		<defName>TSOA_AnimaTreeObligation</defName>
-		<workerClass>nuff.tsoa.core.RitualObligationTargetWorker_AnimaGrass</workerClass>
+		<workerClass>tsoa.core.RitualObligationTargetWorker_AnimaGrass</workerClass>
 	</RitualObligationTargetFilterDef>
 
 	<RitualOutcomeEffectDef>
 		<defName>TSOA_AnimaGrassHarvestOutcome</defName>
-		<workerClass>nuff.tsoa.core.RitualOutcomeEffectWorker_AnimaGrassHarvest</workerClass>
+		<workerClass>tsoa.core.RitualOutcomeEffectWorker_AnimaGrassHarvest</workerClass>
 		<warnOnLowQuality>true</warnOnLowQuality>
 		<givesDevelopmentPoints>false</givesDevelopmentPoints>
 		<comps>
-			<li Class="nuff.tsoa.core.RitualOutcomeComp_Skill">
+			<li Class="tsoa.core.RitualOutcomeComp_Skill">
 				<label>harvester plant skill</label>
 				<skill>Plants</skill>
 				<skillMax>100</skillMax>
@@ -104,7 +104,7 @@
 		<socialModeMax>Off</socialModeMax>
 		<thinkNode Class="ThinkNode_Priority">
 			<subNodes>
-				<li Class="nuff.tsoa.core.JobGiver_AnimaGrassHarvest">
+				<li Class="tsoa.core.JobGiver_AnimaGrassHarvest">
 				</li>
 			</subNodes>
 		</thinkNode>
@@ -123,7 +123,7 @@
 
 	<JobDef>
 		<defName>TSOA_HarvestAnimaGrassJob</defName>
-		<driverClass>nuff.tsoa.core.JobDriver_AnimaGrassHarvest</driverClass>
+		<driverClass>tsoa.core.JobDriver_AnimaGrassHarvest</driverClass>
 		<reportString>harvesting anima grass</reportString>
 		<neverShowWeapon>true</neverShowWeapon>
 	</JobDef>

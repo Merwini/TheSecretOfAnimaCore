@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Verse;
 using Verse.AI;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class HediffComp_StatExchanger : HediffComp
     {

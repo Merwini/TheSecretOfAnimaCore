@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Verse;
 using Verse.AI.Group;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class RitualBehaviorWorker_AnimaGrassHarvest : RitualBehaviorWorker
     {

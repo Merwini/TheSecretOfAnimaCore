@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using RimWorld;
 using Verse;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class RitualStage_AnimaGrassHarvest : RitualStage
     {

@@ -7,7 +7,7 @@ using Verse;
 using RimWorld;
 using Verse.AI;
 
-namespace nuff.tsoa.core
+namespace tsoa.core
 {
     public class JobGiver_AnimaGrassHarvest : ThinkNode_JobGiver
     {

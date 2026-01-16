@@ -7,7 +7,7 @@
 //using RimWorld;
 //using Steamworks;
 
-//namespace nuff.tsoa.core
+//namespace tsoa.core
 //{
 //    public class HediffComp_SetCore : HediffComp
 //    {
