@@ -8,6 +8,7 @@ using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using Verse.AI.Group;
 
 namespace tsoa.core
 {
@@ -43,6 +44,8 @@ namespace tsoa.core
             }
         }
 
+        // Replaced with CompSpecialMeditationFocus
+        /*
         [HarmonyPatch(typeof(CompSpawnSubplant), nameof(CompSpawnSubplant.AddProgress))]
         public class CompSpawnSubplant_AddProgress_Prefix
         {
@@ -70,6 +73,7 @@ namespace tsoa.core
                 return true;
             }
         }
+        */
 
         [HarmonyPatch(typeof(Need_Comfort), nameof(Need_Comfort.ComfortUsed))]
         public static class Need_Comfort_ComfortUsed_Patch
@@ -233,6 +237,106 @@ namespace tsoa.core
         {
             return str.Translate(num);
         }
+
+
+        [HarmonyPatch(typeof(JobDriver_Meditate))]
+        public static class JobDriver_Meditate_MakeNewToils_Patch
+        {
+            static MethodBase TargetMethod()
+            {
+                Type outerType = typeof(JobDriver_Meditate);
+
+                MethodInfo targetMethod = AccessTools.Method(outerType, "<MakeNewToils>b__16_3");
+
+                return targetMethod;
+            }
+
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                var codes = new List<CodeInstruction>(instructions);
+
+                MethodInfo helperMethod = typeof(HarmonyPatches).GetMethod("JobDriver_Meditate_Helper", BindingFlags.Public | BindingFlags.Static);
+                FieldInfo pawnField = AccessTools.Field(typeof(JobDriver_Meditate), "pawn");
+
+                int royaltyCheckIndex = -1;
+                int branchLessThanIndex = -1;
+
+                for (int i = 0; i < codes.Count; i++)
+                {
+                    if (royaltyCheckIndex == -1 && codes[i].opcode == OpCodes.Call && codes[i].operand.ToString().Contains("get_RoyaltyActive"))
+                    {
+                        royaltyCheckIndex = i;
+                    }
+                    if (royaltyCheckIndex != -1 && codes[i].opcode == OpCodes.Blt_S)
+                    {
+                        branchLessThanIndex = i;
+                        break;
+                    }
+                }
+
+                List<CodeInstruction> newCodes = new List<CodeInstruction>()
+                {
+                    new CodeInstruction(OpCodes.Ldarg_0), // Load this JobDriver_Meditate
+                    //new CodeInstruction(OpCodes.Ldfld, pawnField), // Load the pawn field from this JobDriver_Meditate, consumes JobDriver_Meditate
+                    new CodeInstruction(OpCodes.Call, helperMethod) // Call helper method, consumes pawn
+                };
+
+                int countToRemove = branchLessThanIndex - royaltyCheckIndex + 1;
+
+                codes.RemoveRange(royaltyCheckIndex, countToRemove);
+                codes.InsertRange(royaltyCheckIndex, newCodes);
+
+                return codes.AsEnumerable();
+            }
+        }
+
+        public static void JobDriver_Meditate_Helper(JobDriver_Meditate driver)
+        {
+            Pawn pawn = driver.pawn;
+            if (pawn == null)
+                return;
+
+            CompSpecialMeditationFocus comp = MeditationFocusCache.GetOrFind(driver, pawn);
+            if (comp == null)
+                return;
+
+            MeditationFocusDef req = comp.Props?.requiredFocusType;
+            if (req != null && req.CanPawnUse(pawn))
+                comp.DoMeditationTick(pawn);
+        }
+
+        //public static void JobDriver_Meditate_Helper(Pawn pawn)
+        //{
+        //    int num = GenRadial.NumCellsInRadius(MeditationUtility.FocusObjectSearchRadius);
+        //    for (int i = 0; i < num; i++)
+        //    {
+        //        IntVec3 c = pawn.Position + GenRadial.RadialPattern[i];
+        //        Map map = pawn.Map;
+        //        if (c.InBounds(map))
+        //        {
+        //            CompSpecialMeditationFocus comp = GetComp(c, map);
+        //            if (comp != null && comp.Props.requiredFocusType != null && comp.Props.requiredFocusType.CanPawnUse(pawn))
+        //            {
+        //                comp.DoMeditationTick(pawn);
+        //                break;
+        //            }
+        //        }
+        //    }
+
+        //    CompSpecialMeditationFocus GetComp(IntVec3 c, Map map)
+        //    {
+        //        List<Thing> thingList = c.GetThingList(map);
+        //        for (int i = 0; i < thingList.Count; i++)
+        //        {
+        //            CompSpecialMeditationFocus comp = thingList[i].TryGetComp<CompSpecialMeditationFocus>();
+        //            if (comp != null)
+        //            {
+        //                return comp;
+        //            }
+        //        }
+        //        return null;
+        //    }
+        //}
     }
 }
 
