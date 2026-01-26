@@ -22,20 +22,21 @@ namespace tsoa.core
 
         public static CompSpecialMeditationFocus GetOrFind(JobDriver_Meditate driver, Pawn pawn)
         {
-            if (driver == null || pawn == null) return null;
-            if (pawn.Map == null) return null;
+            if (driver == null || pawn == null)
+                return null;
+
+            if (pawn.Map == null)
+                return null;
 
             MeditationCache cache = table.GetOrCreateValue(driver);
             int now = Find.TickManager.TicksGame;
 
-            // If cached comp is still valid, use it.
             if (cache.focusComp != null &&
                 cache.focusThing != null &&
                 cache.focusThing.Spawned &&
                 !cache.focusThing.Destroyed &&
                 cache.focusThing.Map == pawn.Map)
             {
-                // Optional: don’t validate every tick (validate every 60 ticks)
                 if (now - cache.lastTickValidated >= 60)
                 {
                     cache.lastTickValidated = now;
@@ -43,7 +44,6 @@ namespace tsoa.core
                 return cache.focusComp;
             }
 
-            // Not valid -> re-scan once
             cache.focusThing = null;
             cache.focusComp = FindNearbyFocusComp(pawn);
 
@@ -64,14 +64,15 @@ namespace tsoa.core
             for (int i = 0; i < num; i++)
             {
                 IntVec3 c = pawn.Position + GenRadial.RadialPattern[i];
-                if (!c.InBounds(map)) continue;
+                if (!c.InBounds(map))
+                    continue;
 
-                // This is still a scan, but happens once per session, not per tick.
                 var list = c.GetThingList(map);
                 for (int j = 0; j < list.Count; j++)
                 {
                     var comp = list[j].TryGetComp<CompSpecialMeditationFocus>();
-                    if (comp != null) return comp;
+                    if (comp != null)
+                        return comp;
                 }
             }
 
