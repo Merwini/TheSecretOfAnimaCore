@@ -18,6 +18,9 @@
 					</li>
 				</linkGroups>
 			</li>
+			<li Class="tsoa.core.CompProperties_SpecialMeditationFocus">
+				<requiredFocusType>Natural</requiredFocusType>
+			</li>
 		</value>
 	</Operation>
 
