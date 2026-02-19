@@ -9,9 +9,9 @@ using Verse;
 
 namespace tsoa.core
 {
-    public abstract class CompSpecialMeditationFocus : ThingComp
+    public class CompSpecialMeditationFocus_Anima : ThingComp
     {
-        public CompProperties_SpecialMeditationFocus Props => (CompProperties_SpecialMeditationFocus)props;
+        public CompProperties_SpecialMeditationFocus_Anima Props => (CompProperties_SpecialMeditationFocus_Anima)props;
 
         private CompAffectedByGroupedFacilities compABGF;
         public CompAffectedByGroupedFacilities CachedCompABGF

@@ -14,13 +14,13 @@ namespace tsoa.core
         private class MeditationCache
         {
             public Thing focusThing;
-            public CompSpecialMeditationFocus focusComp;
+            public CompSpecialMeditationFocus_Anima focusComp;
             public int lastTickValidated;
         }
 
         private static readonly ConditionalWeakTable<JobDriver_Meditate, MeditationCache> table = new ConditionalWeakTable<JobDriver_Meditate, MeditationCache>();
 
-        public static CompSpecialMeditationFocus GetOrFind(JobDriver_Meditate driver, Pawn pawn)
+        public static CompSpecialMeditationFocus_Anima GetOrFind(JobDriver_Meditate driver, Pawn pawn)
         {
             if (driver == null || pawn == null)
                 return null;
@@ -56,7 +56,7 @@ namespace tsoa.core
             return cache.focusComp;
         }
 
-        private static CompSpecialMeditationFocus FindNearbyFocusComp(Pawn pawn)
+        private static CompSpecialMeditationFocus_Anima FindNearbyFocusComp(Pawn pawn)
         {
             Map map = pawn.Map;
             int num = GenRadial.NumCellsInRadius(MeditationUtility.FocusObjectSearchRadius);
@@ -71,7 +71,7 @@ namespace tsoa.core
                 var list = c.GetThingList(map);
                 for (int j = 0; j < list.Count; j++)
                 {
-                    var comp = list[j].TryGetComp<CompSpecialMeditationFocus>();
+                    var comp = list[j].TryGetComp<CompSpecialMeditationFocus_Anima>();
                     if (comp != null)
                         return comp;
                 }

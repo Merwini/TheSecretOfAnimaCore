@@ -8,14 +8,14 @@ using RimWorld;
 
 namespace tsoa.core
 {
-    public class CompProperties_SpecialMeditationFocus : CompProperties
+    public class CompProperties_SpecialMeditationFocus_Anima : CompProperties
     {
         public float meditationTickProgress = 6.666667E-05f; // vanilla default
         public MeditationFocusDef requiredFocusType;
 
-        public CompProperties_SpecialMeditationFocus()
+        public CompProperties_SpecialMeditationFocus_Anima()
         {
-            this.compClass = typeof(CompSpecialMeditationFocus);
+            this.compClass = typeof(CompSpecialMeditationFocus_Anima);
         }
     }
 }

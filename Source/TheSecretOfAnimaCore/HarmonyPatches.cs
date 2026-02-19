@@ -296,7 +296,7 @@ namespace tsoa.core
             if (pawn == null)
                 return;
 
-            CompSpecialMeditationFocus comp = MeditationFocusCache.GetOrFind(driver, pawn);
+            CompSpecialMeditationFocus_Anima comp = MeditationFocusCache.GetOrFind(driver, pawn);
             if (comp == null)
                 return;
 
