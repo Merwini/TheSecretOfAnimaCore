@@ -23,19 +23,11 @@ namespace tsoa.core
 
         public static JobDef TSOA_TakeAnimaSapOutOfBasinJob;
 
-        public static JobDef TSOA_StatExchangeLink;
-
-        public static JobDef TSOA_StatExchangeUnlink;
-
         public static SoundDef AnimaTreeScream;
 
         public static DesignationDef TSOA_EmptyNowSapBasin;
 
-        public static StatDef TSOA_PsyScaling;
-
         public static StatDef TSOA_ComfortFactor;
-
-        public static DamageDef TSOA_EntropyExtraDamage;
 
         public static HediffDef TSOA_AnimaLinkHediff;
     }
