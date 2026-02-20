@@ -7,8 +7,8 @@
 			<li Class="tsoa.core.CompProperties_AffectedByGroupedFacilities">
 				<linkGroups>
 					<li Class="tsoa.core.FacilityLinkGroup">
-						<categoryTag>TSOA_AnimaTap</categoryTag>
-						<label>anima sap taps</label>
+						<categoryTag>TSOA_AnimaBasinCat</categoryTag>
+						<label>anima sap basins</label>
 						<maxLinks>1</maxLinks>
 					</li>
 					<li Class="tsoa.core.FacilityLinkGroup">

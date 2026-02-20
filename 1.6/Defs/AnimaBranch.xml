@@ -14,26 +14,23 @@
 
 	<ThingDef ParentName="BuildingBase" Name="ShipChunkBase">
 		<defName>TSOA_AnimaBranch</defName>
-		<label>anima branch</label>
+		<label>fallen anima branch</label>
 		<description>A fallen branch from an anima tree. Despite falling from the tree, it still seems to be alive. Harvested properly, this could yield valuable anima bark and possibly other resources.</description>
 		<category>Building</category>
 		<graphicData>
-			<texPath>Things/Item/Resource/WoodLog</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-			<drawSize>(1,2)</drawSize>
+			<texPath>Things/Building/FallenBranch</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(1.5,1.5)</drawSize>
 			<damageData>
 				<rect>(0.1,0.1,1.8,1.8)</rect>
 			</damageData>
-			<shadowData>
-				<volume>(1.39,0.5,1.25)</volume>
-			</shadowData>
 		</graphicData>
 		<altitudeLayer>Building</altitudeLayer>
 		<pathCost>42</pathCost>
 		<blockWind>true</blockWind>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.50</fillPercent>
-		<size>(1,2)</size>
+		<size>(1,1)</size>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
 			<Flammability>0.8</Flammability>

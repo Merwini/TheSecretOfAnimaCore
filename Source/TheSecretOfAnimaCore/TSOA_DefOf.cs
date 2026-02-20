@@ -15,7 +15,7 @@ namespace tsoa.core
 
         public static ThingDef TSOA_AnimaSap;
 
-        public static ThingDef TSOA_AnimaSapTap;
+        public static ThingDef TSOA_AnimaSapBasin;
 
         //public static ThoughtDef TSOA_AnimaGrassScream;
 

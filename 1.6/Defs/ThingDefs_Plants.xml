@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>TSOA_Plant_AnimaFlower</defName>
+		<label>anima flower</label>
+		<description>A cultivated flower hybridized with anima grass. It lacks the psychic influence of other anima plants, but glows with a soft light that makes it quite pretty.</description>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+			<Beauty>14</Beauty>
+			<BeautyOutdoors>14</BeautyOutdoors>
+			<Nutrition>0.05</Nutrition>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plant/AnimaFlower</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<uiIconScale>2</uiIconScale>
+		<altitudeLayer>Item</altitudeLayer>
+		<selectable>true</selectable>
+		<ingestible>
+			<canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
+		</ingestible>
+		<plant>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestTag>Standard</harvestTag>
+			<sowWork>1000</sowWork>
+			<sowTags>
+				<li>Ground</li>
+				<li>Decorative</li>
+			</sowTags>
+			<growMinGlow>0.0</growMinGlow>
+			<topWindExposure>0.1</topWindExposure>
+			<growDays>1.5</growDays>
+			<lifespanDaysPerGrowDays>10</lifespanDaysPerGrowDays>
+			<visualSizeRange>0.3~1.05</visualSizeRange>
+			<wildOrder>1</wildOrder>
+			<purpose>Misc</purpose>
+			<sowResearchPrerequisites>
+				<li>TSOA_AnimaOne</li>
+			</sowResearchPrerequisites>
+		</plant>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>7</glowRadius>
+				<glowColor>(200,200,200,0)</glowColor>
+			</li>
+		</comps>
+	</ThingDef>
+	
+</Defs>
