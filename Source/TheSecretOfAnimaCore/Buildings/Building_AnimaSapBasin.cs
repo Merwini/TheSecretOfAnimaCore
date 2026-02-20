@@ -184,20 +184,20 @@ namespace tsoa.core
         public override string GetInspectString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(base.GetInspectString());
+            sb.Append(base.GetInspectString());
 
             if (innerContainer.Count > 0)
-                sb.AppendLine("TSOA_StoredSap".Translate(CurrentSap, MaximumSap));
+                sb.AppendInNewLine("TSOA_StoredSap".Translate(CurrentSap, MaximumSap));
 
             if (LinkedTree == null)
             {
-                sb.AppendLine("TSOA_NotLinked".Translate());
+                sb.AppendInNewLine("TSOA_NotLinked".Translate());
                 return sb.ToString();
             }
 
-            sb.AppendLine(harvestingToggled ? "TSOA_SapCurrentlyHarvesting".Translate() : "TSOA_SapNotCurrentlyHarvesting".Translate());
-            sb.AppendLine(allowEmptying ? "TSOA_SapEmptyingAllowed".Translate() : "TSOA_SapEmptyingDisallowed".Translate());
-            sb.AppendLine("TSOA_SapHarvestProgress".Translate((progress * 100).ToString("F2")));
+            sb.AppendInNewLine(harvestingToggled ? "TSOA_SapCurrentlyHarvesting".Translate((harvestPercent * 100).ToString("F2")) : "TSOA_SapNotCurrentlyHarvesting".Translate());
+            sb.AppendInNewLine(allowEmptying ? "TSOA_SapEmptyingAllowed".Translate() : "TSOA_SapEmptyingDisallowed".Translate());
+            sb.AppendInNewLine("TSOA_SapHarvestProgress".Translate((progress * 100).ToString("F2")));
 
             return sb.ToString().Trim();
         }

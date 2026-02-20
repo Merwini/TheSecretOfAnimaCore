@@ -10,7 +10,7 @@
 	<TSOA_StoredEssence>Stored essence: {0} / {1}</TSOA_StoredEssence>
 	
 	<TSOA_StoredSap>Stored anima sap: {0} / {1}</TSOA_StoredSap>
-	<TSOA_SapCurrentlyHarvesting>Currently harvesting</TSOA_SapCurrentlyHarvesting>
+	<TSOA_SapCurrentlyHarvesting>Harvesting {0}% of meditation energy</TSOA_SapCurrentlyHarvesting>
 	<TSOA_SapNotCurrentlyHarvesting>Not currently harvesting</TSOA_SapNotCurrentlyHarvesting>
 	<TSOA_SapEmptyingAllowed>Emptying allowed</TSOA_SapEmptyingAllowed>
 	<TSOA_SapEmptyingDisallowed>Emptying disallowed</TSOA_SapEmptyingDisallowed>
