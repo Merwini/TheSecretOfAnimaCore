@@ -14,6 +14,14 @@
 			<MarketValue>25</MarketValue>
 			<Mass>0.05</Mass>
 			<Flammability>0.8</Flammability>
+
+			<StuffPower_Armor_Sharp>0.2</StuffPower_Armor_Sharp>
+			<StuffPower_Armor_Blunt>0.5</StuffPower_Armor_Blunt>
+			<StuffPower_Armor_Heat>0.50</StuffPower_Armor_Heat>
+			<StuffPower_Insulation_Cold>8</StuffPower_Insulation_Cold>
+			<StuffPower_Insulation_Heat>4</StuffPower_Insulation_Heat>
+			<SharpDamageMultiplier>0.10</SharpDamageMultiplier>
+			<BluntDamageMultiplier>0.10</BluntDamageMultiplier>
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<thingCategories>
@@ -45,6 +53,14 @@
 			<Mass>0.6</Mass>
 			<Flammability>0.8</Flammability>
 			<DeteriorationRate>2.0</DeteriorationRate>
+
+			<StuffPower_Armor_Sharp>0.54</StuffPower_Armor_Sharp>
+			<StuffPower_Armor_Blunt>0.54</StuffPower_Armor_Blunt>
+			<StuffPower_Armor_Heat>0.40</StuffPower_Armor_Heat>
+			<StuffPower_Insulation_Cold>8</StuffPower_Insulation_Cold>
+			<StuffPower_Insulation_Heat>4</StuffPower_Insulation_Heat>
+			<SharpDamageMultiplier>0.40</SharpDamageMultiplier>
+			<BluntDamageMultiplier>0.9</BluntDamageMultiplier>
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<intricate>true</intricate>
