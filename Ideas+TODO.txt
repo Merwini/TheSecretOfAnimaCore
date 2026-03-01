@@ -1,3 +1,6 @@
+TODO gizmos for basin
+
+TODO Placeworker that prevents placing if not close to an anima tree
 	
 Some way to get anima seed, to produce sapling
 	- requires a pawn sacrifice?

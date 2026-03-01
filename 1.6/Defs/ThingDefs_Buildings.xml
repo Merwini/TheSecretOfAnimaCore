@@ -4,7 +4,7 @@
 	<ThingDef ParentName="CrateBase">
 		<defName>TSOA_AnimaSapBasin</defName>
 		<label>anima sap basin</label>
-		<description>A stone basin for collecting sap from an anima tree.</description>
+		<description>A stone basin for collecting sap from an anima tree. When linked to a tree, it will siphon a portion of the pyschic meditation energy that is normally used to grow anima grass, and instead use it to make the tree produce extra sap which it immediately harvests.</description>
 		<thingClass>tsoa.core.Building_AnimaSapBasin</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Basin/TSOA_BasinFull</texPath>
@@ -24,6 +24,14 @@
 		<costList>
 			<TSOA_AnimaGrassResource>5</TSOA_AnimaGrassResource>
 		</costList>
+		<statBases>
+			<WorkToBuild>4500</WorkToBuild>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Beauty>5</Beauty>
+		</statBases>
+		<researchPrerequisites>
+			<li>TSOA_AnimaOne</li>
+		</researchPrerequisites>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<pathCost>42</pathCost>
@@ -58,7 +66,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>TSOA_AnimaRootGrave</defName>
 		<label>anima root grave</label>
-		<description>A grave dug close to the roots of an anima tree. The roots connect to human bodies and absorb some sort of essence from them. This refills the sap of the tree, and rapidly decomposes the body.</description>
+		<description>A grave dug close to the roots of an anima tree. The roots connect to human bodies and absorb their lingering psychic prescence. This energizes the tree similarly to meditating around it, but rapidly decomposes the body. The bodies of more powerful psychics will have a more powerful effect.</description>
 		<thingClass>tsoa.core.Building_RootGrave</thingClass>
 		<containedPawnsSelectable>true</containedPawnsSelectable>
 		<graphicData>
@@ -73,8 +81,11 @@
 		<tickerType>Rare</tickerType>
 		<canOverlapZones>false</canOverlapZones>
 		<statBases>
-			<WorkToBuild>800</WorkToBuild>
+			<WorkToBuild>8000</WorkToBuild>
 		</statBases>
+		<researchPrerequisites>
+			<li>TSOA_AnimaOne</li>
+		</researchPrerequisites>
 		<passability>Standable</passability>
 		<defaultPlacingRot>South</defaultPlacingRot>
 		<building>
