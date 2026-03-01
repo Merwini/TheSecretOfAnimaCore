@@ -25,5 +25,6 @@
 	<TSOA_SapHarvestProgress>Progress to next anima sap: {0}%</TSOA_SapHarvestProgress>
 
 	<TSOA_BillPsylinkTooLow>Worker's psylink level was lower than recipe requirement of {0}.</TSOA_BillPsylinkTooLow>
-	
+
+	<TSOA_FacilityMustBeLinked>Must be placed with a valid link.</TSOA_FacilityMustBeLinked>
 </LanguageData>

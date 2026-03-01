@@ -42,9 +42,9 @@ namespace tsoa.core
 
         public event Action<CompGroupedFacility, Thing> OnLinkRemoved;
 
-        public static void DrawLinesToPotentialThingsToLinkTo(ThingDef myDef, IntVec3 myPos, Rot4 myRot, Map map)
+        public static void DrawLinesToPotentialThingsToLinkTo(ThingDef myDef, IntVec3 myPos, Rot4 myRot, Map map, out List<Thing> potentialLinks)
         {
-
+            potentialLinks = new List<Thing>();
             CompProperties_GroupedFacility compProperties = myDef.GetCompProperties<CompProperties_GroupedFacility>();
             if (compProperties?.linkableThingDefs == null)
                 return;
@@ -52,8 +52,6 @@ namespace tsoa.core
             int max = compProperties.maxAffected > 0 ? compProperties.maxAffected : int.MaxValue;
 
             Vector3 myCenter = GenThing.TrueCenter(myPos, myRot, myDef.size, myDef.Altitude);
-
-            List<Thing> potentialThings = new List<Thing>();
 
             for (int i = 0; i < compProperties.linkableThingDefs.Count; i++)
             {
@@ -64,21 +62,21 @@ namespace tsoa.core
                     if (compAffectee != null &&
                         compAffectee.CanPotentiallyLinkTo(myDef, myPos, myRot))
                     {
-                        potentialThings.Add(item);
+                        potentialLinks.Add(item);
                     }
                 }
             }
 
-            if (potentialThings.Count == 0)
+            if (potentialLinks.Count == 0)
                 return;
 
-            potentialThings.Sort((a, b) =>
+            potentialLinks.Sort((a, b) =>
                 Vector3.Distance(myCenter, a.TrueCenter())
                 .CompareTo(Vector3.Distance(myCenter, b.TrueCenter())));
 
             int drawn = 0;
 
-            foreach (Thing candidate in potentialThings)
+            foreach (Thing candidate in potentialLinks)
             {
                 if (drawn >= max)
                     break;

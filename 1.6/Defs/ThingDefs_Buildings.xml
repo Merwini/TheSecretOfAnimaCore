@@ -50,6 +50,7 @@
 			<li Class="tsoa.core.CompProperties_GroupedFacility">
 				<categoryTag>TSOA_AnimaBasinCat</categoryTag>
 				<mustBePlacedAdjacent>true</mustBePlacedAdjacent>
+				<canPlaceWithoutLink>false</canPlaceWithoutLink>
 			</li>
 		</comps>
 		<placeWorkers>
@@ -134,6 +135,7 @@
 			</li>
 			<li Class="tsoa.core.CompProperties_GroupedFacility">
 				<categoryTag>TSOA_AnimaGrave</categoryTag>
+				<canPlaceWithoutLink>false</canPlaceWithoutLink>
 			</li>
 		</comps>
 		<placeWorkers>

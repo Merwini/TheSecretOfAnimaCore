@@ -38,6 +38,8 @@ namespace tsoa.core
 
         public int maxAffected = 1;
 
+        public bool canPlaceWithoutLink = true;
+
         public bool showMaxSimultaneous = true;
 
         public bool requiresLOS = true;
