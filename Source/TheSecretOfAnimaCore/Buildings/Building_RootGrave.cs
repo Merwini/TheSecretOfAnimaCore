@@ -2,156 +2,158 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace tsoa.core
+namespace tsoa.core;
+
+public class Building_RootGrave : Building_Grave
 {
-    public class Building_RootGrave : Building_Grave
+    private const int ConsumeTicks = 60000; // 1 day, TODO balance
+    private const float ProgressPerTick = 0.00000666666f; // 10% of meditation tick, //TODO balance
+
+    private float fractionalDamage;
+
+    private Thing cachedLinkedTree;
+    public Thing LinkedTree
     {
-        private const int ConsumeTicks = 60000; // 1 day, TODO balance
-        private const float ProgressPerTick = 0.00000666666f; // 10% of meditation tick, //TODO balance
-
-        private float fractionalDamage;
-
-        private Thing cachedLinkedTree;
-        public Thing LinkedTree
+        get
         {
-            get
+            if (cachedLinkedTree != null && (cachedLinkedTree.Destroyed || !cachedLinkedTree.Spawned))
             {
-                if (cachedLinkedTree != null && (cachedLinkedTree.Destroyed || !cachedLinkedTree.Spawned))
-                {
-                    cachedLinkedTree = null;
-                    cachedComp = null;
-                }
+                cachedLinkedTree = null;
+                cachedCompFocus = null;
+            }
 
-                if (cachedLinkedTree == null)
-                {
-                    CompGroupedFacility compFac = this.TryGetComp<CompGroupedFacility>();
-                    if (compFac.LinkedThings.NullOrEmpty())
-                        return null;
+            if (cachedLinkedTree == null)
+            {
+                cachedCompFocus = null;
+                CompGroupedFacility compFac = this.TryGetComp<CompGroupedFacility>();
+                if (compFac.LinkedThings.NullOrEmpty())
+                    return null;
 
-                    for (int i = 0; i < compFac.LinkedThings.Count; i++)
+                for (int i = 0; i < compFac.LinkedThings.Count; i++)
+                {
+                    // TODO check for some custom tag? Want to later implement multiple anima tree growth stages with separate ThingDefs
+                    CompSpecialMeditationFocus_Anima compFocus = compFac.LinkedThings[i].TryGetComp<CompSpecialMeditationFocus_Anima>();
+                    if (compFocus != null)
                     {
-                        // TODO check for some custom tag? Want to later implement multiple anima tree growth stages with separate ThingDefs
-                        CompSpawnSubplant compPlant = compFac.LinkedThings[i].TryGetComp<CompSpawnSubplant>();
-                        if (compPlant != null)
-                        {
-                            cachedLinkedTree = compFac.LinkedThings[i];
-                            cachedComp = compPlant;
-                            break;
-                        }
+                        cachedLinkedTree = compFac.LinkedThings[i];
+                        cachedCompFocus = compFocus;
+                        break;
                     }
                 }
+            }
 
-                return cachedLinkedTree;
+            return cachedLinkedTree;
+        }
+    }
+
+    private CompSpecialMeditationFocus_Anima cachedCompFocus;
+    public CompSpecialMeditationFocus_Anima CachedCompFocus
+    {
+        get
+        {
+            if (cachedCompFocus == null)
+            {
+                cachedCompFocus = LinkedTree?.TryGetComp<CompSpecialMeditationFocus_Anima>();
+            }
+
+            return cachedCompFocus;
+        }
+    }
+
+    private Corpse cachedCorpse; // cached so I know when to break psychic sensitivity cache, also slightly cheaper to reference
+
+    private float cachedCorpsePsychicSensitivity = -1f;
+    public float CorpsePsychicSensitivity
+    {
+        get
+        {
+            if (innerContainer.NullOrEmpty()) // maybe Corpse == null instead? Which is the cheaper call?
+            {
+                cachedCorpsePsychicSensitivity = -1;
+                return 0;
+            }
+
+            if (cachedCorpsePsychicSensitivity == -1 || cachedCorpse != Corpse)
+            {
+                cachedCorpse = Corpse;
+                cachedCorpsePsychicSensitivity = cachedCorpse.InnerPawn.GetStatValue(StatDefOf.PsychicSensitivity);
+            }
+
+            return cachedCorpsePsychicSensitivity;
+        }
+    }
+    public override void TickRare()
+    {
+        base.TickRare();
+        TickInterval(250);
+    }
+
+    public override void TickInterval(int delta)
+    {
+        base.TickInterval(delta);
+
+        if (Corpse == null)
+        {
+            return;
+        }
+
+        if (CachedCompFocus != null)
+        {
+            float progress = CorpsePsychicSensitivity * ProgressPerTick * delta;
+            CachedCompFocus.AddExternalProgress(progress);
+
+            fractionalDamage += ((float)delta / ConsumeTicks) * Corpse.MaxHitPoints;
+            while (fractionalDamage >= 1f)
+            {
+                Corpse.HitPoints -= 1;
+                fractionalDamage -= 1;
             }
         }
 
-        private CompSpawnSubplant cachedComp;
-        public CompSpawnSubplant CachedComp
+        if (Corpse.HitPoints <= 0)
         {
-            get
+            DestroyCorpse();
+        }
+    }
+
+    void DestroyCorpse()
+    {
+        cachedCorpse = null;
+        cachedCorpsePsychicSensitivity = -1f;
+        Corpse corpse = Corpse;
+        if (corpse != null)
+        {
+            innerContainer.Remove(corpse);
+            corpse.Destroy();
+        }
+        FleckMaker.ThrowLightningGlow(this.TrueCenter(), this.Map, 1.5f);
+        this.DirtyMapMesh(Map);
+    }
+
+    public override void ExposeData()
+    {
+        // Don't bother saving cached values, they can recache on first tick
+        Scribe_Values.Look(ref fractionalDamage, "fractionalDamage", 0);
+        base.ExposeData();
+    }
+
+    public override IEnumerable<Gizmo> GetGizmos()
+    {
+        foreach (Gizmo gizmo in base.GetGizmos())
+        {
+            yield return gizmo;
+        }
+        if (DebugSettings.godMode && Corpse != null)
+        {
+            yield return new Command_Action
             {
-                if (LinkedTree == null)
+                defaultLabel = "DEV: Set corpse hit points to 1",
+                defaultDesc = "Sets corpse's hit points to 1.",
+                action = () =>
                 {
-                    cachedComp = null;
+                    Corpse.HitPoints = 1;
                 }
-
-                return cachedComp;
-            }
-        }
-
-        private Corpse cachedCorpse; // cached so I know when to break psychic sensitivity cache, also slightly cheaper to reference
-
-        private float cachedCorpsePsychicSensitivity = -1f;
-        public float CorpsePsychicSensitivity
-        {
-            get
-            {
-                if (innerContainer.NullOrEmpty()) // maybe Corpse == null instead? Which is the cheaper call?
-                {
-                    cachedCorpsePsychicSensitivity = -1;
-                    return 0;
-                }
-
-                if (cachedCorpsePsychicSensitivity == -1 || cachedCorpse != Corpse)
-                {
-                    cachedCorpse = Corpse;
-                    cachedCorpsePsychicSensitivity = cachedCorpse.InnerPawn.GetStatValue(StatDefOf.PsychicSensitivity);
-                }
-
-                return cachedCorpsePsychicSensitivity;
-            }
-        }
-        public override void TickRare()
-        {
-            base.TickRare();
-            TickInterval(250);
-        }
-
-        public override void TickInterval(int delta)
-        {
-            base.TickInterval(delta);
-
-            if (Corpse == null)
-            {
-                return;
-            }
-
-            if (CachedComp != null)
-            {
-                cachedComp.AddProgress(CorpsePsychicSensitivity * ProgressPerTick * delta);
-                fractionalDamage += ((float)delta / ConsumeTicks) * Corpse.MaxHitPoints;
-                while (fractionalDamage >= 1f)
-                {
-                    Corpse.HitPoints -= 1;
-                    fractionalDamage -= 1;
-                }
-            }
-
-            if (Corpse.HitPoints <= 0)
-            {
-                DestroyCorpse();
-            }
-        }
-
-        void DestroyCorpse()
-        {
-            cachedCorpse = null;
-            cachedCorpsePsychicSensitivity = -1f;
-            Corpse corpse = Corpse;
-            if (corpse != null)
-            {
-                innerContainer.Remove(corpse);
-                corpse.Destroy();
-            }
-            FleckMaker.ThrowLightningGlow(this.TrueCenter(), this.Map, 1.5f);
-            this.DirtyMapMesh(Map);
-        }
-
-        public override void ExposeData()
-        {
-            // Don't bother saving cached values, they can recache on first tick
-            Scribe_Values.Look(ref fractionalDamage, "fractionalDamage", 0);
-            base.ExposeData();
-        }
-
-        public override IEnumerable<Gizmo> GetGizmos()
-        {
-            foreach (Gizmo gizmo in base.GetGizmos())
-            {
-                yield return gizmo;
-            }
-            if (DebugSettings.godMode && Corpse != null)
-            {
-                yield return new Command_Action
-                {
-                    defaultLabel = "DEV: Set corpse hit points to 1",
-                    defaultDesc = "Sets corpse's hit points to 1.",
-                    action = () =>
-                    {
-                        Corpse.HitPoints = 1;
-                    }
-                };
-            }
+            };
         }
     }
 }

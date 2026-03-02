@@ -302,7 +302,9 @@ namespace tsoa.core
 
             MeditationFocusDef req = comp.Props?.requiredFocusType;
             if (req != null && req.CanPawnUse(pawn))
+            {
                 comp.DoMeditationTick(pawn);
+            }
         }
 
         //public static void JobDriver_Meditate_Helper(Pawn pawn)
