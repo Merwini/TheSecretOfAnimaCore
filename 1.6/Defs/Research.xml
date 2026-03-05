@@ -8,22 +8,90 @@
 
 	<ResearchProjectDef>
 		<defName>TSOA_AnimaOne</defName>
-		<label>The Dawn of Anima</label>
+		<label>Dawn of Anima</label>
 		<baseCost>1000</baseCost>
 		<techLevel>Medieval</techLevel>
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>0.00</researchViewX>
-		<researchViewY>1.60</researchViewY>
+		<researchViewY>3.10</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_AnimaTwo</defName>
+		<label>Anima Acolyte</label>
+		<baseCost>2000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>1.00</researchViewX>
+		<researchViewY>3.10</researchViewY>
+		<prerequisites>
+			<li>TSOA_AnimaOne</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_AnimaThree</defName>
+		<label>Anima Shaman</label>
+		<baseCost>3000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>2.00</researchViewX>
+		<researchViewY>3.10</researchViewY>
+		<prerequisites>
+			<li>TSOA_AnimaTwo</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	
+	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">
+		<defName>TSOA_VoidOne</defName>
+		<label>Dusk of Void</label>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>6.50</researchViewX>
+		<researchViewY>3.10</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">
-		<defName>TSOA_VoidOne</defName>
-		<label>The Dusk of Void</label>
-		<baseCost>1000</baseCost>
+		<defName>TSOA_VoidTwo</defName>
+		<label>Void Knight</label>
+		<baseCost>2000</baseCost>
 		<techLevel>Medieval</techLevel>
 		<tab>TSOA_ResearchTab</tab>
-		<researchViewX>0.00</researchViewX>
-		<researchViewY>5.10</researchViewY>
+		<researchViewX>5.50</researchViewX>
+		<researchViewY>3.10</researchViewY>
+		<prerequisites>
+			<li>TSOA_VoidOne</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">
+		<defName>TSOA_VoidThree</defName>
+		<label>Work in progress!</label>
+		<baseCost>3000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>4.50</researchViewX>
+		<researchViewY>3.10</researchViewY>
+		<prerequisites>
+			<li>TSOA_ArchotechOne</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	
+	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">
+		<defName>TSOA_ArchotechOne</defName>
+		<label>Work in progress!</label>
+		<baseCost>6000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>3.25</researchViewX>
+		<researchViewY>3.10</researchViewY>
+		<prerequisites>
+			<li>TSOA_AnimaThree</li>
+			<li>TSOA_VoidThree</li>
+		</prerequisites>
 	</ResearchProjectDef>
 	
 </Defs>
