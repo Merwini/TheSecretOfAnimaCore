@@ -46,7 +46,7 @@
 	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">
 		<defName>TSOA_VoidOne</defName>
 		<label>Dusk of Void</label>
-		<baseCost>1000</baseCost>
+		<baseCost>1</baseCost>
 		<techLevel>Medieval</techLevel>
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>6.50</researchViewX>
