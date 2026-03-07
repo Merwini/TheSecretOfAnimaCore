@@ -280,8 +280,7 @@ public class HarmonyPatches
             List<CodeInstruction> newCodes = new List<CodeInstruction>()
             {
                 new CodeInstruction(OpCodes.Ldarg_0), // Load this JobDriver_Meditate
-                //new CodeInstruction(OpCodes.Ldfld, pawnField), // Load the pawn field from this JobDriver_Meditate, consumes JobDriver_Meditate
-                new CodeInstruction(OpCodes.Call, helperMethod) // Call helper method, consumes pawn
+                new CodeInstruction(OpCodes.Call, helperMethod) // Call helper method, consumes JobDriver_Meditate
             };
 
             int countToRemove = branchLessThanIndex - royaltyCheckIndex + 1;
@@ -310,37 +309,19 @@ public class HarmonyPatches
         }
     }
 
-    //public static void JobDriver_Meditate_Helper(Pawn pawn)
-    //{
-    //    int num = GenRadial.NumCellsInRadius(MeditationUtility.FocusObjectSearchRadius);
-    //    for (int i = 0; i < num; i++)
-    //    {
-    //        IntVec3 c = pawn.Position + GenRadial.RadialPattern[i];
-    //        Map map = pawn.Map;
-    //        if (c.InBounds(map))
-    //        {
-    //            CompSpecialMeditationFocus comp = GetComp(c, map);
-    //            if (comp != null && comp.Props.requiredFocusType != null && comp.Props.requiredFocusType.CanPawnUse(pawn))
-    //            {
-    //                comp.DoMeditationTick(pawn);
-    //                break;
-    //            }
-    //        }
-    //    }
+    [HarmonyPatch(typeof(MeditationFocusTypeAvailabilityCache), nameof(MeditationFocusTypeAvailabilityCache.PawnCanUse))]
+    public static class MeditationFocusTypeAvailabilityCache_PawnCanUse_Prefix
+    {
+        public static bool Prefix(Pawn p, MeditationFocusDef type, ref bool __result)
+        {
+            if (TSOA_DefOf.TSOA_AnimaOne.IsFinished && type == MeditationFocusDefOf.Natural && p.IsColonist)
+            {
+                __result = true;
+                return false;
+            }
 
-    //    CompSpecialMeditationFocus GetComp(IntVec3 c, Map map)
-    //    {
-    //        List<Thing> thingList = c.GetThingList(map);
-    //        for (int i = 0; i < thingList.Count; i++)
-    //        {
-    //            CompSpecialMeditationFocus comp = thingList[i].TryGetComp<CompSpecialMeditationFocus>();
-    //            if (comp != null)
-    //            {
-    //                return comp;
-    //            }
-    //        }
-    //        return null;
-    //    }
-    //}
+            return true;
+        }
+    }
 }
 
