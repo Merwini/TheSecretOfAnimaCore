@@ -8,7 +8,6 @@ using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
 using Verse.AI;
-using Verse.AI.Group;
 
 namespace tsoa.core;
 
@@ -84,6 +83,8 @@ public class HarmonyPatches
         }
     }
 
+    // Scrapped this
+    /*
     [HarmonyPatch(typeof(RitualOutcomeEffectWorker_AnimaTreeLinking), nameof(RitualOutcomeEffectWorker_AnimaTreeLinking.Apply))]
     public static class RitualOutcomeEffectWorker_AnimaTreeLinking_Apply_Patch
     {
@@ -92,11 +93,11 @@ public class HarmonyPatches
             Pawn pawn = jobRitual.PawnWithRole("organizer");
             CompPsylinkable obj = jobRitual.selectedTarget.Thing?.TryGetComp<CompPsylinkable>();
             float quality = __instance.GetQuality(jobRitual, progress);
-            int num = (int)RitualOutcomeEffectWorker_AnimaTreeLinking.RestoredGrassFromQuality.Evaluate(quality);
-            obj?.FinishLinkingRitual(pawn, num);
-
-            Hediff hediff = HediffMaker.MakeHediff(TSOA_DefOf.TSOA_AnimaLinkHediff, pawn);
+            int plantsToKeep = (int)RitualOutcomeEffectWorker_AnimaTreeLinking.RestoredGrassFromQuality.Evaluate(quality);
             Thing animaTree = jobRitual.selectedTarget.Thing;
+
+            obj?.FinishLinkingRitual(pawn, num);
+            Hediff hediff = HediffMaker.MakeHediff(TSOA_DefOf.TSOA_AnimaLinkHediff, pawn);
             ((Hediff_AnimaTreeLink)hediff).AnimaTree = animaTree;
             pawn.health.AddHediff(hediff);
 
@@ -108,6 +109,7 @@ public class HarmonyPatches
             return false;
         }
     }
+    */
 
     /*
 			SkillRequirement skillRequirement = bill.recipe.FirstSkillRequirementPawnDoesntSatisfy(pawn);
@@ -121,6 +123,7 @@ public class HarmonyPatches
 
 			if (bill is Bill_Medical bill_Medical)
     */
+
     [HarmonyPatch(typeof(WorkGiver_DoBill), nameof(WorkGiver_DoBill.StartOrResumeBillJob))]
     public static class WorkGiver_DoBill_StartOrResumeBillJob_Patch
     {
