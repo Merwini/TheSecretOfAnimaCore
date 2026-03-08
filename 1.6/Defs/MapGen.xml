@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<GenStepDef>
+		<defName>TSOA_SilentAnimaTrees</defName>
+		<order>1601</order>
+		<genStep Class="tsoa.core.GenStep_SilentAnimaTrees">
+		</genStep>
+	</GenStepDef>
+	
+</Defs>

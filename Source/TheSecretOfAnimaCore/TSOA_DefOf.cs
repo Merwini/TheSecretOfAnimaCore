@@ -32,5 +32,7 @@ namespace tsoa.core
         public static HediffDef TSOA_AnimaLinkHediff;
 
         public static ResearchProjectDef TSOA_AnimaOne;
+
+        public static ThingDef TSOA_TreeAnimaSilent;
     }
 }
