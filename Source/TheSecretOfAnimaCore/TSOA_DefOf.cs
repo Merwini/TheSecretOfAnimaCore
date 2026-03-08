@@ -30,5 +30,7 @@ namespace tsoa.core
         public static StatDef TSOA_ComfortFactor;
 
         public static HediffDef TSOA_AnimaLinkHediff;
+
+        public static ResearchProjectDef TSOA_AnimaOne;
     }
 }

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef>
+		<defName>TSOA_FakeNaturalFocus</defName>
+		<label>Natural Mediation Focus</label>
+		<description>Any colonist can use Natural meditation focus types, like anima trees and Nature Shrines. This also allows them to participate in the anima tree linking ritual.</description>
+		<thingClass>UnfinishedThing</thingClass>
+		<researchPrerequisites>
+			<li>TSOA_AnimaOne</li>
+		</researchPrerequisites>
+		<descriptionHyperlinks>
+			<ThingDef>Plant_TreeAnima</ThingDef>
+		</descriptionHyperlinks>
+	</ThingDef>
+	
+	
+</Defs>
