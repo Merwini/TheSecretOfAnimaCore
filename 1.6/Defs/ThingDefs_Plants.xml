@@ -47,5 +47,51 @@
 			</li>
 		</comps>
 	</ThingDef>
-	
+
+	<ThingDef ParentName="TreeBase">
+		<defName>TSOA_DeadAnimaTree</defName>
+		<label>dead anima tree</label>
+		<description>This anima tree shows no signs of life. Its branches are barren and the normal psychic hum has gone silent.</description>
+		<graphicData>
+			<texPath>Things/Plant/DeadTreeAnima</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.2, 0.35, 0.13)</volume>
+				<offset>(0,0,-0.25)</offset>
+			</shadowData>
+		</graphicData>
+		<drawGUIOverlay>True</drawGUIOverlay>
+		<minifiedDef IsNull="True" />
+		<statBases>
+			<Beauty>-5</Beauty>
+			<BeautyOutdoors>-5</BeautyOutdoors>
+			<MeditationFocusStrength>0.28</MeditationFocusStrength>
+			<Flammability>0</Flammability>
+			<MaxHitPoints>400</MaxHitPoints>
+			<MeditationPlantGrowthOffset>0</MeditationPlantGrowthOffset>
+		</statBases>
+		<ingestible />
+		<preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
+		<canScatterOver>false</canScatterOver>
+		<plant>
+			<growDays>0</growDays>
+			<visualSizeRange>1.8~2.5</visualSizeRange>
+			<sowMinSkill>0</sowMinSkill>
+			<sowTags Inherit="False"/>
+			<dieIfNoSunlight>False</dieIfNoSunlight>
+			<dieFromToxicFallout>False</dieFromToxicFallout>
+			<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
+			<harvestWork>1600</harvestWork>
+			<harvestedThingDef>TSOA_AnimaBark</harvestedThingDef>
+			<harvestYield>5</harvestYield>
+			<fertilityMin>0.08</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<sowResearchPrerequisites Inherit="False" />
+			<treeCategory>Super</treeCategory>
+			<allowAutoCut>false</allowAutoCut>
+			<warnIfMarkedForCut>false</warnIfMarkedForCut>
+			<choppedThingDef>ChoppedStump_Anima</choppedThingDef>
+			<smashedThingDef>SmashedStump_Anima</smashedThingDef>
+		</plant>
+	</ThingDef>
 </Defs>
