@@ -4,8 +4,13 @@
 	<GenStepDef>
 		<defName>TSOA_SilentAnimaTrees</defName>
 		<order>1601</order>
-		<genStep Class="tsoa.core.GenStep_SilentAnimaTrees">
-		</genStep>
+		<genStep Class="tsoa.core.GenStep_SilentAnimaTrees" />
+	</GenStepDef>
+
+	<GenStepDef>
+		<defName>TSOA_SilentGrove</defName>
+		<order>900</order>
+		<genStep Class="tsoa.core.GenStep_SilentGrove" />
 	</GenStepDef>
 	
 </Defs>

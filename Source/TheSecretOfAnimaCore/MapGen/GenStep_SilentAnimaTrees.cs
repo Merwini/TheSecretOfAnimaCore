@@ -42,7 +42,7 @@ public class GenStep_SilentAnimaTrees : GenStep
         }
     }
 
-    private void SpawnTreesAround(IntVec3 center, Map map)
+    public void SpawnTreesAround(IntVec3 center, Map map)
     {
         int targetCount = Rand.RangeInclusive(MinPerTree, MaxPerTree);
         int spawned = 0;
@@ -68,7 +68,7 @@ public class GenStep_SilentAnimaTrees : GenStep
     }
 
     // TODO is picking random cells wrong? Should I make a list of all possible cells, shuffle it, and then go down the list?
-    private IntVec3 CellInAnnulus(IntVec3 center, float minRadius, float maxRadius)
+    public IntVec3 CellInAnnulus(IntVec3 center, float minRadius, float maxRadius)
     {
         float angle = Rand.Range(0f, 360f);
         float radius = Rand.Range(minRadius, maxRadius);
@@ -77,7 +77,7 @@ public class GenStep_SilentAnimaTrees : GenStep
         return center + offset.ToIntVec3();
     }
 
-    private bool CanSpawnTreeAt(IntVec3 c, IntVec3 animaTreePos, Map map)
+    public bool CanSpawnTreeAt(IntVec3 c, IntVec3 animaTreePos, Map map)
     {
         if (!c.InBounds(map))
             return false;

@@ -34,5 +34,6 @@ namespace tsoa.core
         public static ResearchProjectDef TSOA_AnimaOne;
 
         public static ThingDef TSOA_TreeAnimaSilent;
+
     }
 }
