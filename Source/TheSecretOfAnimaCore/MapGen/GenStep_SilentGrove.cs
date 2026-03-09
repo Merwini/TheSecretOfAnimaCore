@@ -47,7 +47,7 @@ public class GenStep_SilentGrove : GenStep_SilentAnimaTrees
     {
         return CellFinderLoose.TryFindRandomNotEdgeCellWith(
             MinDistanceFromMapEdge,
-            c => CanSpawnTreeAt(c, groveCenter, map, requireFertility: true),
+            c => CanSpawnTreeAt(c, map, requireFertility: true),
             map,
             out result);
     }
@@ -56,52 +56,8 @@ public class GenStep_SilentGrove : GenStep_SilentAnimaTrees
     {
         return CellFinderLoose.TryFindRandomNotEdgeCellWith(
             MinDistanceFromMapEdge,
-            c => CanSpawnTreeAt(c, groveCenter, map, requireFertility: false),
+            c => CanSpawnTreeAt(c, map, requireFertility: false),
             map,
             out result);
-    }
-
-    public override bool CanSpawnTreeAt(IntVec3 c, IntVec3 animaTreePos, Map map, bool requireFertility = true)
-    {
-        if (!c.Standable(map))
-            return false;
-
-        if (c.Fogged(map))
-            return false;
-
-        if (c.Roofed(map))
-            return false;
-
-        if (!c.GetRoom(map).PsychologicallyOutdoors)
-            return false;
-
-        if (c.DistanceToEdge(map) < MinDistanceFromMapEdge)
-            return false;
-
-        if (c.GetTerrain(map).avoidWander)
-            return false;
-
-        if (requireFertility && c.GetFertility(map) <= 0f)
-            return false;
-
-        List<Thing> thingList = c.GetThingList(map);
-        for (int i = 0; i < thingList.Count; i++)
-        {
-            Thing t = thingList[i];
-            if (t.def == t.def == TSOA_DefOf.TSOA_TreeAnimaSilent)
-                return false;
-        }
-
-        if (GenRadial.RadialDistinctThingsAround(c, map, MinDistanceBetweenSilentTrees, useCenter: false)
-            .Any(t => t.def == TSOA_DefOf.TSOA_TreeAnimaSilent))
-        {
-            return false;
-        }
-
-        float dist = c.DistanceTo(center);
-        if (dist < MinRadius || dist > MaxRadius + 1f)
-            return false;
-
-        return true;
     }
 }

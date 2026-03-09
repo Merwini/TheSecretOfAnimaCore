@@ -24,9 +24,25 @@
 		<expandingIconTexture>World/WorldObjects/Expanding/Sites/PreciousLump</expandingIconTexture>
 		<forceExitAndRemoveMapCountdownDurationDays>11</forceExitAndRemoveMapCountdownDurationDays>
 		<mainPartAllThreatsLabel>Hostile activity detected.</mainPartAllThreatsLabel>
-		<gravShipsCanLandOn>true</gravShipsCanLandOn>
+		<gravShipsCanLandOn>false</gravShipsCanLandOn>
 		<tags>
 			<li>SilentGrove</li>
+		</tags>
+	</SitePartDef>
+
+	<SitePartDef mayRequire="Ludeon.Rimworld.Anomaly">
+		<defName>TSOA_AnomalyEntities</defName>
+		<label>dormant entities</label>
+		<description>a group of dormant entities</description>
+		<workerClass>tsoa.core.SitePartWorker_DormantEntities</workerClass>
+		<siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+		<expandingIconTexture>World/WorldObjects/Expanding/Sites/SleepingPawns</expandingIconTexture>
+		<arrivedLetter>There are a few dormant entities in the area.\n\nThe entities will become active when you approach them, so beware.</arrivedLetter>
+		<arrivedLetterDef>NegativeEvent</arrivedLetterDef>
+		<wantsThreatPoints>true</wantsThreatPoints>
+		<minThreatPoints>400</minThreatPoints>
+		<tags>
+			<li>DormantEntities</li>
 		</tags>
 	</SitePartDef>
 	

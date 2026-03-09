@@ -54,7 +54,7 @@ public class GenStep_SilentAnimaTrees : GenStep
 
             IntVec3 cell = CellInAnnulus(center, MinRadius, MaxRadius);
 
-            if (!CanSpawnTreeAt(cell, center, map))
+            if (!CanSpawnTreeAt(cell, map) || !InRangeOfTree(cell, center))
                 continue;
 
             Thing thing = GenSpawn.Spawn(TSOA_DefOf.TSOA_TreeAnimaSilent, cell, map);
@@ -77,7 +77,7 @@ public class GenStep_SilentAnimaTrees : GenStep
         return center + offset.ToIntVec3();
     }
 
-    public virtual bool CanSpawnTreeAt(IntVec3 c, IntVec3 animaTreePos, Map map, bool requireFertility = true)
+    public virtual bool CanSpawnTreeAt(IntVec3 c, Map map, bool requireFertility = true)
     {
         if (!c.InBounds(map))
             return false;
@@ -122,6 +122,11 @@ public class GenStep_SilentAnimaTrees : GenStep
             return false;
         }
 
+        return true;
+    }
+
+    public bool InRangeOfTree(IntVec3 c, IntVec3 animaTreePos)
+    {
         float dist = c.DistanceTo(animaTreePos);
         if (dist < MinRadius || dist > MaxRadius + 1f)
             return false;
