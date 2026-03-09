@@ -11,15 +11,15 @@ namespace tsoa.core;
 
 public class GenStep_SilentAnimaTrees : GenStep
 {
-    private const int MinPerTree = 4;
-    private const int MaxPerTree = 6;
+    protected const int MinPerTree = 4;
+    protected const int MaxPerTree = 6;
 
-    private const float MinRadius = 2.5f;
-    private const float MaxRadius = 6.5f;
+    protected const float MinRadius = 2.5f;
+    protected const float MaxRadius = 6.5f;
 
-    private const int MaxAttemptsPerTree = 80;
-    private const int MinDistanceBetweenTrees = 2;
-    private const int MinDistanceFromMapEdge = 10;
+    protected const int MaxAttemptsPerTree = 80;
+    protected const int MinDistanceBetweenTrees = 2;
+    protected const int MinDistanceFromMapEdge = 10;
 
     public override int SeedPart => 184672391;
 
@@ -77,7 +77,7 @@ public class GenStep_SilentAnimaTrees : GenStep
         return center + offset.ToIntVec3();
     }
 
-    public bool CanSpawnTreeAt(IntVec3 c, IntVec3 animaTreePos, Map map)
+    public virtual bool CanSpawnTreeAt(IntVec3 c, IntVec3 animaTreePos, Map map, bool requireFertility = true)
     {
         if (!c.InBounds(map))
             return false;

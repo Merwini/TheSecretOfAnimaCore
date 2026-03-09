@@ -9,8 +9,25 @@
 
 	<GenStepDef>
 		<defName>TSOA_SilentGrove</defName>
+		<linkWithSite>TSOA_SilentGrove</linkWithSite>
 		<order>900</order>
 		<genStep Class="tsoa.core.GenStep_SilentGrove" />
 	</GenStepDef>
+
+	<SitePartDef>
+		<defName>TSOA_SilentGrove</defName>
+		<label>silent grove</label>
+		<workerClass>tsoa.core.SitePartWorker_SilentGrove</workerClass>
+		<description>A grove of silent anima trees</description>
+		<!-- TODO custom icon -->
+		<siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+		<expandingIconTexture>World/WorldObjects/Expanding/Sites/PreciousLump</expandingIconTexture>
+		<forceExitAndRemoveMapCountdownDurationDays>11</forceExitAndRemoveMapCountdownDurationDays>
+		<mainPartAllThreatsLabel>Hostile activity detected.</mainPartAllThreatsLabel>
+		<gravShipsCanLandOn>true</gravShipsCanLandOn>
+		<tags>
+			<li>SilentGrove</li>
+		</tags>
+	</SitePartDef>
 	
 </Defs>
