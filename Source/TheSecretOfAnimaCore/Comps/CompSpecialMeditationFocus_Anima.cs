@@ -88,37 +88,4 @@ public class CompSpecialMeditationFocus_Anima : ThingComp
 
         return adjustedProgress;
     }
-
-    public bool TryRemovePlantProgress(float amount)
-    {
-        if (CachedCompSpawnSubplant.progressToNextSubplant >= amount)
-        {
-            CachedCompSpawnSubplant.progressToNextSubplant -= amount;
-            return true;
-        }
-        else if (TryConsumeGrass())
-        {
-            CachedCompSpawnSubplant.AddProgress(1 - amount);
-            return true;
-        }
-        return false;
-    }
-
-    private bool TryConsumeGrass()
-    {
-        List<Thing> plants = CachedCompSpawnSubplant.SubplantsForReading;
-        if (plants.NullOrEmpty())
-            return false;
-
-        Thing plant = plants.RandomElement();
-        ConsumeGrass(plant);
-
-        return true;
-    }
-
-    private void ConsumeGrass(Thing grass)
-    {
-        grass.Destroy(DestroyMode.Vanish);
-        // TODO do an effect
-    }
 }
