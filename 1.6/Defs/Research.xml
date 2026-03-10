@@ -15,6 +15,11 @@
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>0.00</researchViewX>
 		<researchViewY>2.80</researchViewY>
+		<customUnlockTexts>
+			<li>Natural Meditation Focus Use</li>
+		</customUnlockTexts>
+		<discoveredLetterTitle>The Dawn of Anima</discoveredLetterTitle>
+		<discoveredLetterText>Your colony has reached the dawn of a new age. An age of harmony with the anima tree.\n\nThe anima tree will provide you with many new resources, and new ways to face your challenges.\n\nAs an added bonus, all colonists can now meditate at natural meditation foci, such as the anima tree itself.</discoveredLetterText>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
