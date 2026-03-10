@@ -35,5 +35,6 @@ namespace tsoa.core
 
         public static ThingDef TSOA_TreeAnimaSilent;
 
+        public static ThingDef TSOA_SignalAction_AnomalyAmbush;
     }
 }

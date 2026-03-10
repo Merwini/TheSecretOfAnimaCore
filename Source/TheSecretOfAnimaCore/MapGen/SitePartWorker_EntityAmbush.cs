@@ -11,7 +11,7 @@ using Verse;
 
 namespace tsoa.core;
 
-public class SitePartWorker_HiddenEntities : SitePartWorker
+public class SitePartWorker_EntityAmbush : SitePartWorker
 {
     public override bool IsAvailable()
     {
