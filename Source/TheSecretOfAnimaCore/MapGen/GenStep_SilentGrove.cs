@@ -31,6 +31,9 @@ public class GenStep_SilentGrove : GenStep_SilentAnimaTrees
         }
 
         SpawnTreesAround(groveCenter, map);
+
+        CellRect cellRect = CellRect.CenteredOn(groveCenter, 7, 7).ClipInsideMap(map);
+        MapGenerator.SetVar("RectOfInterest", cellRect);
     }
 
     private bool TryFindInitialCell(Map map, out IntVec3 result)
