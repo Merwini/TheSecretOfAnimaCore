@@ -9,6 +9,6 @@
 
 	<ThingDef ParentName="SignalActionBase">
 		<defName>TSOA_SignalAction_AnomalyAmbush</defName>
-		<thingClass>SignalAction_AnomalyAmbush</thingClass>
+		<thingClass>tsoa.core.SignalAction_AnomalyAmbush</thingClass>
 	</ThingDef>
 </Defs>

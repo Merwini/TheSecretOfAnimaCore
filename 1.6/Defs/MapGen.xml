@@ -15,10 +15,10 @@
 	</GenStepDef>
 
 	<GenStepDef>
-		<defName>TSOA_HiddenEntities</defName>
-		<linkWithSite>TSOA_HiddenEntities</linkWithSite>
+		<defName>TSOA_AnomalyAmbush</defName>
+		<linkWithSite>TSOA_AnomalyAmbush</linkWithSite>
 		<order>1600</order>
-		<genStep Class="tsoa.core.GenStep_HiddenEntities" />
+		<genStep Class="tsoa.core.GenStep_AnomalyAmbush" />
 	</GenStepDef>
 
 	<SitePartDef>
@@ -38,10 +38,10 @@
 	</SitePartDef>
 
 	<SitePartDef mayRequire="Ludeon.Rimworld.Anomaly">
-		<defName>TSOA_HiddenEntities</defName>
-		<label>hidden entities</label>
+		<defName>TSOA_AnomalyAmbush</defName>
+		<label>anomaly ambush</label>
 		<description>a group of hidden entities</description>
-		<workerClass>tsoa.core.SitePartWorker_HiddenEntities</workerClass>
+		<workerClass>tsoa.core.SitePartWorker_AnomalyAmbush</workerClass>
 		<siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
 		<expandingIconTexture>World/WorldObjects/Expanding/Sites/SleepingPawns</expandingIconTexture>
 		<arrivedLetter>Something doesn't feel right here.</arrivedLetter>
@@ -49,7 +49,7 @@
 		<wantsThreatPoints>true</wantsThreatPoints>
 		<minThreatPoints>400</minThreatPoints>
 		<tags>
-			<li>HiddenEntities</li>
+			<li>AnomalyAmbush</li>
 		</tags>
 	</SitePartDef>
 	
