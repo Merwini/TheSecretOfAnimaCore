@@ -122,7 +122,7 @@
               <tag>SilentGrove</tag>
             </li>
 			<li MayRequire="Ludeon.RimWorld.Anomaly">
-              <tag>DormantEntities</tag>
+              <tag>HiddenEntities</tag>
               <chance>$siteThreatChance</chance>
 			</li>
             <li>

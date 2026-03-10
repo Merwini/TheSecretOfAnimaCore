@@ -14,6 +14,13 @@
 		<genStep Class="tsoa.core.GenStep_SilentGrove" />
 	</GenStepDef>
 
+	<GenStepDef>
+		<defName>TSOA_HiddenEntities</defName>
+		<linkWithSite>TSOA_HiddenEntities</linkWithSite>
+		<order>1600</order>
+		<genStep Class="tsoa.core.GenStep_HiddenEntities" />
+	</GenStepDef>
+
 	<SitePartDef>
 		<defName>TSOA_SilentGrove</defName>
 		<label>silent grove</label>
@@ -31,18 +38,18 @@
 	</SitePartDef>
 
 	<SitePartDef mayRequire="Ludeon.Rimworld.Anomaly">
-		<defName>TSOA_AnomalyEntities</defName>
-		<label>dormant entities</label>
-		<description>a group of dormant entities</description>
-		<workerClass>tsoa.core.SitePartWorker_DormantEntities</workerClass>
+		<defName>TSOA_HiddenEntities</defName>
+		<label>hidden entities</label>
+		<description>a group of hidden entities</description>
+		<workerClass>tsoa.core.SitePartWorker_HiddenEntities</workerClass>
 		<siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
 		<expandingIconTexture>World/WorldObjects/Expanding/Sites/SleepingPawns</expandingIconTexture>
-		<arrivedLetter>There are a few dormant entities in the area.\n\nThe entities will become active when you approach them, so beware.</arrivedLetter>
+		<arrivedLetter>Something doesn't feel right here.</arrivedLetter>
 		<arrivedLetterDef>NegativeEvent</arrivedLetterDef>
 		<wantsThreatPoints>true</wantsThreatPoints>
 		<minThreatPoints>400</minThreatPoints>
 		<tags>
-			<li>DormantEntities</li>
+			<li>HiddenEntities</li>
 		</tags>
 	</SitePartDef>
 	
