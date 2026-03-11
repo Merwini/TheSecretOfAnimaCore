@@ -48,7 +48,7 @@
 				</graphicData>
 			</li>
 			<li Class="tsoa.core.CompProperties_GroupedFacility">
-				<categoryTag>TSOA_AnimaBasinCat</categoryTag>
+				<categoryTag>TSOA_AnimaBasinCategory</categoryTag>
 				<mustBePlacedAdjacent>true</mustBePlacedAdjacent>
 				<canPlaceWithoutLink>false</canPlaceWithoutLink>
 			</li>
@@ -134,7 +134,7 @@
 				<compClass>CompAssignableToPawn_Grave</compClass>
 			</li>
 			<li Class="tsoa.core.CompProperties_GroupedFacility">
-				<categoryTag>TSOA_AnimaGrave</categoryTag>
+				<categoryTag>TSOA_AnimaGraveCategory</categoryTag>
 				<canPlaceWithoutLink>false</canPlaceWithoutLink>
 			</li>
 		</comps>

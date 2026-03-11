@@ -7,12 +7,12 @@
 			<li Class="tsoa.core.CompProperties_AffectedByGroupedFacilities">
 				<linkGroups>
 					<li Class="tsoa.core.FacilityLinkGroup">
-						<categoryTag>TSOA_AnimaBasinCat</categoryTag>
+						<categoryTag>TSOA_AnimaBasinCategory</categoryTag>
 						<label>anima sap basins</label>
 						<maxLinks>1</maxLinks>
 					</li>
 					<li Class="tsoa.core.FacilityLinkGroup">
-						<categoryTag>TSOA_AnimaGrave</categoryTag>
+						<categoryTag>TSOA_AnimaGraveCategory</categoryTag>
 						<label>anima graves</label>
 						<maxLinks>4</maxLinks>
 					</li>
