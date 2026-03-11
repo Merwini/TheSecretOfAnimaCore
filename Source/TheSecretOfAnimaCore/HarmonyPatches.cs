@@ -323,5 +323,15 @@ public class HarmonyPatches
             return true;
         }
     }
+
+    [HarmonyPatch(typeof(PlayDataLoader), nameof(PlayDataLoader.HotReloadDefs))]
+    public static class PlayDataLoader_HotReloadDefs_Postfix
+    {
+        public static void Postfix()
+        {
+            CompProperties_GroupedFacility.ClearDictionaries();
+            CompProperties_GroupedFacility.CacheDictionaries();
+        }
+    }
 }
 

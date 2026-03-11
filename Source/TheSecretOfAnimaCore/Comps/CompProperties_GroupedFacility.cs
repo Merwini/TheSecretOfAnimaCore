@@ -49,7 +49,7 @@ namespace tsoa.core
             compClass = typeof(CompGroupedFacility);
         }
 
-        // TODO break cache on HotReloadDefs. Prefix PlayDataLoader.DoPlayLoad()?
+        // Cleared and recached via Harmony patch on HotReloadDefs
         public static void CacheDictionaries()
         {
             if (cachedAffectees == null)
@@ -99,6 +99,12 @@ namespace tsoa.core
                     list.Add(allDefsListForReading[i]);
                 }
             }
+        }
+
+        public static void ClearDictionaries()
+        {
+            cachedAffectees = null;
+            cachedFacilities = null;
         }
 
         public override void ResolveReferences(ThingDef parentDef)
