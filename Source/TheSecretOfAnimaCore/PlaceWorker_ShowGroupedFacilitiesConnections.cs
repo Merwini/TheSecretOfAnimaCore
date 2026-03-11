@@ -53,8 +53,6 @@ namespace tsoa.core
 
         public override AcceptanceReport AllowsPlacing(BuildableDef def, IntVec3 center, Rot4 rot, Map map, Thing thingToIgnore = null, Thing thing = null)
         {
-            // TODO this is copy-pasted for reference, not actually my implementation
-
             ThingDef thingDef = def as ThingDef;
             if (thingDef == null)
             {

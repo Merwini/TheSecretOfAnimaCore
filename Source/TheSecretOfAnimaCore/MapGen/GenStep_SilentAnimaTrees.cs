@@ -54,8 +54,14 @@ public class GenStep_SilentAnimaTrees : GenStep
 
             IntVec3 cell = CellInAnnulus(center, MinRadius, MaxRadius);
 
-            if (!CanSpawnTreeAt(cell, map) || !InRangeOfTree(cell, center))
+            if (!CanSpawnTreeAt(cell, map))
                 continue;
+
+            List<Thing> thingsInCell = cell.GetThingList(map);
+            for (int i = thingsInCell.Count - 1; i >= 0; i--)
+            {
+                thingsInCell[i].Destroy();
+            }
 
             Thing thing = GenSpawn.Spawn(TSOA_DefOf.TSOA_TreeAnimaSilent, cell, map);
             if (thing is Plant plant)
@@ -67,7 +73,6 @@ public class GenStep_SilentAnimaTrees : GenStep
         }
     }
 
-    // TODO is picking random cells wrong? Should I make a list of all possible cells, shuffle it, and then go down the list?
     public IntVec3 CellInAnnulus(IntVec3 center, float minRadius, float maxRadius)
     {
         float angle = Rand.Range(0f, 360f);
@@ -100,12 +105,8 @@ public class GenStep_SilentAnimaTrees : GenStep
         if (c.GetTerrain(map).avoidWander)
             return false;
 
-        if (c.GetFertility(map) <= 0f)
+        if (requireFertility && c.GetFertility(map) <= 0f)
             return false;
-
-        // probably just wasted calculations, since we're centering on the anima tree either way
-        //if (!map.reachability.CanReachFactionBase(c, map.ParentFaction))
-        //    return false;
 
         List<Thing> things = c.GetThingList(map);
         for (int i = 0; i < things.Count; i++)
@@ -121,15 +122,6 @@ public class GenStep_SilentAnimaTrees : GenStep
         {
             return false;
         }
-
-        return true;
-    }
-
-    public bool InRangeOfTree(IntVec3 c, IntVec3 animaTreePos)
-    {
-        float dist = c.DistanceTo(animaTreePos);
-        if (dist < MinRadius || dist > MaxRadius + 1f)
-            return false;
 
         return true;
     }

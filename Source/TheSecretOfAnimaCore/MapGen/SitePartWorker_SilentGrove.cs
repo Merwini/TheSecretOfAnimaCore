@@ -21,18 +21,4 @@ public class SitePartWorker_SilentGrove : SitePartWorker
         }
         return base.GetPostProcessedThreatLabel(site, sitePart);
     }
-
-    // TODO write my own. Currently copied from SitePartWorker_PreciousLump
-    public override void Notify_GeneratedByQuestGen(SitePart part, Slate slate, List<Rule> outExtraDescriptionRules, Dictionary<string, string> outExtraDescriptionConstants)
-    {
-        base.Notify_GeneratedByQuestGen(part, slate, outExtraDescriptionRules, outExtraDescriptionConstants);
-        if (part.site.ActualThreatPoints > 0f)
-        {
-            outExtraDescriptionRules.Add(new Rule_String("lumpThreatDescription", "\n\n" + "PreciousLumpHostileThreat".Translate()));
-        }
-        else
-        {
-            outExtraDescriptionRules.Add(new Rule_String("lumpThreatDescription", ""));
-        }
-    }
 }
