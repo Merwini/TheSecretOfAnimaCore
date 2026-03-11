@@ -2,8 +2,7 @@
 <Defs>
 	<DesignationDef>
 		<defName>TSOA_EmptyNowSapBasin</defName>
-		<!-- TODO placeholder. Once I have Sap texture, make an icon with an arrow pointing up overlayed over it -->
-		<texturePath>Designations/Open</texturePath>
+		<texturePath>Designations/EjectFuel</texturePath>
 		<targetType>Thing</targetType>
 	</DesignationDef>
 

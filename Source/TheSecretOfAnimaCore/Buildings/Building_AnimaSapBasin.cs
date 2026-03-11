@@ -141,27 +141,33 @@ namespace tsoa.core
             //        Find.WindowStack.Add(new Dialog_SapTapThresholds(this));
             //    }
             //};
-            yield return new Command_Toggle
+
+            Command_Toggle harvestingToggle = new Command_Toggle()
             {
                 defaultLabel = "TSOA_SapHarvestToggleLabel".Translate(),
                 defaultDesc = "TSOA_SapHarvestToggleDesc".Translate(),
+                icon = ContentFinder<Texture2D>.Get("UI/Gizmos/AnimaHarvest"),
                 isActive = () => harvestingToggled,
                 toggleAction = () => harvestingToggled = !harvestingToggled
             };
+            yield return harvestingToggle;
 
-            yield return new Command_Action()
+            Command_Toggle toggleEmptying = new Command_Toggle()
             {
                 defaultLabel = "TSOA_SapToggleEmptyingLabel".Translate(),
                 defaultDesc = "TSOA_SapToggleEmptyingDescription".Translate(),
-                // TODO icon. Sap texture with red cancel symbol overlaying it. Maybe separate gizmos for toggle on vs toggle off?
-                action = () => allowEmptying = !allowEmptying
+                icon = ContentFinder<Texture2D>.Get("Things/Item/Resource/AnimaSap"),
+                isActive = () => allowEmptying,
+                toggleAction = () => allowEmptying = !allowEmptying
+
             };
+            yield return toggleEmptying;
 
             yield return new Command_Action()
             {
                 defaultLabel = "TSOA_SapEmptyNowLabel".Translate(),
                 defaultDesc = "TSOA_SapEmptyNowDescription".Translate(),
-                // TODO icon. Sap texture with blue arrow pointing up overlaying it
+                icon = ContentFinder<Texture2D>.Get("Designations/EjectFuel"),
                 action = () => ToggleEmptyNow()
             };
 
