@@ -1,0 +1,290 @@
+
+
+All StatDefs:
+StatDef: Ability_RequiredPsylink - psylink level
+StatDef: Ability_CastingTime - casting time
+StatDef: Ability_EntropyGain - neural heat gain
+StatDef: Ability_PsyfocusCost - psyfocus cost
+StatDef: Ability_Range - range
+StatDef: Ability_Duration - duration
+StatDef: Ability_EffectRadius - effect radius
+StatDef: Ability_GoodwillImpact - goodwill impact
+StatDef: Ability_DetectChancePerEntropy - detection chance
+StatDef: StuffEffectMultiplierArmor - Armor - Material effect multiplier
+StatDef: StuffEffectMultiplierInsulation_Cold - Insulation - Cold - Material effect multiplier
+StatDef: StuffEffectMultiplierInsulation_Heat - Insulation - Heat - Material effect multiplier
+StatDef: ArmorRating_Sharp - Armor - Sharp
+StatDef: ArmorRating_Blunt - Armor - Blunt
+StatDef: ArmorRating_Heat - Armor - Heat
+StatDef: Insulation_Cold - Insulation - Cold
+StatDef: Insulation_Heat - Insulation - Heat
+StatDef: EnergyShieldEnergyMax - Shield max energy
+StatDef: EnergyShieldRechargeRate - Shield recharge rate
+StatDef: PackRadius - Effect radius
+StatDef: EquipDelay - equip delay
+StatDef: MaxHitPoints - max hit points
+StatDef: Mass - mass
+StatDef: MarketValue - market value
+StatDef: MarketValueIgnoreHp - market value ignoring hitpoints
+StatDef: SellPriceFactor - sell price multiplier
+StatDef: RoyalFavorValue - honor value
+StatDef: Flammability - flammability
+StatDef: WorkToMake - work to make
+StatDef: DeteriorationRate - deterioration rate
+StatDef: Beauty - beauty
+StatDef: BeautyOutdoors - outdoor beauty
+StatDef: Cleanliness - cleanliness
+StatDef: Comfort - comfort
+StatDef: Nutrition - nutrition
+StatDef: FoodPoisonChanceFixedHuman - food poison chance
+StatDef: ShootingAccuracyTurret - shooting accuracy
+StatDef: CaravanBonusSpeedFactor - caravan speed factor
+StatDef: MedicalPotency - medical potency
+StatDef: MedicalQualityMax - medical tend quality maximum
+StatDef: ConstructionSpeedFactor - construction speed
+StatDef: MeditationFocusStrength - meditation psyfocus bonus
+StatDef: PsychicSensitivityOffset - psychic sensitivity offset
+StatDef: PsychicSensitivityFactor - psychic sensitivity factor
+StatDef: PsychicEntropyMaxOffset - neural heat limit offset
+StatDef: PsychicEntropyRecoveryRateOffset - neural heat recovery rate offset
+StatDef: FilthMultiplier - filth multiplier
+StatDef: CleaningTimeFactor - cleaning time multiplier
+StatDef: WorkToBuild - work to build
+StatDef: DoorOpenSpeed - door opening speed
+StatDef: BedRestEffectiveness - rest effectiveness
+StatDef: TrapMeleeDamage - trap melee damage
+StatDef: TrapSpringChance - trap spring chance
+StatDef: ResearchSpeedFactor - research speed factor
+StatDef: MedicalTendQualityOffset - medical tend quality offset
+StatDef: ImmunityGainSpeedFactor - immunity gain speed factor
+StatDef: PowerPlantMaxPowerOuput - max power output
+StatDef: WorkTableWorkSpeedFactor - work speed factor
+StatDef: WorkTableEfficiencyFactor - work efficiency factor
+StatDef: JoyGainFactor - recreation power
+StatDef: SurgerySuccessChanceFactor - surgery success chance factor
+StatDef: RoomReadingBonus - reading bonus
+StatDef: MeleeDPS - melee DPS
+StatDef: MeleeDamageFactor - melee damage factor
+StatDef: MeleeCooldownFactor - melee cooldown
+StatDef: MeleeArmorPenetration - melee armor penetration
+StatDef: MeleeHitChance - melee hit chance
+StatDef: MeleeDodgeChance - melee dodge chance
+StatDef: RangedCooldownFactor - ranged cooldown multiplier
+StatDef: ShootingAccuracyPawn - shooting accuracy
+StatDef: ShootingAccuracyFactor_Touch - accuracy factor (close)
+StatDef: ShootingAccuracyFactor_Short - accuracy factor (short)
+StatDef: ShootingAccuracyFactor_Medium - accuracy factor (medium)
+StatDef: ShootingAccuracyFactor_Long - accuracy factor (long)
+StatDef: AimingDelayFactor - aiming time
+StatDef: MortarMissRadiusFactor - Mortar miss radius multiplier
+StatDef: PawnTrapSpringChance - trap spring chance
+StatDef: IncomingDamageFactor - incoming damage multiplier
+StatDef: StaggerDurationFactor - stagger time multiplier
+StatDef: MoveSpeed - move speed
+StatDef: CrawlSpeed - crawl speed
+StatDef: MentalBreakThreshold - mental break threshold
+StatDef: PsychicSensitivity - psychic sensitivity
+StatDef: ToxicResistance - toxic resistance
+StatDef: GlobalLearningFactor - global learning factor
+StatDef: BedHungerRateFactor - bed hunger rate multiplier
+StatDef: RestRateMultiplier - rest rate multiplier
+StatDef: EatingSpeed - eating speed
+StatDef: ComfyTemperatureMin - min comfortable temperature
+StatDef: ComfyTemperatureMax - max comfortable temperature
+StatDef: ImmunityGainSpeed - immunity gain speed
+StatDef: InjuryHealingFactor - injury healing factor
+StatDef: CarryingCapacity - carrying capacity
+StatDef: MeatAmount - meat amount
+StatDef: LeatherAmount - leather amount
+StatDef: MinimumHandlingSkill - minimum handling skill
+StatDef: PainShockThreshold - pain shock threshold
+StatDef: ForagedNutritionPerDay - foraged food amount
+StatDef: FilthRate - filth rate
+StatDef: AnimalsLearningFactor - animals learning factor
+StatDef: CaravanRidingSpeedFactor - caravan riding speed
+StatDef: MaxNutrition - max nutrition
+StatDef: LifespanFactor - lifespan factor
+StatDef: MeditationFocusGain - meditation psyfocus gain
+StatDef: PsychicEntropyMax - neural heat limit
+StatDef: PsychicEntropyRecoveryRate - neural heat recovery rate
+StatDef: ToxicEnvironmentResistance - toxic environment resistance
+StatDef: RestFallRateFactor - sleep fall rate
+StatDef: EMPResistance - EMP resistance
+StatDef: JoyFallRateFactor - recreation fall rate
+StatDef: MaxFlightTime - max flight time
+StatDef: FlightCooldown - flight cooldown
+StatDef: Wildness - wildness
+StatDef: NegotiationAbility - negotiation ability
+StatDef: PawnBeauty - beauty
+StatDef: ArrestSuccessChance - Arrest success chance
+StatDef: TradePriceImprovement - trade price improvement
+StatDef: DrugSellPriceImprovement - drug sell price improvement
+StatDef: SocialImpact - social impact
+StatDef: TameAnimalChance - tame animal chance
+StatDef: TrainAnimalChance - train animal chance
+StatDef: BondAnimalChanceFactor - bond chance factor
+StatDef: WorkSpeedGlobal - global work speed
+StatDef: MiningSpeed - mining speed
+StatDef: DeepDrillingSpeed - deep drilling speed
+StatDef: MiningYield - mining yield
+StatDef: SmoothingSpeed - smoothing speed
+StatDef: ResearchSpeed - research speed
+StatDef: AnimalGatherSpeed - animal gather speed
+StatDef: AnimalGatherYield - animal gather yield
+StatDef: PlantWorkSpeed - plant work speed
+StatDef: PlantHarvestYield - plant harvest yield
+StatDef: DrugHarvestYield - drug crop harvest yield
+StatDef: HuntingStealth - hunting stealth
+StatDef: ConstructionSpeed - construction speed
+StatDef: ConstructSuccessChance - construct success chance
+StatDef: FixBrokenDownBuildingSuccessChance - repair success chance
+StatDef: CleaningSpeed - cleaning speed multiplier
+StatDef: ReadingSpeed - reading speed
+StatDef: HackingSpeed - hacking speed
+StatDef: HackingStealth - hacking stealth
+StatDef: MedicalTendSpeed - medical tend speed
+StatDef: MedicalTendQuality - medical tend quality
+StatDef: MedicalOperationSpeed - medical operation speed
+StatDef: MedicalSurgerySuccessChance - medical surgery success chance
+StatDef: SmeltingSpeed - smelting speed
+StatDef: GeneralLaborSpeed - general labor speed
+StatDef: DrugSynthesisSpeed - drug synthesis speed
+StatDef: CookSpeed - cooking speed
+StatDef: FoodPoisonChance - food poison chance
+StatDef: DrugCookingSpeed - drug cooking speed
+StatDef: ButcheryFleshSpeed - butchery speed
+StatDef: ButcheryMechanoidSpeed - mechanoid shredding speed
+StatDef: ButcheryFleshEfficiency - butchery efficiency
+StatDef: ButcheryMechanoidEfficiency - mechanoid shredding efficiency
+StatDef: StuffPower_Armor_Sharp - Armor - Sharp
+StatDef: StuffPower_Armor_Blunt - Armor - Blunt
+StatDef: StuffPower_Armor_Heat - Armor - Heat
+StatDef: StuffPower_Insulation_Cold - Insulation - Cold
+StatDef: StuffPower_Insulation_Heat - Insulation - Heat
+StatDef: MeleeWeapon_AverageDPS - melee damage per second
+StatDef: MeleeWeapon_AverageArmorPenetration - melee armor penetration
+StatDef: MeleeWeapon_DamageMultiplier - melee damage multiplier
+StatDef: MeleeWeapon_CooldownMultiplier - melee cooldown
+StatDef: SharpDamageMultiplier - sharp damage
+StatDef: BluntDamageMultiplier - blunt damage
+StatDef: AccuracyTouch - Accuracy (close)
+StatDef: AccuracyShort - Accuracy (short)
+StatDef: AccuracyMedium - Accuracy (medium)
+StatDef: AccuracyLong - Accuracy (long)
+StatDef: RangedWeapon_Cooldown - ranged cooldown
+StatDef: RangedWeapon_DamageMultiplier - damage multiplier
+StatDef: RangedWeapon_ArmorPenetrationMultiplier - armor penetration multiplier
+StatDef: RangedWeapon_RangeMultiplier - range multiplier
+StatDef: RangedWeapon_WarmupMultiplier - aiming time multiplier
+StatDef: JumpRange - Jump range
+StatDef: MeditationPlantGrowthOffset - meditation plant growth offset
+StatDef: PsychicEntropyGain - neural heat gain
+StatDef: SlaveSuppressionOffset - slave suppression offset
+StatDef: TerrorSource - terror
+StatDef: BiosculpterPodSpeedFactor - biosculpter pod speed factor
+StatDef: StyleDominance - style dominance
+StatDef: Terror - terror
+StatDef: ConversionPower - conversion power
+StatDef: CertaintyLossFactor - global certainty loss factor
+StatDef: SocialIdeoSpreadFrequencyFactor - ideoligion spread chance
+StatDef: ShootingAccuracyOutdoorsDarkOffset - shooting accuracy outdoors dark
+StatDef: ShootingAccuracyOutdoorsLitOffset - shooting accuracy outdoors lit
+StatDef: ShootingAccuracyIndoorsDarkOffset - shooting accuracy indoors dark
+StatDef: ShootingAccuracyIndoorsLitOffset - shooting accuracy indoors lit
+StatDef: MeleeHitChanceOutdoorsDarkOffset - melee hit chance outdoors dark
+StatDef: MeleeHitChanceOutdoorsLitOffset - melee hit chance outdoors lit
+StatDef: MeleeHitChanceIndoorsDarkOffset - melee hit chance indoors dark
+StatDef: MeleeHitChanceIndoorsLitOffset - melee hit chance indoors lit
+StatDef: MeleeDodgeChanceOutdoorsDarkOffset - melee dodge chance outdoors night
+StatDef: MeleeDodgeChanceOutdoorsLitOffset - melee dodge chance outdoors day
+StatDef: MeleeDodgeChanceIndoorsDarkOffset - melee dodge chance indoors dark
+StatDef: MeleeDodgeChanceIndoorsLitOffset - melee dodge chance indoors lit
+StatDef: BiosculpterOccupantSpeed - biosculpter occupant speed
+StatDef: SlaveSuppressionFallRate - slave suppression fall rate
+StatDef: AnimalProductsSellImprovement - animal products price improvement
+StatDef: SuppressionPower - suppression power
+StatDef: PruningSpeed - pruning speed
+StatDef: BabyPlayGainFactor - baby play power
+StatDef: GeneticComplexityIncrease - genetic complexity increase
+StatDef: AssemblySpeedFactor - work speed factor
+StatDef: BirthRitualQualityOffset - birth quality offset
+StatDef: MaxInstallCount - max install count
+StatDef: MeleeDoorDamageFactor - melee door damage factor
+StatDef: ShootingAccuracyChildFactor - shooting accuracy multiplier
+StatDef: Fertility - fertility
+StatDef: MechBandwidth - mech bandwidth
+StatDef: MechControlGroups - mech control groups
+StatDef: MechRemoteRepairDistance - mech remote repair distance
+StatDef: MechRemoteShieldDistance - mech remote shield distance
+StatDef: MechRemoteShieldEnergy - mech remote shield energy
+StatDef: MechFormingSpeed - mech gestation speed
+StatDef: MechRepairSpeed - mech repair speed
+StatDef: SubcoreEncodingSpeed - subcore encoding speed
+StatDef: BandwidthCost - bandwidth cost
+StatDef: ControlTakingTime - control taking time
+StatDef: MechEnergyUsageFactor - energy usage multiplier
+StatDef: WastepacksPerRecharge - wastepacks per recharge
+StatDef: MechEnergyLossPerHP - repair energy cost
+StatDef: HemogenGainFactor - hemogen gain multiplier
+StatDef: RawNutritionFactor - raw nutrition multiplier
+StatDef: CancerRate - cancer rate factor
+StatDef: LearningRateFactor - learning rate factor
+StatDef: GrowthVatOccupantSpeed - growth vat occupant speed
+StatDef: WorkSpeedGlobalOffsetMech - mech work speed offset
+StatDef: ContainmentStrength - containment strength
+StatDef: MinimumContainmentStrength - min containment strength
+StatDef: ColdContainmentBonus - cold containment bonus
+StatDef: EntityStudyRate - entity study rate
+StatDef: StudyEfficiency - study efficiency
+StatDef: ActivitySuppressionRate - activity suppression speed
+StatDef: PsychicRitualQuality - psychic ritual quality
+StatDef: PsychicRitualQualityOffset - psychic ritual quality offset
+StatDef: GravshipRange - gravship range
+StatDef: SubstructureSupport - substructure support
+StatDef: VacuumResistance - vacuum resistance
+StatDef: FishingSpeed - fishing speed
+StatDef: FishingYield - fishing yield
+StatDef: PilotingAbility - piloting ability
+StatDef: TSOA_PsyScaling - psychic scaling
+
+
+
+Useful ones:
+StatDef: PsychicSensitivityOffset - psychic sensitivity offset
+StatDef: PsychicSensitivityFactor - psychic sensitivity factor
+	StatDef: PsychicEntropyMaxOffset - neural heat limit offset
+	StatDef: PsychicEntropyRecoveryRateOffset - neural heat recovery rate offset
+StatDef: MedicalTendQualityOffset - medical tend quality offset
+	StatDef: ImmunityGainSpeedFactor - immunity gain speed factor
+StatDef: MeleeDodgeChance - melee dodge chance
+	StatDef: PawnTrapSpringChance - trap spring chance
+StatDef: IncomingDamageFactor - incoming damage multiplier
+	StatDef: MentalBreakThreshold - mental break threshold
+StatDef: PsychicSensitivity - psychic sensitivity
+	StatDef: GlobalLearningFactor - global learning factor
+	StatDef: ImmunityGainSpeed - immunity gain speed
+	StatDef: InjuryHealingFactor - injury healing factor
+	StatDef: PainShockThreshold - pain shock threshold
+	StatDef: MaxNutrition - max nutrition
+StatDef: LifespanFactor - lifespan factor
+StatDef: MeditationFocusGain - meditation psyfocus gain
+	StatDef: PsychicEntropyMax - neural heat limit
+StatDef: PsychicEntropyRecoveryRate - neural heat recovery rate
+	StatDef: ToxicEnvironmentResistance - toxic environment resistance
+	StatDef: RestFallRateFactor - sleep fall rate
+	StatDef: JoyFallRateFactor - recreation fall rate
+	StatDef: NegotiationAbility - negotiation ability
+StatDef: ArrestSuccessChance - Arrest success chance
+StatDef: TradePriceImprovement - trade price improvement
+StatDef: DrugSellPriceImprovement - drug sell price improvement
+StatDef: SocialImpact - social impact
+StatDef: TameAnimalChance - tame animal chance
+StatDef: TrainAnimalChance - train animal chance
+StatDef: BondAnimalChanceFactor - bond chance factor
+StatDef: PsychicEntropyGain - neural heat gain
+StatDef: ConversionPower - conversion power
+StatDef: CertaintyLossFactor - global certainty loss factor
+StatDef: Fertility - fertility
+StatDef: PsychicRitualQuality - psychic ritual quality
+StatDef: PsychicRitualQualityOffset - psychic ritual quality offset
+StatDef: TSOA_PsyScaling - psychic scaling

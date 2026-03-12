@@ -1,15 +1,24 @@
-TODO gizmos for basin
-
-TODO Placeworker that prevents placing if not close to an anima tree
-	
 Some way to get anima seed, to produce sapling
 	- requires a pawn sacrifice?
 
-Buildings:
-	- Anima sap tap
-		- produces anima sap over time
-
 Process to refine sap into amber
+
+Learning opportunities for various mechanics
+
+Rewrite HediffComp_StatExchanger as a Hediff subclass, overriding CurStage instead of affecting stats with a StatPart
+
+	Screamer bow (screamer arrows for CE)
+		- large mood debuff for pawns hit by it, to try to induce mental breaks (AOE?)
+
+	Virion bow (arrows)
+		- implants a metalhorror in the target, that grows rapidly and erupts if they die
+
+
+		Eye of Entity Study
+		- StudyEfficiency
+		- EntityStudyRate
+
+
 
 Creatures (submod):
 	- kodama, small tree spirits
