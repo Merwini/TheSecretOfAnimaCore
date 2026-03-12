@@ -117,7 +117,7 @@ public class SignalAction_AnomalyAmbush : SignalAction_Ambush
         if (possibleFactions.Count == 0)
         {
             Log.Warning("SignalAction_AnomalyAmbush.GenerateAnomalyAmbushPawns failed to find any usable factions");
-            Enumerable.Empty<Pawn>();
+            return Enumerable.Empty<Pawn>();
         }
 
         possibleFactions.Shuffle();
