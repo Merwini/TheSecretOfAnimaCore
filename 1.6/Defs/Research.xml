@@ -11,7 +11,7 @@
 		<label>Dawn of Anima</label>
 		<description>Begin learning the fundamentals of communing with the anima tree.</description>
 		<baseCost>1000</baseCost>
-		<techLevel>Medieval</techLevel>
+		<techLevel>Neolithic</techLevel>
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>0.00</researchViewX>
 		<researchViewY>2.80</researchViewY>
