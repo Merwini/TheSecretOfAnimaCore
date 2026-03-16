@@ -314,7 +314,13 @@ public class HarmonyPatches
     {
         public static bool Prefix(Pawn p, MeditationFocusDef type, ref bool __result)
         {
-            if (TSOA_DefOf.TSOA_AnimaOne.IsFinished && type == MeditationFocusDefOf.Natural && p.IsColonist)
+            if (type == MeditationFocusDefOf.Natural && TSOA_DefOf.TSOA_AnimaOne.IsFinished && p.IsColonist)
+            {
+                __result = true;
+                return false;
+            }
+
+            if (type == MeditationFocusCache.VoidFocus && MeditationFocusCache.VoidResearch is ResearchProjectDef rpd && rpd.IsFinished && p.IsColonist)
             {
                 __result = true;
                 return false;

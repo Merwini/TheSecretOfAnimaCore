@@ -60,6 +60,10 @@
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>12.00</researchViewX>
 		<researchViewY>2.80</researchViewY>
+		<customUnlockTexts>
+			<li>Void Meditation Focus Use</li>
+		</customUnlockTexts>
+		<!-- TODO discovered letter -->
 	</ResearchProjectDef>
 
 	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">

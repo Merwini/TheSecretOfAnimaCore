@@ -35,6 +35,7 @@ namespace tsoa.core
 
         public static ThingDef TSOA_TreeAnimaSilent;
 
+        [MayRequireAnomaly] // should never be references with Anomaly not active anyway
         public static ThingDef TSOA_SignalAction_AnomalyAmbush;
     }
 }
