@@ -146,7 +146,7 @@ namespace tsoa.core
             {
                 defaultLabel = "TSOA_SapHarvestToggleLabel".Translate(),
                 defaultDesc = "TSOA_SapHarvestToggleDesc".Translate(),
-                icon = ContentFinder<Texture2D>.Get("UI/Gizmos/AnimaHarvest"),
+                icon = ContentFinder<Texture2D>.Get("TSOA/UI/Gizmos/AnimaHarvest"),
                 isActive = () => harvestingToggled,
                 toggleAction = () => harvestingToggled = !harvestingToggled
             };

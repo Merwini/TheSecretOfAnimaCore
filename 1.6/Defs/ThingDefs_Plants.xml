@@ -12,7 +12,7 @@
 			<Nutrition>0.05</Nutrition>
 		</statBases>
 		<graphicData>
-			<texPath>Things/Plant/AnimaFlower</texPath>
+			<texPath>TSOA/Things/Plant/AnimaFlower</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<uiIconScale>2</uiIconScale>
@@ -53,7 +53,7 @@
 		<label>silent anima tree</label>
 		<description>This anima tree is alive, but something is wrong with it. Its branches are barren and the normal psychic hum has gone silent.</description>
 		<graphicData>
-			<texPath>Things/Plant/DeadTreeAnima</texPath>
+			<texPath>TSOA/Things/Plant/DeadTreeAnima</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<shadowData>
 				<volume>(0.2, 0.35, 0.13)</volume>

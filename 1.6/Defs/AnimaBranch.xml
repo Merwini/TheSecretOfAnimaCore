@@ -18,7 +18,7 @@
 		<description>A fallen branch from an anima tree. Despite falling from the tree, it still seems to be alive. Harvested properly, this could yield valuable anima bark and possibly other resources.</description>
 		<category>Building</category>
 		<graphicData>
-			<texPath>Things/Building/FallenBranch</texPath>
+			<texPath>TSOA/Things/Building/FallenBranch</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<drawSize>(1.5,1.5)</drawSize>
 			<damageData>

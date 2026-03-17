@@ -28,7 +28,7 @@
 		<description>A grove of silent anima trees</description>
 		<!-- TODO custom icon -->
 		<siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-		<expandingIconTexture>World/WorldObjects/Expanding/Sites/PreciousLump</expandingIconTexture>
+		<expandingIconTexture>TSOA/Things/Plant/DeadTreeAnima/DeadTreeAnimaA</expandingIconTexture>
 		<forceExitAndRemoveMapCountdownDurationDays>11</forceExitAndRemoveMapCountdownDurationDays>
 		<mainPartAllThreatsLabel>Hostile activity detected.</mainPartAllThreatsLabel>
 		<gravShipsCanLandOn>false</gravShipsCanLandOn>

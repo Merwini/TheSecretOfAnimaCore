@@ -7,7 +7,7 @@
 		<description>A stone basin for collecting sap from an anima tree. When linked to a tree, it will siphon a portion of the pyschic meditation energy that is normally used to grow anima grass, and instead use it to make the tree produce extra sap which it immediately harvests.</description>
 		<thingClass>tsoa.core.Building_AnimaSapBasin</thingClass>
 		<graphicData>
-			<texPath>Things/Building/Basin/TSOA_BasinFull</texPath>
+			<texPath>TSOA/Things/Building/Basin/TSOA_BasinFull</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1.4, 1.4)</drawSize>
 			<shadowData>
@@ -41,7 +41,7 @@
 		<comps>
 			<li Class="tsoa.core.CompProperties_EmptyStateGraphicStuffed">
 				<graphicData>
-					<texPath>Things/Building/Basin/TSOA_BasinEmpty</texPath>
+					<texPath>TSOA/Things/Building/Basin/TSOA_BasinEmpty</texPath>
 					<graphicClass>Graphic_Single</graphicClass>
 					<drawSize>(1.4, 1.4)</drawSize>
 					<shaderType>CutoutComplex</shaderType>
@@ -71,7 +71,7 @@
 		<thingClass>tsoa.core.Building_RootGrave</thingClass>
 		<containedPawnsSelectable>true</containedPawnsSelectable>
 		<graphicData>
-			<texPath>Things/Building/RootGrave/TSOA_GraveEmpty</texPath>
+			<texPath>TSOA/Things/Building/RootGrave/TSOA_GraveEmpty</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3,4)</drawSize>
 		</graphicData>
@@ -98,7 +98,7 @@
 			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
 			<isEscapableContainer>true</isEscapableContainer>
 			<fullGraveGraphicData>
-				<texPath>Things/Building/RootGrave/TSOA_GraveFull</texPath>
+				<texPath>TSOA/Things/Building/RootGrave/TSOA_GraveFull</texPath>
 				<graphicClass>Graphic_Multi</graphicClass>
 				<drawSize>(3,4)</drawSize>
 			</fullGraveGraphicData>
