@@ -32,13 +32,6 @@
 	</Operation>-->
 
 	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps</xpath>
-		<value>
-			<li Class="tsoa.core.CompProperties_AnimaTreePawnLink" />
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps/li[@Class="CompProperties_SpawnSubplant"]</xpath>
 		<value>
 			<initialGrowthRange>0.1~0.2</initialGrowthRange>
