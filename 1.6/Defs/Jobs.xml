@@ -21,4 +21,11 @@
 		<canBeDoneByMechs>false</canBeDoneByMechs>
 	</WorkGiverDef>
 
+	<JobDef>
+		<defName>TSOA_PlantAnimaPearl</defName>
+		<driverClass>tsoa.core.JobDriver_PlantAnimaPearl</driverClass>
+		<reportString>planting anima pearl.</reportString>
+		<casualInterruptible>false</casualInterruptible>
+	</JobDef>
+
 </Defs>

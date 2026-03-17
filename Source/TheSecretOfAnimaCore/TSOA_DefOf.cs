@@ -23,6 +23,8 @@ namespace tsoa.core
 
         public static JobDef TSOA_TakeAnimaSapOutOfBasinJob;
 
+        public static JobDef TSOA_PlantAnimaPearl;
+
         public static SoundDef AnimaTreeScream;
 
         public static DesignationDef TSOA_EmptyNowSapBasin;

@@ -142,7 +142,7 @@
 	<ThingDef ParentName="ResourceBase">
 		<defName>TSOA_AnimaPearl</defName>
 		<label>anima pearl</label>
-		<description>A pearlescent anima tree seed, infused with the life essence of a human with a close bond to the anima tree.</description>
+		<description>A lustrous anima pearl, infused with the life essence of a human with a close bond to the anima tree. When planted in the ground, forms a new anima tree. Oddly, it doesn't seem to grow from the pearl itself. Maybe the pearl calls it up from deeper within the planet?</description>
 		<graphicData>
 			<texPath>Things/Item/Resource/AnimaPearl</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -156,13 +156,16 @@
 			<MarketValue>4000</MarketValue>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Mass>2</Mass>
-			<Flammability>0.2</Flammability>
+			<Flammability>0.0</Flammability>
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<thingCategories>
 			<li>ItemsMisc</li>
 		</thingCategories>
 		<tradeability>Sellable</tradeability>
+		<comps>
+			<li Class="tsoa.core.CompProperties_PlantAnimaPearl" />
+		</comps>
 	</ThingDef>
 
 </Defs>

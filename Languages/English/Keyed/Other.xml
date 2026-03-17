@@ -27,4 +27,7 @@
 	<TSOA_BillPsylinkTooLow>Worker's psylink level was lower than recipe requirement of {0}.</TSOA_BillPsylinkTooLow>
 
 	<TSOA_FacilityMustBeLinked>Must be placed with a valid link.</TSOA_FacilityMustBeLinked>
+
+	<TSOA_PlantAnimaPearl>plant anima pearl</TSOA_PlantAnimaPearl>
+	<TSOA_CannotPlant>Cannot plant</TSOA_CannotPlant>
 </LanguageData>
