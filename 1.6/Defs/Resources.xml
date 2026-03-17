@@ -86,7 +86,7 @@
 		</graphicData>
 		<soundInteract>Standard_Drop</soundInteract>
 		<soundDrop>Standard_Drop</soundDrop>
-		<stackLimit>75</stackLimit>
+		<stackLimit>25</stackLimit>
 		<healthAffectsPrice>false</healthAffectsPrice>
 		<intricate>true</intricate>
 		<statBases>
@@ -121,10 +121,10 @@
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<soundInteract>Metal_Drop</soundInteract>
 		<soundDrop>Metal_Drop</soundDrop>
-		<stackLimit>25</stackLimit>
+		<stackLimit>5</stackLimit>
 		<useHitPoints>true</useHitPoints>
 		<statBases>
-			<MarketValue>4000</MarketValue>
+			<MarketValue>1000</MarketValue>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Mass>2</Mass>
 			<Flammability>0.2</Flammability>
@@ -137,6 +137,32 @@
 		<tradeTags>
 			<li>ExoticMisc</li>
 		</tradeTags>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>TSOA_AnimaPearl</defName>
+		<label>anima pearl</label>
+		<description>A pearlescent anima tree seed, infused with the life essence of a human with a close bond to the anima tree.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/AnimaPearl</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<stackLimit>1</stackLimit>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MarketValue>4000</MarketValue>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>2</Mass>
+			<Flammability>0.2</Flammability>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<thingCategories>
+			<li>ItemsMisc</li>
+		</thingCategories>
+		<tradeability>Sellable</tradeability>
 	</ThingDef>
 
 </Defs>
