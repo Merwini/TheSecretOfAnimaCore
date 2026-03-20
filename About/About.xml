@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>The Secret of Anima</name>
+	<name>The Secret of Anima - Core</name>
 	<author>Nuff</author>
 	<packageId>tsoa.core</packageId>
 	<supportedVersions>
 		<li>1.6</li>
 	</supportedVersions>
-	<description>Core</description>
+	<description>The core mod for The Secret of Anima series. Makes some changes to anima tree behavior, and adds resources and buildings for use by the submods.</description>
 	<modDependencies>
 		<li>
 			<packageId>brrainz.harmony</packageId>
