@@ -1,6 +1,3 @@
-Some way to get anima seed, to produce sapling
-	- requires a pawn sacrifice?
-
 Process to refine sap into amber
 
 Learning opportunities for various mechanics
@@ -25,8 +22,6 @@ Creatures (submod):
 	- Kukonochi, the kami of trees
 
 Other:
-		- Anima tree no longer affected by all artificial buildings, only those that use electricity
-	- Killing anima trees gives relations penalty with witches of mind, bonus with witches of body, once I make factions
 	- researches will be gated by story events, once I make story mod
 	- lineage submod for generations playthrough?
 		- weapons and armor bind to pawn, can only be passed down to children, get stronger with each generation

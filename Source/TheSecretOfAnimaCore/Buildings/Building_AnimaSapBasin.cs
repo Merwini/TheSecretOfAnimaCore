@@ -156,7 +156,7 @@ namespace tsoa.core
             {
                 defaultLabel = "TSOA_SapToggleEmptyingLabel".Translate(),
                 defaultDesc = "TSOA_SapToggleEmptyingDescription".Translate(),
-                icon = ContentFinder<Texture2D>.Get("Things/Item/Resource/AnimaSap"),
+                icon = ContentFinder<Texture2D>.Get("TSOA/Things/Item/Resource/AnimaSap"),
                 isActive = () => allowEmptying,
                 toggleAction = () => allowEmptying = !allowEmptying
 
