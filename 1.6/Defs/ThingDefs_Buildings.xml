@@ -30,7 +30,7 @@
 			<Beauty>5</Beauty>
 		</statBases>
 		<researchPrerequisites>
-			<li>TSOA_AnimaOne</li>
+			<li>TSOA_AnimaTwo</li>
 		</researchPrerequisites>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -67,7 +67,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>TSOA_AnimaRootGrave</defName>
 		<label>anima root grave</label>
-		<description>A grave dug close to the roots of an anima tree. The roots connect to human bodies and absorb their lingering psychic prescence. This energizes the tree similarly to meditating around it, but rapidly decomposes the body. The bodies of more powerful psychics will have a more powerful effect.</description>
+		<description>A grave dug close to the roots of an anima tree. The roots connect to human bodies and absorb their lingering psychic prescence. This energizes the tree similarly to meditating around it, but rapidly decomposes the body. The bodies of more powerful psychics will have a more powerful effect.\n\nMust be built in range of an anima tree, and each tree can support a maximum of four graves.</description>
 		<thingClass>tsoa.core.Building_RootGrave</thingClass>
 		<containedPawnsSelectable>true</containedPawnsSelectable>
 		<graphicData>
