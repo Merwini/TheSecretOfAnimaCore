@@ -9,6 +9,7 @@
 	<TSOA_EssenceYield>Essence yield: {0}</TSOA_EssenceYield>
 	<TSOA_StoredEssence>Stored essence: {0} / {1}</TSOA_StoredEssence>
 	
+	<!-- Sap Basin -->
 	<TSOA_StoredSap>Stored anima sap: {0} / {1}</TSOA_StoredSap>
 	<TSOA_SapCurrentlyHarvesting>Harvesting {0}% of meditation energy</TSOA_SapCurrentlyHarvesting>
 	<TSOA_SapNotCurrentlyHarvesting>Not currently harvesting</TSOA_SapNotCurrentlyHarvesting>
@@ -28,6 +29,15 @@
 
 	<TSOA_FacilityMustBeLinked>Must be placed with a valid link.</TSOA_FacilityMustBeLinked>
 
+	<!-- Anima pearl -->
 	<TSOA_PlantAnimaPearl>plant anima pearl</TSOA_PlantAnimaPearl>
 	<TSOA_CannotPlant>Cannot plant</TSOA_CannotPlant>
+
+	<!-- Font of Anima -->
+	<TSOA_AnimaFontVisit>Visit {0}</TSOA_AnimaFontVisit>
+	<TSOA_AnimaFontExpiredLabel>leylines shifted</TSOA_AnimaFontExpiredLabel>
+	<TSOA_AnimaFontExpiredDescription>the anima leylines have shifted, and the font of anima has expired</TSOA_AnimaFontExpiredDescription>
+	<TSOA_AnimaFontArrivedLabel>arrived at font of anima</TSOA_AnimaFontArrivedLabel>
+	<TSOA_AnimaFontArriveDesc>{0} has arrived at a font of anima: the stump of an ancient anima tree located at the intersection of powerful leylines of psychic energy.</TSOA_AnimaFontArriveDesc>
+
 </LanguageData>

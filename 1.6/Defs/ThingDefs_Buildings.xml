@@ -65,6 +65,32 @@
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
+		<defName>TSOA_FontOfAnima</defName>
+		<label>font of anima</label>
+		<description>The stump of an ancient anima tree that grew the intersection of leylines of great psychic power.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Basin/TSOA_BasinFull</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3, 3)</drawSize>
+			<shadowData>
+				<volume>(1, 0.45, 2)</volume>
+			</shadowData>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<size>(3, 3)</size>
+		<fillPercent>1</fillPercent>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Beauty>5</Beauty>
+		</statBases>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<canOverlapZones>true</canOverlapZones>
+		<tickerType>Rare</tickerType>
+		<rotatable>false</rotatable>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
 		<defName>TSOA_AnimaRootGrave</defName>
 		<label>anima root grave</label>
 		<description>A grave dug close to the roots of an anima tree. The roots connect to human bodies and absorb their lingering psychic prescence. This energizes the tree similarly to meditating around it, but rapidly decomposes the body. The bodies of more powerful psychics will have a more powerful effect.\n\nMust be built in range of an anima tree, and each tree can support a maximum of four graves.</description>

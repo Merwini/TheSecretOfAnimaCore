@@ -52,5 +52,43 @@
 			<li>AnomalyAmbush</li>
 		</tags>
 	</SitePartDef>
+
+	<WorldObjectDef ParentName="StaticWorldObjectBase">
+		<defName>TSOA_FontOfAnimaSite</defName>
+		<label>font of anima</label>
+		<description>T</description>
+		<worldObjectClass>MapParent</worldObjectClass>
+		<texture>World/WorldObjects/Sites/GenericSite</texture>
+		<expandingIcon>true</expandingIcon>
+		<expandingIconTexture>World/WorldObjects/Sites/GenericSite</expandingIconTexture>
+		<expandingIconPriority>50</expandingIconPriority>
+		<expandMore>true</expandMore>
+		<IncidentTargetTags>
+			<li>Map_PlayerHome</li>
+		</IncidentTargetTags>
+		<mapGenerator>TSOA_FontOfAnimaMapGenerator</mapGenerator>
+		<canBePlayerHome>true</canBePlayerHome>
+		<comps>
+			<li Class="WorldObjectCompProperties_Abandon" />
+			<li Class="WorldObjectCompProperties_FormCaravan"/>
+			<li Class="WorldObjectCompProperties_EnterCooldown" />
+			<li Class="tsoa.core.WorldObjectCompProperties_FontOfAnima"/>
+		</comps>
+	</WorldObjectDef>
+
+	<MapGeneratorDef ParentName="MapCommonBase">
+		<defName>TSOA_FontOfAnimaMapGenerator</defName>
+		<genSteps>
+			<li>RocksFromGrid</li>
+			<li>TSOA_FontOfAnimaGenStep</li>
+		</genSteps>
+	</MapGeneratorDef>
+	
+	<GenStepDef>
+		<defName>TSOA_FontOfAnimaGenStep</defName>
+		<order>420</order>
+		<genStep Class="tsoa.core.GenStep_FontOfAnima">
+		</genStep>
+	</GenStepDef>
 	
 </Defs>

@@ -17,6 +17,8 @@ namespace tsoa.core
 
         public static ThingDef TSOA_AnimaSapBasin;
 
+        public static ThingDef TSOA_FontOfAnima;
+
         //public static ThoughtDef TSOA_AnimaGrassScream;
 
         //public static JobDef TSOA_HarvestAnimaGrassJob;
