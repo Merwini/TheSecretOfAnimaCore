@@ -11,7 +11,7 @@
 		<stackLimit>75</stackLimit>
 		<tradeability>Sellable</tradeability>
 		<statBases>
-			<MarketValue>25</MarketValue>
+			<MarketValue>16</MarketValue>
 			<Mass>0.05</Mass>
 			<Flammability>0.8</Flammability>
 
@@ -49,7 +49,7 @@
 		<healthAffectsPrice>false</healthAffectsPrice>
 		<statBases>
 			<MaxHitPoints>70</MaxHitPoints>
-			<MarketValue>32</MarketValue>
+			<MarketValue>42</MarketValue>
 			<Mass>0.6</Mass>
 			<Flammability>0.8</Flammability>
 			<DeteriorationRate>2.0</DeteriorationRate>
@@ -91,7 +91,7 @@
 		<intricate>true</intricate>
 		<statBases>
 			<MaxHitPoints>70</MaxHitPoints>
-			<MarketValue>200</MarketValue>
+			<MarketValue>80</MarketValue>
 			<Mass>0.6</Mass>
 			<Flammability>0.8</Flammability>
 			<DeteriorationRate>2.0</DeteriorationRate>
@@ -127,7 +127,7 @@
 			<MarketValue>1000</MarketValue>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Mass>2</Mass>
-			<Flammability>0.2</Flammability>
+			<Flammability>0.0</Flammability>
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<thingCategories>
