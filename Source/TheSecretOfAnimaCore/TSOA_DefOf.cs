@@ -15,6 +15,8 @@ namespace tsoa.core
 
         public static ThingDef TSOA_AnimaSap;
 
+        public static ThingDef TSOA_AnimaAmber;
+
         public static ThingDef TSOA_AnimaSapBasin;
 
         public static ThingDef TSOA_FontOfAnima;
@@ -25,11 +27,13 @@ namespace tsoa.core
 
         public static JobDef TSOA_TakeAnimaSapOutOfBasinJob;
 
+        public static JobDef TSOA_TakeAnimaAmberOutOfFontJob;
+
         public static JobDef TSOA_PlantAnimaPearl;
 
         public static SoundDef AnimaTreeScream;
 
-        public static DesignationDef TSOA_EmptyNowSapBasin;
+        public static DesignationDef TSOA_EmptyNow;
 
         public static StatDef TSOA_ComfortFactor;
 

@@ -64,7 +64,7 @@
 		<designationCategory>Production</designationCategory>
 	</ThingDef>
 
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="CrateBase">
 		<defName>TSOA_FontOfAnima</defName>
 		<label>font of anima</label>
 		<description>The stump of an ancient anima tree that grew the intersection of leylines of great psychic power.</description>
@@ -80,8 +80,8 @@
 		<size>(3, 3)</size>
 		<fillPercent>1</fillPercent>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<Beauty>5</Beauty>
+			<MaxHitPoints>2000</MaxHitPoints>
+			<Beauty>15</Beauty>
 		</statBases>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>

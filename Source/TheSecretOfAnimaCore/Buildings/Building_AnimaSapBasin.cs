@@ -208,7 +208,7 @@ namespace tsoa.core
             return sb.ToString().Trim();
         }
 
-        private void ToggleEmptyNow()
+        public void ToggleEmptyNow()
         {
             if (!emptyNow && CurrentSap > 0)
             {
@@ -222,16 +222,16 @@ namespace tsoa.core
             UpdateDesignation();
         }
 
-        public void UpdateDesignation()
+        private void UpdateDesignation()
         {
             if (!Spawned) return;
 
-            Designation designation = Map.designationManager.DesignationOn(this, TSOA_DefOf.TSOA_EmptyNowSapBasin);
+            Designation designation = Map.designationManager.DesignationOn(this, TSOA_DefOf.TSOA_EmptyNow);
 
             if (emptyNow)
             {
                 if (designation == null)
-                    Map.designationManager.AddDesignation(new Designation(this, TSOA_DefOf.TSOA_EmptyNowSapBasin));
+                    Map.designationManager.AddDesignation(new Designation(this, TSOA_DefOf.TSOA_EmptyNow));
             }
             else
             {
@@ -242,8 +242,6 @@ namespace tsoa.core
 
         public override void ExposeData()
         {
-            base.ExposeData();
-
             Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
 
             Scribe_Values.Look(ref progress, "progress", 0);
@@ -251,6 +249,8 @@ namespace tsoa.core
             Scribe_Values.Look(ref harvestingToggled, "harvestingToggled", false);
             Scribe_Values.Look(ref allowEmptying, "allowEmptying", true);
             Scribe_Values.Look(ref emptyNow, "emptyNow", false);
+
+            base.ExposeData();
         }
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)

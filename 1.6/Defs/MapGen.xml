@@ -57,7 +57,7 @@
 		<defName>TSOA_FontOfAnimaSite</defName>
 		<label>font of anima</label>
 		<description>T</description>
-		<worldObjectClass>MapParent</worldObjectClass>
+		<worldObjectClass>tsoa.core.FontOfAnimaWorldObject</worldObjectClass>
 		<texture>World/WorldObjects/Sites/GenericSite</texture>
 		<expandingIcon>true</expandingIcon>
 		<expandingIconTexture>World/WorldObjects/Sites/GenericSite</expandingIconTexture>

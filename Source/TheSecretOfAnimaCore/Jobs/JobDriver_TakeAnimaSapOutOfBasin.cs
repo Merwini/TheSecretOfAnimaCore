@@ -53,9 +53,8 @@ namespace tsoa.core
 
                 GenPlace.TryPlaceThing(sap, pawn.Position, Map, ThingPlaceMode.Near);
 
+                Tap.ToggleEmptyNow();
                 Tap.DirtyMapMesh(Map);
-                Tap.emptyNow = false;
-                Tap.UpdateDesignation();
 
                 StoragePriority prio = StoreUtility.CurrentStoragePriorityOf(sap);
                 IntVec3 bestCell;
