@@ -1,11 +1,11 @@
-﻿using RimWorld;
-using RimWorld.Planet;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Verse;
+using RimWorld;
+using RimWorld.Planet;
 
 namespace tsoa.core;
 
@@ -23,6 +23,7 @@ public class FontOfAnimaComp : WorldObjectComp
 
     public override void CompTick()
     {
+        // TODO have the quest check instead?
         // is it cheaper to only check on an interval?
         if (Find.TickManager.TicksGame >= timeoutTick)
         {
