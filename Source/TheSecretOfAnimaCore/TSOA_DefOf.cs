@@ -33,6 +33,8 @@ namespace tsoa.core
 
         public static SoundDef AnimaTreeScream;
 
+        public static DesignationDef TSOA_LoadSapNow;
+
         public static DesignationDef TSOA_EmptyNow;
 
         public static StatDef TSOA_ComfortFactor;

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 
 namespace tsoa.core;
@@ -47,14 +48,72 @@ public class Building_AnimaFont : Building, IThingHolder
         }
     }
 
+    private bool loadNow = false;
+    public bool ShouldLoad
+    {
+        get
+        {
+            return loadNow && !hasBegun;
+        }
+    }
+
+    private bool hasBegun = false;
+    public bool HasBegun => hasBegun;
+
     public ThingOwner GetDirectlyHeldThings() => innerContainer;
     public void GetChildHolders(List<IThingHolder> outChildren) { }
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
-        // TODO gizmo to load sap
-        // TODO gizmo to unload amber
-        throw new NotImplementedException();
+        foreach (Gizmo gizmo in base.GetGizmos())
+        {
+            yield return gizmo;
+        }
+
+        if (!loadNow && !hasBegun)
+        {
+            Command_Action loadGizmo = new Command_Action()
+            {
+                defaultLabel = "TSOA_FontLoadSapLabel".Translate(),
+                defaultDesc = "TSOA_FontLoadSapDesc".Translate(),
+                icon = ContentFinder<Texture2D>.Get("TSOA/Things/Item/Resource/AnimaSap"),
+                action = () =>
+                {
+                    ToggleLoadNow();
+                }
+            };
+            yield return loadGizmo;
+        }
+
+        if (!innerContainer.NullOrEmpty() && !HasBegun)
+        {
+            Command_Action beginCrystallizationGizmo = new Command_Action()
+            {
+                defaultLabel = "TSOA_FontBeginLabel".Translate(),
+                defaultDesc = "TSOA_FontBeginDesc".Translate(),
+                icon = ContentFinder<Texture2D>.Get("TSOA/Things/Item/Resource/AnimaAmber/AnimaAmber_a"),
+                action = () =>
+                {
+                    Begin();
+                }
+            };
+            yield return beginCrystallizationGizmo;
+        }
+
+        if (HasBegun && AmberAmount > 0)
+        {
+            Command_Action unloadAmberGizmo = new Command_Action()
+            {
+                defaultLabel = "TSOA_FontUnloadAmberLabel".Translate(),
+                defaultDesc = "TSOA_FontUnloadAmberDesc".Translate(),
+                icon = ContentFinder<Texture2D>.Get("TSOA/Things/Item/Resource/AnimaAmber/AnimaAmber_c"),
+                action = () =>
+                {
+                    ToggleEmptyNow();
+                }
+            };
+            yield return unloadAmberGizmo;
+        }
     }
 
     public override string GetInspectString()
@@ -76,21 +135,48 @@ public class Building_AnimaFont : Building, IThingHolder
         UpdateDesignation();
     }
 
+    public void ToggleLoadNow()
+    {
+        if (!loadNow && !HasBegun)
+        {
+            loadNow = true;
+        }
+        UpdateDesignation();
+    }
+
+    private void Begin()
+    {
+        hasBegun = true;
+        loadNow = false;
+        UpdateDesignation();
+    }
+
     private void UpdateDesignation()
     {
         if (!Spawned) return;
 
-        Designation designation = Map.designationManager.DesignationOn(this, TSOA_DefOf.TSOA_EmptyNow);
+        Designation loadDesignation = Map.designationManager.DesignationOn(this, TSOA_DefOf.TSOA_LoadSapNow);
+        if (loadNow)
+        {
+            if (loadDesignation == null)
+                Map.designationManager.AddDesignation(new Designation(this, TSOA_DefOf.TSOA_LoadSapNow));
+        }
+        else
+        {
+            if (loadDesignation != null)
+                loadDesignation.Delete();
+        }
 
+        Designation emptyDesignation = Map.designationManager.DesignationOn(this, TSOA_DefOf.TSOA_EmptyNow);
         if (emptyNow)
         {
-            if (designation == null)
+            if (emptyDesignation == null)
                 Map.designationManager.AddDesignation(new Designation(this, TSOA_DefOf.TSOA_EmptyNow));
         }
         else
         {
-            if (designation != null)
-                designation.Delete();
+            if (emptyDesignation != null)
+                emptyDesignation.Delete();
         }
     }
 
@@ -99,6 +185,8 @@ public class Building_AnimaFont : Building, IThingHolder
         Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
         Scribe_Values.Look(ref amberAmount, "amberAmount");
         Scribe_Values.Look(ref emptyNow, "emptyNow");
+        Scribe_Values.Look(ref loadNow, "loadNow");
+        Scribe_Values.Look(ref hasBegun, "hasBegun");
 
         base.ExposeData();
     }

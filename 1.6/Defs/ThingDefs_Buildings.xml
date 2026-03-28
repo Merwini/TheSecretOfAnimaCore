@@ -67,7 +67,8 @@
 	<ThingDef ParentName="CrateBase">
 		<defName>TSOA_FontOfAnima</defName>
 		<label>font of anima</label>
-		<description>The stump of an ancient anima tree that grew the intersection of leylines of great psychic power.</description>
+		<description>The stump of an ancient anima tree that grew at an intersection of leylines of great psychic power.</description>
+		<thingClass>tsoa.core.Building_AnimaFont</thingClass>
 		<graphicData>
 			<texPath>TSOA/Things/Building/Basin/TSOA_BasinFull</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

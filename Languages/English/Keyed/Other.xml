@@ -40,4 +40,11 @@
 	<TSOA_AnimaFontArrivedLabel>arrived at font of anima</TSOA_AnimaFontArrivedLabel>
 	<TSOA_AnimaFontArriveDesc>{0} has arrived at a font of anima: the stump of an ancient anima tree located at the intersection of powerful leylines of psychic energy.</TSOA_AnimaFontArriveDesc>
 
+	<TSOA_FontLoadSapLabel>load sap</TSOA_FontLoadSapLabel>
+	<TSOA_FontLoadSapDesc>Give the order to begin loading anima sap into the font</TSOA_FontLoadSapDesc>
+	<TSOA_FontBeginLabel>begin crystallization</TSOA_FontBeginLabel>
+	<TSOA_FontBeginDesc>Connect to the anima leylines and begin the crystallization process</TSOA_FontBeginDesc>
+	<TSOA_FontUnloadAmberLabel>extract amber</TSOA_FontUnloadAmberLabel>
+	<TSOA_FontUnloadAmberDesc>Give the order to begin extract crystallized anima amber from the font</TSOA_FontUnloadAmberDesc>
+
 </LanguageData>
