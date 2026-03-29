@@ -42,8 +42,6 @@ public class JobDriver_AddAnimaSapToFont : JobDriver
             .FailOnCannotTouch(FontInd, PathEndMode.Touch)
             .WithProgressBarToilDelay(FontInd);
 
-        // TODO hold sap during above toil?
-
         Toil addSapToil = ToilMaker.MakeToil("AddSapToFont");
         addSapToil.initAction = () =>
         {

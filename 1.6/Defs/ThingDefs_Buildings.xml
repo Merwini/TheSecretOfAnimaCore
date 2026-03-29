@@ -79,6 +79,8 @@
 			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
 		<size>(3, 3)</size>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<fillPercent>1</fillPercent>
 		<statBases>
 			<MaxHitPoints>2000</MaxHitPoints>
