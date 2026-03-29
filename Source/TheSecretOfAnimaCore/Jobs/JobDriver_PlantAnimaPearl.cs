@@ -33,8 +33,7 @@ public class JobDriver_PlantAnimaPearl : JobDriver
         yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.ClosestTouch);
         yield return Toils_Haul.StartCarryThing(TargetIndex.A);
 
-        Toil goToCell = Toils_Goto.GotoCell(TargetIndex.B, PathEndMode.Touch);
-        yield return goToCell;
+        yield return Toils_Goto.GotoCell(TargetIndex.B, PathEndMode.Touch);
 
         Toil plant = ToilMaker.MakeToil("PlantAnimaPearl");
         plant.initAction = delegate

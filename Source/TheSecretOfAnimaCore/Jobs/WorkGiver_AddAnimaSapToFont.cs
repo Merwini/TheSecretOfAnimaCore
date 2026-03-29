@@ -37,7 +37,6 @@ public class WorkGiver_AddAnimaSapToFont : WorkGiver
         {
             return true;
         }
-
         return false;
     }
 
@@ -57,6 +56,27 @@ public class WorkGiver_AddAnimaSapToFont : WorkGiver
             return null;
         }
 
-        return JobMaker.MakeJob(TSOA_DefOf.TSOA_TakeAnimaAmberOutOfFontJob, fontWO.Font);
+        Thing sap = FindSap(pawn);
+        if (sap == null)
+        {
+            return null;
+        }
+
+        return JobMaker.MakeJob(TSOA_DefOf.TSOA_AddAnimaSapToFontJob, fontWO.Font, sap);
+    }
+
+    private Thing FindSap(Pawn pawn)
+    {
+        ThingRequest sapRequest = ThingRequest.ForDef(TSOA_DefOf.TSOA_AnimaSap);
+        return GenClosest.ClosestThingReachable(pawn.Position, pawn.Map, sapRequest, PathEndMode.ClosestTouch, TraverseParms.For(pawn), 9999f, Predicate);
+
+        bool Predicate(Thing t)
+        {
+            if (!t.IsForbidden(pawn) && pawn.CanReserve(t))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

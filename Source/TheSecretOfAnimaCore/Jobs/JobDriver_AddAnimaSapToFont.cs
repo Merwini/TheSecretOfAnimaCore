@@ -1,14 +1,60 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Verse;
 using Verse.AI;
-using RimWorld;
+using static UnityEngine.GridBrushBase;
 
 namespace tsoa.core;
 
 public class JobDriver_AddAnimaSapToFont : JobDriver
 {
+    private const TargetIndex FontInd = TargetIndex.A;
+    private const TargetIndex SapInd = TargetIndex.B;
+
+    private const int Duration = 600;
+
+    protected Building_AnimaFont Font => (Building_AnimaFont)job.GetTarget(FontInd).Thing;
+    protected Thing Sap => job.GetTarget(SapInd).Thing;
+
+    public override bool TryMakePreToilReservations(bool errorOnFailed)
+    {
+        // TODO why is this throwing errors and only reserving 1 sap
+        Log.Message("sap stackCount: " + Sap.stackCount.ToString());
+        Log.Message("sap room left: " +Font.SapRoomLeft.ToString());
+        int sapToReserve = Math.Min(Sap.stackCount, Font.SapRoomLeft);
+        return pawn.Reserve(Font, job, 1, -1, null, errorOnFailed) && pawn.Reserve(Sap, job, 1, sapToReserve, null, errorOnFailed);
+    }
+
+    public override IEnumerable<Toil> MakeNewToils()
+    {
+        this.FailOnDestroyedNullOrForbidden(FontInd);
+        this.FailOnBurningImmobile(FontInd);
+
+        yield return Toils_Goto.GotoThing(SapInd, PathEndMode.Touch)
+            .FailOnDestroyedNullOrForbidden(SapInd);
+
+        yield return Toils_Haul.StartCarryThing(SapInd);
+
+        yield return Toils_Goto.GotoThing(FontInd, PathEndMode.InteractionCell); // TODO check if PathEndMode.InteractionCell is used with GoToThing
+
+        yield return Toils_General.Wait(Duration)
+            .FailOnDestroyedNullOrForbidden(FontInd)
+            .FailOnCannotTouch(FontInd, PathEndMode.Touch)
+            .WithProgressBarToilDelay(FontInd);
+
+        // TODO hold sap during above toil?
+
+        Toil addSapToil = ToilMaker.MakeToil("AddSapToFont");
+        addSapToil.initAction = () =>
+        {
+            Font.AddSap(Sap);
+        };
+        addSapToil.defaultCompleteMode = ToilCompleteMode.Instant;
+
+        yield return addSapToil;
+    }
 }

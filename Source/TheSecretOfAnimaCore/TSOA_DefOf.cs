@@ -25,6 +25,8 @@ namespace tsoa.core
 
         //public static JobDef TSOA_HarvestAnimaGrassJob;
 
+        public static JobDef TSOA_AddAnimaSapToFontJob;
+
         public static JobDef TSOA_TakeAnimaSapOutOfBasinJob;
 
         public static JobDef TSOA_TakeAnimaAmberOutOfFontJob;

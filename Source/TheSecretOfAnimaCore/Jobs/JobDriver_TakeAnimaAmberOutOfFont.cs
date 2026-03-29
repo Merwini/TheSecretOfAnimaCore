@@ -36,7 +36,6 @@ public class JobDriver_TakeAnimaAmberOutOfFont : JobDriver
         yield return Toils_General.Wait(Duration)
             .FailOnDestroyedNullOrForbidden(FontInd)
             .FailOnCannotTouch(FontInd, PathEndMode.Touch)
-            .FailOn(() => Font.innerContainer.Count == 0)
             .WithProgressBarToilDelay(FontInd);
 
         Toil extract = ToilMaker.MakeToil("TakeAmberFromFont");
@@ -50,6 +49,7 @@ public class JobDriver_TakeAnimaAmberOutOfFont : JobDriver
 
             // Check amber amount of font, spawn it
             Thing amber = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaAmber, pawn.Position, Map);
+            // TODO account for multiple stacks. Maybe just dump them all on the ground?
             amber.stackCount = Font.AmberAmount;
             Font.AmberAmount = 0;
 

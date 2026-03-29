@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using RimWorld.BaseGen;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,9 +11,9 @@ using Verse;
 
 namespace tsoa.core;
 
-public class Building_AnimaFont : Building, IThingHolder
+public class Building_AnimaFont : Building
 {
-    public ThingOwner innerContainer;
+    public const int MaxSapAmount = 20; // 2 stacks
 
     private int amberAmount; // not stored as an actual Thing, don't want it to all drop if destroyed
     public int AmberAmount
@@ -27,6 +28,22 @@ public class Building_AnimaFont : Building, IThingHolder
         }
     }
 
+    private int sapAmount;
+    public int SapAmount
+    {
+        get
+        {
+            return sapAmount;
+        }
+        set
+        {
+            sapAmount = value;
+            // Dirty Mesh if now empty
+        }
+    }
+
+    public int SapRoomLeft => MaxSapAmount - sapAmount;
+
     private bool emptyNow = false;
     public bool ShouldEmpty
     {
@@ -36,8 +53,8 @@ public class Building_AnimaFont : Building, IThingHolder
             if (amberAmount == 0)
                 return false;
 
-            // no sap left, remove amber. I think it's better to do this automatically, in case player doesn't notice that the last sap has been converted
-            if (innerContainer[0] == null /*|| innerContainer[0].stackCount == 0*/) // can stack count be 0 without it being null? TODO test
+            // not enough sap left, remove amber. I think it's better to do this automatically, in case player doesn't notice that the last sap has been converted
+            if (sapAmount < 2)
                 return true;
 
             // manually designated
@@ -59,9 +76,6 @@ public class Building_AnimaFont : Building, IThingHolder
 
     private bool hasBegun = false;
     public bool HasBegun => hasBegun;
-
-    public ThingOwner GetDirectlyHeldThings() => innerContainer;
-    public void GetChildHolders(List<IThingHolder> outChildren) { }
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
@@ -85,7 +99,7 @@ public class Building_AnimaFont : Building, IThingHolder
             yield return loadGizmo;
         }
 
-        if (!innerContainer.NullOrEmpty() && !HasBegun)
+        if (sapAmount != 0 && !HasBegun)
         {
             Command_Action beginCrystallizationGizmo = new Command_Action()
             {
@@ -151,6 +165,37 @@ public class Building_AnimaFont : Building, IThingHolder
         UpdateDesignation();
     }
 
+    public bool AddSap(Thing sap)
+    {
+        int add = Mathf.Min(sap.stackCount, SapRoomLeft);
+        if (add > 0)
+        {
+            AddSap(add);
+            sap.SplitOff(add).Destroy();
+            return true;
+        }
+        return false;
+    }
+
+    // Only called by AddSap(Thing) which does safety checks
+    private void AddSap(int amount)
+    {
+        sapAmount += amount;
+    }
+
+    public bool Crystallize()
+    {
+        if (sapAmount > 1)
+        {
+            sapAmount -= 5;
+            amberAmount += 1;
+            // TODO some visual effect, maybe sound
+            return true;
+        }
+
+        return false;
+    }
+
     private void UpdateDesignation()
     {
         if (!Spawned) return;
@@ -182,8 +227,8 @@ public class Building_AnimaFont : Building, IThingHolder
 
     public override void ExposeData()
     {
-        Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
         Scribe_Values.Look(ref amberAmount, "amberAmount");
+        Scribe_Values.Look(ref sapAmount, "sapAmount");
         Scribe_Values.Look(ref emptyNow, "emptyNow");
         Scribe_Values.Look(ref loadNow, "loadNow");
         Scribe_Values.Look(ref hasBegun, "hasBegun");

@@ -86,7 +86,7 @@
 		</graphicData>
 		<soundInteract>Standard_Drop</soundInteract>
 		<soundDrop>Standard_Drop</soundDrop>
-		<stackLimit>25</stackLimit>
+		<stackLimit>10</stackLimit>
 		<healthAffectsPrice>false</healthAffectsPrice>
 		<intricate>true</intricate>
 		<statBases>
