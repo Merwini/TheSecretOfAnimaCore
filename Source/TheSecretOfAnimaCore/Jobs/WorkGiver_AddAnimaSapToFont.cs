@@ -61,8 +61,9 @@ public class WorkGiver_AddAnimaSapToFont : WorkGiver
         {
             return null;
         }
-
-        return JobMaker.MakeJob(TSOA_DefOf.TSOA_AddAnimaSapToFontJob, fontWO.Font, sap);
+        Job job = JobMaker.MakeJob(TSOA_DefOf.TSOA_AddAnimaSapToFontJob, fontWO.Font, sap);
+        job.count = Math.Min(sap.stackCount, fontWO.Font.SapRoomLeft);
+        return job;
     }
 
     private Thing FindSap(Pawn pawn)

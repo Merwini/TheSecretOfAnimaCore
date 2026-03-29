@@ -13,8 +13,8 @@ public class FontOfAnimaWorldObject : MapParent
     int lastCaravanLeftTick;
     bool madeAnyAmber;
     int amberLeftBehind = 0;
-    private Thing font;
-    public Thing Font
+    private Building_AnimaFont font;
+    public Building_AnimaFont Font
     {
         get
         {
@@ -25,7 +25,7 @@ public class FontOfAnimaWorldObject : MapParent
 
             if (font == null)
             {
-                font = Map.listerThings.ThingsOfDef(TSOA_DefOf.TSOA_FontOfAnima).FirstOrDefault();
+                font = Map.listerThings.ThingsOfDef(TSOA_DefOf.TSOA_FontOfAnima).FirstOrDefault() as Building_AnimaFont;
             }
 
             return font;

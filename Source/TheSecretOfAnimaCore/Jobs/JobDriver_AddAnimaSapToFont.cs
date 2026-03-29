@@ -22,11 +22,7 @@ public class JobDriver_AddAnimaSapToFont : JobDriver
 
     public override bool TryMakePreToilReservations(bool errorOnFailed)
     {
-        // TODO why is this throwing errors and only reserving 1 sap
-        Log.Message("sap stackCount: " + Sap.stackCount.ToString());
-        Log.Message("sap room left: " +Font.SapRoomLeft.ToString());
-        int sapToReserve = Math.Min(Sap.stackCount, Font.SapRoomLeft);
-        return pawn.Reserve(Font, job, 1, -1, null, errorOnFailed) && pawn.Reserve(Sap, job, 1, sapToReserve, null, errorOnFailed);
+        return pawn.Reserve(Font, job, 1, -1, null, errorOnFailed) && pawn.Reserve(Sap, job, 1, job.count, null, errorOnFailed);
     }
 
     public override IEnumerable<Toil> MakeNewToils()

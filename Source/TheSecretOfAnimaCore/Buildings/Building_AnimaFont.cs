@@ -11,7 +11,7 @@ using Verse;
 
 namespace tsoa.core;
 
-public class Building_AnimaFont : Building
+public class Building_AnimaFont : Building, IVirtualThingHolder
 {
     public const int MaxSapAmount = 20; // 2 stacks
 
@@ -76,6 +76,8 @@ public class Building_AnimaFont : Building
 
     private bool hasBegun = false;
     public bool HasBegun => hasBegun;
+
+    public bool IsEmpty => SapAmount < 1;
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
@@ -181,6 +183,7 @@ public class Building_AnimaFont : Building
     private void AddSap(int amount)
     {
         sapAmount += amount;
+        DirtyMapMesh(Map);
     }
 
     public bool Crystallize()

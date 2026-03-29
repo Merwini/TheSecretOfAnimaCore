@@ -64,7 +64,7 @@
 		<designationCategory>Production</designationCategory>
 	</ThingDef>
 
-	<ThingDef ParentName="CrateBase">
+	<ThingDef ParentName="BuildingBase">
 		<defName>TSOA_FontOfAnima</defName>
 		<label>font of anima</label>
 		<description>The stump of an ancient anima tree that grew at an intersection of leylines of great psychic power.</description>
@@ -89,6 +89,16 @@
 		<canOverlapZones>true</canOverlapZones>
 		<tickerType>Rare</tickerType>
 		<rotatable>false</rotatable>
+		<comps>
+			<li Class="tsoa.core.CompProperties_EmptyStateGraphicStuffed">
+				<graphicData>
+					<texPath>TSOA/Things/Building/Basin/TSOA_BasinEmpty</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<drawSize>(3, 3)</drawSize>
+					<shaderType>CutoutComplex</shaderType>
+				</graphicData>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">

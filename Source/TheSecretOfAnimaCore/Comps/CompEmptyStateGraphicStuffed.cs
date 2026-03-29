@@ -23,6 +23,9 @@ public class CompEmptyStateGraphicStuffed : ThingComp
             if (parent is IThingHolder thingHolder && thingHolder.GetDirectlyHeldThings().NullOrEmpty())
                 return true;
 
+            if (parent is IVirtualThingHolder virtualThingHolder && virtualThingHolder.IsEmpty)
+                return true;
+
             CompPawnSpawnOnWakeup compPawnSpawnOnWakeup = parent.TryGetComp<CompPawnSpawnOnWakeup>();
             if (compPawnSpawnOnWakeup != null && !compPawnSpawnOnWakeup.CanSpawn)
                 return true;
