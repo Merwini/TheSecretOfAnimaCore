@@ -344,13 +344,16 @@ public class HarmonyPatches
     [HarmonyPatch(typeof(Settlement), nameof(Settlement.GetCaravanGizmos))]
     public static class Settlement_GetCaravanGizmos_Postfix
     {
+        private const int silverCost = 1500;
+        private const int goodwillRequirement = 40;
+
         public static void Postfix(Settlement __instance, ref IEnumerable<Gizmo> __result, Caravan caravan)
         {
             if (__instance.CanTradeNow && TSOA_DefOf.TSOA_AnimaThree.IsFinished)
             {
                 List<Gizmo> gizmosList = __result.ToList();
 
-                Gizmo fontGizmo = TSOA_Utils.GetFontGizmo(caravan, 1500, __instance.Faction);
+                Gizmo fontGizmo = TSOA_Utils.GetFontGizmo(caravan, silverCost, goodwillRequirement, __instance.Faction);
 
                 if (fontGizmo != null)
                 {

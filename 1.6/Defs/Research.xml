@@ -34,6 +34,8 @@
 		<prerequisites>
 			<li>TSOA_AnimaOne</li>
 		</prerequisites>
+		<discoveredLetterTitle>The Rise of Anima</discoveredLetterTitle>
+		<discoveredLetterText>Your colony has deepened its understanding of the anima tree. New options are available, and a new resource will be required: anima sap. To acquire it, build a sap basin connected to an anima tree, and the basin will siphon a portion of the energy of those meditating at the tree to form anima sap instead of grass.</discoveredLetterText>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -48,6 +50,8 @@
 		<prerequisites>
 			<li>TSOA_AnimaTwo</li>
 		</prerequisites>
+		<discoveredLetterTitle>The Apex of Anima</discoveredLetterTitle>
+		<discoveredLetterText>Your colony has reached the apex of anima understanding. Crafts and rituals of great power are now available, and a new resource will be required: anima amber. To acquire it, bring silver to an allied faction and request the location of a Font of Anima. Then, bring anima sap to the Font, and defend it for as long as you can during the crystallization process.</discoveredLetterText>
 	</ResearchProjectDef>
 	
 	
