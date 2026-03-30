@@ -15,7 +15,26 @@ public class FontOfAnimaWorldObject : MapParent
     bool madeAnyAmber;
     int amberLeftBehind = 0;
 
-    public Quest quest;
+    public Quest relatedQuest;
+    public Quest RelatedQuest
+    {
+        get
+        {
+            if (relatedQuest == null)
+            {
+                List<Quest> quests = Find.QuestManager.QuestsListForReading;
+                for (int i = 0; i < quests.Count; i++)
+                {
+                    Quest quest = quests[i];
+                    if (!quest.hidden && !quest.Historical && !quest.dismissed && quest.QuestLookTargets.Contains(this))
+                    {
+                        relatedQuest = quest;
+                    }
+                }
+            }
+            return relatedQuest;
+        }
+    }
 
     private Building_AnimaFont font;
     public Building_AnimaFont Font
@@ -121,12 +140,19 @@ public class FontOfAnimaWorldObject : MapParent
         // TODO if amber is left behind, an offer will be made to sell it back to the player
     }
 
+    public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Caravan caravan)
+    {
+        foreach (FloatMenuOption floatMenuOption in CaravanArrivalAction_VisitFontOfAnima.GetFloatMenuOptions(caravan, this))
+        {
+            yield return floatMenuOption;
+        }
+    }
+
     public override void ExposeData()
     {
         Scribe_Values.Look(ref lastCaravanLeftTick, "lastCaravanLeftTick");
         Scribe_Values.Look(ref madeAnyAmber, "madeAnyAmber");
         Scribe_Values.Look(ref amberLeftBehind, "amberLeftBehind");
-        Scribe_Values.Look(ref quest, "quest");
 
         base.ExposeData();
     }

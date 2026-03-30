@@ -32,14 +32,6 @@ public class FontOfAnimaComp : WorldObjectComp
         }
     }
 
-    public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Caravan caravan)
-    {
-        foreach (FloatMenuOption floatMenuOption in CaravanArrivalAction_VisitFontOfAnima.GetFloatMenuOptions(caravan, (MapParent)parent))
-        {
-            yield return floatMenuOption;
-        }
-    }
-
     public override void PostExposeData()
     {
         Scribe_Values.Look(ref timeoutTick, "timeoutTick", -1);
