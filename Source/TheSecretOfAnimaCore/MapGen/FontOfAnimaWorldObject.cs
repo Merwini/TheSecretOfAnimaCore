@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 using RimWorld.Planet;
+using RimWorld;
 
 namespace tsoa.core;
 
@@ -13,6 +14,9 @@ public class FontOfAnimaWorldObject : MapParent
     int lastCaravanLeftTick;
     bool madeAnyAmber;
     int amberLeftBehind = 0;
+
+    public Quest quest;
+
     private Building_AnimaFont font;
     public Building_AnimaFont Font
     {
@@ -122,6 +126,7 @@ public class FontOfAnimaWorldObject : MapParent
         Scribe_Values.Look(ref lastCaravanLeftTick, "lastCaravanLeftTick");
         Scribe_Values.Look(ref madeAnyAmber, "madeAnyAmber");
         Scribe_Values.Look(ref amberLeftBehind, "amberLeftBehind");
+        Scribe_Values.Look(ref quest, "quest");
 
         base.ExposeData();
     }

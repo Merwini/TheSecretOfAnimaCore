@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<QuestScriptDef>
+		<defName>TSOA_Opportunity_FontOfAnima</defName>
+		<rootSelectionWeight>0</rootSelectionWeight>
+		<rootMinPoints>100000</rootMinPoints>
+		<autoAccept>true</autoAccept>
+		<questNameRules>
+			<rulesStrings>
+				<li>questName->[wordforcontainer] of [wordforpower]</li>
+				<li>wordforcontainer->Font</li>
+				<li>wordforcontainer->Nexus</li>
+				<li>wordforcontainer->Locus</li>
+				<li>wordforcontainer->Heart</li>
+				<li>wordforcontainer->Seat</li>
+				<li>wordforpower->Anima</li>
+				<li>wordforpower->Power</li>
+				<li>wordforpower->Essence</li>
+				<li>wordforpower->Spirit</li>
+				<li>wordforpower->Psionics</li>
+			</rulesStrings>
+		</questNameRules>
+		<questDescriptionRules>
+			<rulesStrings>
+				<li>questDescription->Word has reached us about a convergence of leylines of psychic power, and the stump of an ancient anima tree found there. This location would allow us to rapidly crystallize our anima sap into amber, but will also attract danger.\n\nThe longer we can defend the font, the more sap we can crystallize. But we need to act quickly, before the leylines shift.</li>
+			</rulesStrings>
+		</questDescriptionRules>
+		<root Class="QuestNode_Sequence">
+			<nodes>
+				<li Class="QuestNode_GetMap">
+					<canBeSpace>true</canBeSpace>
+				</li>
+
+				<li Class="QuestNode_GetSiteTile">
+					<storeAs>tile</storeAs>
+					<selectLandmarkChance>0.25</selectLandmarkChance>
+					<allowedLandmarks>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Oasis</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Lake</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">LakeWithIsland</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">LakeWithIslands</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Pond</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">DryLake</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">ToxicLake</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Wetland</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">HotSprings</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Archipelago</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">CoastalIsland</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Peninsula</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Bay</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Valley</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Cavern</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Chasm</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Cliffs</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Hollow</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">TerraformingScar</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">LavaLake</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">Dunes</li>
+						<li MayRequire="Ludeon.RimWorld.Odyssey">AncientHeatVent</li>
+					</allowedLandmarks>
+				</li>
+
+				<li Class="QuestNode_GenerateWorldObject">
+					<def>TSOA_FontOfAnimaWorldObject</def>
+					<tile>$tile</tile>
+					<storeAs>fontWO</storeAs>
+				</li>
+
+				<li Class="QuestNode_SpawnWorldObjects">
+					<worldObjects>$fontWO</worldObjects>
+				</li>
+
+				<li Class="QuestNode_WorldObjectTimeout">
+					<worldObject>$fontWO</worldObject>
+					<isQuestTimeout>true</isQuestTimeout>
+					<delayTicks>$(randInt(15,20)*60000)</delayTicks>
+					<inSignalDisable>fontWO.MapGenerated</inSignalDisable>
+					<node Class="QuestNode_Sequence">
+						<nodes>
+							<li Class="QuestNode_Letter">
+								<label TKey="LetterLabelQuestExpired">Quest expired: [resolvedQuestName]</label>
+								<text TKey="LetterTextQuestExpired">Word has reached us that the unusual anima trees have either disappeared or been destroyed. The quest [resolvedQuestName] has expired.</text>
+							</li>
+							<li Class="QuestNode_End">
+								<outcome>Fail</outcome>
+							</li>
+						</nodes>
+					</node>
+				</li>
+
+				<li Class="QuestNode_NoWorldObject">
+					<worldObject>$fontWO</worldObject>
+					<node Class="QuestNode_End">
+					</node>
+				</li>
+			</nodes>
+		</root>
+	</QuestScriptDef>
+	
+</Defs>

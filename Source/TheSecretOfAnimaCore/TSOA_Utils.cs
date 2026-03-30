@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using RimWorld.Planet;
+using RimWorld.QuestGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +62,7 @@ public class TSOA_Utils
         command.action = () =>
         {
             PayCost();
-            // TODO add quest / autoaccept to spawn the font
+            SpawnFontOfAnima();
         };
 
         return command;
@@ -91,6 +92,11 @@ public class TSOA_Utils
             List<Thing> silver = CaravanInventoryUtility.AllInventoryItems(caravan).Where(t => t.def == ThingDefOf.Silver).ToList();
             for (int i = silver.Count - 1; i >= 0; i--)
             {
+                if (leftToPay <= 0)
+                {
+                    break;
+                }
+
                 Thing thing = silver[i];
                 if (thing.stackCount > leftToPay)
                 {
@@ -108,8 +114,12 @@ public class TSOA_Utils
 
     public static void SpawnFontOfAnima()
     {
-        // TODO generate quest
-        // TODO spawn world object
-        // TODO ???
+        Quest quest = QuestUtility.GenerateQuestAndMakeAvailable(TSOA_DefOf.TSOA_Opportunity_FontOfAnima, new Slate());
+
+        // Should only be one, since the gizmo should be disabled if any already exists, but just in case
+        FontOfAnimaWorldObject fontWorldObject = Find.WorldObjects.AllWorldObjects.FirstOrDefault(o => o is FontOfAnimaWorldObject) as FontOfAnimaWorldObject;
+
+        fontWorldObject.quest = quest;
     }
+
 }

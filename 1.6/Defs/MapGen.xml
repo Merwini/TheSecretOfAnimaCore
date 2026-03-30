@@ -54,7 +54,7 @@
 	</SitePartDef>
 
 	<WorldObjectDef ParentName="StaticWorldObjectBase">
-		<defName>TSOA_FontOfAnimaSite</defName>
+		<defName>TSOA_FontOfAnimaWorldObject</defName>
 		<label>font of anima</label>
 		<description>T</description>
 		<worldObjectClass>tsoa.core.FontOfAnimaWorldObject</worldObjectClass>

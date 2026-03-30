@@ -49,5 +49,7 @@ namespace tsoa.core
 
         [MayRequireAnomaly] // should never be references with Anomaly not active anyway
         public static ThingDef TSOA_SignalAction_AnomalyAmbush;
+
+        public static QuestScriptDef TSOA_Opportunity_FontOfAnima;
     }
 }
