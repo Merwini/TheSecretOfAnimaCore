@@ -64,7 +64,7 @@
 		<expandingIconPriority>50</expandingIconPriority>
 		<expandMore>true</expandMore>
 		<IncidentTargetTags>
-			<li>Map_PlayerHome</li>
+			<li>Map_Misc</li>
 		</IncidentTargetTags>
 		<mapGenerator>TSOA_FontOfAnimaMapGenerator</mapGenerator>
 		<canBePlayerHome>true</canBePlayerHome>

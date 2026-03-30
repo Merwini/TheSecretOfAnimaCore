@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -146,7 +147,7 @@ public class HarmonyPatches
             for (int i = 0; i < codes.Count; i++)
             {
                 // Find where the skillRequirements check jumps to the next check
-                    // Unique line before that is a callvirt on Verse.SkillRequirement
+                // Unique line before that is a callvirt on Verse.SkillRequirement
                 if (skillRequirementsNullIndex == -1 && codes[i].opcode == OpCodes.Callvirt && codes[i].operand.ToString().Contains("Verse.SkillRequirement"))
                 {
                     // Next brfalse.s is the one I want
@@ -337,6 +338,27 @@ public class HarmonyPatches
         {
             CompProperties_GroupedFacility.ClearDictionaries();
             CompProperties_GroupedFacility.CacheDictionaries();
+        }
+    }
+
+    [HarmonyPatch(typeof(Settlement), nameof(Settlement.GetCaravanGizmos))]
+    public static class Settlement_GetCaravanGizmos_Postfix
+    {
+        public static void Postfix(Settlement __instance, ref IEnumerable<Gizmo> __result, Caravan caravan)
+        {
+            if (__instance.CanTradeNow && TSOA_DefOf.TSOA_AnimaThree.IsFinished)
+            {
+                List<Gizmo> gizmosList = __result.ToList();
+
+                Gizmo fontGizmo = TSOA_Utils.GetFontGizmo(caravan, 1500, __instance.Faction);
+
+                if (fontGizmo != null)
+                {
+                    gizmosList.Add(fontGizmo);
+                }
+
+                __result = gizmosList.AsEnumerable();
+            }
         }
     }
 }

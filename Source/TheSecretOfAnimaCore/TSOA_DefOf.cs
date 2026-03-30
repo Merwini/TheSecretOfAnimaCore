@@ -43,6 +43,8 @@ namespace tsoa.core
 
         public static ResearchProjectDef TSOA_AnimaOne;
 
+        public static ResearchProjectDef TSOA_AnimaThree;
+
         public static ThingDef TSOA_TreeAnimaSilent;
 
         [MayRequireAnomaly] // should never be references with Anomaly not active anyway

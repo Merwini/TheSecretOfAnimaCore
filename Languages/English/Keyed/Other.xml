@@ -47,4 +47,7 @@
 	<TSOA_FontUnloadAmberLabel>extract amber</TSOA_FontUnloadAmberLabel>
 	<TSOA_FontUnloadAmberDesc>Give the order to begin extract crystallized anima amber from the font</TSOA_FontUnloadAmberDesc>
 
+	<TSOA_AskForFontLabel>request font location</TSOA_AskForFontLabel>
+	<TSOA_AskForFontDesc>Ask this faction for the location of an active Font of Anima. Requires 40 goodwill, and costs 1500 silver which your caravan must be carrying.</TSOA_AskForFontDesc>
+
 </LanguageData>
