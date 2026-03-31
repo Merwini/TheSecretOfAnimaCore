@@ -14,6 +14,8 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
     private FloatRange attackCooldown = new FloatRange(0.5f, 1.5f); // 0.5 to 1.5 days, TODO might change
     private int ticksPerAmber = 60000; // 1 day, TODO might change
     private float recoveryDivisor = 3f;
+    private float threatPointBase = 1000;
+    private float threatPointPerAmber = 500;
 
     int lastCaravanLeftTick;
     bool madeAnyAmber = false;
@@ -164,10 +166,61 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 
     private void SpawnNextWave()
     {
-        Log.Error("SpawnNextWave not implemented");
-        // TODO fire a raid. Anomaly if active, ??? if not
-        // Raid points 1000 + 500 per amber produced? Maybe more? Player should have acolyte gear (industrial equivalent), but is not on their home base
+        StorytellerComp storytellerComp = Find.Storyteller.storytellerComps.First((StorytellerComp x) => x is StorytellerComp_OnOffCycle || x is StorytellerComp_RandomMain);
+        IncidentParms parms = storytellerComp.GenerateParms(IncidentCategoryDefOf.ThreatBig, Map);
+        IncidentDef incident = SelectIncident();
+        parms.forced = true;
+        parms.points = GetThreatPoints();
+        parms.target = Map;
+        if (incident.defName != "ShamblerAssault") // setting a raidArrivalMode causes an exception when generating letter for some reason
+        {
+            parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
+        }
+
+        incident.Worker.TryExecute(parms);
         SetNextWaveTick();
+    }
+
+    private IncidentDef SelectIncident()
+    {
+        List<string> incidentDefNames = new List<string>
+        {
+            "RaidEnemy"
+        };
+        if (ModsConfig.AnomalyActive)
+        {
+            incidentDefNames.Add("SightstealerSwarm");
+            incidentDefNames.Add("ShamblerAssault");
+            incidentDefNames.Add("PsychicRitualSiege");
+            incidentDefNames.Add("HateChanters");
+            incidentDefNames.Add("FleshbeastAttack");
+            incidentDefNames.Add("GorehulkAssault");
+            incidentDefNames.Add("DevourerAssault");
+            incidentDefNames.Add("ChimeraAssault");
+        }
+
+        IncidentDef chosen = null;
+        while (chosen == null && incidentDefNames.Count != 0)
+        {
+            string chosenDefName = incidentDefNames.RandomElement();
+            chosen = DefDatabase<IncidentDef>.GetNamedSilentFail(chosenDefName);
+            if (chosen == null)
+            {
+                incidentDefNames.Remove(chosenDefName);
+            }
+        }
+
+        if (chosen == null)
+        {
+            Log.Error("Could not select an incident for FontOfAnima wave");
+        }
+
+        return chosen;
+    }
+
+    private float GetThreatPoints()
+    {
+        return threatPointBase + threatPointPerAmber * Font.AmberAmount;
     }
 
     private void SetNextWaveTick()

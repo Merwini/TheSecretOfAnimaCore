@@ -59,4 +59,7 @@
 	<TSOA_CrystallizationStartedMessage>The process of crystallizing anima sap into amber has begun. Prepare for danger.</TSOA_CrystallizationStartedMessage>
 	<TSOA_CrystallizationFinishedMessage>The Font of Anima has crystallized all the sap it can, and is returning to an inert state. You should collect the amber and leave.</TSOA_CrystallizationFinishedMessage>
 	<TSOA_FontDestroyedMessage>The Font of Anima has been destroyed. A portion of the amber it held was saved, but most of it was destroyed along with the Font.</TSOA_FontDestroyedMessage>
+
+	<TSOA_ConfirmExtractAmber>Are you sure you want to extract the amber early?</TSOA_ConfirmExtractAmber>
+	<TSOA_ConfirmExtractAmber2>Once the amber is extracted, the Font will become inert, and you will have to find a new one.</TSOA_ConfirmExtractAmber2>
 </LanguageData>

@@ -126,7 +126,14 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
                 icon = ContentFinder<Texture2D>.Get("TSOA/Things/Item/Resource/AnimaAmber/AnimaAmber_c"),
                 action = () =>
                 {
-                    ToggleEmptyNow();
+                    if (CanCrystallize())
+                    {
+                        Find.WindowStack.Add(new Window_ConfirmExtractAmber(this));
+                    }
+                    else
+                    {
+                        ToggleEmptyNow();
+                    }
                 }
             };
             yield return unloadAmberGizmo;
