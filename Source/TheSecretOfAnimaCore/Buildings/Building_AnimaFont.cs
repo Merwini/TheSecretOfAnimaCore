@@ -14,6 +14,7 @@ namespace tsoa.core;
 public class Building_AnimaFont : Building, IVirtualThingHolder
 {
     public const int MaxSapAmount = 20; // 2 stacks
+    private const int SapPerAmber = 2;
 
     private int amberAmount; // not stored as an actual Thing, don't want it to all drop if destroyed
     public int AmberAmount
@@ -190,13 +191,28 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
     {
         if (sapAmount > 1)
         {
-            sapAmount -= 5;
+            sapAmount -= SapPerAmber;
             amberAmount += 1;
             // TODO some visual effect, maybe sound
+
+            if (Map.Parent is FontOfAnimaWorldObject wo)
+            {
+                wo.Notify_CrystallizationStarted();
+            }
+            else
+            {
+                Log.Error("Font of Anima tried to start crystallization on a map not associated with a FontOfAnimaWorldObject");
+            }
+
             return true;
         }
 
         return false;
+    }
+
+    public bool CanCrystallize()
+    {
+        return SapAmount >= SapPerAmber;
     }
 
     private void UpdateDesignation()
@@ -226,6 +242,16 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
             if (emptyDesignation != null)
                 emptyDesignation.Delete();
         }
+    }
+
+    public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+    {
+        if (Map.Parent is FontOfAnimaWorldObject wo)
+        {
+            wo.Notify_FontDestroyed();
+        }
+
+        base.Destroy(mode);
     }
 
     public override void ExposeData()

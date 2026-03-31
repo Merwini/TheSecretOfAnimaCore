@@ -11,9 +11,17 @@ namespace tsoa.core;
 
 public class FontOfAnimaWorldObject : MapParent
 {
+    private FloatRange attackCooldown = new FloatRange(0.5f, 1.5f); // 0.5 to 1.5 days, TODO might change
+    private int ticksPerAmber = 60000; // 1 day, TODO might change
+
     int lastCaravanLeftTick;
-    bool madeAnyAmber;
+    bool madeAnyAmber = false;
     int amberLeftBehind = 0;
+    bool crystallizationStarted = false;
+    int wavesSurvived = 0;
+    int nextWaveTick = -1;
+    int nextAmberTick = -1;
+
 
     public Quest relatedQuest;
     public Quest RelatedQuest
@@ -66,6 +74,78 @@ public class FontOfAnimaWorldObject : MapParent
         }
     }
 
+    public override void Tick()
+    {
+        if (!crystallizationStarted)
+        {
+            return;
+        }
+
+        int currentTick = Find.TickManager.TicksGame;
+
+        if (currentTick >= nextWaveTick)
+        {
+            // TODO spawn wave
+            wavesSurvived++;
+            SetNextWaveTick();
+        }
+
+        if (currentTick >= nextAmberTick)
+        {
+            if (Font != null && !Font.Destroyed && Font.Spawned)
+            {
+                if (Font.Crystallize())
+                {
+                    madeAnyAmber = true;
+                }
+
+                if (Font.CanCrystallize())
+                {
+                    SetNextAmberTick();
+                }
+                else
+                {
+                    // TODO end crystallization, maybe some visual effect + sound
+                    Messages.Message("TSOA_CrystallizationFinishedMessage".Translate(), Font, MessageTypeDefOf.NeutralEvent);
+                }
+            }
+        }
+
+        base.Tick();
+    }
+
+    private void SetNextWaveTick()
+    {
+        nextWaveTick = Find.TickManager.TicksGame + (int)(attackCooldown.RandomInRange * 60000);
+    }
+
+    private void SetNextAmberTick()
+    {
+        nextAmberTick = Find.TickManager.TicksGame + ticksPerAmber;
+    }
+
+    private void SpawnNextWave()
+    {
+        // TODO fire a raid. Anomaly if active, ??? if not
+        // Raid points 1000 + 500 per wave survived? Maybe more? Player should have acolyte gear (industrial equivalent), but is not on their home base
+    }
+
+    public void Notify_CrystallizationStarted()
+    {
+        if (!crystallizationStarted)
+        {
+            crystallizationStarted = true;
+            Messages.Message("TSOA_CrystallizationStartedMessage".Translate(), Font, MessageTypeDefOf.NeutralEvent);
+            SetNextWaveTick();
+            SetNextAmberTick();
+        }
+    }
+
+    public void Notify_FontDestroyed()
+    {
+        // TODO
+    }
+
     // Maybe there's a better way to do this, but when the map is removed (no colonists remaining) I want to track if the last pawn left via caravan or died
     public override void Notify_CaravanFormed(Caravan caravan)
     {
@@ -76,9 +156,9 @@ public class FontOfAnimaWorldObject : MapParent
 
     public override void Notify_MyMapAboutToBeRemoved()
     {
-        if (Font != null)
+        if (Font != null && !Font.Destroyed && Font.Spawned)
         {
-            // TODO check if it still has amber in it, add to amberLeftBehind
+            amberLeftBehind += Font.AmberAmount;
         }
 
         foreach (var amber in Map.listerThings.ThingsOfDef(TSOA_DefOf.TSOA_AnimaAmber))
@@ -112,7 +192,7 @@ public class FontOfAnimaWorldObject : MapParent
             }
             else
             {
-                // letter for giving up without making any amber
+                // letter for leaving without making any amber
             }
         }
         else
@@ -153,6 +233,10 @@ public class FontOfAnimaWorldObject : MapParent
         Scribe_Values.Look(ref lastCaravanLeftTick, "lastCaravanLeftTick");
         Scribe_Values.Look(ref madeAnyAmber, "madeAnyAmber");
         Scribe_Values.Look(ref amberLeftBehind, "amberLeftBehind");
+        Scribe_Values.Look(ref crystallizationStarted, "crystallizationStarted");
+        Scribe_Values.Look(ref wavesSurvived, "wavesSurvived");
+        Scribe_Values.Look(ref nextWaveTick, "nextWaveTick");
+        Scribe_Values.Look(ref nextAmberTick, "nextAmberTick");
 
         base.ExposeData();
     }

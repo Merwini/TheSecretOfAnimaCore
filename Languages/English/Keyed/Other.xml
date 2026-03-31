@@ -52,4 +52,7 @@
 	<TSOA_AskForFontDisabledCost>Requires {0} silver.</TSOA_AskForFontDisabledCost>
 	<TSOA_AskForFontDisabledGoodwill>Requires {0} goodwill.</TSOA_AskForFontDisabledGoodwill>
 	<TSOA_AskForFontAlreadySpawned>You already know the location of an active Font of Anima.</TSOA_AskForFontAlreadySpawned>
+
+	<TSOA_CrystallizationStartedMessage>The process of crystallizing anima sap into amber has begun. Prepare for danger.</TSOA_CrystallizationStartedMessage>
+	<TSOA_CrystallizationFinishedMessage>The Font of Anima has crystallized all the sap it can, and is returning to an inert state. You should collect the amber and leave.</TSOA_CrystallizationFinishedMessage>
 </LanguageData>

@@ -72,7 +72,6 @@
 			<li Class="WorldObjectCompProperties_Abandon" />
 			<li Class="WorldObjectCompProperties_FormCaravan"/>
 			<li Class="WorldObjectCompProperties_EnterCooldown" />
-			<li Class="tsoa.core.WorldObjectCompProperties_FontOfAnima"/>
 		</comps>
 	</WorldObjectDef>
 

@@ -22,9 +22,9 @@ public class CaravanArrivalAction_VisitFontOfAnima : CaravanArrivalAction
     {
     }
 
-    public CaravanArrivalAction_VisitFontOfAnima(FontOfAnimaComp fontComp)
+    public CaravanArrivalAction_VisitFontOfAnima(MapParent mapParent)
     {
-        mapParent = (MapParent)fontComp.parent;
+        this.mapParent = mapParent;
     }
 
     public override FloatMenuAcceptanceReport StillValid(Caravan caravan, PlanetTile destinationTile)
@@ -96,7 +96,7 @@ public class CaravanArrivalAction_VisitFontOfAnima : CaravanArrivalAction
 
     public static IEnumerable<FloatMenuOption> GetFloatMenuOptions(Caravan caravan, MapParent animaFont)
     {
-        return CaravanArrivalActionUtility.GetFloatMenuOptions(() => CanVisit(caravan, animaFont), () => new CaravanArrivalAction_VisitFontOfAnima(animaFont.GetComponent<FontOfAnimaComp>()), "TSOA_AnimaFontVisit".Translate(animaFont.Label), caravan, animaFont.Tile, animaFont);
+        return CaravanArrivalActionUtility.GetFloatMenuOptions(() => CanVisit(caravan, animaFont), () => new CaravanArrivalAction_VisitFontOfAnima(animaFont), "TSOA_AnimaFontVisit".Translate(animaFont.Label), caravan, animaFont.Tile, animaFont);
     }
 
     public override void ExposeData()
