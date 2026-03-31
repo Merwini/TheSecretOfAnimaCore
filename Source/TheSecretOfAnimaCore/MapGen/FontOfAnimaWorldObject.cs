@@ -9,19 +9,42 @@ using RimWorld;
 
 namespace tsoa.core;
 
-public class FontOfAnimaWorldObject : MapParent
+public class FontOfAnimaWorldObject : MapParent, IThingGlower
 {
     private FloatRange attackCooldown = new FloatRange(0.5f, 1.5f); // 0.5 to 1.5 days, TODO might change
     private int ticksPerAmber = 60000; // 1 day, TODO might change
+    private float recoveryDivisor = 3f;
 
     int lastCaravanLeftTick;
     bool madeAnyAmber = false;
     int amberLeftBehind = 0;
     bool crystallizationStarted = false;
-    int wavesSurvived = 0;
     int nextWaveTick = -1;
     int nextAmberTick = -1;
 
+    public int NextWaveTick
+    {
+        get
+        {
+            return nextWaveTick;
+        }
+        set
+        {
+            nextWaveTick = Math.Clamp(value, 0, int.MaxValue);
+        }
+    }
+
+    public int NextAmberTick
+    {
+        get
+        {
+            return nextAmberTick;
+        }
+        set
+        {
+            nextAmberTick = Math.Clamp(value, 0, int.MaxValue);
+        }
+    }
 
     public Quest relatedQuest;
     public Quest RelatedQuest
@@ -74,6 +97,24 @@ public class FontOfAnimaWorldObject : MapParent
         }
     }
 
+    public int AmberHeld
+    {
+        get
+        {
+            if (Font != null)
+            {
+                return Font.AmberAmount;
+            }
+
+            return 0;
+        }
+    }
+
+    public bool ShouldBeLitNow()
+    {
+        return crystallizationStarted;
+    }
+
     public override void Tick()
     {
         if (!crystallizationStarted)
@@ -85,38 +126,35 @@ public class FontOfAnimaWorldObject : MapParent
 
         if (currentTick >= nextWaveTick)
         {
-            // TODO spawn wave
-            wavesSurvived++;
-            SetNextWaveTick();
+            SpawnNextWave();
         }
 
         if (currentTick >= nextAmberTick)
         {
-            if (Font != null && !Font.Destroyed && Font.Spawned)
-            {
-                if (Font.Crystallize())
-                {
-                    madeAnyAmber = true;
-                }
-
-                if (Font.CanCrystallize())
-                {
-                    SetNextAmberTick();
-                }
-                else
-                {
-                    // TODO end crystallization, maybe some visual effect + sound
-                    Messages.Message("TSOA_CrystallizationFinishedMessage".Translate(), Font, MessageTypeDefOf.NeutralEvent);
-                }
-            }
+            SpawnNextAmber();
         }
 
         base.Tick();
     }
 
-    private void SetNextWaveTick()
+    private void SpawnNextAmber()
     {
-        nextWaveTick = Find.TickManager.TicksGame + (int)(attackCooldown.RandomInRange * 60000);
+        if (Font != null && !Font.Destroyed && Font.Spawned)
+        {
+            if (Font.Crystallize())
+            {
+                madeAnyAmber = true;
+            }
+
+            if (Font.CanCrystallize())
+            {
+                SetNextAmberTick();
+            }
+            else
+            {
+                EndCrystallization();
+            }
+        }
     }
 
     private void SetNextAmberTick()
@@ -126,8 +164,22 @@ public class FontOfAnimaWorldObject : MapParent
 
     private void SpawnNextWave()
     {
+        Log.Error("SpawnNextWave not implemented");
         // TODO fire a raid. Anomaly if active, ??? if not
-        // Raid points 1000 + 500 per wave survived? Maybe more? Player should have acolyte gear (industrial equivalent), but is not on their home base
+        // Raid points 1000 + 500 per amber produced? Maybe more? Player should have acolyte gear (industrial equivalent), but is not on their home base
+        SetNextWaveTick();
+    }
+
+    private void SetNextWaveTick()
+    {
+        nextWaveTick = Find.TickManager.TicksGame + (int)(attackCooldown.RandomInRange * GenDate.TicksPerDay);
+    }
+
+    private void EndCrystallization()
+    {
+        crystallizationStarted = false;
+        Messages.Message("TSOA_CrystallizationFinishedMessage".Translate(), Font, MessageTypeDefOf.NeutralEvent);
+        // TODO visual effect + sound
     }
 
     public void Notify_CrystallizationStarted()
@@ -141,9 +193,12 @@ public class FontOfAnimaWorldObject : MapParent
         }
     }
 
-    public void Notify_FontDestroyed()
+    public void Notify_FontDestroyed(int amberAmount, IntVec3 cell)
     {
-        // TODO
+        crystallizationStarted = false;
+        Messages.Message("TSOA_FontDestroyedMessage".Translate(), new LookTargets(cell, Map), MessageTypeDefOf.NegativeEvent);
+        Thing amber = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaAmber, cell, Map);
+        amber.stackCount = (int)(amberAmount / recoveryDivisor);
     }
 
     // Maybe there's a better way to do this, but when the map is removed (no colonists remaining) I want to track if the last pawn left via caravan or died
@@ -234,7 +289,6 @@ public class FontOfAnimaWorldObject : MapParent
         Scribe_Values.Look(ref madeAnyAmber, "madeAnyAmber");
         Scribe_Values.Look(ref amberLeftBehind, "amberLeftBehind");
         Scribe_Values.Look(ref crystallizationStarted, "crystallizationStarted");
-        Scribe_Values.Look(ref wavesSurvived, "wavesSurvived");
         Scribe_Values.Look(ref nextWaveTick, "nextWaveTick");
         Scribe_Values.Look(ref nextAmberTick, "nextAmberTick");
 

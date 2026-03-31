@@ -131,12 +131,53 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
             };
             yield return unloadAmberGizmo;
         }
+
+        if (HasBegun)
+        {
+            FontOfAnimaWorldObject wo = Map.Parent as FontOfAnimaWorldObject;
+
+            if (wo != null && CanCrystallize())
+            {
+                yield return new Command_Action()
+                {
+                    defaultLabel = "Dev: Crystallize next tick",
+                    action = () =>
+                    {
+                        wo.NextAmberTick = 1;
+                    }
+                };
+            }
+            
+            if (wo != null)
+            {
+                yield return new Command_Action()
+                {
+                    defaultLabel = "Dev: Wave next tick",
+                    action = () =>
+                    {
+                        wo.NextWaveTick = 1;
+                    }
+                };
+            }
+        }
     }
 
     public override string GetInspectString()
     {
-        // TODO show sap / amber
-        throw new NotImplementedException();
+        StringBuilder sb = new StringBuilder();
+        sb.Append(base.GetInspectString());
+        sb.AppendLine("TSOA_SapHeld".Translate(SapAmount));
+        sb.AppendLine("TSOA_AmberHeld".Translate(AmberAmount));
+
+        FontOfAnimaWorldObject wo = Map.Parent as FontOfAnimaWorldObject;
+        if (HasBegun && wo != null && DebugSettings.godMode)
+        {
+            int currentTick = Find.TickManager.TicksGame;
+            sb.AppendLine($"Ticks to next amber: {wo.NextAmberTick - currentTick}");
+            sb.AppendLine($"Ticks to next wave: {wo.NextWaveTick - currentTick}");
+        }
+
+        return sb.ToString().TrimEnd();
     }
 
     public void ToggleEmptyNow()
@@ -166,6 +207,16 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
         hasBegun = true;
         loadNow = false;
         UpdateDesignation();
+
+        if (Map.Parent is FontOfAnimaWorldObject wo)
+        {
+            wo.Notify_CrystallizationStarted();
+        }
+        else
+        {
+            Log.Error("Font of Anima tried to start crystallization on a map not associated with a FontOfAnimaWorldObject");
+        }
+
     }
 
     public bool AddSap(Thing sap)
@@ -194,15 +245,6 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
             sapAmount -= SapPerAmber;
             amberAmount += 1;
             // TODO some visual effect, maybe sound
-
-            if (Map.Parent is FontOfAnimaWorldObject wo)
-            {
-                wo.Notify_CrystallizationStarted();
-            }
-            else
-            {
-                Log.Error("Font of Anima tried to start crystallization on a map not associated with a FontOfAnimaWorldObject");
-            }
 
             return true;
         }
@@ -248,7 +290,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
     {
         if (Map.Parent is FontOfAnimaWorldObject wo)
         {
-            wo.Notify_FontDestroyed();
+            wo.Notify_FontDestroyed(AmberAmount, this.InteractionCell);
         }
 
         base.Destroy(mode);

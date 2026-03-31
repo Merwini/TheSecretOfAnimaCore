@@ -176,6 +176,9 @@
 				<categoryTag>TSOA_AnimaGraveCategory</categoryTag>
 				<canPlaceWithoutLink>false</canPlaceWithoutLink>
 			</li>
+			<li Class="CompProperties_Glower">
+				
+			</li>
 		</comps>
 		<placeWorkers>
 			<li>tsoa.core.PlaceWorker_ShowGroupedFacilitiesConnections</li>
