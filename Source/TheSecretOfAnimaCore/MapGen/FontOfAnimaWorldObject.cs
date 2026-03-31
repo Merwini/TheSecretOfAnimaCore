@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Verse;
+using Verse.Sound;
 using RimWorld.Planet;
 using RimWorld;
 
@@ -232,7 +233,18 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
     {
         crystallizationStarted = false;
         Messages.Message("TSOA_CrystallizationFinishedMessage".Translate(), Font, MessageTypeDefOf.NeutralEvent);
-        // TODO visual effect + sound
+        DoEffectAndSound();
+    }
+
+    private void DoEffectAndSound()
+    {
+        EffecterDef effDef = EffecterDefOf.ForcedVisible;
+        Effecter eff = effDef.Spawn();
+        eff.scale = 4f;
+        eff.Trigger(Font, Font);
+
+        SoundDef sndDef = SoundDefOf.PsychicSootheGlobal;
+        sndDef.PlayOneShot(Font);
     }
 
     public void Notify_CrystallizationStarted()
@@ -241,6 +253,7 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
         {
             crystallizationStarted = true;
             Messages.Message("TSOA_CrystallizationStartedMessage".Translate(), Font, MessageTypeDefOf.NeutralEvent);
+            DoEffectAndSound();
             SetNextWaveTick();
             SetNextAmberTick();
         }
@@ -291,32 +304,18 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 
     public override void PostRemove()
     {
-        // TODO
         if (Find.TickManager.TicksGame == lastCaravanLeftTick)
         {
-            if (madeAnyAmber)
-            {
-                // letter for made amber and successfully left
-            }
-            else
-            {
-                // letter for leaving without making any amber
-            }
+            Find.LetterStack.ReceiveLetter("TSOA_FontDespawnLetterLabel".Translate(), "TSOA_FontDespawnCaravanDesc".Translate(), LetterDefOf.NeutralEvent);
         }
         else
         {
-            if (madeAnyAmber)
-            {
-                // letter for making amber and then dying
-            }
-            else
-            {
-                // letter for dying without making any amber
-            }
+            Find.LetterStack.ReceiveLetter("TSOA_FontDespawnLetterLabel".Translate(), "TSOA_FontDespawnDiedDesc".Translate(), LetterDefOf.NeutralEvent);
         }
 
         if (amberLeftBehind != 0)
         {
+            Find.LetterStack.ReceiveLetter("TSOA_FontDespawnAmberLeftLabel".Translate(), "TSOA_FontDespawnAmberLeftDesc".Translate(), LetterDefOf.NeutralEvent);
             QueueAmberOffer();
         }
 

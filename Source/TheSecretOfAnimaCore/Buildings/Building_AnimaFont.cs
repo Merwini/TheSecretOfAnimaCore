@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace tsoa.core;
 
@@ -223,7 +224,6 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
         {
             Log.Error("Font of Anima tried to start crystallization on a map not associated with a FontOfAnimaWorldObject");
         }
-
     }
 
     public bool AddSap(Thing sap)
@@ -251,7 +251,14 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
         {
             sapAmount -= SapPerAmber;
             amberAmount += 1;
-            // TODO some visual effect, maybe sound
+
+            EffecterDef effDef = EffecterDefOf.Shield_Break;
+            Effecter eff = effDef.Spawn();
+            eff.scale = 4f;
+            eff.Trigger(this, this);
+
+            SoundDef sndDef = SoundDefOf.EnergyShield_AbsorbDamage;
+            sndDef.PlayOneShot(this);
 
             return true;
         }

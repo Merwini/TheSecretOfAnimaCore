@@ -62,4 +62,11 @@
 
 	<TSOA_ConfirmExtractAmber>Are you sure you want to extract the amber early?</TSOA_ConfirmExtractAmber>
 	<TSOA_ConfirmExtractAmber2>Once the amber is extracted, the Font will become inert, and you will have to find a new one.</TSOA_ConfirmExtractAmber2>
+
+	<TSOA_FontDespawnLetterLabel>Font of Anima lost</TSOA_FontDespawnLetterLabel>
+	<TSOA_FontDespawnCaravanDesc>As your last colonist leaves the Font of Anima, it goes inert. The leylines will not intersect at this point again for many years. You will need to find a new Font the next time you need one.</TSOA_FontDespawnCaravanDesc>
+	<TSOA_FontDespawnDiedDesc>As your last colonist dies defending the Font of Anima, it goes inert. The leylines will not intersect at this point again for many years. You will need to find a new Font the next time you need one.</TSOA_FontDespawnDiedDesc>
+
+	<TSOA_FontDespawnAmberLeftLabel>anima amber left behind</TSOA_FontDespawnAmberLeftLabel>
+	<TSOA_FontDespawnAmberLeftDesc>Your colonists appear to have left behind some precious anima amber. Perhaps some scavenger will happen across it in the future?</TSOA_FontDespawnAmberLeftDesc>
 </LanguageData>
