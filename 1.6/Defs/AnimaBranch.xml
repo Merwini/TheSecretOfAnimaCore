@@ -1,17 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<IncidentDef>
-		<defName>TSOA_AnimaBranchDrop</defName>
-		<label>anima branch drop</label>
-		<targetTags>
-			<li>Map_PlayerHome</li>
-		</targetTags>
-		<workerClass>tsoa.core.IncidentWorker_AnimaBranchDrop</workerClass>
-		<category>ShipChunkDrop</category>
-		<baseChance>3</baseChance>
-		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
-	</IncidentDef>
-
+	
 	<ThingDef ParentName="BuildingBase" Name="ShipChunkBase">
 		<defName>TSOA_AnimaBranch</defName>
 		<label>fallen anima branch</label>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<IncidentDef>
+		<defName>TSOA_AnimaBranchDrop</defName>
+		<label>anima branch drop</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>tsoa.core.IncidentWorker_AnimaBranchDrop</workerClass>
+		<category>ShipChunkDrop</category>
+		<baseChance>3</baseChance>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+	</IncidentDef>
+
+	<IncidentDef>
+		<defName>TSOA_AmberRecoveryOffer</defName>
+		<label>amber recovery offer</label>
+		<targetTags>
+			<li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>tsoa.core.IncidentWorker_AmberRecoveryOffer</workerClass>
+		<category>Misc</category>
+		<baseChance>0</baseChance>
+		<canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+	</IncidentDef>
+	
+</Defs>

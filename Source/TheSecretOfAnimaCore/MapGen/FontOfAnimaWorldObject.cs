@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 using Verse.Sound;
-using RimWorld.Planet;
 using RimWorld;
+using RimWorld.Planet;
 
 namespace tsoa.core;
 
@@ -14,7 +15,7 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 {
     private FloatRange attackCooldown = new FloatRange(0.5f, 1.5f); // 0.5 to 1.5 days, TODO might change
     private int ticksPerAmber = 60000; // 1 day, TODO might change
-    private float recoveryDivisor = 3f;
+    private float recoveryDivisor = 2f; // arbitrary, TODO balance, maybe give full?
     private float threatPointBase = 1000;
     private float threatPointPerAmber = 500;
 
@@ -324,7 +325,22 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 
     private void QueueAmberOffer()
     {
-        // TODO if amber is left behind, an offer will be made to sell it back to the player
+        int recoverableAmber = Mathf.Max(1, Mathf.FloorToInt(amberLeftBehind / recoveryDivisor));
+        int fireTick = Find.TickManager.TicksGame + Rand.RangeInclusive(3, 7) * GenDate.TicksPerDay;
+
+        Map map = Find.AnyPlayerHomeMap;
+        if (map == null)
+        {
+            Log.Warning("Could not queue amber recovery offer because there is no player home map.");
+            return;
+        }
+
+        IncidentParms parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.GiveQuest, map);
+        parms.forced = true;
+        parms.target = map;
+        parms.points = recoverableAmber; // just stashing this here, incident worker will read this then reassign a real point value
+
+        Find.Storyteller.incidentQueue.Add(TSOA_DefOf.TSOA_AmberRecoveryOffer, fireTick, parms);
     }
 
     public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Caravan caravan)
