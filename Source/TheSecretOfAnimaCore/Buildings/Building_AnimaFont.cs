@@ -40,7 +40,10 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
         set
         {
             sapAmount = value;
-            // Dirty Mesh if now empty
+            if (sapAmount <= 0)
+            {
+                this.DirtyMapMesh(Map);
+            }
         }
     }
 
