@@ -70,9 +70,9 @@
 		<description>The stump of an ancient anima tree that grew at an intersection of leylines of great psychic power.</description>
 		<thingClass>tsoa.core.Building_AnimaFont</thingClass>
 		<graphicData>
-			<texPath>TSOA/Things/Building/Basin/TSOA_BasinFull</texPath>
+			<texPath>TSOA/Things/Building/Font/TSOA_FontFull</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(3, 3)</drawSize>
+			<drawSize>(3.3, 3.3)</drawSize>
 			<shadowData>
 				<volume>(1, 0.45, 2)</volume>
 			</shadowData>
@@ -94,9 +94,9 @@
 		<comps>
 			<li Class="tsoa.core.CompProperties_EmptyStateGraphicStuffed">
 				<graphicData>
-					<texPath>TSOA/Things/Building/Basin/TSOA_BasinEmpty</texPath>
+					<texPath>TSOA/Things/Building/Font/TSOA_FontEmpty</texPath>
 					<graphicClass>Graphic_Single</graphicClass>
-					<drawSize>(3, 3)</drawSize>
+					<drawSize>(3.3, 3.3)</drawSize>
 					<shaderType>CutoutComplex</shaderType>
 				</graphicData>
 			</li>
