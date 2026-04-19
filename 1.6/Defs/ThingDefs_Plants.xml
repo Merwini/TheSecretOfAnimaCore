@@ -15,6 +15,7 @@
 			<texPath>TSOA/Things/Plant/AnimaFlower</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
+		<tickerType>Normal</tickerType>
 		<uiIconScale>2</uiIconScale>
 		<altitudeLayer>Item</altitudeLayer>
 		<selectable>true</selectable>
@@ -44,6 +45,10 @@
 			<li Class="CompProperties_Glower">
 				<glowRadius>7</glowRadius>
 				<glowColor>(200,200,200,0)</glowColor>
+			</li>
+			<li Class="tsoa.core.CompProperties_BiHeatPusher">
+				<targetTemperatureRange>100~100</targetTemperatureRange>
+				<heatPerSecond>10</heatPerSecond>
 			</li>
 		</comps>
 	</ThingDef>
