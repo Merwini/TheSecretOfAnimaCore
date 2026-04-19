@@ -47,8 +47,10 @@
 				<glowColor>(200,200,200,0)</glowColor>
 			</li>
 			<li Class="tsoa.core.CompProperties_BiHeatPusher">
-				<targetTemperatureRange>100~100</targetTemperatureRange>
-				<heatPerSecond>10</heatPerSecond>
+				<!-- default human comfortable temp -->
+				<targetTemperatureRange>16~26</targetTemperatureRange>
+				<!-- Aiming for a 5 degree temp difference for a 36-cell room -->
+				<heatPerSecond>2.6</heatPerSecond>
 			</li>
 		</comps>
 	</ThingDef>
