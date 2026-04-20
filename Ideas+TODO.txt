@@ -1,11 +1,25 @@
-Process to refine sap into amber
+Something to do with mechanoid corpses
+Weapons vs mechanoids
+Rebalance totems, currently unlock basic ones before unlocking sap
+Rebalance totems, consume too much grass. Maybe consume one sap per quadrum?
+
+Rebalance gear, shaman gear uses too much grass.
+Different way to get anima pearls. Using so few rituals means it's next to impossible to get an expendable colonist with enough affinity during the acolyte era
+
+Need more early-game spammable rituals:
+- Plant growth?
+- Helper sprites?
+- Gate anima flower temperature control behind a ritual, quality affects how much heat it can push
+- Ritual to temporarily boost animus cairn bonuses
+
+Some more linkables
+- anima meditation spot - gives a small amount of anima affinity when you meditate. Might be hard to code
+- animus crysalis - building you can store a colonist in that gives them anima affinity bonus per day. For catching up new colonists? Unlocked in shaman era
+
 
 Learning opportunities for various mechanics
 
 Rewrite HediffComp_StatExchanger as a Hediff subclass, overriding CurStage instead of affecting stats with a StatPart
-
-	Screamer bow (screamer arrows for CE)
-		- large mood debuff for pawns hit by it, to try to induce mental breaks (AOE?)
 
 	Virion bow (arrows)
 		- implants a metalhorror in the target, that grows rapidly and erupts if they die
