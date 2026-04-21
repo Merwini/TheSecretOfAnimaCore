@@ -13,9 +13,12 @@ public class CompBiHeatPusher : ThingComp
     private const float TicksPerSecond = 60f;
     private const float CloseEnough = 0.01f;
 
+    private string lowerTemp => Props.targetTemperatureRange.min.ToStringTemperature();
+    private string upperTemp => Props.targetTemperatureRange.max.ToStringTemperature();
+
     public CompProperties_BiHeatPusher Props => (CompProperties_BiHeatPusher)props;
 
-    public bool ShouldPushHeatNow(out float temperature)
+    public virtual bool ShouldPushHeatNow(out float temperature)
     {
         if (!parent.SpawnedOrAnyParentSpawned || !parent.IsHashIntervalTick(60))
         {
@@ -73,7 +76,6 @@ public class CompBiHeatPusher : ThingComp
 
     public override string CompInspectStringExtra()
     {
-        // TODO
-        return null;
+        return "TSOA_AnimaFlowerTempInspection".Translate(lowerTemp, upperTemp);
     }
 }

@@ -69,4 +69,7 @@
 
 	<TSOA_FontDespawnAmberLeftLabel>anima amber left behind</TSOA_FontDespawnAmberLeftLabel>
 	<TSOA_FontDespawnAmberLeftDesc>Your colonists appear to have left behind some precious anima amber. Perhaps some scavenger will happen across it in the future?</TSOA_FontDespawnAmberLeftDesc>
+	
+	<!-- Anima Flower -->
+	<TSOA_AnimaFlowerTempInspection>Trying to keep the temperature between {0} and {1} degrees</TSOA_AnimaFlowerTempInspection>
 </LanguageData>
