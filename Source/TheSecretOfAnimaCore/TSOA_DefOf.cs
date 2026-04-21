@@ -50,6 +50,12 @@ public class TSOA_DefOf
     [MayRequireAnomaly] // should never be referenced with Anomaly not active anyway
     public static ThingDef TSOA_SignalAction_AnomalyAmbush;
 
+    [MayRequireAnomaly]
+    public static MeditationFocusDef Void;
+
+    [MayRequireAnomaly]
+    public static ResearchProjectDef TSOA_VoidOne;
+
     public static IncidentDef TSOA_AmberRecoveryOffer;
 
     public static QuestScriptDef TSOA_Opportunity_FontOfAnima;

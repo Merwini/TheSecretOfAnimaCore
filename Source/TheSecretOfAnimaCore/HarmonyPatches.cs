@@ -321,7 +321,7 @@ public class HarmonyPatches
                 return false;
             }
 
-            if (type == MeditationFocusCache.VoidFocus && MeditationFocusCache.VoidResearch is ResearchProjectDef rpd && rpd.IsFinished && p.IsColonist)
+            if (TSOA_DefOf.Void is MeditationFocusDef voidF && type == voidF && TSOA_DefOf.TSOA_VoidOne is ResearchProjectDef rpd && rpd.IsFinished && p.IsColonist)
             {
                 __result = true;
                 return false;

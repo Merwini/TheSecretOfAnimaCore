@@ -11,37 +11,6 @@ namespace tsoa.core
 {
     public static class MeditationFocusCache
     {
-        // I don't feel like doing a separate assembly to load an Anomaly DefOf
-        private static MeditationFocusDef voidFocus;
-        public static MeditationFocusDef VoidFocus
-        {
-            get
-            {
-                if (!ModsConfig.AnomalyActive)
-                    return null;
-
-                if (voidFocus == null)
-                    voidFocus = DefDatabase<MeditationFocusDef>.GetNamedSilentFail("Void");
-
-                return voidFocus;
-            }
-        }
-
-        private static ResearchProjectDef voidResearch;
-        public static ResearchProjectDef VoidResearch
-        {
-            get
-            {
-                if (!ModsConfig.AnomalyActive)
-                    return null;
-
-                if (voidResearch == null)
-                    voidResearch = DefDatabase<ResearchProjectDef>.GetNamedSilentFail("TSOA_VoidOne");
-
-                return voidResearch;
-            }
-        }
-
         private class MeditationCache
         {
             public Thing focusThing;
