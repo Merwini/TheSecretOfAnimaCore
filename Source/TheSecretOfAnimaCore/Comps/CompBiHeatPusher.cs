@@ -16,6 +16,8 @@ public class CompBiHeatPusher : ThingComp
     private string lowerTemp => Props.targetTemperatureRange.min.ToStringTemperature();
     private string upperTemp => Props.targetTemperatureRange.max.ToStringTemperature();
 
+    protected virtual float HeatPerSecond => Props.heatPerSecond;
+
     public CompProperties_BiHeatPusher Props => (CompProperties_BiHeatPusher)props;
 
     public virtual bool ShouldPushHeatNow(out float temperature)
@@ -59,7 +61,7 @@ public class CompBiHeatPusher : ThingComp
             return;
         }
 
-        float signedHeat = Mathf.Sign(diff) * Props.heatPerSecond;
+        float signedHeat = Mathf.Sign(diff) * HeatPerSecond;
 
         GenTemperature.PushHeat(parent.Position, map, signedHeat);
     }
