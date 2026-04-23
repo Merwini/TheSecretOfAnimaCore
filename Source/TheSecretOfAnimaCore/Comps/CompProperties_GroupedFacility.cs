@@ -7,120 +7,119 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 
-namespace tsoa.core
+namespace tsoa.core;
+
+public class CompProperties_GroupedFacility : CompProperties  
 {
-    public class CompProperties_GroupedFacility : CompProperties  
+    public static Dictionary<string, List<ThingDef>> cachedAffectees; // I know this should be on CompProperties_AffectedByGroupedFacilities, but this way I can initialize both caches with one method call
+
+    public static Dictionary<string, List<ThingDef>> cachedFacilities;
+
+    [Unsaved(false)]
+    public List<ThingDef> linkableThingDefs;
+
+    public string categoryTag;
+
+    public List<StatModifier> statOffsets;
+
+    public bool mustBePlacedAdjacent;
+
+    public bool mustBePlacedAdjacentCardinalToBedHead;
+
+    public bool mustBePlacedAdjacentCardinalToAndFacingBedHead;
+
+    public bool mustBePlacedFacingThingLinear;
+
+    public bool canLinkToMedBedsOnly;
+
+    public float minDistance = 0f;
+
+    public float maxDistance = 8f;
+
+    public int maxAffected = 1;
+
+    public bool canPlaceWithoutLink = true;
+
+    public bool showMaxSimultaneous = true;
+
+    public bool requiresLOS = true;
+
+    public CompProperties_GroupedFacility()
     {
-        public static Dictionary<string, List<ThingDef>> cachedAffectees; // I know this should be on CompProperties_AffectedByGroupedFacilities, but this way I can initialize both caches with one method call
+        compClass = typeof(CompGroupedFacility);
+    }
 
-        public static Dictionary<string, List<ThingDef>> cachedFacilities;
-
-        [Unsaved(false)]
-        public List<ThingDef> linkableThingDefs;
-
-        public string categoryTag;
-
-        public List<StatModifier> statOffsets;
-
-        public bool mustBePlacedAdjacent;
-
-        public bool mustBePlacedAdjacentCardinalToBedHead;
-
-        public bool mustBePlacedAdjacentCardinalToAndFacingBedHead;
-
-        public bool mustBePlacedFacingThingLinear;
-
-        public bool canLinkToMedBedsOnly;
-
-        public float minDistance = 0f;
-
-        public float maxDistance = 8f;
-
-        public int maxAffected = 1;
-
-        public bool canPlaceWithoutLink = true;
-
-        public bool showMaxSimultaneous = true;
-
-        public bool requiresLOS = true;
-
-        public CompProperties_GroupedFacility()
+    // Cleared and recached via Harmony patch on HotReloadDefs
+    public static void CacheDictionaries()
+    {
+        if (cachedAffectees == null)
         {
-            compClass = typeof(CompGroupedFacility);
-        }
+            cachedAffectees = new Dictionary<string, List<ThingDef>>();
 
-        // Cleared and recached via Harmony patch on HotReloadDefs
-        public static void CacheDictionaries()
-        {
-            if (cachedAffectees == null)
+            List<ThingDef> allDefsListForReading = DefDatabase<ThingDef>.AllDefsListForReading;
+            for (int i = 0; i < allDefsListForReading.Count; i++)
             {
-                cachedAffectees = new Dictionary<string, List<ThingDef>>();
-
-                List<ThingDef> allDefsListForReading = DefDatabase<ThingDef>.AllDefsListForReading;
-                for (int i = 0; i < allDefsListForReading.Count; i++)
+                CompProperties_AffectedByGroupedFacilities compProperties = allDefsListForReading[i].GetCompProperties<CompProperties_AffectedByGroupedFacilities>();
+                if (compProperties == null || compProperties.linkGroups == null)
                 {
-                    CompProperties_AffectedByGroupedFacilities compProperties = allDefsListForReading[i].GetCompProperties<CompProperties_AffectedByGroupedFacilities>();
-                    if (compProperties == null || compProperties.linkGroups == null)
-                    {
-                        continue;
-                    }
-                    foreach (FacilityLinkGroup group in compProperties.linkGroups)
-                    {
-                        string tag = group.categoryTag;
-                        if (!cachedAffectees.TryGetValue(tag, out List<ThingDef> list))
-                        {
-                            list = new List<ThingDef>();
-                            cachedAffectees[tag] = list;
-                        }
-
-                        list.Add(allDefsListForReading[i]);
-                    }
+                    continue;
                 }
-            }
-
-            if (cachedFacilities == null)
-            {
-                cachedFacilities = new Dictionary<string, List<ThingDef>>();
-
-                List<ThingDef> allDefsListForReading = DefDatabase<ThingDef>.AllDefsListForReading;
-                for (int i = 0; i < allDefsListForReading.Count; i++)
+                foreach (FacilityLinkGroup group in compProperties.linkGroups)
                 {
-                    CompProperties_GroupedFacility compProperties = allDefsListForReading[i].GetCompProperties<CompProperties_GroupedFacility>();
-                    if (compProperties == null)
-                    {
-                        continue;
-                    }
-                    string tag = compProperties.categoryTag;
-                    if (!cachedFacilities.TryGetValue(tag, out List<ThingDef> list))
+                    string tag = group.categoryTag;
+                    if (!cachedAffectees.TryGetValue(tag, out List<ThingDef> list))
                     {
                         list = new List<ThingDef>();
-                        cachedFacilities[tag] = list;
+                        cachedAffectees[tag] = list;
                     }
+
                     list.Add(allDefsListForReading[i]);
                 }
             }
         }
 
-        public static void ClearDictionaries()
+        if (cachedFacilities == null)
         {
-            cachedAffectees = null;
-            cachedFacilities = null;
-        }
+            cachedFacilities = new Dictionary<string, List<ThingDef>>();
 
-        public override void ResolveReferences(ThingDef parentDef)
-        {
-            base.ResolveReferences(parentDef); // Does nothing, but just in case someone Harmony patches it
-
-            linkableThingDefs = new List<ThingDef>();
-
-            CacheDictionaries();
-
-            // Check dictionary for this CompProp's tag
-            List<ThingDef> cachedList = cachedAffectees.TryGetValue(categoryTag);
-            foreach (ThingDef def in cachedList ?? Enumerable.Empty<ThingDef>())
+            List<ThingDef> allDefsListForReading = DefDatabase<ThingDef>.AllDefsListForReading;
+            for (int i = 0; i < allDefsListForReading.Count; i++)
             {
-                linkableThingDefs.Add(def);
+                CompProperties_GroupedFacility compProperties = allDefsListForReading[i].GetCompProperties<CompProperties_GroupedFacility>();
+                if (compProperties == null)
+                {
+                    continue;
+                }
+                string tag = compProperties.categoryTag;
+                if (!cachedFacilities.TryGetValue(tag, out List<ThingDef> list))
+                {
+                    list = new List<ThingDef>();
+                    cachedFacilities[tag] = list;
+                }
+                list.Add(allDefsListForReading[i]);
             }
+        }
+    }
+
+    public static void ClearDictionaries()
+    {
+        cachedAffectees = null;
+        cachedFacilities = null;
+    }
+
+    public override void ResolveReferences(ThingDef parentDef)
+    {
+        base.ResolveReferences(parentDef); // Does nothing, but just in case someone Harmony patches it
+
+        linkableThingDefs = new List<ThingDef>();
+
+        CacheDictionaries();
+
+        // Check dictionary for this CompProp's tag
+        List<ThingDef> cachedList = cachedAffectees.TryGetValue(categoryTag);
+        foreach (ThingDef def in cachedList ?? Enumerable.Empty<ThingDef>())
+        {
+            linkableThingDefs.Add(def);
         }
     }
 }

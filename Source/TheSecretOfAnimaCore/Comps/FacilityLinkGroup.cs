@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 
-namespace tsoa.core
+namespace tsoa.core;
+
+public class FacilityLinkGroup
 {
-    public class FacilityLinkGroup
-    {
-        public string categoryTag;
+    public string categoryTag;
 
-        public string label;
+    public string label;
 
-        public int maxLinks;
-    }
+    public int maxLinks;
 }

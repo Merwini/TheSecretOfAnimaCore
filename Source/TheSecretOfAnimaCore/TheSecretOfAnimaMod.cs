@@ -6,29 +6,28 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 
-namespace tsoa.core
+namespace tsoa.core;
+
+public class TheSecretOfAnimaMod : Mod
 {
-    public class TheSecretOfAnimaMod : Mod
+
+
+    public TheSecretOfAnimaMod(ModContentPack content) : base(content)
     {
+        
+    }
+
+    public override string SettingsCategory()
+    {
+        return "The Secret of Anima";
+    }
 
 
-        public TheSecretOfAnimaMod(ModContentPack content) : base(content)
-        {
-            
-        }
+    public override void DoSettingsWindowContents(Rect inRect)
+    {
+        Listing_Standard list = new Listing_Standard();
+        list.SliderLabeled("Essence multiplier", TheSecretOfAnimaSettings.essenceMultiplier, 0.1f, 10f);
 
-        public override string SettingsCategory()
-        {
-            return "The Secret of Anima";
-        }
-
-
-        public override void DoSettingsWindowContents(Rect inRect)
-        {
-            Listing_Standard list = new Listing_Standard();
-            list.SliderLabeled("Essence multiplier", TheSecretOfAnimaSettings.essenceMultiplier, 0.1f, 10f);
-
-            base.DoSettingsWindowContents(inRect);
-        }
+        base.DoSettingsWindowContents(inRect);
     }
 }

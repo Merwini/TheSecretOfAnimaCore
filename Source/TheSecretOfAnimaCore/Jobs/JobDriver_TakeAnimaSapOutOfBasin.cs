@@ -7,83 +7,82 @@ using System.Threading.Tasks;
 using Verse;
 using Verse.AI;
 
-namespace tsoa.core
+namespace tsoa.core;
+
+public class JobDriver_TakeAnimaSapOutOfBasin : JobDriver
 {
-    public class JobDriver_TakeAnimaSapOutOfBasin : JobDriver
+    private const TargetIndex TapInd = TargetIndex.A;
+    private const TargetIndex SapInd = TargetIndex.B;
+    private const TargetIndex StoreCellInd = TargetIndex.C;
+
+    private const int Duration = 600;
+
+    protected Building_AnimaSapBasin Tap => (Building_AnimaSapBasin)job.GetTarget(TapInd).Thing;
+
+    protected Thing Sap => job.GetTarget(SapInd).Thing;
+
+    public override bool TryMakePreToilReservations(bool errorOnFailed)
     {
-        private const TargetIndex TapInd = TargetIndex.A;
-        private const TargetIndex SapInd = TargetIndex.B;
-        private const TargetIndex StoreCellInd = TargetIndex.C;
+        return pawn.Reserve(Tap, job, 1, -1, null, errorOnFailed);
+    }
 
-        private const int Duration = 600;
+    public override IEnumerable<Toil> MakeNewToils()
+    {
+        this.FailOnDestroyedNullOrForbidden(TapInd);
+        this.FailOnBurningImmobile(TapInd);
 
-        protected Building_AnimaSapBasin Tap => (Building_AnimaSapBasin)job.GetTarget(TapInd).Thing;
+        yield return Toils_Goto.GotoThing(TapInd, PathEndMode.Touch);
 
-        protected Thing Sap => job.GetTarget(SapInd).Thing;
+        yield return Toils_General.Wait(Duration)
+            .FailOnDestroyedNullOrForbidden(TapInd)
+            .FailOnCannotTouch(TapInd, PathEndMode.Touch)
+            .FailOn(() => Tap.innerContainer.Count == 0)
+            .WithProgressBarToilDelay(TapInd);
 
-        public override bool TryMakePreToilReservations(bool errorOnFailed)
+        Toil extract = ToilMaker.MakeToil("TakeSapFromBasin");
+        extract.initAction = delegate
         {
-            return pawn.Reserve(Tap, job, 1, -1, null, errorOnFailed);
-        }
-
-        public override IEnumerable<Toil> MakeNewToils()
-        {
-            this.FailOnDestroyedNullOrForbidden(TapInd);
-            this.FailOnBurningImmobile(TapInd);
-
-            yield return Toils_Goto.GotoThing(TapInd, PathEndMode.Touch);
-
-            yield return Toils_General.Wait(Duration)
-                .FailOnDestroyedNullOrForbidden(TapInd)
-                .FailOnCannotTouch(TapInd, PathEndMode.Touch)
-                .FailOn(() => Tap.innerContainer.Count == 0)
-                .WithProgressBarToilDelay(TapInd);
-
-            Toil extract = ToilMaker.MakeToil("TakeSapFromBasin");
-            extract.initAction = delegate
+            if (Tap.innerContainer.Count == 0)
             {
-                if (Tap.innerContainer.Count == 0)
-                {
-                    EndJobWith(JobCondition.Incompletable);
-                    return;
-                }
+                EndJobWith(JobCondition.Incompletable);
+                return;
+            }
 
-                Thing sap = Tap.innerContainer[0];
-                Tap.innerContainer.Remove(sap);
+            Thing sap = Tap.innerContainer[0];
+            Tap.innerContainer.Remove(sap);
 
-                GenPlace.TryPlaceThing(sap, pawn.Position, Map, ThingPlaceMode.Near);
+            GenPlace.TryPlaceThing(sap, pawn.Position, Map, ThingPlaceMode.Near);
 
-                Tap.ToggleEmptyNow();
-                Tap.DirtyMapMesh(Map);
+            Tap.ToggleEmptyNow();
+            Tap.DirtyMapMesh(Map);
 
-                StoragePriority prio = StoreUtility.CurrentStoragePriorityOf(sap);
-                IntVec3 bestCell;
+            StoragePriority prio = StoreUtility.CurrentStoragePriorityOf(sap);
+            IntVec3 bestCell;
 
-                if (StoreUtility.TryFindBestBetterStoreCellFor(sap, pawn, Map, prio, pawn.Faction, out bestCell))
-                {
-                    job.SetTarget(StoreCellInd, bestCell);
-                    job.SetTarget(SapInd, sap);
-                    job.count = sap.stackCount;
-                }
-                else
-                {
-                    EndJobWith(JobCondition.Incompletable);
-                }
-            };
-            extract.defaultCompleteMode = ToilCompleteMode.Instant;
-            yield return extract;
+            if (StoreUtility.TryFindBestBetterStoreCellFor(sap, pawn, Map, prio, pawn.Faction, out bestCell))
+            {
+                job.SetTarget(StoreCellInd, bestCell);
+                job.SetTarget(SapInd, sap);
+                job.count = sap.stackCount;
+            }
+            else
+            {
+                EndJobWith(JobCondition.Incompletable);
+            }
+        };
+        extract.defaultCompleteMode = ToilCompleteMode.Instant;
+        yield return extract;
 
-            yield return Toils_Reserve.Reserve(SapInd);
-            yield return Toils_Reserve.Reserve(StoreCellInd);
+        yield return Toils_Reserve.Reserve(SapInd);
+        yield return Toils_Reserve.Reserve(StoreCellInd);
 
-            yield return Toils_Goto.GotoThing(SapInd, PathEndMode.ClosestTouch);
+        yield return Toils_Goto.GotoThing(SapInd, PathEndMode.ClosestTouch);
 
-            yield return Toils_Haul.StartCarryThing(SapInd);
+        yield return Toils_Haul.StartCarryThing(SapInd);
 
-            Toil carry = Toils_Haul.CarryHauledThingToCell(StoreCellInd);
-            yield return carry;
+        Toil carry = Toils_Haul.CarryHauledThingToCell(StoreCellInd);
+        yield return carry;
 
-            yield return Toils_Haul.PlaceHauledThingInCell(StoreCellInd, carry, storageMode: true);
-        }
+        yield return Toils_Haul.PlaceHauledThingInCell(StoreCellInd, carry, storageMode: true);
     }
 }

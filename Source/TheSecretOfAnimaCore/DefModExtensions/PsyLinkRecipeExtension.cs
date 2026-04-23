@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using Verse;
 using RimWorld;
 
-namespace tsoa.core
+namespace tsoa.core;
+
+public class PsyLinkRecipeExtension : DefModExtension
 {
-    public class PsyLinkRecipeExtension : DefModExtension
-    {
-        public int minPsylinkLevel = 0;
-    }
+    public int minPsylinkLevel = 0;
 }

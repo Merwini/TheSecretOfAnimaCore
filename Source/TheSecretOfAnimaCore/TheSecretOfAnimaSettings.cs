@@ -5,17 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 
-namespace tsoa.core
+namespace tsoa.core;
+
+public class TheSecretOfAnimaSettings : ModSettings
 {
-    public class TheSecretOfAnimaSettings : ModSettings
+    public static float essenceMultiplier = 1f;
+
+    public override void ExposeData()
     {
-        public static float essenceMultiplier = 1f;
+        Scribe_Values.Look(ref essenceMultiplier, "essenceMultiplier", 1f);
 
-        public override void ExposeData()
-        {
-            Scribe_Values.Look(ref essenceMultiplier, "essenceMultiplier", 1f);
-
-            base.ExposeData();
-        }
+        base.ExposeData();
     }
 }
