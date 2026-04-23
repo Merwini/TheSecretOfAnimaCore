@@ -22,6 +22,8 @@ public class CompProperties_GroupedFacility : CompProperties
 
     public List<StatModifier> statOffsets;
 
+    public Dictionary<StatDef, Dictionary<QualityCategory, float>> statOffsetsPerQuality;
+
     public bool mustBePlacedAdjacent;
 
     public bool mustBePlacedAdjacentCardinalToBedHead;

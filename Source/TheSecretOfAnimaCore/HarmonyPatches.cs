@@ -364,5 +364,14 @@ public class HarmonyPatches
             }
         }
     }
+
+    [HarmonyPatch(typeof(CompQuality), "SetQuality")]
+    public static class CompQuality_SetQuality_Postfix
+    {
+        public static void Postfix(CompQuality __instance)
+        {
+            __instance.parent.TryGetComp<CompGroupedFacility>()?.PostQualitySet();
+        }
+    }
 }
 

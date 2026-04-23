@@ -32,7 +32,26 @@ public class CompGroupedFacility : ThingComp
 
     public List<Thing> LinkedThings => linkedThings;
 
-    public virtual List<StatModifier> StatOffsets => Props.statOffsets;
+    private List<StatModifier> statOffsets = new List<StatModifier>();
+    public virtual List<StatModifier> StatOffsets => statOffsets;
+
+    // Only used if the facility uses statOffsetsPerQuality, so minimal safety checking needed 
+    private CompQuality compQuality;
+    public CompQuality CompQualityCached
+    {
+        get
+        {
+            if (compQuality == null)
+            {
+                compQuality = parent.TryGetComp<CompQuality>();
+                if (compQuality == null)
+                {
+                    Log.Error("Trying to get CompQuality on a Thing that has none while calculating stat offsets for statOffsetsPerQuality");
+                }
+            }
+            return compQuality;
+        }
+    }
 
     public CompProperties_GroupedFacility Props => (CompProperties_GroupedFacility)props;
 
@@ -350,5 +369,44 @@ public class CompGroupedFacility : ThingComp
             this.OnLinkRemoved?.Invoke(this, linkedThings[i]);
         }
         linkedThings.Clear();
+    }
+
+    public virtual void PostQualitySet()
+    {
+        SetStatOffsets();
+    }
+
+    private void SetStatOffsets()
+    {
+        statOffsets.Clear();
+
+        Dictionary<StatDef, Dictionary<QualityCategory, float>> statOffsetsPerQuality = Props.statOffsetsPerQuality;
+        if (statOffsetsPerQuality != null)
+        {
+            foreach (KeyValuePair<StatDef, Dictionary<QualityCategory, float>> item in statOffsetsPerQuality)
+            {
+                statOffsets.Add(new StatModifier
+                {
+                    stat = item.Key,
+                    value = item.Value[CompQualityCached.Quality]
+                });
+            }
+            return;
+        }
+
+        List<StatModifier> statModifiers = Props.statOffsets;
+        if (statModifiers != null)
+        {
+            statOffsets = statModifiers.ToList();
+        }
+    }
+
+    public override void PostExposeData()
+    {
+        base.PostExposeData();
+        if (Scribe.mode == LoadSaveMode.PostLoadInit)
+        {
+            SetStatOffsets();
+        }
     }
 }
