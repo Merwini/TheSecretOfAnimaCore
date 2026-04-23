@@ -262,7 +262,7 @@ public class CompGroupedFacility : ThingComp
                     stringBuilder.AppendLine();
                 }
             }
-            stringBuilder.Append("\n");
+            //stringBuilder.Append("\n");
         }
         CompProperties_GroupedFacility compProperties_GroupedFacility = Props;
         if (compProperties_GroupedFacility.showMaxSimultaneous)
