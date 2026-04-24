@@ -50,6 +50,9 @@
 		<prerequisites>
 			<li>TSOA_AnimaTwo</li>
 		</prerequisites>
+		<customUnlockTexts>
+			<li>Buy Font of Anima location from faction bases</li>
+		</customUnlockTexts>
 		<discoveredLetterTitle>The Apex of Anima</discoveredLetterTitle>
 		<discoveredLetterText>Your colony has reached the apex of anima understanding. Crafts and rituals of great power are now available, and a new resource will be required: anima amber. To acquire it, bring silver to an allied faction and request the location of a Font of Anima. Then, bring anima sap to the Font, and defend it for as long as you can during the crystallization process.</discoveredLetterText>
 	</ResearchProjectDef>
