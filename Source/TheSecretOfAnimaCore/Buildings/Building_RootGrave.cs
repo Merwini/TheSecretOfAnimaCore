@@ -7,7 +7,7 @@ namespace tsoa.core;
 public class Building_RootGrave : Building_Grave
 {
     private const int ConsumeTicks = 60000; // 1 day, TODO balance
-    private const float ProgressPerTick = 0.00000666666f; // 10% of meditation tick, //TODO balance
+    protected const float ProgressPerTick = 0.00000666666f; // 10% of meditation tick, //TODO balance
 
     public virtual float ConsumeRate => ProgressPerTick;
 
