@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build mod (Debug)",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.sln", "--configuration", "Debug"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile",
+      "group": "build"
+    },
+    {
+      "label": "Build mod (Release to 1.6/Assemblies)",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.sln", "--configuration", "Release"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile",
+      "group": { "kind": "build", "isDefault": true }
+    }
+  ]
+}

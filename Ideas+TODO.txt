@@ -9,7 +9,6 @@ Different way to get anima pearls. Using so few rituals means it's next to impos
 Need more early-game spammable rituals:
 - Plant growth?
 - Helper sprites?
-- Gate anima flower temperature control behind a ritual, quality affects how much heat it can push
 - Ritual to temporarily boost animus cairn bonuses
 
 Some more linkables
