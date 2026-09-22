@@ -197,9 +197,9 @@ public class HarmonyPatches
 
             newCodes[0].labels.Add(myCodeLabel); // Label the start of my instructions
 
-            codes.InsertRange(continueIndex, newCodes); // Insert my instructions after the continue at the end of the skillRequirement check
+            codes.InsertRange(continueIndex + 1, newCodes); // Insert new instructions after skill check
 
-            codes[skillRequirementsNullIndex] = new CodeInstruction(OpCodes.Brfalse_S, myCodeLabel); // Change end of skillRequirement check to go to my instructions instead of the Bill_Medical check
+            codes[skillRequirementsNullIndex].operand = myCodeLabel; // If skill check passes, go to psylink level check
 
             return codes.AsEnumerable();
         }
