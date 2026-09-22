@@ -147,7 +147,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
         {
             FontOfAnimaWorldObject wo = Map.Parent as FontOfAnimaWorldObject;
 
-            if (wo != null && CanCrystallize())
+            if (Prefs.DevMode && wo != null && CanCrystallize())
             {
                 yield return new Command_Action()
                 {
@@ -159,7 +159,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
                 };
             }
             
-            if (wo != null)
+            if (Prefs.DevMode && wo != null)
             {
                 yield return new Command_Action()
                 {
