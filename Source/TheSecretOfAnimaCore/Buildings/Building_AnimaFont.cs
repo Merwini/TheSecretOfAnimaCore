@@ -1,5 +1,4 @@
 ﻿using RimWorld;
-using RimWorld.BaseGen;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -49,7 +48,9 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
 
     public int SapRoomLeft => MaxSapAmount - sapAmount;
 
-    private bool emptyNow = false;
+    private bool forceEmpty = false;
+    public bool ForceEmpty => forceEmpty;
+    private bool inert = false;
     public bool ShouldEmpty
     {
         get
@@ -63,7 +64,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
                 return true;
 
             // manually designated
-            if (emptyNow)
+            if (forceEmpty)
                 return true;
 
             return false;
@@ -83,6 +84,8 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
     public bool HasBegun => hasBegun;
 
     public bool IsEmpty => SapAmount < 1;
+    
+    public bool CanCrystallize => SapAmount >= SapPerAmber && !inert;
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
@@ -130,7 +133,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
                 icon = ContentFinder<Texture2D>.Get("TSOA/Things/Item/Resource/AnimaAmber/AnimaAmber_c"),
                 action = () =>
                 {
-                    if (CanCrystallize())
+                    if (CanCrystallize)
                     {
                         Find.WindowStack.Add(new Window_ConfirmExtractAmber(this));
                     }
@@ -143,11 +146,10 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
             yield return unloadAmberGizmo;
         }
 
-        if (HasBegun)
+        if (HasBegun && Prefs.DevMode)
         {
             FontOfAnimaWorldObject wo = Map.Parent as FontOfAnimaWorldObject;
-
-            if (Prefs.DevMode && wo != null && CanCrystallize())
+            if (wo != null && CanCrystallize)
             {
                 yield return new Command_Action()
                 {
@@ -159,7 +161,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
                 };
             }
             
-            if (Prefs.DevMode && wo != null)
+            if (wo != null)
             {
                 yield return new Command_Action()
                 {
@@ -193,13 +195,13 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
 
     public void ToggleEmptyNow()
     {
-        if (!emptyNow && AmberAmount > 0)
+        if (!forceEmpty && AmberAmount > 0)
         {
-            emptyNow = true;
+            forceEmpty = true;
         }
         else
         {
-            emptyNow = false;
+            forceEmpty = false;
         }
         UpdateDesignation();
     }
@@ -269,11 +271,6 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
         return false;
     }
 
-    public bool CanCrystallize()
-    {
-        return SapAmount >= SapPerAmber;
-    }
-
     private void UpdateDesignation()
     {
         if (!Spawned) return;
@@ -291,7 +288,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
         }
 
         Designation emptyDesignation = Map.designationManager.DesignationOn(this, TSOA_DefOf.TSOA_EmptyNow);
-        if (emptyNow)
+        if (forceEmpty)
         {
             if (emptyDesignation == null)
                 Map.designationManager.AddDesignation(new Designation(this, TSOA_DefOf.TSOA_EmptyNow));
@@ -303,6 +300,14 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
         }
     }
 
+    public void BecomeInert()
+    {
+        inert = true;
+        // TODO new graphic?
+    }
+
+    public override string LabelNoCount => base.LabelNoCount + (inert ? "TSOA_FontInert".Translate() : "");
+    
     public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
     {
         if (Map.Parent is FontOfAnimaWorldObject wo)
@@ -317,9 +322,10 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
     {
         Scribe_Values.Look(ref amberAmount, "amberAmount");
         Scribe_Values.Look(ref sapAmount, "sapAmount");
-        Scribe_Values.Look(ref emptyNow, "emptyNow");
+        Scribe_Values.Look(ref forceEmpty, "forceEmpty");
         Scribe_Values.Look(ref loadNow, "loadNow");
         Scribe_Values.Look(ref hasBegun, "hasBegun");
+        Scribe_Values.Look(ref inert, "inert");
 
         base.ExposeData();
     }

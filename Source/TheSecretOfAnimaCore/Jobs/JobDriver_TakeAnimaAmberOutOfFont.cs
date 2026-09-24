@@ -19,6 +19,8 @@ public class JobDriver_TakeAnimaAmberOutOfFont : JobDriver
 
     protected Building_AnimaFont Font => (Building_AnimaFont)job.GetTarget(FontInd).Thing;
 
+    protected FontOfAnimaWorldObject WorldFont => (FontOfAnimaWorldObject)Font?.Map?.Parent;
+
     protected Thing Amber => job.GetTarget(AmberInd).Thing;
 
     public override bool TryMakePreToilReservations(bool errorOnFailed)
@@ -47,11 +49,26 @@ public class JobDriver_TakeAnimaAmberOutOfFont : JobDriver
                 return;
             }
 
-            // Check amber amount of font, spawn it
             Thing amber = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaAmber, pawn.Position, Map);
-            // TODO account for multiple stacks. Maybe just dump them all on the ground?
             amber.stackCount = Font.AmberAmount;
             Font.AmberAmount = 0;
+
+            // TODO double check, RimWorld should automatically spawn it on a different tile since amber will be on pawn.Position
+            if (Font.SapAmount > 0)
+            {
+                Thing sap = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaSap, pawn.Position, Map);
+                sap.stackCount = Font.SapAmount;
+                Font.SapAmount = 0;
+            }
+            
+            if (Font.ForceEmpty)
+            {
+                WorldFont.EndCrystallizationEarly();
+            }
+            else
+            {
+                WorldFont.EndCrystallizationNormal();
+            }
 
             Font.ToggleEmptyNow();
             Font.DirtyMapMesh(Map);

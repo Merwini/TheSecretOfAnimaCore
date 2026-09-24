@@ -150,13 +150,13 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
                 madeAnyAmber = true;
             }
 
-            if (Font.CanCrystallize())
+            if (Font.CanCrystallize)
             {
                 SetNextAmberTick();
             }
             else
             {
-                EndCrystallization();
+                EndCrystallizationNormal();
             }
         }
     }
@@ -233,8 +233,26 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
     private void EndCrystallization()
     {
         crystallizationStarted = false;
-        Messages.Message("TSOA_CrystallizationFinishedMessage".Translate(), Font, MessageTypeDefOf.NeutralEvent);
+        Font.BecomeInert();
         DoEffectAndSound();
+    }
+
+    internal void EndCrystallizationNormal()
+    {
+        if (!crystallizationStarted)
+            return;
+
+        Messages.Message("TSOA_CrystallizationFinishedMessage".Translate(), Font, MessageTypeDefOf.NeutralEvent);
+        EndCrystallization();
+    }
+
+    internal void EndCrystallizationEarly()
+    {
+        if (!crystallizationStarted)
+            return;
+
+        Messages.Message("TSOA_CrystallizationStoppedEarlyMessage".Translate(), Font, MessageTypeDefOf.NeutralEvent);
+        EndCrystallization();
     }
 
     private void DoEffectAndSound()
