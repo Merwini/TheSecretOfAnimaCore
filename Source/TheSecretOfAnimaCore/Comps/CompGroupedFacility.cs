@@ -309,6 +309,11 @@ public class CompGroupedFacility : ThingComp
         LinkToNearbyBuildings();
     }
 
+    public bool IsLinked(Thing thing)
+    {
+        return LinkedThings.Contains(thing);
+    }
+
     private void LinkToNearbyBuildings()
     {
         UnlinkAll();

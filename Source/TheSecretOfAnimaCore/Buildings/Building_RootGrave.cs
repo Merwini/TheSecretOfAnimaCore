@@ -13,35 +13,39 @@ public class Building_RootGrave : Building_Grave
 
     private float fractionalDamage;
 
+    // Comp on the grave
+    private CompGroupedFacility cachedCompGroupFac;
+    public CompGroupedFacility CachedCompGroupFac
+    {
+        get
+        {
+            if (cachedCompGroupFac == null)
+            {
+                cachedCompGroupFac = this.TryGetComp<CompGroupedFacility>();
+                if (cachedCompGroupFac == null)
+                {
+                    Log.Error($"Misconfigured Building_RootGrave. Building: {this.def.defName} from mod: {this.def.modContentPack.PackageId}. Building_RootGrave requires CompProperties_GroupedFacility.");
+                    return null;
+                }
+            }
+
+            return cachedCompGroupFac;
+        }
+    }
+
     private Thing cachedLinkedTree;
-    public Thing LinkedTree
+    public Thing CachedLinkedTree
     {
         get
         {
             if (cachedLinkedTree != null && (cachedLinkedTree.Destroyed || !cachedLinkedTree.Spawned))
             {
-                cachedLinkedTree = null;
-                cachedCompFocus = null;
+                InvalidateCaches();
             }
 
             if (cachedLinkedTree == null)
             {
-                cachedCompFocus = null;
-                CompGroupedFacility compFac = this.TryGetComp<CompGroupedFacility>();
-                if (compFac.LinkedThings.NullOrEmpty())
-                    return null;
-
-                for (int i = 0; i < compFac.LinkedThings.Count; i++)
-                {
-                    // TODO check for some custom tag? Want to later implement multiple anima tree growth stages with separate ThingDefs
-                    CompSpecialMeditationFocus_Anima compFocus = compFac.LinkedThings[i].TryGetComp<CompSpecialMeditationFocus_Anima>();
-                    if (compFocus != null)
-                    {
-                        cachedLinkedTree = compFac.LinkedThings[i];
-                        cachedCompFocus = compFocus;
-                        break;
-                    }
-                }
+                TryRebuildCaches();
             }
 
             return cachedLinkedTree;
@@ -53,9 +57,16 @@ public class Building_RootGrave : Building_Grave
     {
         get
         {
+            Thing tree = CachedLinkedTree;
+            if (tree != null && (tree.Destroyed || !tree.Spawned || !CachedCompGroupFac.IsLinked(tree)))
+            {
+                InvalidateCaches();
+            }
+
+            //should have been run in CachedLinkedTree, but doesn't hurt much to recheck here
             if (cachedCompFocus == null)
             {
-                cachedCompFocus = LinkedTree?.TryGetComp<CompSpecialMeditationFocus_Anima>();
+                TryRebuildCaches();
             }
 
             return cachedCompFocus;
@@ -99,10 +110,17 @@ public class Building_RootGrave : Building_Grave
             return;
         }
 
-        if (CachedCompFocus != null)
+        // This is cheaper than letting it try to get CachedCompGroupFocus and having it then try to recache and fail
+        if (CachedCompGroupFac.LinkedThings.NullOrEmpty())
+        {
+            return;
+        }
+
+        CompSpecialMeditationFocus_Anima compFocus = CachedCompFocus;
+        if (compFocus != null)
         {
             float progress = CorpsePsychicSensitivity * ConsumeRate * delta;
-            CachedCompFocus.AddExternalProgress(progress);
+            compFocus.AddExternalProgress(progress);
 
             fractionalDamage += ((float)delta / ConsumeTicks) * Corpse.MaxHitPoints;
             while (fractionalDamage >= 1f)
@@ -130,6 +148,31 @@ public class Building_RootGrave : Building_Grave
         }
         FleckMaker.ThrowLightningGlow(this.TrueCenter(), this.Map, 1.5f);
         this.DirtyMapMesh(Map);
+    }
+
+    void InvalidateCaches()
+    {
+        cachedLinkedTree = null;
+        cachedCompFocus = null;
+    }
+
+    void TryRebuildCaches()
+    {
+        if (CachedCompGroupFac.LinkedThings.NullOrEmpty())
+            return;
+
+        List<Thing> linkedThings = CachedCompGroupFac.LinkedThings;
+        for (int i = 0; i < linkedThings.Count; i++)
+        {
+            // TODO check for some custom tag? Want to later implement multiple anima tree growth stages with separate ThingDefs
+            CompSpecialMeditationFocus_Anima compFocus = linkedThings[i].TryGetComp<CompSpecialMeditationFocus_Anima>();
+            if (compFocus != null)
+            {
+                cachedLinkedTree = linkedThings[i];
+                cachedCompFocus = compFocus;
+                break;
+            }
+        }
     }
 
     public override void ExposeData()
