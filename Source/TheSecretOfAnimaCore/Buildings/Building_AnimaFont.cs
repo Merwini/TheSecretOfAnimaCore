@@ -76,7 +76,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
     {
         get
         {
-            return loadNow && !hasBegun;
+            return loadNow && !hasBegun && SapRoomLeft >= 1;
         }
     }
 
