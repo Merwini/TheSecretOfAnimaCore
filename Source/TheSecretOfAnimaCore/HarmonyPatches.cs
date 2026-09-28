@@ -195,6 +195,12 @@ public class HarmonyPatches
                 new CodeInstruction(OpCodes.Br, continueTargetLabel) // Continue
             };
 
+            if (skillRequirementsNullIndex == -1 || continueIndex == -1)
+            {
+                Log.Error($"The Secret of Anima crafting psylink requirement transpiler failed. Please report this to the mod developer. Failed to find skillRequirement index {skillRequirementsNullIndex == -1}. Failed to find continue index: {continueIndex == -1}.");
+                return codes.AsEnumerable();
+            }
+
             newCodes[0].labels.Add(myCodeLabel); // Label the start of my instructions
 
             codes.InsertRange(continueIndex + 1, newCodes); // Insert new instructions after skill check
