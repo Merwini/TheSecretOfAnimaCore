@@ -453,6 +453,12 @@ public class CompAffectedByGroupedFacilities : ThingComp
                 continue;
             }
 
+            // Skip Facilities that are already linked to a different Thing
+            if (comp.Props.maxAffected > 0 && comp.LinkedThings.Count >= comp.Props.maxAffected)
+            {
+                continue;
+            }
+
             string categoryTag = comp.Props.categoryTag;
             if (string.IsNullOrEmpty(categoryTag))
                 continue;
