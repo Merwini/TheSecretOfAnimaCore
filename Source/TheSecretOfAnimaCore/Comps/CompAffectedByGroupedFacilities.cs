@@ -109,7 +109,7 @@ public class CompAffectedByGroupedFacilities : ThingComp
 
         int countInSameGroup = 0;
 
-        bool betterCandidateExists = false;
+        bool closerThanExisting = false;
         for (int i = 0; i < linkedFacilities.Count; i++)
         {
             Thing linked = linkedFacilities[i];
@@ -126,7 +126,7 @@ public class CompAffectedByGroupedFacilities : ThingComp
 
                 if (IsBetter(facilityDef, facilityPos, facilityRot, linked))
                 {
-                    betterCandidateExists = true;
+                    closerThanExisting = true;
                     break;
                 }
             }
@@ -151,7 +151,7 @@ public class CompAffectedByGroupedFacilities : ThingComp
             }
         }
 
-        if (betterCandidateExists)
+        if (closerThanExisting)
         {
             return true;
         }
@@ -389,6 +389,7 @@ public class CompAffectedByGroupedFacilities : ThingComp
         }
     }
 
+    // Essentially copied from vanilla. "Closer" is more accurate than "better". Returns true if the proposed facilityDef in facilityPos is closer than the existing Thing thanThisFacility, false otherwise.
     private bool IsBetter(ThingDef facilityDef, IntVec3 facilityPos, Rot4 facilityRot, Thing thanThisFacility)
     {
         CompProperties_GroupedFacility newProps = facilityDef.GetCompProperties<CompProperties_GroupedFacility>();
