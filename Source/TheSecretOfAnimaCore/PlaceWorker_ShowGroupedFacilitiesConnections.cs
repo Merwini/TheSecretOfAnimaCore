@@ -42,7 +42,7 @@ public class PlaceWorker_ShowGroupedFacilitiesConnections : PlaceWorker
         }
         else
         {
-            CompGroupedFacility.DrawLinesToPotentialThingsToLinkTo(def, center, rot, map, out List<Thing> potentialLinks);
+            CompFacility_Grouped.DrawLinesToPotentialThingsToLinkTo_Grouped(def, center, rot, map, out List<Thing> potentialLinks);
             cachedDef = def;
             lastCachePosition = center;
             lastCacheMap = map;

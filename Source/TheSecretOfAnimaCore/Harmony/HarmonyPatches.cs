@@ -337,16 +337,6 @@ public class HarmonyPatches
         }
     }
 
-    [HarmonyPatch(typeof(PlayDataLoader), nameof(PlayDataLoader.HotReloadDefs))]
-    public static class PlayDataLoader_HotReloadDefs_Postfix
-    {
-        public static void Postfix()
-        {
-            CompProperties_GroupedFacility.ClearDictionaries();
-            CompProperties_GroupedFacility.CacheDictionaries();
-        }
-    }
-
     [HarmonyPatch(typeof(Settlement), nameof(Settlement.GetCaravanGizmos))]
     public static class Settlement_GetCaravanGizmos_Postfix
     {
