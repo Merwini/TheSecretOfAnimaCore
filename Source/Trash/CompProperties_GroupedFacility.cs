@@ -51,7 +51,7 @@ public class CompProperties_GroupedFacility : CompProperties
         compClass = typeof(CompGroupedFacility);
     }
 
-    // Cleared and recached via Harmony patch on HotReloadDefs
+    // Called by first ResolveReferences call on a CompProperties_GroupedFacility or CompProperties_AffectedByGroupedFacilities. Marked for rerunning on HotReloadDefs or DoPlayLoad
     public static void CacheDictionaries()
     {
         if (cachedAffectees == null)
@@ -111,7 +111,7 @@ public class CompProperties_GroupedFacility : CompProperties
 
     public override void ResolveReferences(ThingDef parentDef)
     {
-        base.ResolveReferences(parentDef); // Does nothing, but just in case someone Harmony patches it
+        base.ResolveReferences(parentDef); // Does nothing, but just in case someone uses it as a hook
 
         linkableThingDefs = new List<ThingDef>();
 

@@ -14,17 +14,17 @@ public class Building_RootGrave : Building_Grave
     private float fractionalDamage;
 
     // Comp on the grave
-    private CompGroupedFacility cachedCompGroupFac;
-    public CompGroupedFacility CachedCompGroupFac
+    private CompFacility_Grouped cachedCompGroupFac;
+    public CompFacility_Grouped CachedCompGroupFac
     {
         get
         {
             if (cachedCompGroupFac == null)
             {
-                cachedCompGroupFac = this.TryGetComp<CompGroupedFacility>();
+                cachedCompGroupFac = this.TryGetComp<CompFacility_Grouped>();
                 if (cachedCompGroupFac == null)
                 {
-                    Log.Error($"Misconfigured Building_RootGrave. Building: {this.def.defName} from mod: {this.def.modContentPack.PackageId}. Building_RootGrave requires CompProperties_GroupedFacility.");
+                    Log.Error($"Misconfigured Building_RootGrave. Building: {this.def.defName} from mod: {this.def.modContentPack.PackageId}. Building_RootGrave requires CompProperties_Facility_Grouped.");
                     return null;
                 }
             }
@@ -111,7 +111,7 @@ public class Building_RootGrave : Building_Grave
         }
 
         // This is cheaper than letting it try to get CachedCompGroupFocus and having it then try to recache and fail
-        if (CachedCompGroupFac.LinkedThings.NullOrEmpty())
+        if (CachedCompGroupFac.LinkedBuildings.NullOrEmpty())
         {
             return;
         }
@@ -158,10 +158,10 @@ public class Building_RootGrave : Building_Grave
 
     void TryRebuildCaches()
     {
-        if (CachedCompGroupFac.LinkedThings.NullOrEmpty())
+        if (CachedCompGroupFac.LinkedBuildings.NullOrEmpty())
             return;
 
-        List<Thing> linkedThings = CachedCompGroupFac.LinkedThings;
+        List<Thing> linkedThings = CachedCompGroupFac.LinkedBuildings;
         for (int i = 0; i < linkedThings.Count; i++)
         {
             // TODO check for some custom tag? Want to later implement multiple anima tree growth stages with separate ThingDefs

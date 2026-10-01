@@ -15,12 +15,12 @@ public class CompProperties_Facility_Grouped : CompProperties_Facility
 
     public static Dictionary<string, List<ThingDef>> cachedFacilities;
 
+    public static bool dictionariesCached = false;
+
     [Unsaved]
     public List<ThingDef> linkableThingDefs;
 
     public string categoryTag;
-
-    public List<StatModifier> statOffsets;
 
     public Dictionary<StatDef, Dictionary<QualityCategory, float>> statOffsetsPerQuality;
 
@@ -39,20 +39,25 @@ public class CompProperties_Facility_Grouped : CompProperties_Facility
         {
             cachedAffectees = new Dictionary<string, List<ThingDef>>();
         }
+        else
+        {
+            cachedAffectees.Clear();
+        }
         
         if (cachedFacilities == null)
         {
             cachedFacilities = new Dictionary<string, List<ThingDef>>();
         }
-
-        cachedAffectees.Clear();
-        cachedFacilities.Clear();
+        else
+        {
+            cachedFacilities.Clear();
+        }
 
         List<ThingDef> allDefsListForReading = DefDatabase<ThingDef>.AllDefsListForReading;
         for (int i = 0; i < allDefsListForReading.Count; i++)
         {
             ThingDef thingDef = allDefsListForReading[i];
-            CompProperties_AffectedByGroupedFacilities compPropertiesAffected = thingDef.GetCompProperties<CompProperties_AffectedByGroupedFacilities>();
+            CompProperties_AffectedByFacilities_Grouped compPropertiesAffected = thingDef.GetCompProperties<CompProperties_AffectedByFacilities_Grouped>();
             if (compPropertiesAffected != null && compPropertiesAffected.linkGroups != null)
             {
                 foreach (FacilityLinkGroup group in compPropertiesAffected.linkGroups)
@@ -68,7 +73,7 @@ public class CompProperties_Facility_Grouped : CompProperties_Facility
                 }
             }
 
-            CompProperties_GroupedFacility compPropertiesFacility = allDefsListForReading[i].GetCompProperties<CompProperties_GroupedFacility>();
+            CompProperties_Facility_Grouped compPropertiesFacility = allDefsListForReading[i].GetCompProperties<CompProperties_Facility_Grouped>();
             if (compPropertiesFacility != null)
             {
                 string tag = compPropertiesFacility.categoryTag;
@@ -80,10 +85,17 @@ public class CompProperties_Facility_Grouped : CompProperties_Facility
                 list.Add(allDefsListForReading[i]);
             }
         }
+
+        dictionariesCached = true;
     }
 
     public override void ResolveReferences(ThingDef parentDef)
     {
+        if (!dictionariesCached)
+        {
+            CacheDictionaries();
+        }
+
         linkableThingDefs = new List<ThingDef>();
 
         // Check dictionary for this CompProp's tag
@@ -91,6 +103,33 @@ public class CompProperties_Facility_Grouped : CompProperties_Facility
         foreach (ThingDef def in cachedList ?? Enumerable.Empty<ThingDef>())
         {
             linkableThingDefs.Add(def);
+        }
+    }
+
+    public override IEnumerable<string> ConfigErrors(ThingDef parentDef)
+    {
+        foreach (string error in base.ConfigErrors(parentDef))
+            yield return error;
+
+        if (statOffsetsPerQuality == null)
+            yield break;
+
+        if (!parentDef.HasComp(typeof(CompQuality)))
+            yield return "statOffsetsPerQuality requires a CompQuality.";
+
+        foreach (var kvp in statOffsetsPerQuality)
+        {
+            if (kvp.Value == null)
+            {
+                yield return $"statOffsetsPerQuality has no quality values for {kvp.Key.defName}.";
+                continue;
+            }
+
+            foreach (QualityCategory quality in Enum.GetValues(typeof(QualityCategory)))
+            {
+                if (!kvp.Value.ContainsKey(quality))
+                    yield return $"statOffsetsPerQuality is missing {quality} for {kvp.Key.defName}.";
+            }
         }
     }
 }

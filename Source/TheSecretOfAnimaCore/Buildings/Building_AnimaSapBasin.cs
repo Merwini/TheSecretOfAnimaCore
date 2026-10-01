@@ -41,13 +41,13 @@ public class Building_AnimaSapBasin : Building, IThingHolder
             if (linkedTree == null)
             {
 
-                CompGroupedFacility compFac = this.TryGetComp<CompGroupedFacility>();
+                CompFacility_Grouped compFac = this.TryGetComp<CompFacility_Grouped>();
                 if (compFac == null)
                 {
                     return null;
                 }
 
-                linkedTree = compFac.LinkedThings.FirstOrDefault(t => t?.TryGetComp<CompSpawnSubplant>() != null);
+                linkedTree = compFac.LinkedBuildings.FirstOrDefault(t => t?.TryGetComp<CompSpawnSubplant>() != null);
             }
 
             return linkedTree;

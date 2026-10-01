@@ -11,13 +11,11 @@ namespace tsoa.core;
 
 public class CompFacility_Grouped : CompFacility
 {
-    public List<Thing> LinkedThings => linkedBuildings;
-
     public CompProperties_Facility_Grouped Props_Grouped => (CompProperties_Facility_Grouped)props;
 
     private List<StatModifier> qualityStatOffsets = new List<StatModifier>();
 
-    public virtual List<StatModifier> QualityStatOffsets => qualityStatOffsets;
+    public override List<StatModifier> StatOffsets => qualityStatOffsets.Count > 0 ? qualityStatOffsets : base.StatOffsets;
 
     // Only used if the facility uses statOffsetsPerQuality, so minimal safety checking needed 
     private CompQuality compQuality;
@@ -37,34 +35,38 @@ public class CompFacility_Grouped : CompFacility
         }
     }
 
-    // No Harmony detour, only called by my PlaceWorker
-    public static void DrawLinesToPotentialThingsToLinkTo_Grouped(ThingDef myDef, IntVec3 myPos, Rot4 myRot, Map map, out List<Thing> potentialLinks)
+    // Shared use by DrawLinesToPotentialThingsToLinkTo_Grouped and PlaceWorker
+    public static IEnumerable<Thing> PotentialThingsToLinkTo_Grouped(ThingDef myDef, IntVec3 myPos, Rot4 myRot, Map map)
     {
-        potentialLinks = new List<Thing>();
-        CompProperties_GroupedFacility compProperties = myDef.GetCompProperties<CompProperties_GroupedFacility>();
-        if (compProperties?.linkableThingDefs == null)
-            return;
-
-        int max = compProperties.maxAffected > 0 ? compProperties.maxAffected : int.MaxValue;
-
-        Vector3 myCenter = GenThing.TrueCenter(myPos, myRot, myDef.size, myDef.Altitude);
+        CompProperties_Facility_Grouped compProperties = myDef.GetCompProperties<CompProperties_Facility_Grouped>();
+        if (map == null || compProperties?.linkableThingDefs == null)
+            yield break;
 
         for (int i = 0; i < compProperties.linkableThingDefs.Count; i++)
         {
             foreach (Thing item in map.listerThings.ThingsOfDef(compProperties.linkableThingDefs[i]))
             {
-                CompAffectedByGroupedFacilities compAffectee = item.TryGetComp<CompAffectedByGroupedFacilities>();
+                CompAffectedByFacilities_Grouped compAffectee = item.TryGetComp<CompAffectedByFacilities_Grouped>();
 
                 if (compAffectee != null &&
                     compAffectee.CanPotentiallyLinkTo(myDef, myPos, myRot))
                 {
-                    potentialLinks.Add(item);
+                    yield return item;
                 }
             }
         }
+    }
 
+    // No Harmony detour, only called by my PlaceWorker
+    public static void DrawLinesToPotentialThingsToLinkTo_Grouped(ThingDef myDef, IntVec3 myPos, Rot4 myRot, Map map, out List<Thing> potentialLinks)
+    {
+        potentialLinks = PotentialThingsToLinkTo_Grouped(myDef, myPos, myRot, map).ToList();
         if (potentialLinks.Count == 0)
             return;
+
+        CompProperties_Facility_Grouped compProperties = myDef.GetCompProperties<CompProperties_Facility_Grouped>();
+        int max = compProperties.maxAffected > 0 ? compProperties.maxAffected : int.MaxValue;
+        Vector3 myCenter = GenThing.TrueCenter(myPos, myRot, myDef.size, myDef.Altitude);
 
         potentialLinks.Sort((a, b) =>
             Vector3.Distance(myCenter, a.TrueCenter())
@@ -81,7 +83,7 @@ public class CompFacility_Grouped : CompFacility
 
             GenDraw.DrawLineBetween(myCenter, targetCenter);
 
-            CompAffectedByGroupedFacilities compAffectee = candidate.TryGetComp<CompAffectedByGroupedFacilities>();
+            CompAffectedByFacilities_Grouped compAffectee = candidate.TryGetComp<CompAffectedByFacilities_Grouped>();
 
             compAffectee?.DrawRedLineToPotentiallySupplantedFacility(myDef, myPos, myRot);
 
@@ -122,21 +124,21 @@ public class CompFacility_Grouped : CompFacility
         }
     }
 
-    // Use vanilla CompTick()
+    // Use base CompTick()
 
-    // Use vanilla CanLink()
+    // Use base CanLink()
 
-    // Use vanilla Notify_NewLink
+    // Use base Notify_NewLink
 
-    // Use vanilla Notify_LinkRemoved
+    // Use base Notify_LinkRemoved
 
-    // Use vanilla Notify_LinkRemoved
+    // Use base Notify_LinkRemoved
 
-    // Use vanilla Notify_ThingChanged
+    // Use base Notify_ThingChanged
 
-    // Use vanilla PostSpawnSetup
+    // Use base PostSpawnSetup
 
-    // Use vanilla PostMapInit
+    // Use base PostMapInit
     
     public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
     {
@@ -210,7 +212,7 @@ public class CompFacility_Grouped : CompFacility
                     continue;
 
                 int count = 0;
-                foreach (Thing facility in compAffected.LinkedFacilities)
+                foreach (Thing facility in compAffected.LinkedFacilitiesListForReading)
                 {
                     if (facility == null || facility.Destroyed)
                         continue;
@@ -232,7 +234,7 @@ public class CompFacility_Grouped : CompFacility
         return stringBuilder.ToString().TrimEndNewlines();
     }
 
-    // Use vanilla RelinkAll
+    // Use base RelinkAll
 
     // Has Harmony detour
     internal void LinkToNearbyBuildings_Grouped()
@@ -251,7 +253,7 @@ public class CompFacility_Grouped : CompFacility
 
         potentiallyAffected = potentiallyAffected.Where(t =>
             {
-                CompAffectedByGroupedFacilities comp = t.TryGetComp<CompAffectedByGroupedFacilities>();
+                CompAffectedByFacilities_Grouped comp = t.TryGetComp<CompAffectedByFacilities_Grouped>();
                 return comp != null && comp.CanLinkTo(parent);
             }).ToList();
 
@@ -265,20 +267,18 @@ public class CompFacility_Grouped : CompFacility
 
         foreach (Thing target in potentiallyAffected.Take(linkLimit))
         {
-            CompAffectedByGroupedFacilities comp = target.TryGetComp<CompAffectedByGroupedFacilities>();
-            linkedBuildings.Add(target);
+            CompAffectedByFacilities_Grouped comp = target.TryGetComp<CompAffectedByFacilities_Grouped>();
             comp.Notify_NewLink(parent);
-
-            OnLinkAdded?.Invoke(this, target);
+            Notify_NewLink(target);
         }
     }
 
     // Has Harmony detour
-    private bool AmIActiveForAnyone_Grouped()
+    internal bool AmIActiveForAnyone_Grouped()
     {
         for (int i = 0; i < linkedBuildings.Count; i++)
         {
-            if (linkedBuildings[i].TryGetComp<CompAffectedByGroupedFacilities>().IsFacilityActive(parent))
+            if (linkedBuildings[i].TryGetComp<CompAffectedByFacilities_Grouped>().IsFacilityActive(parent))
             {
                 return true;
             }
@@ -286,10 +286,66 @@ public class CompFacility_Grouped : CompFacility
         return false;
     }
 
-    private void UnlinkAll()
+    // Has Harmony detour
+    internal void UnlinkAll_Grouped()
+    {
+        List<Thing> thingsToNotify = linkedBuildings.ToList();
+        for (int i = 0; i < thingsToNotify.Count; i++)
+        {
+            thingsToNotify[i].TryGetComp<CompAffectedByFacilities_Grouped>().Notify_LinkRemoved(parent);
+            Notify_LinkRemoved(thingsToNotify[i]);
+        }
+    }
 
     public bool IsLinked(Thing thing)
     {
-        return LinkedThings.Contains(thing);
+        return linkedBuildings.Contains(thing);
+    }
+
+    public virtual void PostQualitySet()
+    {
+        SetStatOffsets();
+    }
+
+    private void SetStatOffsets()
+    {
+        qualityStatOffsets.Clear();
+
+        Dictionary<StatDef, Dictionary<QualityCategory, float>> statOffsetsPerQuality = Props_Grouped.statOffsetsPerQuality;
+        if (statOffsetsPerQuality != null)
+        {
+            CompQuality qualityComp = CompQualityCached;
+            if (qualityComp == null)
+                return;
+
+            foreach (KeyValuePair<StatDef, Dictionary<QualityCategory, float>> item in statOffsetsPerQuality)
+            {
+                float offset = Props.statOffsets?.GetStatOffsetFromList(item.Key) ?? 0f;
+                if (item.Value != null && item.Value.TryGetValue(qualityComp.Quality, out float qualityOffset))
+                    offset = qualityOffset;
+
+                qualityStatOffsets.Add(new StatModifier
+                {
+                    stat = item.Key,
+                    value = offset
+                });
+            }
+            return;
+        }
+
+        List<StatModifier> statModifiers = Props.statOffsets;
+        if (statModifiers != null)
+        {
+            qualityStatOffsets = statModifiers.ToList();
+        }
+    }
+
+    public override void PostExposeData()
+    {
+        base.PostExposeData();
+        if (Scribe.mode == LoadSaveMode.PostLoadInit)
+        {
+            SetStatOffsets();
+        }
     }
 }

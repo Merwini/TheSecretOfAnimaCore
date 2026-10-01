@@ -13,24 +13,24 @@ public class CompSpecialMeditationFocus_Anima : ThingComp
 {
     public CompProperties_SpecialMeditationFocus_Anima Props => (CompProperties_SpecialMeditationFocus_Anima)props;
 
-    private CompAffectedByGroupedFacilities compABGF;
-    public CompAffectedByGroupedFacilities CachedCompABGF
+    private CompAffectedByFacilities_Grouped compABFG;
+    public CompAffectedByFacilities_Grouped CachedCompABFG
     {
         get
         {
-            if (compABGF == null)
+            if (compABFG == null)
             {
-                CompAffectedByGroupedFacilities comp = parent.GetComp<CompAffectedByGroupedFacilities>();
+                CompAffectedByFacilities_Grouped comp = parent.GetComp<CompAffectedByFacilities_Grouped>();
                 if (comp != null)
                 {
-                    compABGF = comp;
+                    compABFG = comp;
                 }
                 else
                 {
-                    Log.Error($"CompSpecialMeditationFocus is applied to Thing of {parent.def.defName}, but Thing has no CompAffectedByGroupedFacilities");
+                    Log.Error($"CompSpecialMeditationFocus is applied to Thing of {parent.def.defName}, but Thing has no CompAffectedByFacilities_Grouped");
                 }
             }
-            return compABGF;
+            return compABFG;
         }
     }
 
@@ -72,11 +72,11 @@ public class CompSpecialMeditationFocus_Anima : ThingComp
     public float ApplyAnimaBasinAdjustment(float originalProgress)
     {
         float adjustedProgress = originalProgress;
-        CompAffectedByGroupedFacilities comp = CachedCompABGF;
+        CompAffectedByFacilities_Grouped comp = CachedCompABFG;
         if (comp == null)
             return originalProgress;
 
-        foreach (Thing thing in comp.LinkedFacilities)
+        foreach (Thing thing in comp.LinkedFacilitiesListForReading)
         {
             if (thing is Building_AnimaSapBasin basin && basin.IsHarvesting)
             {

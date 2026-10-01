@@ -37,11 +37,16 @@ public class CompProperties_AffectedByFacilities_Grouped : CompProperties_Affect
 
     public override void ResolveReferences(ThingDef parentDef)
     {
+        if (!CompProperties_Facility_Grouped.dictionariesCached)
+        {
+            CompProperties_Facility_Grouped.CacheDictionaries();
+        }
+
         linkableFacilities = new List<ThingDef>();
 
         foreach (FacilityLinkGroup group in linkGroups)
         {
-            if (CompProperties_GroupedFacility.cachedFacilities.TryGetValue(group.categoryTag, out List<ThingDef> facilities))
+            if (CompProperties_Facility_Grouped.cachedFacilities.TryGetValue(group.categoryTag, out List<ThingDef> facilities))
             {
                 linkableFacilities.AddRange(facilities);
             }

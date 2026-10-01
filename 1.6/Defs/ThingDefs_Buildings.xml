@@ -47,7 +47,7 @@
 					<shaderType>CutoutComplex</shaderType>
 				</graphicData>
 			</li>
-			<li Class="tsoa.core.CompProperties_GroupedFacility">
+			<li Class="tsoa.core.CompProperties_Facility_Grouped">
 				<categoryTag>TSOA_AnimaBasinCategory</categoryTag>
 				<mustBePlacedAdjacent>true</mustBePlacedAdjacent>
 				<canPlaceWithoutLink>false</canPlaceWithoutLink>
@@ -172,7 +172,7 @@
 				<drawAssignmentOverlay>false</drawAssignmentOverlay>
 				<compClass>CompAssignableToPawn_Grave</compClass>
 			</li>
-			<li Class="tsoa.core.CompProperties_GroupedFacility">
+			<li Class="tsoa.core.CompProperties_Facility_Grouped">
 				<categoryTag>TSOA_AnimaGraveCategory</categoryTag>
 				<canPlaceWithoutLink>false</canPlaceWithoutLink>
 			</li>
