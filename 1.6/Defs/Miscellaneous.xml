@@ -20,7 +20,7 @@
 		<thingClass>tsoa.core.SignalAction_AnomalyAmbush</thingClass>
 	</ThingDef>
 
-	<MainButtonDef>
+	<!-- <MainButtonDef>
 		<defName>TSOA_TestButton</defName>
 		<label>Test</label>
 		<description>Test</description>
@@ -29,5 +29,5 @@
 		<minimized>True</minimized>
 		<iconPath>TSOA/Things/Item/Resource/AnimaAmber/AnimaAmber_a</iconPath>
 		<defaultHotKey></defaultHotKey>
-	</MainButtonDef>
+	</MainButtonDef> -->
 </Defs>
