@@ -9,7 +9,8 @@ public class Building_RootGrave : Building_Grave
     private const int ConsumeTicks = 60000; // 1 day, TODO balance
     protected const float ProgressPerTick = 0.00000666666f; // 10% of meditation tick, //TODO balance
 
-    public virtual float ConsumeRate => ProgressPerTick;
+    public virtual float ConsumeRate => 1;
+    public virtual float ProgressRate => ProgressPerTick * ConsumeRate;
 
     private float fractionalDamage;
 
@@ -119,10 +120,10 @@ public class Building_RootGrave : Building_Grave
         CompSpecialMeditationFocus_Anima compFocus = CachedCompFocus;
         if (compFocus != null)
         {
-            float progress = CorpsePsychicSensitivity * ConsumeRate * delta;
+            float progress = CorpsePsychicSensitivity * ProgressRate * delta;
             compFocus.AddExternalProgress(progress);
 
-            fractionalDamage += ((float)delta / ConsumeTicks) * Corpse.MaxHitPoints;
+            fractionalDamage += ((float)delta / ConsumeTicks) * Corpse.MaxHitPoints * ConsumeRate;
             while (fractionalDamage >= 1f)
             {
                 Corpse.HitPoints -= 1;
