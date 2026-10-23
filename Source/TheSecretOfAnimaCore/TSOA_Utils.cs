@@ -118,8 +118,8 @@ public class TSOA_Utils
 
         // Should only be one, since the gizmo should be disabled if any already exists, but just in case
         FontOfAnimaWorldObject fontWorldObject = Find.WorldObjects.AllWorldObjects.FirstOrDefault(o => o is FontOfAnimaWorldObject) as FontOfAnimaWorldObject;
-
         fontWorldObject.relatedQuest = quest;
-    }
 
+        QuestUtility.SendLetterQuestAvailable(quest);
+    }
 }
