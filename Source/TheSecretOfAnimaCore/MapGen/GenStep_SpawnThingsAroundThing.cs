@@ -9,17 +9,18 @@ using RimWorld;
 
 namespace tsoa.core;
 
-public class GenStep_SilentAnimaTrees : GenStep
+public class GenStep_SpawnThingsAroundThing : GenStep
 {
-    protected const int MinPerTree = 4;
-    protected const int MaxPerTree = 6;
-
-    protected const float MinRadius = 2.5f;
-    protected const float MaxRadius = 6.5f;
-
-    protected const int MaxAttemptsPerTree = 80;
-    protected const int MinDistanceBetweenTrees = 2;
+    protected const int MaxAttemptsPerThing = 80;
     protected const int MinDistanceFromMapEdge = 10;
+
+    public ThingDef focusThing;
+    public ThingDef spawnThing;
+    public int spawnMin = 4;
+    public int spawnMax = 6;
+    public float minRadius = 2.5f;
+    public float maxRadius = 6.5f;
+    public int minDistanceBetweenThings = 2;
 
     public override int SeedPart => 184672391;
 
@@ -28,33 +29,33 @@ public class GenStep_SilentAnimaTrees : GenStep
         if (map.Biome.isExtremeBiome)
             return;
 
-        List<Thing> animaTrees = map.listerThings.ThingsOfDef(ThingDefOf.Plant_TreeAnima);
-        if (animaTrees.NullOrEmpty())
+        List<Thing> focuses = map.listerThings.ThingsOfDef(focusThing);
+        if (focuses.NullOrEmpty())
             return;
 
-        for (int i = 0; i < animaTrees.Count; i++)
+        for (int i = 0; i < focuses.Count; i++)
         {
-            Thing animaTree = animaTrees[i];
-            if (animaTree == null || animaTree.Destroyed)
+            Thing focus = focuses[i];
+            if (focus == null || focus.Destroyed)
                 continue;
 
-            SpawnTreesAround(animaTree.Position, map);
+            SpawnThingsAround(focus.Position, map);
         }
     }
 
-    public void SpawnTreesAround(IntVec3 center, Map map)
+    public void SpawnThingsAround(IntVec3 center, Map map)
     {
-        int targetCount = Rand.RangeInclusive(MinPerTree, MaxPerTree);
+        int targetCount = Rand.RangeInclusive(spawnMin, spawnMax);
         int spawned = 0;
         int attempts = 0;
 
-        while (spawned < targetCount && attempts < MaxAttemptsPerTree)
+        while (spawned < targetCount && attempts < MaxAttemptsPerThing)
         {
             attempts++;
 
-            IntVec3 cell = CellInAnnulus(center, MinRadius, MaxRadius);
+            IntVec3 cell = CellInAnnulus(center, minRadius, maxRadius);
 
-            if (!CanSpawnTreeAt(cell, map))
+            if (!CanSpawnThingAt(cell, map))
                 continue;
 
             List<Thing> thingsInCell = cell.GetThingList(map);
@@ -63,13 +64,14 @@ public class GenStep_SilentAnimaTrees : GenStep
                 thingsInCell[i].Destroy();
             }
 
-            Thing thing = GenSpawn.Spawn(TSOA_DefOf.TSOA_TreeAnimaSilent, cell, map);
+            Thing thing = GenSpawn.Spawn(spawnThing, cell, map);
             if (thing is Plant plant)
             {
                 plant.Growth = 1;
             }
 
             spawned++;
+            attempts = 0;
         }
     }
 
@@ -82,7 +84,7 @@ public class GenStep_SilentAnimaTrees : GenStep
         return center + offset.ToIntVec3();
     }
 
-    public virtual bool CanSpawnTreeAt(IntVec3 c, Map map, bool requireFertility = true)
+    public virtual bool CanSpawnThingAt(IntVec3 c, Map map, bool requireFertility = true)
     {
         if (!c.InBounds(map))
             return false;
@@ -113,12 +115,12 @@ public class GenStep_SilentAnimaTrees : GenStep
         {
             Thing t = things[i];
             // TODO maybe add more things for it not to replace
-            if (t.def == TSOA_DefOf.TSOA_TreeAnimaSilent || t.def == ThingDefOf.Plant_TreeAnima)
+            if (t.def == spawnThing || t.def == focusThing)
                 return false;
         }
 
-        if (GenRadial.RadialDistinctThingsAround(c, map, MinDistanceBetweenTrees, useCenter: false)
-            .Any(t => t.def == TSOA_DefOf.TSOA_TreeAnimaSilent))
+        if (GenRadial.RadialDistinctThingsAround(c, map, minDistanceBetweenThings, useCenter: false)
+            .Any(t => t.def == spawnThing))
         {
             return false;
         }

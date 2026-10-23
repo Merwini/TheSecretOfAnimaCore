@@ -41,7 +41,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
             sapAmount = value;
             if (sapAmount <= 0)
             {
-                this.DirtyMapMesh(Map);
+                DirtyMapMesh(Map);
             }
         }
     }
@@ -94,7 +94,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
             yield return gizmo;
         }
 
-        if (!loadNow && !hasBegun)
+        if (!loadNow && !hasBegun && SapRoomLeft > 0)
         {
             Command_Action loadGizmo = new Command_Action()
             {
@@ -247,6 +247,12 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
     private void AddSap(int amount)
     {
         sapAmount += amount;
+        if (SapRoomLeft <= 0)
+        {
+            loadNow = false;
+            UpdateDesignation();
+        }
+
         DirtyMapMesh(Map);
     }
 

@@ -2,16 +2,22 @@
 <Defs>
 
 	<GenStepDef>
-		<defName>TSOA_SilentAnimaTrees</defName>
+		<defName>TSOA_SilentAnimaTreesPlayerBase</defName>
 		<order>1601</order>
-		<genStep Class="tsoa.core.GenStep_SilentAnimaTrees" />
+		<genStep Class="tsoa.core.GenStep_SpawnThingsAroundThing">
+			<focusThing>Plant_TreeAnima</focusThing>
+			<spawnThing>TSOA_TreeAnimaSilent</spawnThing>
+		</genStep>
 	</GenStepDef>
 
 	<GenStepDef>
 		<defName>TSOA_SilentGrove</defName>
 		<linkWithSite>TSOA_SilentGrove</linkWithSite>
 		<order>900</order>
-		<genStep Class="tsoa.core.GenStep_SilentGrove" />
+		<genStep Class="tsoa.core.GenStep_SilentGrove">
+			<focusThing>TSOA_TreeAnimaDummy</focusThing>
+			<spawnThing>TSOA_TreeAnimaSilent</spawnThing>
+		</genStep>
 	</GenStepDef>
 
 	<GenStepDef>
@@ -58,11 +64,10 @@
 		<label>font of anima</label>
 		<description>T</description>
 		<worldObjectClass>tsoa.core.FontOfAnimaWorldObject</worldObjectClass>
-		<texture>World/WorldObjects/Sites/GenericSite</texture>
+		<texture>TSOA/UI/WorldObjects/AmberIcon</texture>
 		<expandingIcon>true</expandingIcon>
-		<expandingIconTexture>World/WorldObjects/Sites/GenericSite</expandingIconTexture>
+		<expandingIconTexture>TSOA/UI/WorldObjects/AmberIcon</expandingIconTexture>
 		<expandingIconPriority>50</expandingIconPriority>
-		<expandMore>true</expandMore>
 		<IncidentTargetTags>
 			<li>Map_Misc</li>
 		</IncidentTargetTags>
@@ -80,6 +85,9 @@
 		<genSteps>
 			<li>RocksFromGrid</li>
 			<li>TSOA_FontOfAnimaGenStep</li>
+			<li>TSOA_FontOfAnimaAnimaGrass</li>
+			<li>TSOA_FontOfAnimaSilentTrees</li>
+			<li>TSOA_FontOfAnimaDummyTrees</li>
 		</genSteps>
 	</MapGeneratorDef>
 	
@@ -89,5 +97,41 @@
 		<genStep Class="tsoa.core.GenStep_FontOfAnima">
 		</genStep>
 	</GenStepDef>
-	
+
+	<!-- Do this first, since later spawns from GenStep_SpawnThingsAroundThing can replace earlier ones-->
+	<GenStepDef>
+		<defName>TSOA_FontOfAnimaAnimaGrass</defName>
+		<order>1600</order>
+		<genStep Class="tsoa.core.GenStep_SpawnThingsAroundThing">
+			<focusThing>TSOA_FontOfAnima</focusThing>
+			<spawnThing>TSOA_GrassAnimaDummy</spawnThing>
+			<spawnMin>100</spawnMin>
+			<spawnMax>200</spawnMax>
+			<maxRadius>16</maxRadius>
+			<minDistanceBetweenThings>0</minDistanceBetweenThings>
+		</genStep>
+	</GenStepDef>
+
+	<GenStepDef>
+		<defName>TSOA_FontOfAnimaDummyTrees</defName>
+		<order>1601</order>
+		<genStep Class="tsoa.core.GenStep_SpawnThingsAroundThing">
+			<focusThing>TSOA_FontOfAnima</focusThing>
+			<spawnThing>TSOA_TreeAnimaDummy</spawnThing>
+			<spawnMin>2</spawnMin>
+			<spawnMax>4</spawnMax>
+		</genStep>
+	</GenStepDef>
+
+	<GenStepDef>
+		<defName>TSOA_FontOfAnimaSilentTrees</defName>
+		<order>1602</order>
+		<genStep Class="tsoa.core.GenStep_SpawnThingsAroundThing">
+			<focusThing>TSOA_FontOfAnima</focusThing>
+			<spawnThing>TSOA_TreeAnimaSilent</spawnThing>
+			<spawnMin>4</spawnMin>
+			<spawnMax>6</spawnMax>
+		</genStep>
+	</GenStepDef>
+
 </Defs>

@@ -43,6 +43,3 @@ Other:
 Evolving anima tree in the style of anomaly monolith
 	- monolith breakpoints are based on entities encountered, so need something different for tree
 	- quests to capture special psychically-attuned world pawns and merge them with the tree?
-
-
-Graphic for Font of Anima gizmo and world object

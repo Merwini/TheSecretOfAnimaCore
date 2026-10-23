@@ -13,8 +13,9 @@ namespace tsoa.core;
 
 public class FontOfAnimaWorldObject : MapParent, IThingGlower
 {
-    private FloatRange attackCooldown = new FloatRange(0.5f, 1.5f); // 0.5 to 1.5 days, TODO might change
-    private int ticksPerAmber = 60000; // 1 day, TODO might change
+    private FloatRange attackCooldownDays = new FloatRange(0.5f, 1f); // 0.5 to 1 days, TODO might change
+    private int ticksPerAmberMin = 20000; // 0.5 day, TODO might change
+    private int ticksPerAmberMax = 40000;
     private float recoveryDivisor = 2f; // arbitrary, TODO balance, maybe give full?
     private float threatPointBase = 1000;
     private float threatPointPerAmber = 500;
@@ -163,7 +164,8 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 
     private void SetNextAmberTick()
     {
-        nextAmberTick = Find.TickManager.TicksGame + ticksPerAmber;
+        int ticksUntilNextAmber = Rand.RangeInclusive(ticksPerAmberMin, ticksPerAmberMax);
+        nextAmberTick = Find.TickManager.TicksGame + ticksUntilNextAmber;
     }
 
     private void SpawnNextWave()
@@ -180,6 +182,10 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
         }
 
         incident.Worker.TryExecute(parms);
+        if (Prefs.DevMode)
+        {
+            Log.Message($"Threat points used: {parms.points}");
+        }
         SetNextWaveTick();
     }
 
@@ -227,7 +233,7 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 
     private void SetNextWaveTick()
     {
-        nextWaveTick = Find.TickManager.TicksGame + (int)(attackCooldown.RandomInRange * GenDate.TicksPerDay);
+        nextWaveTick = Find.TickManager.TicksGame + (int)(attackCooldownDays.RandomInRange * GenDate.TicksPerDay);
     }
 
     private void EndCrystallization()

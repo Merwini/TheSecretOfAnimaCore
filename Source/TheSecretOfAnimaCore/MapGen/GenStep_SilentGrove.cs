@@ -8,7 +8,7 @@ using Verse;
 
 namespace tsoa.core;
 
-public class GenStep_SilentGrove : GenStep_SilentAnimaTrees
+public class GenStep_SilentGrove : GenStep_SpawnThingsAroundThing
 {
     public override int SeedPart => 195673492;
 
@@ -24,13 +24,13 @@ public class GenStep_SilentGrove : GenStep_SilentAnimaTrees
             return;
         }
 
-        Thing firstTreeThing = GenSpawn.Spawn(TSOA_DefOf.TSOA_TreeAnimaSilent, groveCenter, map);
+        Thing firstTreeThing = GenSpawn.Spawn(focusThing, groveCenter, map);
         if (firstTreeThing is Plant firstTreePlant)
         {
             firstTreePlant.Growth = 1;
         }
 
-        SpawnTreesAround(groveCenter, map);
+        SpawnThingsAround(groveCenter, map);
 
         CellRect cellRect = CellRect.CenteredOn(groveCenter, 7, 7).ClipInsideMap(map);
         MapGenerator.SetVar("RectOfInterest", cellRect);
@@ -50,7 +50,7 @@ public class GenStep_SilentGrove : GenStep_SilentAnimaTrees
     {
         return CellFinderLoose.TryFindRandomNotEdgeCellWith(
             MinDistanceFromMapEdge,
-            c => CanSpawnTreeAt(c, map, requireFertility: true),
+            c => CanSpawnThingAt(c, map, requireFertility: true),
             map,
             out result);
     }
@@ -59,7 +59,7 @@ public class GenStep_SilentGrove : GenStep_SilentAnimaTrees
     {
         return CellFinderLoose.TryFindRandomNotEdgeCellWith(
             MinDistanceFromMapEdge,
-            c => CanSpawnTreeAt(c, map, requireFertility: false),
+            c => CanSpawnThingAt(c, map, requireFertility: false),
             map,
             out result);
     }

@@ -14,7 +14,7 @@ namespace tsoa.core;
 [StaticConstructorOnStartup]
 public class TSOA_Utils
 {
-    private static readonly Texture2D FontCommandTex = ContentFinder<Texture2D>.Get("UI/Commands/Trade"); // TODO change to custom icon
+    private static readonly Texture2D FontCommandTex = ContentFinder<Texture2D>.Get("TSOA/UI/WorldObjects/AmberIcon"); // TODO change to custom icon
 
     public static float GetPsyScalingFactor(float psyScaling, float sensitivity)
     {
