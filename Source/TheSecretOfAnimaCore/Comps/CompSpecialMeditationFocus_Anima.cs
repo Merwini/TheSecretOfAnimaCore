@@ -14,7 +14,7 @@ public class CompSpecialMeditationFocus_Anima : ThingComp
     public CompProperties_SpecialMeditationFocus_Anima Props => (CompProperties_SpecialMeditationFocus_Anima)props;
 
     private CompAffectedByFacilities_Grouped cachedFacilityComp;
-    public CompAffectedByFacilities_Grouped CachedCompABFG => cachedFacilityComp;
+    public CompAffectedByFacilities_Grouped CachedFacilityComp => cachedFacilityComp;
 
     private CompSpawnSubplant cachedSubplantComp;
     public CompSpawnSubplant CachedSubplantComp => cachedSubplantComp;
@@ -52,7 +52,7 @@ public class CompSpecialMeditationFocus_Anima : ThingComp
     public float ApplyAnimaBasinAdjustment(float originalProgress)
     {
         float adjustedProgress = originalProgress;
-        CompAffectedByFacilities_Grouped comp = CachedCompABFG;
+        CompAffectedByFacilities_Grouped comp = CachedFacilityComp;
         if (comp == null)
             return originalProgress;
 
