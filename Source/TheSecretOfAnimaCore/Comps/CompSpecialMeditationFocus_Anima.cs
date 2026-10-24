@@ -13,45 +13,25 @@ public class CompSpecialMeditationFocus_Anima : ThingComp
 {
     public CompProperties_SpecialMeditationFocus_Anima Props => (CompProperties_SpecialMeditationFocus_Anima)props;
 
-    private CompAffectedByFacilities_Grouped compABFG;
-    public CompAffectedByFacilities_Grouped CachedCompABFG
-    {
-        get
-        {
-            if (compABFG == null)
-            {
-                CompAffectedByFacilities_Grouped comp = parent.GetComp<CompAffectedByFacilities_Grouped>();
-                if (comp != null)
-                {
-                    compABFG = comp;
-                }
-                else
-                {
-                    Log.Error($"CompSpecialMeditationFocus is applied to Thing of {parent.def.defName}, but Thing has no CompAffectedByFacilities_Grouped");
-                }
-            }
-            return compABFG;
-        }
-    }
+    private CompAffectedByFacilities_Grouped cachedFacilityComp;
+    public CompAffectedByFacilities_Grouped CachedCompABFG => cachedFacilityComp;
 
-    private CompSpawnSubplant compSpawnSubplant;
-    public CompSpawnSubplant CachedCompSpawnSubplant
+    private CompSpawnSubplant cachedSubplantComp;
+    public CompSpawnSubplant CachedSubplantComp => cachedSubplantComp;
+
+    public override void PostSpawnSetup(bool respawningAfterLoad)
     {
-        get
+        base.PostSpawnSetup(respawningAfterLoad);
+        cachedFacilityComp = parent.TryGetComp<CompAffectedByFacilities_Grouped>();
+        if (cachedFacilityComp == null)
         {
-            if (compSpawnSubplant == null)
-            {
-                CompSpawnSubplant comp = parent.GetComp<CompSpawnSubplant>();
-                if (comp != null)
-                {
-                    compSpawnSubplant = comp;
-                }
-                else
-                {
-                    Log.Error($"CompSpecialMeditationFocus is applied to Thing of {parent.def.defName}, but Thing has no CompSpawnSubplant");
-                }
-            }
-            return compSpawnSubplant;
+            Log.Error($"[TSOA] CompSpecialMeditationFocus_Anima was unable to find CompAffectedByFacilities_Grouped on {parent.Label}");
+        }
+
+        cachedSubplantComp = parent.TryGetComp<CompSpawnSubplant>();
+        if (cachedFacilityComp == null)
+        {
+            Log.Error($"[TSOA] CompSpecialMeditationFocus_Anima was unable to find CompSpawnSubplant on {parent.Label}");
         }
     }
 
@@ -62,7 +42,7 @@ public class CompSpecialMeditationFocus_Anima : ThingComp
     {
         progressToAdd = ApplyAnimaBasinAdjustment(progressToAdd);
 
-        var subplant = CachedCompSpawnSubplant;
+        var subplant = CachedSubplantComp;
         if (subplant != null)
         {
             subplant.AddProgress(progressToAdd);
