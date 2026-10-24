@@ -20,6 +20,8 @@ public class TSOA_DefOf
     public static ThingDef TSOA_AnimaSapBasin;
 
     public static ThingDef TSOA_FontOfAnima;
+    
+    public static HediffDef TSOA_AnimaAffinityHediff;
 
     //public static ThoughtDef TSOA_AnimaGrassScream;
 
