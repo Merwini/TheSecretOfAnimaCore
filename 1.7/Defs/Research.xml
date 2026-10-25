@@ -26,8 +26,8 @@
 		<defName>TSOA_AnimaTwo</defName>
 		<label>Anima Acolyte</label>
 		<description>Deepen your understanding of the anima tree, and how it can provide tools and weapons to help you thrive.</description>
-		<baseCost>2000</baseCost>
-		<techLevel>Medieval</techLevel>
+		<baseCost>1500</baseCost>
+		<techLevel>Neolithic</techLevel>
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>2.00</researchViewX>
 		<researchViewY>2.80</researchViewY>
@@ -42,7 +42,7 @@
 		<defName>TSOA_AnimaThree</defName>
 		<label>Anima Shaman</label>
 		<description>Master your connection to the anima tree, unlocking secrets that are beyond human understanding.</description>
-		<baseCost>3000</baseCost>
+		<baseCost>2000</baseCost>
 		<techLevel>Medieval</techLevel>
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>4.00</researchViewX>
