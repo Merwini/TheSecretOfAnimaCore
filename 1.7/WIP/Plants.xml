@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="TreeBase" Name="TreeAnima">
+		<defName>TSOA_Plant_AnimaSapling</defName>
+		<label>anima sapling</label>
+		<description>An immature anima tree. Anima saplings have the same psyfocus restorative properties as an anima tree, but are not mature enough to grow anima grass or produce other usable resources. However, their immaturity makes their energy flow maleable, and animus cairns placed near the sapling can siphon off energy to empower those who meditate around it.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Plant/TreeAnima</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.2, 0.35, 0.13)</volume>
+				<offset>(0,0,-0.25)</offset>
+			</shadowData>
+			<drawSize>(0.5,0.5)</drawSize>
+		</graphicData>
+		<drawGUIOverlay>True</drawGUIOverlay>
+		<minifiedDef IsNull="True" />
+		<statBases>
+			<Beauty>5</Beauty>
+			<BeautyOutdoors>5</BeautyOutdoors>
+			<MeditationFocusStrength>0.22</MeditationFocusStrength>
+			<Flammability>0</Flammability>
+			<MaxHitPoints>200</MaxHitPoints>
+		</statBases>
+		<ingestible />
+		<preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
+		<canScatterOver>false</canScatterOver>
+		<plant>
+			<growDays>25</growDays>
+			<visualSizeRange>1.8~2.5</visualSizeRange>
+			<sowMinSkill>0</sowMinSkill>
+			<sowTags Inherit="False"/>
+			<dieIfNoSunlight>False</dieIfNoSunlight>
+			<dieFromToxicFallout>False</dieFromToxicFallout>
+			<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
+			<fertilityMin>0.08</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<sowResearchPrerequisites Inherit="False" />
+			<treeCategory>Super</treeCategory>
+			<allowAutoCut>false</allowAutoCut>
+			<warnIfMarkedForCut>true</warnIfMarkedForCut>
+			<choppedThingDef>ChoppedStump_Anima</choppedThingDef>
+			<smashedThingDef>SmashedStump_Anima</smashedThingDef>
+			<immatureGraphicPath>Things/Plant/TreeAnima_Immature</immatureGraphicPath>
+			<snowOverlayGraphicPath>Things/Plant/TreeAnima_Snowy</snowOverlayGraphicPath>
+			<immatureSnowOverlayGraphicPath>Things/Plant/TreeAnima_ImmatureSnowy</immatureSnowOverlayGraphicPath>
+		</plant>
+		<comps>
+			<li Class="CompProperties_MeditationFocus">
+				<statDef>MeditationFocusStrength</statDef>
+				<focusTypes>
+					<li>Natural</li>
+				</focusTypes>
+				<offsets>
+					<li Class="FocusStrengthOffset_ArtificialBuildings">
+						<radius>27.9</radius>
+						<curve>
+							<points>
+								<li>(0,   0.0)</li>
+								<li>(5,  -0.15)</li>
+								<li>(10, -0.3)</li>
+								<li>(50, -0.5)</li>
+							</points>
+						</curve>
+					</li>
+					<li Class="FocusStrengthOffset_BuildingDefs">
+						<defs>
+							<AnimusStone>0.02</AnimusStone>
+							<NatureShrine_Small>0.01</NatureShrine_Small>
+							<NatureShrine_Large>0.01</NatureShrine_Large>
+						</defs>
+						<radius>9.9</radius>
+						<maxBuildings>4</maxBuildings>
+						<explanationKey>MeditationFocusPerAnimusStoneAndShrine</explanationKey>
+						<explanationKeyAbstract>MeditationFocusPerAnimusStoneAndShrineAbstract</explanationKeyAbstract>
+					</li>
+				</offsets>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3.75</glowRadius>
+				<glowColor>(110,116,125,0)</glowColor>
+			</li>
+			<comps>
+				<li Class="CompProperties_AffectedByFacilities">
+					<linkableFacilities>
+						<li>VitalsMonitor</li>
+						<li>EndTable</li>
+						<li>Dresser</li>
+						<li MayRequire="Ludeon.RimWorld.Ideology">SleepAccelerator</li>
+					</linkableFacilities>
+				</li>
+			</comps>
+			<li Class="CompProperties_GiveThoughtToAllMapPawnsOnDestroy">
+				<thought>TSOA_Anima</thought>
+				<message>The anima tree has died and emitted a disturbing psychic scream.</message>
+			</li>
+			<li Class="CompProperties_PlaySoundOnDestroy">
+				<sound>AnimaTreeScream</sound>
+			</li>
+			<li Class="CompProperties_SelfhealHitpoints">
+				<ticksPerHeal>2000</ticksPerHeal>
+				<!-- 30 hp per day, must be a multiple of 2000, since plants have Long ticker -->
+			</li>
+			<li Class="CompProperties_ToggleDrawAffectedMeditationFoci" />
+			<li Class="CompProperties_PlantPreventCutting"/>
+		</comps>
+	</ThingDef>
+</Defs>

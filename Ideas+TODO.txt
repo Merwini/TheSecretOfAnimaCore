@@ -1,45 +1,60 @@
-Something to do with mechanoid corpses
-Weapons vs mechanoids
-Rebalance totems, currently unlock basic ones before unlocking sap
-Rebalance totems, consume too much grass. Maybe consume one sap per quadrum?
+TODO:
 
-Rebalance gear, shaman gear uses too much grass.
-Different way to get anima pearls. Using so few rituals means it's next to impossible to get an expendable colonist with enough affinity during the acolyte era
+	General:
+		Something to do with mechanoid corpses
+		More anima tree linkables
+			anima meditation spot - gives a small amount of anima affinity when you meditate. Might be hard to code
+ 			animus crysalis - building you can store a colonist in that gives them anima affinity bonus per day. For catching up new colonists? Unlocked in shaman era
 
-Need more early-game spammable rituals:
-- Plant growth?
-- Helper sprites?
-- Ritual to temporarily boost animus cairn bonuses
-
-Some more linkables
-- anima meditation spot - gives a small amount of anima affinity when you meditate. Might be hard to code
-- animus crysalis - building you can store a colonist in that gives them anima affinity bonus per day. For catching up new colonists? Unlocked in shaman era
+	Core:
+		Anima pearls as quest reward
+		Void content
+			Something to happen when meditating at monolith
 
 
-Learning opportunities for various mechanics
+	Arsenal:
+		Start scenarios with anima / void gear
+		Shard virion recipe
+		More void weapons
+			Another tier of Virion melee weapons
+			Virion bow (arrows) - implants a metalhorror in the target, that grows rapidly and erupts if they die
+		Rewrite HediffComp_StatExchanger as a Hediff subclass? overriding CurStage instead of affecting stats with a StatPart
+		Eye of Entity Study - StudyEfficiency / EntityStudyRate
 
-Rewrite HediffComp_StatExchanger as a Hediff subclass, overriding CurStage instead of affecting stats with a StatPart
+	Rituals:
+		Avatar - give target pawn extreme psychic buffs, but an unavoidable death timer. last resort when colony is otherwise doomed
+		Monolith as ritual spot
+			Relocate monolith
 
-	Virion bow (arrows)
-		- implants a metalhorror in the target, that grows rapidly and erupts if they die
+	Cairns/Totems:
+		Rabbit - requires Biotech, gives chance for twins/triplets
+		Goat - caravans ignore terrain passability?
 
+	Creatures (submod or include in Core?):
+		kodama, small tree spirits
+		some sort of combat spirit
+		Elite and boss Anomaly entities
 
-		Eye of Entity Study
-		- StudyEfficiency
-		- EntityStudyRate
+	Voidwalking submod:
+		Build void gate(s). Maybe as a monolith linkable?
+			Activate with human sacrifice, places a world map object. Can form carvan and send them through the void to that object and back
+			Caravan moves much faster through the void, but has a chance of entity ambush. Ambush chance and power increases the longer the gate is left open.
+		Pull chunks of the void into our dimension (home map), bringing resources but also threats
 
+	Factions submod (require Arsenal at least):
+		Anima
+		Void
 
+	Story submod (requires all other mods):
+		Patch researches to be gated by story events
+		Side with Anima / Void factions
+		No more spoilers yet
 
-Creatures (submod):
-	- kodama, small tree spirits
-	- Kukonochi, the kami of trees
-
-Other:
-	- researches will be gated by story events, once I make story mod
-	- lineage submod for generations playthrough?
-		- weapons and armor bind to pawn, can only be passed down to children, get stronger with each generation
-		- ritual to sacrifice a pawn, give strong long-term buffs to bloodline (sacrifice grandma when she is too old to contribute)
-
-Evolving anima tree in the style of anomaly monolith
-	- monolith breakpoints are based on entities encountered, so need something different for tree
-	- quests to capture special psychically-attuned world pawns and merge them with the tree?
+	Other:
+		lineage submod for generations playthrough?
+			weapons and armor bind to pawn, can only be passed down to children, get stronger with each generation
+			ritual to sacrifice a pawn, give strong long-term buffs to all descendants (sacrifice grandma when she is too old to contribute)
+		Evolving anima tree in the style of anomaly monolith
+			monolith breakpoints are based on entities encountered, so need something different for tree
+			quests to capture special psychically-attuned world pawns and merge them with the tree?
+			maybe only happens with story mod, with stages based on story progress
