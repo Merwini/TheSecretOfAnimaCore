@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Excluded>
+    <exclude>.git</exclude>
+    <exclude>.vs</exclude>
+    <exclude>Ideas+TODO.txt</exclude>
+    <exclude>Source</exclude>
+    <exclude>Stats.txt</exclude>
+  </Excluded>
+</Configuration>
