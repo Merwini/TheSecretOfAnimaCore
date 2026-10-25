@@ -58,7 +58,7 @@
 	</ResearchProjectDef>
 	
 	
-	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">
+	<ResearchProjectDef MayRequire="Ludeon.Rimworld.Anomaly">
 		<defName>TSOA_VoidOne</defName>
 		<label>Dusk of Void</label>
 		<description>Stare into the void, tentatively examining the benefits of worshipping the mad void god.</description>
@@ -73,7 +73,7 @@
 		<!-- TODO discovered letter -->
 	</ResearchProjectDef>
 
-	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">
+	<ResearchProjectDef MayRequire="Ludeon.Rimworld.Anomaly">
 		<defName>TSOA_VoidTwo</defName>
 		<label>Void Initiate</label>
 		<description>Step into the void, accepting the gifts of the mad void god.</description>
@@ -87,7 +87,7 @@
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">
+	<ResearchProjectDef MayRequire="Ludeon.Rimworld.Anomaly">
 		<defName>TSOA_VoidThree</defName>
 		<label>Work in progress!</label>
 		<description>Immerse yourself in the void, committing yourself to the mad void god.</description>
@@ -102,7 +102,7 @@
 	</ResearchProjectDef>
 
 
-	<ResearchProjectDef mayRequire="Ludeon.Rimworld.Anomaly">
+	<ResearchProjectDef MayRequire="Ludeon.Rimworld.Anomaly">
 		<defName>TSOA_ArchotechOne</defName>
 		<label>Work in progress!</label>
 		<description>Where thesis meets antithesis is synthesis. Between the infant god and the mad one, can mankind find salvation?</description>
