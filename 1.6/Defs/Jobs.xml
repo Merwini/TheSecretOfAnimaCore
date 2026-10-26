@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<JobDef>
+		<defName>TSOA_TakeAnimaSapOutOfBasinJob</defName>
+		<driverClass>tsoa.core.JobDriver_TakeAnimaSapOutOfBasin</driverClass>
+		<reportString>taking anima sap out of TargetA.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+
+	<WorkGiverDef>
+		<defName>TSOA_TakeAnimaSapOutOfBasinGiver</defName>
+		<label>take anima sap out of sap basin</label>
+		<giverClass>tsoa.core.WorkGiver_TakeAnimaSapOutOfBasin</giverClass>
+		<workType>Hauling</workType>
+		<verb>take anima sap</verb>
+		<gerund>taking anima sap from</gerund>
+		<priorityInType>21</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<canBeDoneByMechs>false</canBeDoneByMechs>
+	</WorkGiverDef>
+
+	<JobDef>
+		<defName>TSOA_TakeAnimaAmberOutOfFontJob</defName>
+		<driverClass>tsoa.core.JobDriver_TakeAnimaAmberOutOfFont</driverClass>
+		<reportString>taking anima amber out of TargetA.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+
+	<WorkGiverDef>
+		<defName>TSOA_TakeAnimaAmberOutOfFontGiver</defName>
+		<label>take anima amber out of anima font</label>
+		<giverClass>tsoa.core.WorkGiver_TakeAnimaAmberOutOfFont</giverClass>
+		<workType>Hauling</workType>
+		<verb>take anima amber</verb>
+		<gerund>taking anima amber from</gerund>
+		<priorityInType>21</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<canBeDoneByMechs>false</canBeDoneByMechs>
+	</WorkGiverDef>
+
+	<JobDef>
+		<defName>TSOA_AddAnimaSapToFontJob</defName>
+		<driverClass>tsoa.core.JobDriver_AddAnimaSapToFont</driverClass>
+		<reportString>adding anima sap to TargetA.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+
+	<WorkGiverDef>
+		<defName>TSOA_AddAnimaSapToFontGiver</defName>
+		<label>add anima sap to font of anima</label>
+		<giverClass>tsoa.core.WorkGiver_AddAnimaSapToFont</giverClass>
+		<workType>Hauling</workType>
+		<verb>add anima sap</verb>
+		<gerund>adding anima sap to</gerund>
+		<priorityInType>21</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<canBeDoneByMechs>false</canBeDoneByMechs>
+	</WorkGiverDef>
+
+	<JobDef>
+		<defName>TSOA_PlantAnimaPearl</defName>
+		<driverClass>tsoa.core.JobDriver_PlantAnimaPearl</driverClass>
+		<reportString>planting anima pearl.</reportString>
+		<casualInterruptible>false</casualInterruptible>
+	</JobDef>
+
+</Defs>

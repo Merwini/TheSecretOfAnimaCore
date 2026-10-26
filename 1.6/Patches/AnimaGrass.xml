@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Plant_GrassAnima"]</xpath>
+		<value>
+			<selectable>true</selectable>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Plant_GrassAnima"]/plant</xpath>
+		<value>
+			<harvestTag>Standard</harvestTag>
+			<harvestYield>1</harvestYield>
+			<harvestedThingDef>TSOA_AnimaGrassResource</harvestedThingDef>
+			<harvestMinGrowth>0.95</harvestMinGrowth>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="Plant_GrassAnima"]/plant/growDays</xpath>
+		<value>
+			<growDays>5</growDays>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="Plant_GrassAnima"]/plant/lifespanDaysPerGrowDays</xpath>
+		<value>
+			<lifespanDaysPerGrowDays>12</lifespanDaysPerGrowDays>
+		</value>
+	</Operation>
+</Patch>
