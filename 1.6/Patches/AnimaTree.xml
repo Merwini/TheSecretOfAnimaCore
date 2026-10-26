@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps</xpath>
+		<value>
+			<li Class="tsoa.core.CompProperties_AffectedByFacilities_Grouped">
+				<linkGroups>
+					<li Class="tsoa.core.FacilityLinkGroup">
+						<categoryTag>TSOA_AnimaBasinCategory</categoryTag>
+						<label>anima sap basins</label>
+						<maxLinks>1</maxLinks>
+					</li>
+					<li Class="tsoa.core.FacilityLinkGroup">
+						<categoryTag>TSOA_AnimaGraveCategory</categoryTag>
+						<label>anima graves</label>
+						<maxLinks>4</maxLinks>
+					</li>
+				</linkGroups>
+			</li>
+			<li Class="tsoa.core.CompProperties_SpecialMeditationFocus_Anima">
+				<requiredFocusType>Natural</requiredFocusType>
+			</li>
+		</value>
+	</Operation>
+
+	<!--<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps</xpath>
+		<value>
+			<li Class="tsoa.core.CompProperties_AnimaTreeEssence" />
+		</value>
+	</Operation>-->
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps/li[@Class="CompProperties_SpawnSubplant"]</xpath>
+		<value>
+			<initialGrowthRange>0.1~0.2</initialGrowthRange>
+		</value>
+	</Operation>
+	
+</Patch>

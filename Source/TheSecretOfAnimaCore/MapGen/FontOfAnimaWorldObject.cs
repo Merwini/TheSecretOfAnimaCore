@@ -35,7 +35,7 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
         }
         set
         {
-            nextWaveTick = Math.Clamp(value, 0, int.MaxValue);
+            nextWaveTick = Mathf.Clamp(value, 0, int.MaxValue);
         }
     }
 
@@ -47,7 +47,7 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
         }
         set
         {
-            nextAmberTick = Math.Clamp(value, 0, int.MaxValue);
+            nextAmberTick = Mathf.Clamp(value, 0, int.MaxValue);
         }
     }
 

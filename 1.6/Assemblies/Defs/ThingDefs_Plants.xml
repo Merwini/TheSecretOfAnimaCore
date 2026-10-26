@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>TSOA_Plant_AnimaFlower</defName>
+		<label>anima flower</label>
+		<description>A cultivated flower hybridized with anima grass. It lacks the psychic influence of other anima plants, but glows with a soft light that makes it quite pretty.</description>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+			<Beauty>14</Beauty>
+			<BeautyOutdoors>14</BeautyOutdoors>
+			<Nutrition>0.05</Nutrition>
+		</statBases>
+		<graphicData>
+			<texPath>TSOA/Things/Plant/AnimaFlower</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(1.0, 1.0)</drawSize>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<uiIconScale>2</uiIconScale>
+		<altitudeLayer>Item</altitudeLayer>
+		<selectable>true</selectable>
+		<ingestible>
+			<canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
+		</ingestible>
+		<plant>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestTag>Standard</harvestTag>
+			<sowWork>1000</sowWork>
+			<sowTags>
+				<li>Ground</li>
+				<li>Decorative</li>
+			</sowTags>
+			<growMinGlow>0.0</growMinGlow>
+			<topWindExposure>0.1</topWindExposure>
+			<growDays>1.5</growDays>
+			<lifespanDaysPerGrowDays>10</lifespanDaysPerGrowDays>
+			<visualSizeRange>0.5~1.15</visualSizeRange>
+			<wildOrder>1</wildOrder>
+			<purpose>Misc</purpose>
+			<sowResearchPrerequisites>
+				<li>TSOA_AnimaOne</li>
+			</sowResearchPrerequisites>
+		</plant>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>7</glowRadius>
+				<glowColor>(200,200,200,0)</glowColor>
+			</li>
+			<li Class="tsoa.core.CompProperties_BiHeatPusher">
+				<!-- default human comfortable temp -->
+				<targetTemperatureRange>22~26</targetTemperatureRange>
+				<!-- Aiming for a 5 degree temp difference for a 36-cell room -->
+				<heatPerSecond>2.6</heatPerSecond>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="TreeBase">
+		<defName>TSOA_TreeAnimaSilent</defName>
+		<label>silent anima tree</label>
+		<description>This anima tree is alive, but something is wrong with it. Its branches are barren and the normal psychic hum has gone silent.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Plant/DeadTreeAnima</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.2, 0.35, 0.13)</volume>
+				<offset>(0,0,-0.25)</offset>
+			</shadowData>
+		</graphicData>
+		<drawGUIOverlay>True</drawGUIOverlay>
+		<minifiedDef IsNull="True" />
+		<statBases>
+			<Beauty>-5</Beauty>
+			<BeautyOutdoors>-5</BeautyOutdoors>
+			<Flammability>0</Flammability>
+			<MaxHitPoints>400</MaxHitPoints>
+		</statBases>
+		<ingestible />
+		<preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
+		<canScatterOver>false</canScatterOver>
+		<plant>
+			<growDays>0</growDays>
+			<visualSizeRange>1.8~2.5</visualSizeRange>
+			<sowMinSkill>0</sowMinSkill>
+			<sowTags Inherit="False"/>
+			<dieIfNoSunlight>False</dieIfNoSunlight>
+			<dieFromToxicFallout>False</dieFromToxicFallout>
+			<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
+			<harvestWork>1600</harvestWork>
+			<harvestedThingDef>TSOA_AnimaBark</harvestedThingDef>
+			<harvestYield>5</harvestYield>
+			<fertilityMin>0.08</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<sowResearchPrerequisites Inherit="False" />
+			<treeCategory>Super</treeCategory>
+			<allowAutoCut>false</allowAutoCut>
+			<warnIfMarkedForCut>false</warnIfMarkedForCut>
+			<choppedThingDef>ChoppedStump_Anima</choppedThingDef>
+			<smashedThingDef>SmashedStump_Anima</smashedThingDef>
+		</plant>
+	</ThingDef>
+
+	<ThingDef ParentName="TreeBase">
+		<defName>TSOA_TreeAnimaDummy</defName>
+		<label>nascent anima tree</label>
+		<description>An anima tree that seems not to be fully grown. Is only weakly psychically active. Cannot be meditated at or linked to, but will emit a psychic scream if destroyed.</description>
+		<graphicData>
+			<texPath>Things/Plant/TreeAnima</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(0.8, 0.8)</drawSize>
+			<shadowData>
+				<volume>(0.2, 0.35, 0.13)</volume>
+				<offset>(0,0,-0.25)</offset>
+			</shadowData>
+		</graphicData>
+		<drawGUIOverlay>True</drawGUIOverlay>
+		<minifiedDef IsNull="True" />
+		<statBases>
+		<Beauty>5</Beauty>
+		<BeautyOutdoors>5</BeautyOutdoors>
+		<MeditationFocusStrength>0.28</MeditationFocusStrength>
+		<Flammability>0</Flammability>
+		<MaxHitPoints>400</MaxHitPoints>
+		<MeditationPlantGrowthOffset>0</MeditationPlantGrowthOffset>
+		</statBases>
+		<ingestible />
+		<preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
+		<canScatterOver>false</canScatterOver>
+		<plant>
+			<growDays>25</growDays>
+			<visualSizeRange>1.8~2.5</visualSizeRange>
+			<sowMinSkill>0</sowMinSkill>
+			<sowTags Inherit="False"/>
+			<dieIfNoSunlight>False</dieIfNoSunlight>
+			<dieFromToxicFallout>False</dieFromToxicFallout>
+			<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
+			<harvestWork>1600</harvestWork>
+			<harvestedThingDef>TSOA_AnimaBark</harvestedThingDef>
+			<fertilityMin>0.08</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<sowResearchPrerequisites Inherit="False" />
+			<treeCategory>Super</treeCategory>
+			<allowAutoCut>false</allowAutoCut>
+			<warnIfMarkedForCut>true</warnIfMarkedForCut>
+			<choppedThingDef>ChoppedStump_Anima</choppedThingDef>
+			<smashedThingDef>SmashedStump_Anima</smashedThingDef>
+			<immatureGraphicPath>Things/Plant/TreeAnima_Immature</immatureGraphicPath>
+			<snowOverlayGraphicPath>Things/Plant/TreeAnima_Snowy</snowOverlayGraphicPath>
+			<immatureSnowOverlayGraphicPath>Things/Plant/TreeAnima_ImmatureSnowy</immatureSnowOverlayGraphicPath>
+		</plant>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3.75</glowRadius>
+				<glowColor>(110,116,125,0)</glowColor>
+			</li>
+			<li Class="CompProperties_GiveThoughtToAllMapPawnsOnDestroy">
+				<thought>AnimaScream</thought>
+				<message>The anima tree has died and emitted a disturbing psychic scream.</message>
+			</li>
+			<li Class="CompProperties_PlaySoundOnDestroy">
+				<sound>AnimaTreeScream</sound>
+			</li>
+			<li Class="CompProperties_SelfhealHitpoints">
+				<ticksPerHeal>2000</ticksPerHeal> <!-- 30 hp per day, must be a multiple of 2000, since plants have Long ticker -->
+			</li>
+			<li Class="CompProperties_ToggleDrawAffectedMeditationFoci" />
+			<li Class="CompProperties_PlantPreventCutting"/>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBaseNonEdible">
+		<defName>TSOA_GrassAnimaDummy</defName>
+		<label>nascent anima grass</label>
+		<description>Anima grass that is lacking its psychic infusement, making it worthless as a crafting ingredient.</description>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+			<Flammability>1.3</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plant/Grass_Anima</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(0.8, 0.8)</drawSize>
+		</graphicData>
+		<plant>
+			<fertilityMin>0.08</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<sowMinSkill>0</sowMinSkill>
+			<growDays>1</growDays>
+			<lifespanDaysPerGrowDays>60</lifespanDaysPerGrowDays>
+			<harvestWork>40</harvestWork>
+			<maxMeshCount>9</maxMeshCount>
+			<visualSizeRange>0.3~0.45</visualSizeRange>
+			<topWindExposure>0.4</topWindExposure>
+			<wildOrder>1</wildOrder>
+			<dieFromToxicFallout>False</dieFromToxicFallout>
+			<allowAutoCut>false</allowAutoCut>
+		</plant>
+		<selectable>true</selectable>
+	</ThingDef>
+
+</Defs>
