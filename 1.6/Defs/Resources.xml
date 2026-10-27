@@ -107,12 +107,12 @@
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
-		<tradeTags>
-			<li>ExoticMisc</li>
-		</tradeTags>
 		<thingSetMakerTags>
 			<li>RewardStandardMidFreq</li>
 		</thingSetMakerTags>
+		<tradeTags>
+			<li>ExoticMisc</li>
+		</tradeTags>
 		<allowedArchonexusCount>5</allowedArchonexusCount>
 	</ThingDef>
 	

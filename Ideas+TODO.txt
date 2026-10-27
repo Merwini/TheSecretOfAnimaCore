@@ -7,7 +7,6 @@ TODO:
  			animus crysalis - building you can store a colonist in that gives them anima affinity bonus per day. For catching up new colonists? Unlocked in shaman era
 
 	Core:
-		Anima pearls as quest reward
 		Void content
 			Something to happen when meditating at monolith
 
