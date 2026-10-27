@@ -16,7 +16,14 @@ TODO:
 		Start scenarios with anima / void gear
 		Shard virion recipe
 		More void weapons
-			Another tier of Virion melee weapons
+			Existing weapons become Virion weapons (bioferrite + gold Virion recipe)
+				Add new effect: steals psychic sensitivity on hit, extra damage if target has low sensitivity
+			Add new lower-tier weapons (become the new Initiate weapons)
+				Have current effect of extra damage based on sensitivity
+				Kris
+				Flamberge
+				Flanged Mace
+				Aesthetic is angular instead of wavy, bioferrite coloring
 			Virion bow (arrows) - implants a metalhorror in the target, that grows rapidly and erupts if they die
 		Rewrite HediffComp_StatExchanger as a Hediff subclass? overriding CurStage instead of affecting stats with a StatPart
 		Eye of Entity Study - StudyEfficiency / EntityStudyRate

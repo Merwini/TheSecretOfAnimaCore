@@ -27,6 +27,9 @@
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
+		<thingSetMakerTags>
+			<li>RewardStandardHighFreq</li>
+		</thingSetMakerTags>
 		<tradeTags>
 			<li>ExoticMisc</li>
 		</tradeTags>
@@ -70,6 +73,9 @@
 		<tradeTags>
 			<li>ExoticMisc</li>
 		</tradeTags>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
 		<allowedArchonexusCount>10</allowedArchonexusCount>
 		<stuffProps>
 			<color>(112,89,43)</color>
@@ -105,7 +111,7 @@
 			<li>ExoticMisc</li>
 		</tradeTags>
 		<thingSetMakerTags>
-			<li>RewardStandardCore</li>
+		<li>RewardStandardMidFreq</li>
 		</thingSetMakerTags>
 		<allowedArchonexusCount>5</allowedArchonexusCount>
 	</ThingDef>
@@ -163,6 +169,12 @@
 			<li>ItemsMisc</li>
 		</thingCategories>
 		<tradeability>Sellable</tradeability>
+		<thingSetMakerTags>
+			<li>RewardStandardLowFreq</li>
+		</thingSetMakerTags>
+		<tradeTags>
+			<li>ExoticMisc</li>
+		</tradeTags>
 		<comps>
 			<li Class="tsoa.core.CompProperties_PlantAnimaPearl" />
 		</comps>
