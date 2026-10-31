@@ -40,6 +40,7 @@ TODO:
 		kodama, small tree spirits
 		some sort of combat spirit
 		Elite and boss Anomaly entities
+		Elite Ghoul
 
 	Voidwalking submod:
 		Build void gate(s). Maybe as a monolith linkable?
@@ -64,3 +65,13 @@ TODO:
 			monolith breakpoints are based on entities encountered, so need something different for tree
 			quests to capture special psychically-attuned world pawns and merge them with the tree?
 			maybe only happens with story mod, with stages based on story progress
+
+
+
+Textures to commission:
+	Void weapons
+		Kris
+		Flamberge
+		Flanged Mace
+	Voidwalking gateway (stargate + shards / bioferrite)
+	

@@ -1,14 +1,52 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Build mod",
-      "type": "process",
-      "command": "dotnet",
-      "args": ["build", "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.sln", "--configuration", "Release"],
-      "options": { "cwd": "${workspaceFolder}" },
-      "problemMatcher": "$msCompile",
-      "group": { "kind": "build", "isDefault": true }
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Release",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.sln",
+                "--configuration",
+                "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}" 
+            },
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true }
+        },
+        {
+            "label": "Build Release 1.6",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.csproj",
+                "--configuration",
+                "Release",
+                "--framework",
+                "net48"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+            },
+            {
+            "label": "Build Release 1.7",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.csproj",
+                "--configuration",
+                "Release",
+                "--framework",
+                "net10.0"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        }
+    ]
 }
