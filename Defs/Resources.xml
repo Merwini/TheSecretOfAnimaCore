@@ -52,7 +52,7 @@
 		<healthAffectsPrice>false</healthAffectsPrice>
 		<statBases>
 			<MaxHitPoints>70</MaxHitPoints>
-			<MarketValue>42</MarketValue>
+			<MarketValue>63</MarketValue>
 			<Mass>0.6</Mass>
 			<Flammability>0.8</Flammability>
 			<DeteriorationRate>2.0</DeteriorationRate>
@@ -97,7 +97,7 @@
 		<intricate>true</intricate>
 		<statBases>
 			<MaxHitPoints>70</MaxHitPoints>
-			<MarketValue>80</MarketValue>
+			<MarketValue>180</MarketValue>
 			<Mass>0.6</Mass>
 			<Flammability>0.8</Flammability>
 			<DeteriorationRate>2.0</DeteriorationRate>

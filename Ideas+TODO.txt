@@ -26,6 +26,7 @@ TODO:
 			Virion bow (arrows) - implants a metalhorror in the target, that grows rapidly and erupts if they die
 		Rewrite HediffComp_StatExchanger as a Hediff subclass? overriding CurStage instead of affecting stats with a StatPart
 		Eye of Entity Study - StudyEfficiency / EntityStudyRate
+		Ideo: Void / Anima WeaponClassDefs
 
 	Rituals:
 		Avatar - give target pawn extreme psychic buffs, but an unavoidable death timer. last resort when colony is otherwise doomed
@@ -65,7 +66,6 @@ TODO:
 			monolith breakpoints are based on entities encountered, so need something different for tree
 			quests to capture special psychically-attuned world pawns and merge them with the tree?
 			maybe only happens with story mod, with stages based on story progress
-
 
 
 Textures to commission:

@@ -61,8 +61,8 @@
 	<ResearchProjectDef MayRequire="Ludeon.Rimworld.Anomaly">
 		<defName>TSOA_VoidOne</defName>
 		<label>Dusk of Void</label>
-		<description>Stare into the void, tentatively examining the benefits of worshipping the mad void god.</description>
-		<baseCost>1</baseCost>
+		<description>Stare into the void, tentatively examining the benefits of worshipping the mad machine god.</description>
+		<baseCost>1000</baseCost>
 		<techLevel>Medieval</techLevel>
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>12.00</researchViewX>
@@ -76,8 +76,8 @@
 	<ResearchProjectDef MayRequire="Ludeon.Rimworld.Anomaly">
 		<defName>TSOA_VoidTwo</defName>
 		<label>Void Initiate</label>
-		<description>Step into the void, accepting the gifts of the mad void god.</description>
-		<baseCost>1</baseCost>
+		<description>Step into the void, accepting the gifts of the mad machine god.</description>
+		<baseCost>1500</baseCost>
 		<techLevel>Medieval</techLevel>
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>10.00</researchViewX>
@@ -89,24 +89,24 @@
 
 	<ResearchProjectDef MayRequire="Ludeon.Rimworld.Anomaly">
 		<defName>TSOA_VoidThree</defName>
-		<label>Work in progress!</label>
-		<description>Immerse yourself in the void, committing yourself to the mad void god.</description>
-		<baseCost>1</baseCost>
+		<label>Void Knight</label>
+		<description>Immerse yourself in the void, committing yourself to the mad machine god.</description>
+		<baseCost>2000</baseCost>
 		<techLevel>Medieval</techLevel>
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>8.00</researchViewX>
 		<researchViewY>2.80</researchViewY>
 		<prerequisites>
-			<li>TSOA_ArchotechOne</li>
+			<li>TSOA_VoidTwo</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
 
 	<ResearchProjectDef MayRequire="Ludeon.Rimworld.Anomaly">
 		<defName>TSOA_ArchotechOne</defName>
-		<label>Work in progress!</label>
+		<label>Work in progress! (don't bother researchiong this)</label>
 		<description>Where thesis meets antithesis is synthesis. Between the infant god and the mad one, can mankind find salvation?</description>
-		<baseCost>6000</baseCost>
+		<baseCost>99999</baseCost>
 		<techLevel>Archotech</techLevel>
 		<tab>TSOA_ResearchTab</tab>
 		<researchViewX>6.00</researchViewX>
