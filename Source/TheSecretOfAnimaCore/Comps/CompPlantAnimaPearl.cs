@@ -43,7 +43,8 @@ public class CompPlantAnimaPearl : ThingComp
                         IntVec3 cell = t.Cell;
                         return cell.InBounds(selPawn.Map)
                             && cell.Standable(selPawn.Map)
-                            && selPawn.Map.fertilityGrid.FertilityAt(cell) > 0.08f;
+                            && selPawn.Map.fertilityGrid.FertilityAt(cell) > 0.08f
+                            && ThingDefOf.Plant_TreeAnima.CanEverPlantAt(cell, selPawn.Map);
                     }
                 },
                 delegate (LocalTargetInfo target)

@@ -52,12 +52,20 @@ public class JobDriver_PlantAnimaPearl : JobDriver
             Thing pearl = Pearl;
             Map map = pawn.Map;
 
-            if (pearl != null && !pearl.Destroyed)
+            List<Thing> thingsInCell = PlantCell.GetThingList(map);
+            for (int i = thingsInCell.Count - 1; i >= 0; i--)
             {
-                pearl.Destroy();
+                thingsInCell[i].Destroy();
             }
+            Thing tree = GenSpawn.Spawn(ThingDefOf.Plant_TreeAnima, PlantCell, map);
 
-            GenSpawn.Spawn(ThingDefOf.Plant_TreeAnima, PlantCell, map);
+            if (tree != null && tree.Spawned)
+            {
+                if (pearl != null && !pearl.Destroyed)
+                {
+                    pearl.Destroy();
+                }
+            }
         };
         finish.defaultCompleteMode = ToilCompleteMode.Instant;
         yield return finish;

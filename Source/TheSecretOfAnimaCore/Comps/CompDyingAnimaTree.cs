@@ -28,7 +28,7 @@ public class CompDyingAnimaTree : ThingComp
             yield return option;
         }
         
-        if (selPawn?.GetPsylinkLevel() <= 0)
+        if (selPawn.GetPsylinkLevel() <= 0)
         {
             yield return DisabledOption("TSOA_ComfortAnimaTreeRequiresPsylink".Translate());
             yield break;
