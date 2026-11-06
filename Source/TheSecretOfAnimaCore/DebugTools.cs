@@ -11,7 +11,7 @@ namespace tsoa.core;
 
 public class DebugTools
 {
-    [DebugAction("Secret of Anima", "Add anima affinity", true, false, false, true, false, 0, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+    [DebugAction("Secret of Anima", "Add anima affinity", true, false, false, false, false, 0, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap)]
     public static void AddAnimaAffinity(Pawn p)
     {
         Hediff_AnimaAffinity.AddOrUpdateAffinityHediff(p, 0.01f);
