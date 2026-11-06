@@ -13,7 +13,7 @@
 	<GenStepDef>
 		<defName>TSOA_SilentGrove</defName>
 		<linkWithSite>TSOA_SilentGrove</linkWithSite>
-		<order>900</order>
+		<order>1601</order>
 		<genStep Class="tsoa.core.GenStep_SilentGrove">
 			<focusThing>TSOA_TreeAnimaDying</focusThing>
 			<spawnThing>TSOA_TreeAnimaSilent</spawnThing>
@@ -23,8 +23,15 @@
 	<GenStepDef>
 		<defName>TSOA_AnomalyAmbush</defName>
 		<linkWithSite>TSOA_AnomalyAmbush</linkWithSite>
-		<order>1600</order>
+		<order>1602</order>
 		<genStep Class="tsoa.core.GenStep_AnomalyAmbush" />
+	</GenStepDef>
+	
+	<GenStepDef>
+		<defName>TSOA_SleepingMechanoidsHidden</defName>
+		<linkWithSite>TSOA_SleepingMechanoidsHidden</linkWithSite>
+		<order>1602</order>
+		<genStep Class="GenStep_SleepingMechanoids" />
 	</GenStepDef>
 
 	<SitePartDef>
@@ -42,7 +49,7 @@
 		</tags>
 	</SitePartDef>
 
-	<SitePartDef mayRequire="Ludeon.Rimworld.Anomaly">
+	<SitePartDef MayRequire="Ludeon.Rimworld.Anomaly">
 		<defName>TSOA_AnomalyAmbush</defName>
 		<label>anomaly ambush</label>
 		<description>a group of hidden entities</description>
@@ -76,13 +83,6 @@
 			<li>SleepingMechanoidsHidden</li>
 		</tags>
 	</SitePartDef>
-
-	<GenStepDef>
-		<defName>TSOA_SleepingMechanoidsHidden</defName>
-		<linkWithSite>TSOA_SleepingMechanoidsHidden</linkWithSite>
-		<order>1600</order>
-		<genStep Class="GenStep_SleepingMechanoids" />
-	</GenStepDef>
 
 	<WorldObjectDef ParentName="StaticWorldObjectBase">
 		<defName>TSOA_FontOfAnimaWorldObject</defName>
