@@ -39,7 +39,6 @@
 		<label>silent grove</label>
 		<workerClass>tsoa.core.SitePartWorker_SilentGrove</workerClass>
 		<description>A grove of silent anima trees</description>
-		<!-- TODO custom icon -->
 		<siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
 		<expandingIconTexture>TSOA/World/WorldObjects/SilentGrove</expandingIconTexture>
 		<forceExitAndRemoveMapCountdownDurationDays>11</forceExitAndRemoveMapCountdownDurationDays>
