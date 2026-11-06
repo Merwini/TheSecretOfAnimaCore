@@ -76,7 +76,14 @@
 		<tags>
 			<li>SleepingMechanoidsHidden</li>
 		</tags>
-  </SitePartDef>
+	</SitePartDef>
+
+	<GenStepDef>
+		<defName>TSOA_SleepingMechanoidsHidden</defName>
+		<linkWithSite>TSOA_SleepingMechanoidsHidden</linkWithSite>
+		<order>1600</order>
+		<genStep Class="GenStep_SleepingMechanoids" />
+	</GenStepDef>
 
 	<WorldObjectDef ParentName="StaticWorldObjectBase">
 		<defName>TSOA_FontOfAnimaWorldObject</defName>

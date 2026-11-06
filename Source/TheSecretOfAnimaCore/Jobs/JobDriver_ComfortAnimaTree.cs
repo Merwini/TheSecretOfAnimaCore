@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using Verse.AI;
+using Verse.Sound;
 
 namespace tsoa.core;
 
@@ -51,6 +52,7 @@ public class JobDriver_ComfortAnimaTree : JobDriver
                 return;
             }
 
+            SoundDefOf.PsychicSootheGlobal.PlayOneShot(new TargetInfo(treeCell, map));
             Hediff_AnimaAffinity.AddOrUpdateAffinityHediff(pawn, 0.1f);
 
             tree.DeSpawn(DestroyMode.WillReplace);
