@@ -41,7 +41,7 @@
 		<description>A grove of silent anima trees</description>
 		<!-- TODO custom icon -->
 		<siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-		<expandingIconTexture>TSOA/Things/Plant/DeadTreeAnima/DeadTreeAnimaA</expandingIconTexture>
+		<expandingIconTexture>TSOA/World/WorldObjects/SilentGrove</expandingIconTexture>
 		<forceExitAndRemoveMapCountdownDurationDays>11</forceExitAndRemoveMapCountdownDurationDays>
 		<gravShipsCanLandOn>false</gravShipsCanLandOn>
 		<tags>
