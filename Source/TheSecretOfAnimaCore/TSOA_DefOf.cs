@@ -35,6 +35,10 @@ public class TSOA_DefOf
 
     public static JobDef TSOA_PlantAnimaPearl;
 
+    public static JobDef TSOA_ComfortAnimaTree;
+
+    public static ThingDef TSOA_AnimaPearl;
+
     public static SoundDef AnimaTreeScream;
 
     public static DesignationDef TSOA_LoadSapNow;

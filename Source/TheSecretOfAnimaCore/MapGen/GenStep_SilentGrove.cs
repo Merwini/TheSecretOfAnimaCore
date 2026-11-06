@@ -31,6 +31,7 @@ public class GenStep_SilentGrove : GenStep_SpawnThingsAroundThing
         }
 
         SpawnThingsAround(groveCenter, map);
+        SpawnApproachLetter(map, groveCenter);
 
         CellRect cellRect = CellRect.CenteredOn(groveCenter, 7, 7).ClipInsideMap(map);
         MapGenerator.SetVar("RectOfInterest", cellRect);
@@ -62,5 +63,30 @@ public class GenStep_SilentGrove : GenStep_SpawnThingsAroundThing
             c => CanSpawnThingAt(c, map, requireFertility: false),
             map,
             out result);
+    }
+
+    private void SpawnApproachLetter(Map map, IntVec3 groveCenter)
+    {
+        string signalTag = "TSOA_GroveApproached-" + Find.UniqueIDsManager.GetNextSignalTagID();
+
+        CellRect triggerRect = CellRect.CenteredOn(groveCenter, 12).ClipInsideMap(map);
+
+        var letter = (SignalAction_Letter)ThingMaker.MakeThing(ThingDefOf.SignalAction_Letter);
+
+        letter.signalTag = signalTag;
+        letter.letterDef = LetterDefOf.NeutralEvent;
+        letter.letterLabelKey = "TSOA_SilentGroveApproachedLabel";
+        letter.letterMessageKey = "TSOA_SilentGroveApproachedDesc";
+        letter.lookTargets = new LookTargets(groveCenter, map);
+
+        GenSpawn.Spawn(letter, groveCenter, map);
+
+        var trigger = (RectTrigger)ThingMaker.MakeThing(ThingDefOf.RectTrigger);
+
+        trigger.signalTag = signalTag;
+        trigger.Rect = triggerRect;
+        trigger.destroyIfUnfogged = false;
+
+        GenSpawn.Spawn(trigger, groveCenter, map);
     }
 }

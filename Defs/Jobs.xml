@@ -70,4 +70,11 @@
 		<casualInterruptible>false</casualInterruptible>
 	</JobDef>
 
+	<JobDef>
+		<defName>TSOA_ComfortAnimaTree</defName>
+		<driverClass>tsoa.core.JobDriver_ComfortAnimaTree</driverClass>
+		<reportString>comforting TargetA.</reportString>
+		<casualInterruptible>false</casualInterruptible>
+	</JobDef>
+
 </Defs>

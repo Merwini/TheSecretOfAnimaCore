@@ -114,6 +114,19 @@
               </elseNode>
             </li>
 
+            <li Class="QuestNode_RandomNode">
+              <nodes>
+                <li Class="QuestNode_Set" MayRequire="Ludeon.RimWorld.Anomaly">
+                  <name>siteThreatTag</name>
+                  <value>AnomalyAmbush</value>
+                </li>
+                <li Class="QuestNode_Set">
+                  <name>siteThreatTag</name>
+                  <value>SleepingMechanoidsHidden</value>
+                </li>
+              </nodes>
+            </li>
+
             <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
               <storeAs>sitePartDefs</storeAs>
               <storeFactionAs>siteFaction</storeFactionAs>
@@ -121,12 +134,8 @@
                 <li>
                   <tag>SilentGrove</tag>
                 </li>
-			    <li MayRequire="Ludeon.RimWorld.Anomaly">
-                  <tag>AnomalyAmbush</tag>
-                  <chance>$siteThreatChance</chance>
-			    </li>
                 <li>
-                  <tag>SleepingMechanoids</tag>
+                  <tag>$siteThreatTag</tag>
                   <chance>$siteThreatChance</chance>
                 </li>
               </sitePartsTags>

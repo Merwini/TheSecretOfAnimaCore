@@ -15,7 +15,7 @@
 		<linkWithSite>TSOA_SilentGrove</linkWithSite>
 		<order>900</order>
 		<genStep Class="tsoa.core.GenStep_SilentGrove">
-			<focusThing>TSOA_TreeAnimaDummy</focusThing>
+			<focusThing>TSOA_TreeAnimaDying</focusThing>
 			<spawnThing>TSOA_TreeAnimaSilent</spawnThing>
 		</genStep>
 	</GenStepDef>
@@ -54,10 +54,29 @@
 		<arrivedLetterDef>NegativeEvent</arrivedLetterDef>
 		<wantsThreatPoints>true</wantsThreatPoints>
 		<minThreatPoints>400</minThreatPoints>
+		<defaultHidden>true</defaultHidden>
 		<tags>
 			<li>AnomalyAmbush</li>
 		</tags>
 	</SitePartDef>
+
+	<!-- The mechanoids aren't hidden, the sitePart is in the quest letter -->
+	<SitePartDef>
+		<defName>TSOA_SleepingMechanoidsHidden</defName>
+		<label>hidden sleeping mechanoids</label>
+		<description>A group of sleeping mechanoids.</description>
+		<workerClass>SitePartWorker_SleepingMechanoids</workerClass>
+		<siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+		<expandingIconTexture>World/WorldObjects/Expanding/Sites/SleepingPawns</expandingIconTexture>
+		<arrivedLetter>There are a few sleeping hostile mechanoids in this area.\n\nThe mechanoids may or may not wake up when you approach them, so beware.</arrivedLetter>
+		<arrivedLetterDef>NegativeEvent</arrivedLetterDef>
+		<wantsThreatPoints>true</wantsThreatPoints>
+		<minThreatPoints>400</minThreatPoints>
+		<defaultHidden>true</defaultHidden>
+		<tags>
+			<li>SleepingMechanoidsHidden</li>
+		</tags>
+  </SitePartDef>
 
 	<WorldObjectDef ParentName="StaticWorldObjectBase">
 		<defName>TSOA_FontOfAnimaWorldObject</defName>

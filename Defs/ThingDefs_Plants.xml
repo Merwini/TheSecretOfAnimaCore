@@ -102,6 +102,69 @@
 	</ThingDef>
 
 	<ThingDef ParentName="TreeBase">
+		<defName>TSOA_TreeAnimaDying</defName>
+		<label>dying anima tree</label>
+		<description>This anima tree seems to be dying. Its branches are wilting and the psychic hum is weak and inconsistent.</description>
+		<graphicData>
+			<texPath>Things/Plant/TreeAnima</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<drawSize>(0.8, 0.8)</drawSize>
+			<shadowData>
+				<volume>(0.2, 0.35, 0.13)</volume>
+				<offset>(0,0,-0.25)</offset>
+			</shadowData>
+		</graphicData>
+		<drawGUIOverlay>True</drawGUIOverlay>
+		<minifiedDef IsNull="True" />
+		<statBases>
+		<Beauty>5</Beauty>
+		<BeautyOutdoors>5</BeautyOutdoors>
+		<MeditationFocusStrength>0.28</MeditationFocusStrength>
+		<Flammability>0</Flammability>
+		<MaxHitPoints>400</MaxHitPoints>
+		<MeditationPlantGrowthOffset>0</MeditationPlantGrowthOffset>
+		</statBases>
+		<ingestible />
+		<preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
+		<canScatterOver>false</canScatterOver>
+		<plant>
+			<growDays>25</growDays>
+			<visualSizeRange>1.8~2.5</visualSizeRange>
+			<sowMinSkill>0</sowMinSkill>
+			<sowTags Inherit="False"/>
+			<dieIfNoSunlight>False</dieIfNoSunlight>
+			<dieFromToxicFallout>False</dieFromToxicFallout>
+			<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
+			<harvestWork>1600</harvestWork>
+			<harvestedThingDef>TSOA_AnimaBark</harvestedThingDef>
+			<harvestYield>5</harvestYield>
+			<fertilityMin>0.08</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<sowResearchPrerequisites Inherit="False" />
+			<treeCategory>Super</treeCategory>
+			<allowAutoCut>false</allowAutoCut>
+			<warnIfMarkedForCut>true</warnIfMarkedForCut>
+			<choppedThingDef>ChoppedStump_Anima</choppedThingDef>
+			<smashedThingDef>SmashedStump_Anima</smashedThingDef>
+			<immatureGraphicPath>Things/Plant/TreeAnima_Immature</immatureGraphicPath>
+			<snowOverlayGraphicPath>Things/Plant/TreeAnima_Snowy</snowOverlayGraphicPath>
+			<immatureSnowOverlayGraphicPath>Things/Plant/TreeAnima_ImmatureSnowy</immatureSnowOverlayGraphicPath>
+		</plant>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>1.75</glowRadius>
+				<glowColor>(110,116,125,0)</glowColor>
+			</li>
+			<li Class="tsoa.core.CompProperties_DyingAnimaTree" />
+			<li Class="CompProperties_PlaySoundOnDestroy">
+				<sound>AnimaTreeScream</sound>
+			</li>
+			<li Class="CompProperties_ToggleDrawAffectedMeditationFoci" />
+			<li Class="CompProperties_PlantPreventCutting"/>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="TreeBase">
 		<defName>TSOA_TreeAnimaDummy</defName>
 		<label>nascent anima tree</label>
 		<description>An anima tree that seems not to be fully grown. Is only weakly psychically active. Cannot be meditated at or linked to, but will emit a psychic scream if destroyed.</description>
@@ -137,6 +200,7 @@
 			<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
 			<harvestWork>1600</harvestWork>
 			<harvestedThingDef>TSOA_AnimaBark</harvestedThingDef>
+			<harvestYield>5</harvestYield>
 			<fertilityMin>0.08</fertilityMin>
 			<fertilitySensitivity>0</fertilitySensitivity>
 			<sowResearchPrerequisites Inherit="False" />
