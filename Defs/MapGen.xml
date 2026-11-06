@@ -36,7 +36,6 @@
 		<siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
 		<expandingIconTexture>TSOA/Things/Plant/DeadTreeAnima/DeadTreeAnimaA</expandingIconTexture>
 		<forceExitAndRemoveMapCountdownDurationDays>11</forceExitAndRemoveMapCountdownDurationDays>
-		<mainPartAllThreatsLabel>Hostile activity detected.</mainPartAllThreatsLabel>
 		<gravShipsCanLandOn>false</gravShipsCanLandOn>
 		<tags>
 			<li>SilentGrove</li>

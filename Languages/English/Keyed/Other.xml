@@ -75,7 +75,7 @@
 	
 	<!-- Silent Grove -->
 	<TSOA_SilentGroveApproachedLabel>Silent grove</TSOA_SilentGroveApproachedLabel>
-	<TSOA_SilentGroveApproachedDesc>As your colonists approach the anima tree grove, something is wrong. The anima tree at the center appears to be dying, its familiar psychic hum weak and inconsistent.\n\nSomething about it feels like it's reaching out to your colonists for help, seeking a connection.\n\nIf you have a colonist with a psylink, you might be able to interact with the tree. Otherwise, the only thing to do here is to harvest the silent trees for their bark.</TSOA_SilentGroveApproachedDesc>
+	<TSOA_SilentGroveApproachedDesc>As your colonists approach the anima tree grove, something is wrong. The anima tree at the center appears to be dying, its familiar psychic hum weak and inconsistent.\n\nSomething about it feels like it's reaching out to your colonists for help, seeking a connection.\n\nIf you have a colonist with a psylink, you might be able to have them interact with the tree. Otherwise, the only thing to do here is to harvest the silent trees for their bark.</TSOA_SilentGroveApproachedDesc>
 	<TSOA_ComfortAnimaTree>comfort the anima tree</TSOA_ComfortAnimaTree>
 	<TSOA_ComfortAnimaTreeRequiresPsylink>only available to colonists with a psylink</TSOA_ComfortAnimaTreeRequiresPsylink>
 	<TSOA_SilentGroveComfortedLabel>Dying tree comforted</TSOA_SilentGroveComfortedLabel>

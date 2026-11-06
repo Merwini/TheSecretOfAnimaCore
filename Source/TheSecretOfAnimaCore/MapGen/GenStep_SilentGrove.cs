@@ -24,6 +24,12 @@ public class GenStep_SilentGrove : GenStep_SpawnThingsAroundThing
             return;
         }
 
+        List<Thing> thingsInCell = groveCenter.GetThingList(map);
+        for (int i = thingsInCell.Count - 1; i >= 0; i--)
+        {
+            thingsInCell[i].Destroy();
+        }
+
         Thing firstTreeThing = GenSpawn.Spawn(focusThing, groveCenter, map);
         if (firstTreeThing is Plant firstTreePlant)
         {
@@ -51,7 +57,7 @@ public class GenStep_SilentGrove : GenStep_SpawnThingsAroundThing
     {
         return CellFinderLoose.TryFindRandomNotEdgeCellWith(
             MinDistanceFromMapEdge,
-            c => CanSpawnThingAt(c, map, requireFertility: true),
+            c => CanPlaceGroveCenterAt(c, map, requireFertility: true),
             map,
             out result);
     }
@@ -60,9 +66,16 @@ public class GenStep_SilentGrove : GenStep_SpawnThingsAroundThing
     {
         return CellFinderLoose.TryFindRandomNotEdgeCellWith(
             MinDistanceFromMapEdge,
-            c => CanSpawnThingAt(c, map, requireFertility: false),
+            c => CanPlaceGroveCenterAt(c, map, requireFertility: false),
             map,
             out result);
+    }
+
+    private bool CanPlaceGroveCenterAt(IntVec3 cell, Map map, bool requireFertility)
+    {
+        return CanSpawnThingAt(cell, map, requireFertility) &&
+            map.reachability.CanReachMapEdge(cell,
+                TraverseParms.For(TraverseMode.NoPassClosedDoorsOrWater));
     }
 
     private void SpawnApproachLetter(Map map, IntVec3 groveCenter)

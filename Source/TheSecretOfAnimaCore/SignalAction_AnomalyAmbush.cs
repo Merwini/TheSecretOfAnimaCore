@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 using Verse;
 using Verse.AI.Group;
 
@@ -111,34 +110,44 @@ public class SignalAction_AnomalyAmbush : SignalAction_Ambush
         Find.LetterStack.ReceiveLetter("LetterLabelAmbushInExistingMap".Translate(), "LetterAmbushInExistingMap".Translate(Faction.OfPlayer.def.pawnsPlural).CapitalizeFirst(), LetterDefOf.ThreatBig, list);
     }
 
-    private IEnumerable<Entity> GenerateAnomalyAmbushPawns()
+    private IEnumerable<Pawn> GenerateAnomalyAmbushPawns()
     {
         List<Faction> possibleFactions = AnomalyFactions;
-        if (possibleFactions.Count == 0)
-        {
-            Log.Warning("SignalAction_AnomalyAmbush.GenerateAnomalyAmbushPawns failed to find any usable factions");
-            return Enumerable.Empty<Pawn>();
-        }
-
         possibleFactions.Shuffle();
-        Faction chosenFaction = possibleFactions[0]; // I probably don't need to null check this, do I?
 
-        PawnGroupKindDef groupKindDef = null;
-        if (chosenFaction == Faction.OfEntities)
+        foreach (Faction faction in possibleFactions)
         {
-            groupKindDef = chosenFaction.def.pawnGroupMakers.RandomElement().kindDef;
-        }
-        else
-        {
-            groupKindDef = PawnGroupKindDefOf.Combat;
+            List<PawnGroupMaker> groupMakers = faction.def.pawnGroupMakers;
+            if (groupMakers.NullOrEmpty())
+                continue;
+
+            List<PawnGroupMakerParms> eligibleGroups = new List<PawnGroupMakerParms>();
+            foreach (PawnGroupKindDef groupKind in groupMakers.Select(maker => maker.kindDef).Distinct())
+            {
+                if (groupKind == null || (faction != Faction.OfEntities && groupKind != PawnGroupKindDefOf.Combat))
+                    continue;
+
+                PawnGroupMakerParms parms = new PawnGroupMakerParms
+                {
+                    groupKind = groupKind,
+                    tile = Map.Tile,
+                    faction = faction,
+                    points = points
+                };
+
+                if (groupMakers.Any(maker => maker.kindDef == groupKind && maker.commonality > 0f && maker.CanGenerateFrom(parms)))
+                {
+                    eligibleGroups.Add(parms);
+                }
+            }
+
+            if (eligibleGroups.Count > 0)
+            {
+                return PawnGroupMakerUtility.GeneratePawns(eligibleGroups.RandomElement());
+            }
         }
 
-        return PawnGroupMakerUtility.GeneratePawns(new PawnGroupMakerParms
-        {
-            groupKind = groupKindDef,
-            tile = base.Map.Tile,
-            faction = chosenFaction,
-            points = Mathf.Max(points, chosenFaction.def.MinPointsToGeneratePawnGroup(groupKindDef))
-        });
+        Log.Warning($"[TSOA] SignalAction_AnomalyAmbush could not find a usable pawn group within the {points} point budget.");
+        return Enumerable.Empty<Pawn>();
     }
 }
