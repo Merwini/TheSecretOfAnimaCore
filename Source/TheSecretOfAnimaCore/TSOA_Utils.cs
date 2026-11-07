@@ -61,8 +61,10 @@ public class TSOA_Utils
         }
         command.action = () =>
         {
-            PayCost();
-            SpawnFontOfAnima();
+            if (SpawnFontOfAnima())
+            {
+                PayCost();
+            }
         };
 
         return command;
@@ -112,7 +114,7 @@ public class TSOA_Utils
         }
     }
 
-    public static void SpawnFontOfAnima()
+    public static bool SpawnFontOfAnima()
     {
         Quest quest = QuestUtility.GenerateQuestAndMakeAvailable(TSOA_DefOf.TSOA_Opportunity_FontOfAnima, new Slate());
 
@@ -121,5 +123,7 @@ public class TSOA_Utils
         fontWorldObject.relatedQuest = quest;
 
         QuestUtility.SendLetterQuestAvailable(quest);
+
+        return quest != null;
     }
 }
