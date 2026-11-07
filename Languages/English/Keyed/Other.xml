@@ -43,7 +43,7 @@
 	<TSOA_FontLoadSapLabel>load sap</TSOA_FontLoadSapLabel>
 	<TSOA_FontLoadSapDesc>Give the order to begin loading anima sap into the font</TSOA_FontLoadSapDesc>
 	<TSOA_FontBeginLabel>begin crystallization</TSOA_FontBeginLabel>
-	<TSOA_FontBeginDesc>Connect to the anima leylines and begin the crystallization process</TSOA_FontBeginDesc>
+	<TSOA_FontBeginDesc>Connect to the anima leylines and begin the crystallization process. Once the process begins, you can not add more sap!</TSOA_FontBeginDesc>
 	<TSOA_FontUnloadAmberLabel>extract amber</TSOA_FontUnloadAmberLabel>
 	<TSOA_FontUnloadAmberDesc>Give the order to begin extract crystallized anima amber from the font</TSOA_FontUnloadAmberDesc>
 
@@ -61,7 +61,7 @@
 	<TSOA_CrystallizationStartedMessage>The process of crystallizing anima sap into amber has begun. Prepare for danger.</TSOA_CrystallizationStartedMessage>
 	<TSOA_CrystallizationFinishedMessage>The Font of Anima has crystallized all the sap it can, and is returning to an inert state. You should collect the amber and leave.</TSOA_CrystallizationFinishedMessage>
 	<TSOA_CrystallizationStoppedEarlyMessage>Removing the amber early has disrupted the leylines fueling the crystallization, and the process can not continue. You should take the amber and leave.</TSOA_CrystallizationStoppedEarlyMessage>
-	<TSOA_FontDestroyedMessage>The Font of Anima has been destroyed. A portion of the amber it held was saved, but most of it was destroyed along with the Font.</TSOA_FontDestroyedMessage>
+	<TSOA_FontDestroyedMessage>The Font of Anima has been destroyed. A portion of the amber it held was saved, but most of it was lost along with the Font.</TSOA_FontDestroyedMessage>
 
 	<TSOA_ConfirmExtractAmber>Are you sure you want to extract the amber early?</TSOA_ConfirmExtractAmber>
 	<TSOA_ConfirmExtractAmber2>Once the amber is extracted, the Font will become inert, and you will have to find a new one.</TSOA_ConfirmExtractAmber2>

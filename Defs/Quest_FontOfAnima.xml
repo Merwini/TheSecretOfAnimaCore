@@ -23,7 +23,7 @@
 		</questNameRules>
 		<questDescriptionRules>
 			<rulesStrings>
-				<li>questDescription->Word has reached us about a convergence of leylines of psychic power, and the stump of an ancient anima tree found there. This location would allow us to rapidly crystallize our anima sap into amber, but will also attract danger.\n\nThe longer we can defend the font, the more sap we can crystallize. But we need to act quickly, before the leylines shift.</li>
+				<li>questDescription->Word has reached us about a convergence of leylines of psychic power, and the stump of an ancient anima tree found there. This location would allow us to rapidly crystallize our anima sap into amber, but will also attract danger.\n\nThe longer we can defend the font, the more sap we can crystallize. But we need to act quickly, before the leylines shift\n\n(Hint: each amber requires 2 sap, so bring at least that much!)</li>
 			</rulesStrings>
 		</questDescriptionRules>
 		<root Class="QuestNode_Sequence">

@@ -60,7 +60,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
                 return false;
 
             // not enough sap left, remove amber. I think it's better to do this automatically, in case player doesn't notice that the last sap has been converted
-            if (sapAmount < 2)
+            if (sapAmount < SapPerAmber)
                 return true;
 
             // manually designated
@@ -109,7 +109,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
             yield return loadGizmo;
         }
 
-        if (sapAmount != 0 && !HasBegun)
+        if (sapAmount >= SapPerAmber && !HasBegun)
         {
             Command_Action beginCrystallizationGizmo = new Command_Action()
             {
