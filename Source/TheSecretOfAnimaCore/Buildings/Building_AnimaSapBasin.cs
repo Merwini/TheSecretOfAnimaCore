@@ -26,7 +26,6 @@ public class Building_AnimaSapBasin : Building, IThingHolder
     public bool emptyNow;
 
     public const int drainTicks = 1250;
-    public const int workThreshhold = 25;
 
     private Thing linkedTree;
     public virtual Thing LinkedTree
@@ -68,7 +67,7 @@ public class Building_AnimaSapBasin : Building, IThingHolder
             if (t == null)
                 return false;
 
-            return emptyNow || t.stackCount >= workThreshhold;
+            return emptyNow || t.stackCount >= MaximumSap;
         }
     }
 

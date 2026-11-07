@@ -55,7 +55,10 @@ public class JobDriver_PlantAnimaPearl : JobDriver
             List<Thing> thingsInCell = PlantCell.GetThingList(map);
             for (int i = thingsInCell.Count - 1; i >= 0; i--)
             {
-                thingsInCell[i].Destroy();
+                if (thingsInCell[i] is Plant)
+                {
+                    thingsInCell[i].Destroy();
+                }
             }
             Thing tree = GenSpawn.Spawn(ThingDefOf.Plant_TreeAnima, PlantCell, map);
 
