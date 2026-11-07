@@ -54,11 +54,12 @@ public class JobDriver_TakeAnimaAmberOutOfFont : JobDriver
             Font.AmberAmount = 0;
 
             // TODO double check, RimWorld should automatically spawn it on a different tile since amber will be on pawn.Position
-            if (Font.SapAmount > 0)
+            while (Font.SapAmount > 0)
             {
+                int numToSpawn = Math.Max(Font.SapAmount, TSOA_DefOf.TSOA_AnimaSap.stackLimit);
                 Thing sap = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaSap, pawn.Position, Map);
-                sap.stackCount = Font.SapAmount;
-                Font.SapAmount = 0;
+                sap.stackCount = numToSpawn;
+                Font.SapAmount -= numToSpawn;
             }
             
             if (Font.ForceEmpty)

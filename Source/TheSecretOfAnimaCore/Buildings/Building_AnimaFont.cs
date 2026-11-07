@@ -316,6 +316,12 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
     
     public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
     {
+        if (amberAmount > 0)
+        {
+            Thing amber = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaAmber, InteractionCell, Map);
+            amber.stackCount = (int)(amberAmount / FontOfAnimaWorldObject.recoveryDivisor);
+        }
+
         if (Map.Parent is FontOfAnimaWorldObject wo)
         {
             wo.Notify_FontDestroyed(AmberAmount, this.InteractionCell);

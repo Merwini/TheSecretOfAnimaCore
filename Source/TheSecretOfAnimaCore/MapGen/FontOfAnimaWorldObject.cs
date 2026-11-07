@@ -16,7 +16,7 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
     private FloatRange attackCooldownDays = new FloatRange(0.5f, 1f); // 0.5 to 1 days, TODO might change
     private int ticksPerAmberMin = 20000; // 0.5 day, TODO might change
     private int ticksPerAmberMax = 40000;
-    private float recoveryDivisor = 2f; // arbitrary, TODO balance, maybe give full?
+    public static float recoveryDivisor = 2f; // arbitrary, TODO balance, maybe give full?
     private float threatPointBase = 1000;
     private float threatPointPerAmber = 500;
 
@@ -287,9 +287,7 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
     public void Notify_FontDestroyed(int amberAmount, IntVec3 cell)
     {
         crystallizationStarted = false;
-        Messages.Message("TSOA_FontDestroyedMessage".Translate(), new LookTargets(cell, Map), MessageTypeDefOf.NegativeEvent);
-        Thing amber = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaAmber, cell, Map);
-        amber.stackCount = (int)(amberAmount / recoveryDivisor);
+        Messages.Message("TSOA_FontDestroyedMessage".Translate(), new LookTargets(cell, Map), MessageTypeDefOf.NegativeEvent); 
     }
 
     // Maybe there's a better way to do this, but when the map is removed (no colonists remaining) I want to track if the last pawn left via caravan or died
