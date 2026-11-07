@@ -56,6 +56,12 @@ public class JobDriver_TakeAnimaSapOutOfBasin : JobDriver
             Tap.ToggleEmptyNow();
             Tap.DirtyMapMesh(Map);
 
+            if (sap == null || !sap.Spawned)
+            {
+                EndJobWith(JobCondition.Incompletable);
+                return;
+            }
+
             StoragePriority prio = StoreUtility.CurrentStoragePriorityOf(sap);
             IntVec3 bestCell;
 
