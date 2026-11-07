@@ -2,8 +2,8 @@
 <Defs>
 	<ThingDef ParentName="ResourceBase">
 		<defName>TSOA_AnimaGrassResource</defName>
-		<label>anima grass</label>
-		<description>A bundle of anima grass. Harvested properly, the grass somehow remains alive. Faintly hums with psychic resonance. It can be used in specialized crafting or ritual work.</description>
+		<label>anima grass sheaf</label>
+		<description>A bundled sheaf of anima grass. Harvested properly, the grass somehow remains alive, faintly humming with psychic resonance. It can be used in specialized crafting or ritual work.</description>
 		<graphicData>
 			<texPath>TSOA/Things/Item/Resource/AnimaGrass</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
@@ -41,7 +41,7 @@
 	<ThingDef ParentName="ResourceBase">
 		<defName>TSOA_AnimaBark</defName>
 		<label>anima bark</label>
-		<description>A chunk of tough bark shed by an anima tree. The outside is as smooth as skin, but the inside is lined with mysterious patterns that seem to shift when viewed indirectly. The bark remains warm regardless of ambient temperature, and gently resists being moved. When held by psychically-sensitive individuals, the patterns glow faintly, seeming to attune to their psychic prescence. This makes it a valuable resource for crafting weapons and armor.</description>
+		<description>A chunk of tough bark shed by an anima tree. The outside is as smooth as skin, but the inside is lined with mysterious patterns that seem to writhe when viewed from the corner of the eye. When held by psychically-sensitive individuals, the patterns glow faintly, seeming to react to their psychic prescence. This makes it a valuable resource for crafting weapons and armor.</description>
 		<graphicData>
 			<texPath>TSOA/Things/Item/Resource/AnimaBark</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
@@ -85,7 +85,7 @@
 	<ThingDef ParentName="ResourceBase">
 		<defName>TSOA_AnimaSap</defName>
 		<label>anima sap</label>
-		<description>Viscous, faintly glowing sap tapped from an anima tree. Unprotected contact with it produces the unsettling feeling of closeness with something far larger and more powerful than oneself. Properly harnessed, its great psychic potential can be used for powerful crafts and rituals.</description>
+		<description>Viscous, dimly glowing sap tapped from an anima tree. Unprotected contact with it produces the unsettling feeling of closeness with something far larger and more powerful than oneself. It seems to store a great deal of psychic energy which, properly harnessed, can be used for powerful crafts and rituals.</description>
 		<graphicData>
 			<texPath>TSOA/Things/Item/Resource/AnimaSap</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -119,7 +119,7 @@
 	<ThingDef ParentName="ResourceBase">
 		<defName>TSOA_AnimaAmber</defName>
 		<label>anima amber</label>
-		<description>Crystalized anima sap, distilled and purified into a gemstone that glows with inner power. Merely being in its presence is uncomfortable, as it thrums with a resonance that is felt like a pressure on the mind. Its immense power can fuel the mightiest of crafts and rituals.</description>
+		<description>Crystalized anima sap, distilled and purified into a gemstone that glows with inner power. Like the anima tree itself, it thrums with a psychic resonance that is not heard, but felt like a pressure on the mind. Its immense power can fuel the mightiest of crafts and rituals.</description>
 		<graphicData>
 			<texPath>TSOA/Things/Item/Resource/AnimaAmber</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
@@ -148,7 +148,7 @@
 	<ThingDef ParentName="ResourceBase">
 		<defName>TSOA_AnimaPearl</defName>
 		<label>anima pearl</label>
-		<description>A lustrous anima pearl, infused with the life essence of a human with a close bond to the anima tree. When planted in the ground, forms a new anima tree. Oddly, it doesn't seem to grow from the pearl itself. Maybe the pearl calls it up from deeper within the planet?</description>
+		<description>A lustrous pearl, grown from an anima tree and infused with life essence from a willing human. When planted in the ground, forms a new anima tree. Oddly, it doesn't seem to grow from the pearl itself. Maybe the pearl calls it up from deeper within the planet?</description>
 		<graphicData>
 			<texPath>TSOA/Things/Item/Resource/AnimaPearl</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
