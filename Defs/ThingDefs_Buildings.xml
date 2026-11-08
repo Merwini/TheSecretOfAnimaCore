@@ -4,7 +4,7 @@
 	<ThingDef ParentName="CrateBase">
 		<defName>TSOA_AnimaSapBasin</defName>
 		<label>anima sap basin</label>
-		<description>A stone basin for collecting sap from an anima tree. When linked to a tree, it will siphon a portion of the pyschic meditation energy that is normally used to grow anima grass, and instead use it to make the tree produce extra sap which it immediately harvests.</description>
+		<description>A stone basin for collecting sap from an anima tree. When linked to a tree, it will siphon a portion of the psychic meditation energy that is normally used to grow anima grass, and instead use it to make the tree produce extra sap which it immediately harvests.</description>
 		<thingClass>tsoa.core.Building_AnimaSapBasin</thingClass>
 		<graphicData>
 			<texPath>TSOA/Things/Building/Basin/TSOA_BasinFull</texPath>
@@ -106,7 +106,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>TSOA_AnimaRootGrave</defName>
 		<label>anima root grave</label>
-		<description>A grave dug close to the roots of an anima tree. The roots connect to human bodies and absorb their lingering psychic prescence. This energizes the tree similarly to meditating around it, but rapidly decomposes the body. The bodies of more powerful psychics will have a more powerful effect.\n\nMust be built in range of an anima tree, and each tree can support a maximum of four graves.</description>
+		<description>A grave dug close to the roots of an anima tree. The roots connect to human bodies and absorb their lingering psychic presence. This energizes the tree similarly to meditating around it, but rapidly decomposes the body. The bodies of more powerful psychics will have a more powerful effect.\n\nMust be built in range of an anima tree, and each tree can support a maximum of four graves.</description>
 		<thingClass>tsoa.core.Building_RootGrave</thingClass>
 		<containedPawnsSelectable>true</containedPawnsSelectable>
 		<graphicData>

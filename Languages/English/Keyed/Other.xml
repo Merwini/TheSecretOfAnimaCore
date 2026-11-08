@@ -20,9 +20,9 @@
 	<TSOA_SapHarvestToggleLabel>Toggle psychic harvesting</TSOA_SapHarvestToggleLabel>
 	<TSOA_SapHarvestToggleDesc>Toggle whether this basin will harvest a portion of psychic energy being channeled into the tree from meditation or other sources.</TSOA_SapHarvestToggleDesc>
 	<TSOA_SapToggleEmptyingLabel>Toggle sap emptying</TSOA_SapToggleEmptyingLabel>
-	<TSOA_SapToggleEmptyingDescription>When active, colonists will automatically empty anima sap from the basin when it is more than half full.</TSOA_SapToggleEmptyingDescription>
+	<TSOA_SapToggleEmptyingDescription>When active, colonists will automatically empty anima sap from the basin when it is full.</TSOA_SapToggleEmptyingDescription>
 	<TSOA_SapEmptyNowLabel>empty sap now</TSOA_SapEmptyNowLabel>
-	<TSOA_SapEmptyNowDescription>When active, colonists will priorize emptying the sap regardless of fullness.</TSOA_SapEmptyNowDescription>
+	<TSOA_SapEmptyNowDescription>When active, colonists will prioritize emptying the sap regardless of fullness.</TSOA_SapEmptyNowDescription>
 	<TSOA_SapHarvestProgress>Progress to next anima sap: {0}%</TSOA_SapHarvestProgress>
 
 	<TSOA_BillPsylinkTooLow>Worker's psylink level was lower than recipe requirement of {0}.</TSOA_BillPsylinkTooLow>
@@ -45,7 +45,7 @@
 	<TSOA_FontBeginLabel>begin crystallization</TSOA_FontBeginLabel>
 	<TSOA_FontBeginDesc>Connect to the anima leylines and begin the crystallization process. Once the process begins, you can not add more sap!</TSOA_FontBeginDesc>
 	<TSOA_FontUnloadAmberLabel>extract amber</TSOA_FontUnloadAmberLabel>
-	<TSOA_FontUnloadAmberDesc>Give the order to begin extract crystallized anima amber from the font</TSOA_FontUnloadAmberDesc>
+	<TSOA_FontUnloadAmberDesc>Give the order to begin extracting crystallized anima amber from the font</TSOA_FontUnloadAmberDesc>
 
 	<TSOA_AskForFontLabel>request font location</TSOA_AskForFontLabel>
 	<TSOA_AskForFontDesc>Ask this faction for the location of an active Font of Anima. Requires {0} goodwill, and costs {1} silver which your caravan must be carrying.</TSOA_AskForFontDesc>

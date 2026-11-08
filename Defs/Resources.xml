@@ -41,7 +41,7 @@
 	<ThingDef ParentName="ResourceBase">
 		<defName>TSOA_AnimaBark</defName>
 		<label>anima bark</label>
-		<description>A chunk of tough bark shed by an anima tree. The outside is as smooth as skin, but the inside is lined with mysterious patterns that seem to writhe when viewed from the corner of the eye. When held by psychically-sensitive individuals, the patterns glow faintly, seeming to react to their psychic prescence. This makes it a valuable resource for crafting weapons and armor.</description>
+		<description>A chunk of tough bark shed by an anima tree. The outside is as smooth as skin, but the inside is lined with mysterious patterns that seem to writhe when viewed from the corner of the eye. When held by psychically-sensitive individuals, the patterns glow faintly, seeming to react to their psychic presence. This makes it a valuable resource for crafting weapons and armor.</description>
 		<graphicData>
 			<texPath>TSOA/Things/Item/Resource/AnimaBark</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
@@ -119,7 +119,7 @@
 	<ThingDef ParentName="ResourceBase">
 		<defName>TSOA_AnimaAmber</defName>
 		<label>anima amber</label>
-		<description>Crystalized anima sap, distilled and purified into a gemstone that glows with inner power. Like the anima tree itself, it thrums with a psychic resonance that is not heard, but felt like a pressure on the mind. Its immense power can fuel the mightiest of crafts and rituals.</description>
+		<description>Crystallized anima sap, distilled and purified into a gemstone that glows with inner power. Like the anima tree itself, it thrums with a psychic resonance that is not heard, but felt like a pressure on the mind. Its immense power can fuel the mightiest of crafts and rituals.</description>
 		<graphicData>
 			<texPath>TSOA/Things/Item/Resource/AnimaAmber</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
