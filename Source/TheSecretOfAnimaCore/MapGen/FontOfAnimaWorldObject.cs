@@ -122,6 +122,8 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 
     public override void Tick()
     {
+        base.Tick();
+
         if (!crystallizationStarted)
         {
             return;
@@ -138,8 +140,6 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
         {
             SpawnNextAmber();
         }
-
-        base.Tick();
     }
 
     private void SpawnNextAmber()
@@ -327,6 +327,8 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 
     public override void PostRemove()
     {
+        // TODO letter for if World Object is removed without ever visiting the map
+
         if (Find.TickManager.TicksGame == lastCaravanLeftTick)
         {
             Find.LetterStack.ReceiveLetter("TSOA_FontDespawnLetterLabel".Translate(), "TSOA_FontDespawnCaravanDesc".Translate(), LetterDefOf.NeutralEvent);
