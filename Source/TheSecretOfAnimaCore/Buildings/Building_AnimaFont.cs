@@ -182,6 +182,11 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
         sb.AppendLine("TSOA_SapHeld".Translate(SapAmount));
         sb.AppendLine("TSOA_AmberHeld".Translate(AmberAmount));
 
+        if (inert)
+        {
+            sb.AppendLine("TSOA_FontInertDesc".Translate());
+        }
+
         FontOfAnimaWorldObject wo = Map.Parent as FontOfAnimaWorldObject;
         if (HasBegun && wo != null && DebugSettings.godMode)
         {
@@ -316,7 +321,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
     
     public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
     {
-        if (amberAmount > 0)
+        if (amberAmount > 1)
         {
             Thing amber = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaAmber, InteractionCell, Map);
             amber.stackCount = (int)(amberAmount / FontOfAnimaWorldObject.recoveryDivisor);

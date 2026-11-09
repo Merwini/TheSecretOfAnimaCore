@@ -57,6 +57,7 @@
 	<TSOA_AmberHeld>Amber held: {0}</TSOA_AmberHeld>
 
 	<TSOA_FontInert> (inert)</TSOA_FontInert>
+	<TSOA_FontInertDesc>The font is inert and can not be used again</TSOA_FontInertDesc>
 
 	<TSOA_CrystallizationStartedMessage>The process of crystallizing anima sap into amber has begun. Prepare for danger.</TSOA_CrystallizationStartedMessage>
 	<TSOA_CrystallizationFinishedMessage>The Font of Anima has crystallized all the sap it can, and is returning to an inert state. You should collect the amber and leave.</TSOA_CrystallizationFinishedMessage>

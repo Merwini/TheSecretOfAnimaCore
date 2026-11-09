@@ -86,7 +86,7 @@
 	<WorldObjectDef ParentName="StaticWorldObjectBase">
 		<defName>TSOA_FontOfAnimaWorldObject</defName>
 		<label>font of anima</label>
-		<description>T</description>
+		<description>The remains of an ancient anima tree, now serving as a vessel for focusing leyline energy into anima sap.</description>
 		<worldObjectClass>tsoa.core.FontOfAnimaWorldObject</worldObjectClass>
 		<texture>TSOA/UI/WorldObjects/AmberIcon</texture>
 		<expandingIcon>true</expandingIcon>

@@ -49,17 +49,31 @@ public class JobDriver_TakeAnimaAmberOutOfFont : JobDriver
                 return;
             }
 
-            Thing amber = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaAmber, pawn.Position, Map);
-            amber.stackCount = Font.AmberAmount;
-            Font.AmberAmount = 0;
-
-            // TODO double check, RimWorld should automatically spawn it on a different tile since amber will be on pawn.Position
-            while (Font.SapAmount > 0)
+            Thing amberToPlace = ThingMaker.MakeThing(TSOA_DefOf.TSOA_AnimaAmber);
+            amberToPlace.stackCount = Font.AmberAmount;
+            if (GenPlace.TryPlaceThing(amberToPlace, pawn.Position, Map, ThingPlaceMode.Near, out Thing amber, null))
             {
-                int numToSpawn = Math.Min(Font.SapAmount, TSOA_DefOf.TSOA_AnimaSap.stackLimit);
-                Thing sap = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaSap, pawn.Position, Map);
-                sap.stackCount = numToSpawn;
-                Font.SapAmount -= numToSpawn;
+                Font.AmberAmount = 0;
+            }
+            else
+            {
+                EndJobWith(JobCondition.Incompletable);
+                return;
+            }
+
+            if (Font.SapAmount > 0)
+            {
+                Thing sapToPlace = ThingMaker.MakeThing(TSOA_DefOf.TSOA_AnimaSap);
+                sapToPlace.stackCount = Font.SapAmount;
+                if (GenPlace.TryPlaceThing(sapToPlace, pawn.Position, Map, ThingPlaceMode.Near, null))
+                {
+                    Font.SapAmount = 0;
+                }
+                else
+                {
+                    EndJobWith(JobCondition.Incompletable);
+                    return;
+                }
             }
             
             if (Font.ForceEmpty)
