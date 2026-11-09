@@ -124,6 +124,6 @@ public class TSOA_Utils
 
         QuestUtility.SendLetterQuestAvailable(quest);
 
-        return quest != null;
+        return fontWorldObject != null;
     }
 }
