@@ -168,9 +168,6 @@
 			<li>ItemsMisc</li>
 		</thingCategories>
 		<tradeability>Sellable</tradeability>
-		<thingSetMakerTags>
-			<li>RewardStandardLowFreq</li>
-		</thingSetMakerTags>
 		<tradeTags>
 			<li>ExoticMisc</li>
 		</tradeTags>
