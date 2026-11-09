@@ -327,9 +327,11 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 
     public override void PostRemove()
     {
-        // TODO letter for if World Object is removed without ever visiting the map
-
-        if (Find.TickManager.TicksGame == lastCaravanLeftTick)
+        if (!this.HasMap)
+        {
+            Find.LetterStack.ReceiveLetter("TSOA_FontDespawnLetterLabel".Translate(), "TSOA_FontDespawnNeverVisitedDesc".Translate(), LetterDefOf.NeutralEvent);
+        }
+        else if (Find.TickManager.TicksGame == lastCaravanLeftTick)
         {
             Find.LetterStack.ReceiveLetter("TSOA_FontDespawnLetterLabel".Translate(), "TSOA_FontDespawnCaravanDesc".Translate(), LetterDefOf.NeutralEvent);
         }
