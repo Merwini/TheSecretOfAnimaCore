@@ -103,7 +103,6 @@
 			<DeteriorationRate>2.0</DeteriorationRate>
 		</statBases>
 		<techLevel>Neolithic</techLevel>
-		<intricate>true</intricate>
 		<thingCategories>
 			<li>Manufactured</li>
 		</thingCategories>
