@@ -29,7 +29,7 @@ public class CompSpecialMeditationFocus_Anima : ThingComp
         }
 
         cachedSubplantComp = parent.TryGetComp<CompSpawnSubplant>();
-        if (cachedFacilityComp == null)
+        if (cachedSubplantComp == null)
         {
             Log.Error($"[TSOA] CompSpecialMeditationFocus_Anima was unable to find CompSpawnSubplant on {parent.Label}");
         }
