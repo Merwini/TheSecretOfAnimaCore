@@ -20,6 +20,7 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
     private float threatPointBase = 1000;
     private float threatPointPerAmber = 500;
 
+    bool mapWasRemoved = false;
     int lastCaravanLeftTick;
     bool madeAnyAmber = false;
     int amberLeftBehind = 0;
@@ -310,6 +311,8 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
             amberLeftBehind += amber.stackCount;
         }
 
+        mapWasRemoved = true;
+
         base.Notify_MyMapAboutToBeRemoved();
     }
 
@@ -327,23 +330,22 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 
     public override void PostRemove()
     {
-        if (!this.HasMap)
+        if (mapWasRemoved)
         {
-            Find.LetterStack.ReceiveLetter("TSOA_FontDespawnLetterLabel".Translate(), "TSOA_FontDespawnNeverVisitedDesc".Translate(), LetterDefOf.NeutralEvent);
-        }
-        else if (Find.TickManager.TicksGame == lastCaravanLeftTick)
-        {
-            Find.LetterStack.ReceiveLetter("TSOA_FontDespawnLetterLabel".Translate(), "TSOA_FontDespawnCaravanDesc".Translate(), LetterDefOf.NeutralEvent);
-        }
-        else
-        {
-            Find.LetterStack.ReceiveLetter("TSOA_FontDespawnLetterLabel".Translate(), "TSOA_FontDespawnDiedDesc".Translate(), LetterDefOf.NeutralEvent);
-        }
+            if (Find.TickManager.TicksGame == lastCaravanLeftTick)
+            {
+                Find.LetterStack.ReceiveLetter("TSOA_FontDespawnLetterLabel".Translate(), "TSOA_FontDespawnCaravanDesc".Translate(), LetterDefOf.NeutralEvent);
+            }
+            else
+            {
+                Find.LetterStack.ReceiveLetter("TSOA_FontDespawnLetterLabel".Translate(), "TSOA_FontDespawnDiedDesc".Translate(), LetterDefOf.NeutralEvent);
+            }
 
-        if (amberLeftBehind != 0)
-        {
-            Find.LetterStack.ReceiveLetter("TSOA_FontDespawnAmberLeftLabel".Translate(), "TSOA_FontDespawnAmberLeftDesc".Translate(), LetterDefOf.NeutralEvent);
-            QueueAmberOffer();
+            if (amberLeftBehind != 0)
+            {
+                Find.LetterStack.ReceiveLetter("TSOA_FontDespawnAmberLeftLabel".Translate(), "TSOA_FontDespawnAmberLeftDesc".Translate(), LetterDefOf.NeutralEvent);
+                QueueAmberOffer();
+            }
         }
 
         base.PostRemove();

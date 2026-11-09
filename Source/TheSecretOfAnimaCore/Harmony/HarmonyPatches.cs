@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -252,36 +253,58 @@ public class HarmonyPatches
     [HarmonyPatch(typeof(JobDriver_Meditate))]
     public static class JobDriver_Meditate_MakeNewToils_Patch
     {
-        static MethodBase TargetMethod()
+        static readonly MethodInfo helperMethod = AccessTools.Method(typeof(HarmonyPatches), "JobDriver_Meditate_Helper");
+        static readonly MethodInfo meditationTickMethod = AccessTools.Method(typeof(JobDriver_Meditate), "MeditationTick");
+        static readonly MethodInfo royaltyGetterMethod = AccessTools.PropertyGetter(typeof(ModsConfig), "RoyaltyActive");
+        static readonly FieldInfo pawnField = AccessTools.Field(typeof(JobDriver_Meditate), "pawn");
+
+        private static MethodInfo target;
+
+        public static bool Prepare()
         {
-            Type outerType = typeof(JobDriver_Meditate);
+            var matches = AccessTools.GetDeclaredMethods(typeof(JobDriver_Meditate))
+                .Where(m => !m.IsStatic && m.ReturnType == typeof(void)
+                    && m.GetParameters().Length == 0
+                    && m.IsDefined(typeof(CompilerGeneratedAttribute), false))
+                .Where(m => PatchProcessor.GetOriginalInstructions(m)
+                    .Any(code => code.Calls(meditationTickMethod)))
+                .ToList();
 
-            MethodInfo targetMethod = AccessTools.Method(outerType, "<MakeNewToils>b__16_3");
+            if (matches.Count != 1)
+            {
+                Log.Warning("[TSOA] Could not uniquely locate the meditation tick delegate; skipping patch.");
+                return false;
+            }
 
-            return targetMethod;
+            target = matches[0];
+            return true;
         }
+        static MethodBase TargetMethod() => target;
 
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
-
-            MethodInfo helperMethod = typeof(HarmonyPatches).GetMethod("JobDriver_Meditate_Helper", BindingFlags.Public | BindingFlags.Static);
-            FieldInfo pawnField = AccessTools.Field(typeof(JobDriver_Meditate), "pawn");
 
             int royaltyCheckIndex = -1;
             int branchLessThanIndex = -1;
 
             for (int i = 0; i < codes.Count; i++)
             {
-                if (royaltyCheckIndex == -1 && codes[i].opcode == OpCodes.Call && codes[i].operand.ToString().Contains("get_RoyaltyActive"))
+                if (codes[i].Calls(royaltyGetterMethod))
                 {
                     royaltyCheckIndex = i;
                 }
-                if (royaltyCheckIndex != -1 && codes[i].opcode == OpCodes.Blt_S)
+                if (royaltyCheckIndex != -1 && (codes[i].opcode == OpCodes.Blt_S || codes[i].opcode == OpCodes.Blt))
                 {
                     branchLessThanIndex = i;
                     break;
                 }
+            }
+
+            if (royaltyCheckIndex < 0 || branchLessThanIndex <= royaltyCheckIndex)
+            {
+                Log.Error("[TSOA] JobDriver_Meditate transpiler did not find expected instructions; skipping patch. Please report this to the developer along with your mod list!");
+                return codes;
             }
 
             List<CodeInstruction> newCodes = new List<CodeInstruction>()

@@ -28,7 +28,7 @@ public class SignalAction_AnomalyAmbush : SignalAction_Ambush
             // TODO I haven't actually made this mod yet, make sure I end up using this packageId and defName
             if (ModLister.GetActiveModWithIdentifier("tsoa.factions") != null)
             {
-                List<Faction> voidDisciples = Find.FactionManager.AllFactions.Where(f => f.def.defName == "TSOA_VoidDisciples").ToList();
+                List<Faction> voidDisciples = Find.FactionManager.AllFactions.Where(f => f.def.categoryTag == "TSOA_VoidFactionTag").ToList();
                 if (!voidDisciples.NullOrEmpty())
                 {
                     voidDisciples.Shuffle(); // in case of multiple
