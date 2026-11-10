@@ -6,5 +6,6 @@
     <exclude>Ideas+TODO.txt</exclude>
     <exclude>Source</exclude>
     <exclude>Stats.txt</exclude>
+    <exclude>WIP</exclude>
   </Excluded>
 </Configuration>
