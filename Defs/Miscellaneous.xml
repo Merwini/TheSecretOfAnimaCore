@@ -20,6 +20,16 @@
 		<thingClass>tsoa.core.SignalAction_AnomalyAmbush</thingClass>
 	</ThingDef>
 
+	<DesignationCategoryDef>
+		<defName>TSOA_DesignationCategory</defName>
+		<label>TSOA</label>
+		<order>45</order>
+		<specialDesignatorClasses>
+			<li>Designator_Cancel</li>
+			<li>Designator_Deconstruct</li>
+		</specialDesignatorClasses>
+	</DesignationCategoryDef>
+
 	<!-- <MainButtonDef>
 		<defName>TSOA_TestButton</defName>
 		<label>Test</label>

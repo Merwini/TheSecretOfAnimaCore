@@ -61,7 +61,7 @@
 				<li>Production</li>
 			</buildingTags>
 		</building>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>TSOA_DesignationCategory</designationCategory>
 	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
@@ -164,7 +164,7 @@
 			<li>ITab_Storage</li>
 		</inspectorTabs>
 		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
-		<designationCategory>Misc</designationCategory>
+		<designationCategory>TSOA_DesignationCategory</designationCategory>
 		<uiOrder>2050</uiOrder>
 		<designationHotKey>Misc8</designationHotKey>
 		<comps>
