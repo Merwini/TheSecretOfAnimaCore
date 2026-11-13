@@ -1,0 +1,36 @@
+<Defs>
+
+    <ThingDef ParentName="ResourceBase">
+		<defName>TSOA_VoidFragments</defName>
+		<label>void fragments</label>
+		<description>Fragments of an unknown metal originating in the void. It feels oily to the touch, but leaves no residue.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Item/Resource/VoidFragment</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+        <soundInteract>Metal_Drop</soundInteract>
+        <soundDrop>Metal_Drop</soundDrop>
+		<stackLimit>50</stackLimit>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<statBases>
+			<MaxHitPoints>70</MaxHitPoints>
+			<MarketValue>126</MarketValue>
+			<Mass>0.6</Mass>
+			<Flammability>0.8</Flammability>
+			<DeteriorationRate>2.0</DeteriorationRate>
+		</statBases>
+		<techLevel>Medieval</techLevel>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
+		<tradeTags>
+			<li>ExoticMisc</li>
+		</tradeTags>
+		<allowedArchonexusCount>10</allowedArchonexusCount>
+	</ThingDef>
+
+</Defs>
