@@ -12,11 +12,10 @@ public class CompProperties_AffectedByFacilities_Grouped : CompProperties_Affect
 {
     public List<FacilityLinkGroup> linkGroups = new List<FacilityLinkGroup>();
 
-    //public List<ThingDef> linkableFacilities;
-
     public CompProperties_AffectedByFacilities_Grouped()
     {
         compClass = typeof(CompAffectedByFacilities_Grouped);
+        linkableFacilities = new List<ThingDef>();
     }
 
     public FacilityLinkGroup GetLinkGroupForTag(string tag)
@@ -41,8 +40,6 @@ public class CompProperties_AffectedByFacilities_Grouped : CompProperties_Affect
         {
             CompProperties_Facility_Grouped.CacheDictionaries();
         }
-
-        linkableFacilities = new List<ThingDef>();
 
         foreach (FacilityLinkGroup group in linkGroups)
         {
