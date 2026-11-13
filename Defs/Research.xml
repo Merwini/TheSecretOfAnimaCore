@@ -6,6 +6,14 @@
 		<label>The Secret of Anima</label>
 	</ResearchTabDef>
 
+	<ResearchProjectTagDef>
+		<defName>TSOA_AnimaStart</defName>
+	</ResearchProjectTagDef>
+
+	<ResearchProjectTagDef MayRequire="Ludeon.Rimworld.Anomaly">
+		<defName>TSOA_VoidStart</defName>
+	</ResearchProjectTagDef>
+	
 	<ResearchProjectDef>
 		<defName>TSOA_AnimaOne</defName>
 		<label>Dawn of Anima</label>
@@ -18,6 +26,9 @@
 		<customUnlockTexts>
 			<li>Natural Meditation Focus Use</li>
 		</customUnlockTexts>
+		<tags>
+			<li>TSOA_AnimaStart</li>
+		</tags>
 		<discoveredLetterTitle>The Dawn of Anima</discoveredLetterTitle>
 		<discoveredLetterText>Your colony has reached the dawn of a new age. An age of harmony with the anima tree.\n\nThe anima tree will provide you with many new resources, and new ways to face your challenges.\n\nAs an added bonus, all colonists can now meditate at natural meditation foci, such as the anima tree itself.</discoveredLetterText>
 	</ResearchProjectDef>
@@ -70,6 +81,9 @@
 		<customUnlockTexts>
 			<li>Void Meditation Focus Use</li>
 		</customUnlockTexts>
+		<tags>
+			<li>TSOA_VoidStart</li>
+		</tags>
 		<!-- TODO discovered letter -->
 	</ResearchProjectDef>
 
