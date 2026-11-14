@@ -9,14 +9,16 @@
                 "build",
                 "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.sln",
                 "--configuration",
-                "Release"],
+                "Release"
+            ],
             "options": {
-                "cwd": "${workspaceFolder}" 
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": "$msCompile",
             "group": {
                 "kind": "build",
-                "isDefault": true }
+                "isDefault": true
+            }
         },
         {
             "label": "Build Release 1.6",
@@ -24,27 +26,85 @@
             "command": "dotnet",
             "args": [
                 "build",
-                "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.csproj",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.sln",
                 "--configuration",
                 "Release",
                 "--framework",
                 "net48"
             ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
             "problemMatcher": "$msCompile",
             "group": "build"
-            },
-            {
+        },
+        {
             "label": "Build Release 1.7",
             "type": "process",
             "command": "dotnet",
             "args": [
                 "build",
-                "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.csproj",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.sln",
                 "--configuration",
                 "Release",
                 "--framework",
                 "net10.0"
             ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build Anomaly Release",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore.Anomaly/TheSecretOfAnimaCore.Anomaly.csproj",
+                "--configuration",
+                "Release"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build Anomaly Release 1.6",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore.Anomaly/TheSecretOfAnimaCore.Anomaly.csproj",
+                "--configuration",
+                "Release",
+                "--framework",
+                "net48"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build Anomaly Release 1.7",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore.Anomaly/TheSecretOfAnimaCore.Anomaly.csproj",
+                "--configuration",
+                "Release",
+                "--framework",
+                "net10.0"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
             "problemMatcher": "$msCompile",
             "group": "build"
         }
