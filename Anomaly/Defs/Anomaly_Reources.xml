@@ -15,8 +15,8 @@
 		<statBases>
 			<MaxHitPoints>70</MaxHitPoints>
 			<MarketValue>126</MarketValue>
-			<Mass>0.6</Mass>
-			<Flammability>0.8</Flammability>
+			<Mass>1</Mass>
+			<Flammability>0.1</Flammability>
 			<DeteriorationRate>2.0</DeteriorationRate>
 		</statBases>
 		<techLevel>Medieval</techLevel>

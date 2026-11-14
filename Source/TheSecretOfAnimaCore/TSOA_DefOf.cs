@@ -53,7 +53,7 @@ public class TSOA_DefOf
 
     public static ThingDef TSOA_TreeAnimaSilent;
 
-    [MayRequireAnomaly] // should never be referenced with Anomaly not active anyway
+    [MayRequireAnomaly]
     public static ThingDef TSOA_SignalAction_AnomalyAmbush;
 
     [MayRequireAnomaly]
@@ -61,6 +61,9 @@ public class TSOA_DefOf
 
     [MayRequireAnomaly]
     public static ResearchProjectDef TSOA_VoidOne;
+
+    [MayRequireAnomaly]
+    public static MutantDef TSOA_ShadeMutant;
 
     public static IncidentDef TSOA_AmberRecoveryOffer;
 

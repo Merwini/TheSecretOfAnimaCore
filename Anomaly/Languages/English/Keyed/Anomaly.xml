@@ -1,0 +1,5 @@
+<LanguageData>
+
+    <TSOA_ShadeConfirmation>Turning {PAWN_nameDef} into a shade is irreversible. {PAWN_pronoun} will be left as a vestige of their former self, able to work but nothing else, and decaying over time.\n\nAre you sure you want to turn {PAWN_nameDef} into a shade?</TSOA_ShadeConfirmation>
+
+</LanguageData>

@@ -1,0 +1,30 @@
+<Patch>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="GhoulResurrectionSerum"]/comps/li[@Class="CompProperties_Targetable"]</xpath>
+        <value>
+            <li Class="tsoa.core.CompProperties_Targetable_MultiMutant">
+                <fleshCorpsesOnly>true</fleshCorpsesOnly>
+                <mutantMultiFilter>
+                    <li>Ghoul</li>
+                    <li>TSOA_ShadeMutant</li>
+                </mutantMultiFilter>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="GhoulResurrectionSerum"]/label</xpath>
+        <value>
+            <label>mutant resurrection serum</label>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="GhoulResurrectionSerum"]/description</xpath>
+        <value>
+            <description>A capsule of thick grey fluid containing a mixture of deadlife dust and advanced biochemicals. Inject it into the corpse of certain mutants to return them to life. The resurrection process takes several hours.</description>
+        </value>
+    </Operation>
+
+</Patch>
