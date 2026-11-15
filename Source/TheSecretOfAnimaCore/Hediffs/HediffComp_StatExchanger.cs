@@ -453,12 +453,12 @@ public class HediffComp_StatExchanger : HediffComp
 
     private void MessageAlreadyLinked()
     {
-        Messages.Message("TSOA_StatExchangerAlreadyLinked".Translate(this.Pawn.Name), MessageTypeDefOf.RejectInput);
+        Messages.Message("TSOA_StatExchangerAlreadyLinked".Translate(this.Pawn.LabelCap), MessageTypeDefOf.RejectInput);
     }
 
     private void MessageAtCapacity(Pawn pawn)
     {
-        Messages.Message("TSOA_StatExchangerAtCapacity".Translate(pawn.Name), MessageTypeDefOf.RejectInput);
+        Messages.Message("TSOA_StatExchangerAtCapacity".Translate(pawn.LabelCap), MessageTypeDefOf.RejectInput);
     }
 
     private void MessageSurgicalRemoval()
@@ -470,14 +470,14 @@ public class HediffComp_StatExchanger : HediffComp
         {
             foreach (var comp in linkedComps)
             {
-                Messages.Message("TSOA_StatExchangerUnlinkSurgery".Translate(this.Pawn.Name, comp.Pawn.Name), MessageTypeDefOf.NeutralEvent);
+                Messages.Message("TSOA_StatExchangerUnlinkSurgery".Translate(this.Pawn.LabelCap, comp.Pawn.LabelCap), MessageTypeDefOf.NeutralEvent);
             }
         }
         else
         {
             foreach (var comp in linkedComps)
             {
-                Messages.Message("TSOA_StatExchangerUnlinkSurgery".Translate(comp.Pawn.Name, this.Pawn.Name), MessageTypeDefOf.NeutralEvent);
+                Messages.Message("TSOA_StatExchangerUnlinkSurgery".Translate(comp.Pawn.LabelCap, this.Pawn.LabelCap), MessageTypeDefOf.NeutralEvent);
             }
         }
     }
@@ -491,14 +491,14 @@ public class HediffComp_StatExchanger : HediffComp
         {
             foreach (var comp in linkedComps)
             {
-                Messages.Message("TSOA_StatExchangerUnlinkDeath".Translate(this.Pawn.Name, comp.Pawn.Name), MessageTypeDefOf.NeutralEvent);
+                Messages.Message("TSOA_StatExchangerUnlinkDeath".Translate(this.Pawn.LabelCap, comp.Pawn.LabelCap), MessageTypeDefOf.NeutralEvent);
             }
         }
         else
         {
             foreach (var comp in linkedComps)
             {
-                Messages.Message("TSOA_StatExchangerUnlinkDeath".Translate(comp.Pawn.Name, this.Pawn.Name), MessageTypeDefOf.NeutralEvent);
+                Messages.Message("TSOA_StatExchangerUnlinkDeath".Translate(comp.Pawn.LabelCap, this.Pawn.LabelCap), MessageTypeDefOf.NeutralEvent);
             }
         }
     }
