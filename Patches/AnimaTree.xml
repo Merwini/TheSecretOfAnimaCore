@@ -16,6 +16,16 @@
 						<label>anima graves</label>
 						<maxLinks>4</maxLinks>
 					</li>
+					<li Class="tsoa.core.FacilityLinkGroup">
+						<categoryTag>TSOA_AnimusCairnCategory</categoryTag>
+						<label>animus cairns</label>
+						<maxLinks>3</maxLinks>
+					</li>
+					<li Class="tsoa.core.FacilityLinkGroup">
+						<categoryTag>TSOA_AnimusTotemCategory</categoryTag>
+						<label>animus totems</label>
+						<maxLinks>1</maxLinks>
+					</li>
 				</linkGroups>
 			</li>
 			<li Class="tsoa.core.CompProperties_SpecialMeditationFocus_Anima">

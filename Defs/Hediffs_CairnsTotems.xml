@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<HediffDef>
+		<defName>TSOA_CairnHediff</defName>
+		<hediffClass>tsoa.core.Hediff_CairnEffect</hediffClass>
+		<label>animus cairn resonance</label>
+		<description>This person is being affected by resonance from one or more animus cairns linked to the anima tree that they meditated at.</description>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>60000</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+				<canUseDecimalsShortForm>true</canUseDecimalsShortForm>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>TSOA_BloodthirstHediff</defName>
+		<hediffClass>tsoa.core.Hediff_Bloodthirst</hediffClass>
+		<label>animus bloodthirst</label>
+		<description>This person is being empowered by the psychic energy released from mortally wounding others. Lasts for one minute, but the timer resets with every fresh kill or down. Reaches maximum potency at 10 kills or downs.</description>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>3600</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+				<canUseDecimalsShortForm>true</canUseDecimalsShortForm>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>TSOA_ReflexHediff</defName>
+		<hediffClass>tsoa.core.Hediff_Reflex</hediffClass>
+		<label>animus reflex</label>
+		<description>A burst of energy from the anima radix sharpens this colonist's reflexes in response to danger, tripling  movement speed for 60 seconds.</description>
+		<isBad>false</isBad>
+		<stages>
+			<li>
+				<statFactors>
+					<MoveSpeed>3</MoveSpeed>
+				</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>3600</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+				<canUseDecimalsShortForm>true</canUseDecimalsShortForm>
+			</li>
+		</comps>
+	</HediffDef>
+
+</Defs>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<TSOA_PremonitionLabel>Premonition</TSOA_PremonitionLabel>
+	<TSOA_PremonitionDescription>Ripples of hostile emotion reach your colonists via the anima tree. A hostile force is approaching, and will arrive in a few hours.</TSOA_PremonitionDescription>
+
+	<TSOA_BloodthirstLabel>{0} kills</TSOA_BloodthirstLabel>
+
+	<TSOA_FortuneLabel>{0} remaining lives</TSOA_FortuneLabel>
+	<TSOA_FortuneLabelInactive>{0} remaining lives (inactive)</TSOA_FortuneLabelInactive>
+	<TSOA_FortuneMessage>Totem of fortune helped {0} survive a fatal blow!</TSOA_FortuneMessage>
+</LanguageData>

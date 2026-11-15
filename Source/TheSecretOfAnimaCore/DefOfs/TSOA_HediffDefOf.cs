@@ -7,8 +7,14 @@ namespace tsoa.core;
 public class TSOA_HediffDefOf
 {
     public static HediffDef TSOA_AnimaAffinityHediff;
+    
+    public static HediffDef TSOA_BloodthirstHediff;
+    
+    public static HediffDef TSOA_CairnHediff;
 
     public static HediffDef TSOA_PsychicLeechHediff;
+    
+    public static HediffDef TSOA_ReflexHediff;
     
     public static HediffDef TSOA_VirionActiveHediff;
 

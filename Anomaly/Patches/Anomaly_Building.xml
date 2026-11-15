@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[@Name="TSOA_AnimusCairnBase"]/comps/li[@Class="tsoa.core.CompProperties_Facility_Grouped"]</xpath>
+		<value>
+			<statOffsets>
+				<PsychicRitualQuality>0.0833</PsychicRitualQuality>
+			</statOffsets>
+		</value>
+	</Operation>
+	
+</Patch>

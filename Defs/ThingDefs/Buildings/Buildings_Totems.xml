@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- <DesignatorDropdownGroupDef>
+		<defName>TSOA_AnimusTotemsDropdown</defName>
+		<label>animus totems</label>
+		<iconSource>Placed</iconSource>
+	</DesignatorDropdownGroupDef> -->
+
+	<ThingDef ParentName="BuildingBase" Abstract="True" Name="TSOA_AnimusTotemBase">
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2, 2)</drawSize>
+			<shadowData>
+				<volume>(0.2, 0.35, 0.13)</volume>
+				<offset>(0,0,-0.25)</offset>
+			</shadowData>
+			<drawOffset>(0,0,0.5)</drawOffset>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>450</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>10</Beauty>
+			<WorkToBuild>16000</WorkToBuild>
+			<Mass>300</Mass>
+		</statBases>
+		<designationCategory>TSOA_DesignationCategory</designationCategory>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>200</costStuffCount>
+		<costList>
+			<Jade>25</Jade>
+			<TSOA_AnimaSap>3</TSOA_AnimaSap>
+		</costList>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<!-- <designatorDropdown>TSOA_AnimusTotemsDropdown</designatorDropdown> -->
+		<thingCategories>
+			<li>BuildingsMisc</li>
+		</thingCategories>
+		<building>
+			<isEdifice>true</isEdifice>
+		</building>
+		<thingClass>tsoa.core.Building_AnimusTotem</thingClass>
+		<size>(1, 1)</size>
+		<fillPercent>1</fillPercent>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>42</pathCost>
+		<canOverlapZones>true</canOverlapZones>
+		<tickerType>Normal</tickerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<defaultPlacingRot>North</defaultPlacingRot>
+		<comps>
+			<li Class="tsoa.core.CompProperties_Facility_Grouped">
+				<categoryTag>TSOA_AnimusTotemCategory</categoryTag>
+				<maxDistance>6</maxDistance>
+				<canPlaceWithoutLink>false</canPlaceWithoutLink>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>tsoa.core.PlaceWorker_ShowGroupedFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_AnimusTotemBase" Abstract="True" Name="TSOA_AnimusTotemGrass">
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>0.06667</fuelConsumptionRate>
+				<fuelCapacity>1.0</fuelCapacity>
+				<fuelMultiplier>1</fuelMultiplier>
+				<fuelFilter>
+					<thingDefs>
+						<li>TSOA_AnimaGrassResource</li>
+					</thingDefs>
+				</fuelFilter>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_AnimusTotemBase" Abstract="True" Name="TSOA_AnimusTotemSap">
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>0.06667</fuelConsumptionRate>
+				<fuelCapacity>1.0</fuelCapacity>
+				<fuelMultiplier>1</fuelMultiplier>
+				<fuelFilter>
+					<thingDefs>
+						<li>TSOA_AnimaSap</li>
+					</thingDefs>
+				</fuelFilter>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_AnimusTotemGrass">
+		<defName>TSOA_TotemFriendship</defName>
+		<label>animus totem of friendship</label>
+		<description>A totem of carved stone and jade, lacquered with anima sap. When linked to an anima tree and fueled with anima grass, taps into the anima radix to emit a worldwide psychic signal. This signal subtly influences other factions to view your colony more favorably.\n\nFor non-permanently hostile factions, increases goodwill by 2 per day, up to a cap of 100 over their natural goodwill.</description>
+		<thingClass>tsoa.core.Building_TotemFriendship</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemCapybara</texPath>
+		</graphicData>
+		<researchPrerequisites>
+			<li>TSOA_AnimaTwo</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_AnimusTotemGrass">
+		<defName>TSOA_TotemMemory</defName>
+		<label>animus totem of memory</label>
+		<description>A totem of carved stone and jade, lacquered with anima sap. When linked to an anima tree and fueled with anima grass, taps into the anima radix to emit a worldwide psychic signal. This signal subtly influences your colonists, reminding them of good memories and distracting them from bad ones.\n\nFor your colonists, shortens the duration of negative thoughts by 50%, increases the duration of positive ones by 50%.</description>
+		<thingClass>tsoa.core.Building_TotemMemory</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemElephant</texPath>
+		</graphicData>
+		<researchPrerequisites>
+			<li>TSOA_TotemOne</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_AnimusTotemGrass">
+		<defName>TSOA_TotemObedience</defName>
+		<label>animus totem of obedience</label>
+		<description>A totem of carved stone and jade, lacquered with anima sap. When linked to an anima tree and fueled with anima grass, taps into the anima radix's worldwide psychic field to create a low-level psychic link between your colonists and their animals.\n\nWhile active, increases the trainability of all your animals by one level (none to intermediate, intermediate to advanced).</description>
+		<thingClass>tsoa.core.Building_TotemObedience</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemDog</texPath>
+		</graphicData>
+		<researchPrerequisites>
+			<li>TSOA_TotemOne</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_AnimusTotemGrass">
+		<defName>TSOA_TotemBounty</defName>
+		<label>animus totem of bounty</label>
+		<description>A totem of carved stone and jade, lacquered with anima sap. When linked to an anima tree and fueled with anima grass, taps into the anima radix to emit a map psychic signal. This signal stimulates plants to grow faster.\n\nIncreases the growth speed of all plants on the same map as the totem by 50%.</description>
+		<thingClass>tsoa.core.Building_TotemBounty</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemCow</texPath>
+		</graphicData>
+		<researchPrerequisites>
+			<li>TSOA_TotemOne</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- Decided this was redundant with Reflex, liked it better -->
+	<!-- <ThingDef ParentName="TSOA_AnimusTotemBase">
+		<defName>TSOA_TotemPremonition</defName>
+		<label>animus totem of premonition</label>
+		<description>A totem of of carved stone and jade, lacquered with anima sap. When linked to an anima tree and fueled with anima grass, taps into the anima radix to detect hostile intentions toward your colony. When the fulfillment of these intentions becomes immenent, gives your colony a warning.\n\nProvides a 3-6 hour warning before a raid occurs on the same map as the totem.</description>
+		<thingClass>tsoa.core.Building_TotemPremonition</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemEagle</texPath>
+		</graphicData>
+		<researchPrerequisites>
+			<li>TSOA_TotemTwo</li>
+		</researchPrerequisites>
+	</ThingDef> -->
+	
+	<ThingDef ParentName="TSOA_AnimusTotemSap">
+		<defName>TSOA_TotemBloodthirst</defName>
+		<label>animus totem of bloodthirst</label>
+		<description>A totem of carved stone and jade, lacquered with anima sap. When connected to an anima tree and fueled with anima sap, taps into the anima radix to collect the psychic energy released when a life is taken, and directs it into the colonist that took the life.\n\nGives a short-lived combat bonus. Every kill resets the timer and grows the bonus, to a maximum of 10 stacks.</description>
+		<thingClass>tsoa.core.Building_TotemBloodthirst</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemShark</texPath>
+		</graphicData>
+		<researchPrerequisites>
+			<li>TSOA_AnimaThree</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- Hated this -->
+	<!-- <ThingDef ParentName="TSOA_AnimusTotemBase">
+		<defName>TSOA_TotemFortune</defName>
+		<label>animus totem of fortune</label>
+		<description>A totem of carved stone and jade, lacquered with anima sap. When connected to an anima tree and fueled with anima grass, taps into the anima radix to strengthen the bond between your colonists' psychic selves and physical bodies, making them harder to kill.\n\nBlocks fatal attacks up to nine times per colonist over the course of their life, while the totem is active. Does not prevent death from other means, such as disease or bleeding.</description>
+		<thingClass>tsoa.core.Building_TotemFortune</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemCat</texPath>
+		</graphicData>
+		<researchPrerequisites>
+			<li>TSOA_TotemTwo</li>
+		</researchPrerequisites>
+	</ThingDef> -->
+
+	<ThingDef ParentName="TSOA_AnimusTotemSap">
+		<defName>TSOA_TotemReflex</defName>
+		<label>animus totem of reflex</label>
+		<description>A totem of carved stone and jade, lacquered with anima sap. When connected to an anima tree and fueled with anima sap, channels a psychic warning through the anima radix when danger strikes nearby.\n\nTriples all colonists' movement speed on the same map for 60 seconds when certain hostile events occur.</description>
+		<thingClass>tsoa.core.Building_TotemReflex</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemCat</texPath>
+		</graphicData>
+		<researchPrerequisites>
+			<li>TSOA_TotemTwo</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_AnimusTotemSap">
+		<defName>TSOA_TotemVersatility</defName>
+		<label>animus totem of versatility</label>
+		<description>A totem of carved stone and jade, lacquered with anima sap. When linked to an anima tree and fueled with anima sap, channels knowledge from the anima radix to help colonists learn unfamiliar skills.\n\nAll colonists on the same map gain at least 100% skill experience from passion, before other learning modifiers. Higher passion learning rates are preserved.</description>
+		<thingClass>tsoa.core.Building_TotemVersatility</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemMonkey</texPath>
+		</graphicData>
+		<researchPrerequisites>
+			<li>TSOA_TotemTwo</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_AnimusTotemSap">
+		<defName>TSOA_TotemDiscovery</defName>
+		<label>animus totem of discovery</label>
+		<description>A totem of carved stone and jade, lacquered with anima sap. When linked to an anima tree and fueled with anima sap, raises awareness of distant surroundings.\n\nWhile fueled, spawns an Item Stash quest every 1.5 - 3.5 days.</description>
+		<thingClass>tsoa.core.Building_TotemDiscovery</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemEagle</texPath>
+		</graphicData>
+		<researchPrerequisites>
+			<li>TSOA_TotemTwo</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!--
+	<ThingDef ParentName="TSOA_AnimusTotemBase">
+		<defName>TSOA_TotemTestThree</defName>
+		<label>animus totem of test3</label>
+		<description>A totem of carved jade stones. When connected to an anima tree and fueled with anima grass, taps into the anima network to emit a worldwide psychic signal. This signal subtly influences other factions to view your colony more favorably.\n\nFor non-permanently hostile factions, increases goodwill by 2 per day, up to a cap of 100 over their natural goodwill.</description>
+		<thingClass>tsoa.core.Building_TotemPremonition</thingClass>
+		<graphicData>
+			<texPath>TSOA/Things/Building/Totem/AnimusTotemMonkey</texPath>
+		</graphicData>
+	</ThingDef>-->
+	
+</Defs>
