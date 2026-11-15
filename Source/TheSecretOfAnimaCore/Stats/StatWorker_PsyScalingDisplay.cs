@@ -11,10 +11,10 @@ class StatWorker_PsyScalingDisplay : StatWorker
     public override bool ShouldShowFor(StatRequest req)
     {
         if (req.HasThing)
-            return req.HasThing && req.Thing.def.statBases.StatListContains(TSOAA_DefOf.TSOA_PsyScaling);
+            return req.HasThing && req.Thing.def.statBases.StatListContains(TSOA_StatDefOf.TSOA_PsyScaling);
 
         if (req.Def is ThingDef thingDef)
-            return thingDef.statBases != null && thingDef.statBases.StatListContains(TSOAA_DefOf.TSOA_PsyScaling);
+            return thingDef.statBases != null && thingDef.statBases.StatListContains(TSOA_StatDefOf.TSOA_PsyScaling);
 
         return false;
     }
@@ -22,10 +22,10 @@ class StatWorker_PsyScalingDisplay : StatWorker
     public override float GetValueUnfinalized(StatRequest req, bool applyPostProcess = true)
     {
         if (req.HasThing)
-            return req.Thing.def.statBases.GetStatValueFromList(TSOAA_DefOf.TSOA_PsyScaling, 0f);
+            return req.Thing.def.statBases.GetStatValueFromList(TSOA_StatDefOf.TSOA_PsyScaling, 0f);
 
         if (req.Def is ThingDef thingDef)
-            return thingDef.statBases?.GetStatValueFromList(TSOAA_DefOf.TSOA_PsyScaling, 0f) ?? 0f;
+            return thingDef.statBases?.GetStatValueFromList(TSOA_StatDefOf.TSOA_PsyScaling, 0f) ?? 0f;
 
         return 0f;
     }
@@ -38,7 +38,7 @@ class StatWorker_PsyScalingDisplay : StatWorker
         else
             def = req.Def as ThingDef;
 
-        float scale = def.statBases.GetStatValueFromList(TSOAA_DefOf.TSOA_PsyScaling, 0);
+        float scale = def.statBases.GetStatValueFromList(TSOA_StatDefOf.TSOA_PsyScaling, 0);
 
         return "TSOA_PsyScalingWorkerExplanation".Translate(scale.ToStringPercent());
     }

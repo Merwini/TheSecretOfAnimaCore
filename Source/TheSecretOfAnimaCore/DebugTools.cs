@@ -27,7 +27,7 @@ public class DebugTools
             RecipeDef recipeInner = recipe;
             list.Add(new DebugActionNode(recipe.LabelCap, DebugActionType.ToolMapForPawns, null, delegate(Pawn p)
             {
-                if (p.health.hediffSet.HasHediff(TSOAA_DefOf.TSOA_VirionHediff))
+                if (p.health.hediffSet.HasHediff(TSOA_HediffDefOf.TSOA_VirionHediff))
                 {
                     Messages.Message($"{p.LabelCap} already has a virion!", MessageTypeDefOf.RejectInput, false);
                     return;

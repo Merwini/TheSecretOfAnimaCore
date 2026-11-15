@@ -81,7 +81,7 @@ public class HarmonyPatches
     {
         public static void Prefix(Need_Comfort __instance, ref float comfort)
         {
-            comfort *= __instance.pawn.GetStatValue(TSOA_DefOf.TSOA_ComfortFactor);
+            comfort *= __instance.pawn.GetStatValue(TSOA_StatDefOf.TSOA_ComfortFactor);
         }
     }
 

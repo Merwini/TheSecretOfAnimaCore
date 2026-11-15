@@ -47,10 +47,10 @@ public class DamageWorker_PsychicLeech : DamageWorker
 
     public static void ApplyOrUpdateHediff(Pawn pawn, float amount)
     {
-        Hediff_PsychicLeech hediff = pawn.health?.hediffSet?.GetFirstHediffOfDef(TSOAA_DefOf.TSOA_PsychicLeechHediff) as Hediff_PsychicLeech;
+        Hediff_PsychicLeech hediff = pawn.health?.hediffSet?.GetFirstHediffOfDef(TSOA_HediffDefOf.TSOA_PsychicLeechHediff) as Hediff_PsychicLeech;
         if (hediff == null)
         {
-            hediff = (Hediff_PsychicLeech)HediffMaker.MakeHediff(TSOAA_DefOf.TSOA_PsychicLeechHediff, pawn);
+            hediff = (Hediff_PsychicLeech)HediffMaker.MakeHediff(TSOA_HediffDefOf.TSOA_PsychicLeechHediff, pawn);
             pawn.health.AddHediff(hediff);
         }
         hediff.UpdateOffset(amount);

@@ -379,7 +379,7 @@ public class HediffComp_StatExchanger : HediffComp
                 if (!OtherPawnValid(target))
                     return;
 
-                pawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(TSOAA_DefOf.TSOA_StatExchangeLink, pawn, target));
+                pawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(TSOA_JobDefOf.TSOA_StatExchangeLink, pawn, target));
             }
         };
 
@@ -408,7 +408,7 @@ public class HediffComp_StatExchanger : HediffComp
                         otherPawn.LabelShortCap,
                         () =>
                         {
-                            Job job = JobMaker.MakeJob(TSOAA_DefOf.TSOA_StatExchangeUnlink, otherPawn);
+                            Job job = JobMaker.MakeJob(TSOA_JobDefOf.TSOA_StatExchangeUnlink, otherPawn);
                             Pawn.jobs.TryTakeOrderedJob(job);
                         }));
                     }

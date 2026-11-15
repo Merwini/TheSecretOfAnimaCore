@@ -28,7 +28,7 @@ internal class Alert_VirionReady : Alert
 
                 foreach (Pawn item in maps[i].mapPawns.AllHumanlikeSpawned)
                 {
-                    Hediff_Virion hediff = item.health?.hediffSet?.GetFirstHediffOfDef(TSOAA_DefOf.TSOA_VirionHediff) as Hediff_Virion;
+                    Hediff_Virion hediff = item.health?.hediffSet?.GetFirstHediffOfDef(TSOA_HediffDefOf.TSOA_VirionHediff) as Hediff_Virion;
                     if (hediff == null)
                     {
                         continue;

@@ -22,10 +22,10 @@ public class StatWorker_EntropyDamageDisplay : StatWorker
 
         if (extension == null) return false;
 
-        if (stat == TSOAA_DefOf.TSOA_EntropyDamagePercent)
+        if (stat == TSOA_StatDefOf.TSOA_EntropyDamagePercent)
             return extension.entropyCountedPercent > 0;
 
-        if (stat == TSOAA_DefOf.TSOA_EntropyDamageFlat)
+        if (stat == TSOA_StatDefOf.TSOA_EntropyDamageFlat)
             return extension.entropyCountedPercent <= 0 && extension.entropyCountedFlat > 0;
 
         return false;

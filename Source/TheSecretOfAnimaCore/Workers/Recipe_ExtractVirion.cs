@@ -18,7 +18,7 @@ public class Recipe_ExtractVirion : Recipe_Surgery
         if (thing is not Pawn pawn)
             return false;
 
-        Hediff_Virion hediff = pawn.health?.hediffSet?.GetFirstHediffOfDef(TSOAA_DefOf.TSOA_VirionHediff) as Hediff_Virion;
+        Hediff_Virion hediff = pawn.health?.hediffSet?.GetFirstHediffOfDef(TSOA_HediffDefOf.TSOA_VirionHediff) as Hediff_Virion;
         if (hediff == null)
             return false;
 
@@ -35,7 +35,7 @@ public class Recipe_ExtractVirion : Recipe_Surgery
             TaleRecorder.RecordTale(TaleDefOf.DidSurgery, billDoer, pawn);
         }
 
-        Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(TSOAA_DefOf.TSOA_VirionHediff);
+        Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(TSOA_HediffDefOf.TSOA_VirionHediff);
         // Quick safety check in case the hediff somehow gets removed between when the surgery starts and finishes
         if (hediff is not Hediff_Virion virion)
             return;

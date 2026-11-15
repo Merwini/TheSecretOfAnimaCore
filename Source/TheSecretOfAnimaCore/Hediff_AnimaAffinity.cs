@@ -50,10 +50,10 @@ public class Hediff_AnimaAffinity : Hediff
 
     public static void AddOrUpdateAffinityHediff(Pawn pawn, float amount)
     {
-        Hediff_AnimaAffinity hediff = pawn.health?.hediffSet?.GetFirstHediffOfDef(TSOA_DefOf.TSOA_AnimaAffinityHediff) as Hediff_AnimaAffinity;
+        Hediff_AnimaAffinity hediff = pawn.health?.hediffSet?.GetFirstHediffOfDef(TSOA_HediffDefOf.TSOA_AnimaAffinityHediff) as Hediff_AnimaAffinity;
         if (hediff == null)
         {
-            hediff = (Hediff_AnimaAffinity)HediffMaker.MakeHediff(TSOA_DefOf.TSOA_AnimaAffinityHediff, pawn);
+            hediff = (Hediff_AnimaAffinity)HediffMaker.MakeHediff(TSOA_HediffDefOf.TSOA_AnimaAffinityHediff, pawn);
             pawn.health.AddHediff(hediff);
         }
         hediff.AddAffinity(amount);

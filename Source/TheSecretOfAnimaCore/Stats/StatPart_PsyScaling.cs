@@ -17,7 +17,7 @@ class StatPart_PsyScaling : StatPart
 
         Thing thing = req.Thing;
 
-        float scaling = thing.def.statBases.GetStatValueFromList(TSOAA_DefOf.TSOA_PsyScaling, 0);
+        float scaling = thing.def.statBases.GetStatValueFromList(TSOA_StatDefOf.TSOA_PsyScaling, 0);
         if (scaling <= 0f)
             return;
 
@@ -44,7 +44,7 @@ class StatPart_PsyScaling : StatPart
 
         Thing thing = req.Thing;
 
-        float scaling = thing.def.statBases.GetStatValueFromList(TSOAA_DefOf.TSOA_PsyScaling, 0);
+        float scaling = thing.def.statBases.GetStatValueFromList(TSOA_StatDefOf.TSOA_PsyScaling, 0);
         if (scaling <= 0f)
             return null;
 

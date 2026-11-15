@@ -12,7 +12,7 @@ namespace tsoa.core;
 public class TSOA_DefOf
 {
     
-    public static HediffDef TSOA_AnimaAffinityHediff;
+    
 
     //public static ThoughtDef TSOA_AnimaGrassScream;
 
@@ -26,7 +26,6 @@ public class TSOA_DefOf
 
     public static DesignationDef TSOA_EmptyNow;
 
-    public static StatDef TSOA_ComfortFactor;
 
     public static ResearchProjectDef TSOA_AnimaOne;
 

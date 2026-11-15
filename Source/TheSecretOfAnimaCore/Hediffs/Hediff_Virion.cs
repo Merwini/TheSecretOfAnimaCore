@@ -156,7 +156,7 @@ public class Hediff_Virion : Hediff
 
     private void StartVirionActivity()
     {
-        Hediff_VirionActivity existingActivity = pawn.health.hediffSet.GetFirstHediffOfDef(TSOAA_DefOf.TSOA_VirionActiveHediff) as Hediff_VirionActivity;
+        Hediff_VirionActivity existingActivity = pawn.health.hediffSet.GetFirstHediffOfDef(TSOA_HediffDefOf.TSOA_VirionActiveHediff) as Hediff_VirionActivity;
         if (existingActivity != null)
         {
             virionActive = true;
@@ -164,7 +164,7 @@ public class Hediff_Virion : Hediff
             return;
         }
 
-        Hediff_VirionActivity hediff = HediffMaker.MakeHediff(TSOAA_DefOf.TSOA_VirionActiveHediff, pawn) as Hediff_VirionActivity;
+        Hediff_VirionActivity hediff = HediffMaker.MakeHediff(TSOA_HediffDefOf.TSOA_VirionActiveHediff, pawn) as Hediff_VirionActivity;
         hediff.tendQualityRequirement = TendQualityRequirement;
         hediff.virionDamageDaysRange = Extension.virionDamageDaysRange;
         pawn.health.AddHediff(hediff);
@@ -310,7 +310,7 @@ public class Hediff_Virion : Hediff
 
     public void RemoveActivityHediff()
     {
-        Hediff_VirionActivity activity = pawn.health.hediffSet.GetFirstHediffOfDef(TSOAA_DefOf.TSOA_VirionActiveHediff) as Hediff_VirionActivity;
+        Hediff_VirionActivity activity = pawn.health.hediffSet.GetFirstHediffOfDef(TSOA_HediffDefOf.TSOA_VirionActiveHediff) as Hediff_VirionActivity;
         if (activity != null)
         {
             pawn.health.RemoveHediff(activity);
@@ -371,7 +371,7 @@ public class Hediff_Virion : Hediff
         
         if (Scribe.mode == LoadSaveMode.PostLoadInit)
         {
-            virionActive = pawn.health.hediffSet.HasHediff(TSOAA_DefOf.TSOA_VirionActiveHediff);
+            virionActive = pawn.health.hediffSet.HasHediff(TSOA_HediffDefOf.TSOA_VirionActiveHediff);
 
             // fix ticks if player had a virion in progress. Will just act as if current stage duration is completion duration
             bool wasComplete = HasQuality ? curStageIndex == 7 : curStageIndex == 1;

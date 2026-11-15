@@ -30,7 +30,7 @@ public class Hediff_VirionActivity : Hediff
         {
             if (originalHediff == null)
             {
-                originalHediff = pawn.health.hediffSet.GetFirstHediffOfDef(TSOAA_DefOf.TSOA_VirionHediff) as Hediff_Virion;
+                originalHediff = pawn.health.hediffSet.GetFirstHediffOfDef(TSOA_HediffDefOf.TSOA_VirionHediff) as Hediff_Virion;
             }
             return originalHediff;
         }
@@ -46,7 +46,7 @@ public class Hediff_VirionActivity : Hediff
     public override void PostRemoved()
     {
         base.PostRemoved();
-        Hediff_Virion originalHediff = pawn.health.hediffSet.GetFirstHediffOfDef(TSOAA_DefOf.TSOA_VirionHediff) as Hediff_Virion;
+        Hediff_Virion originalHediff = pawn.health.hediffSet.GetFirstHediffOfDef(TSOA_HediffDefOf.TSOA_VirionHediff) as Hediff_Virion;
         originalHediff?.Notify_ActivityEnded();
     }
 
