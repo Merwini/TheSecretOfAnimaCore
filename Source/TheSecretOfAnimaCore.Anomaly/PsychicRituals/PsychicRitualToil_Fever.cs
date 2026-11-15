@@ -43,14 +43,14 @@ public class PsychicRitualToil_Fever : PsychicRitualToil_AnimaAffinity
             Hediff hediff;
             if (success)
             {
-                hediff = HediffMaker.MakeHediff(TSOAR_DefOf.TSOA_PsychicFever_Success, target);
+                hediff = HediffMaker.MakeHediff(Anomaly_HediffDefOf.TSOA_PsychicFever_Success, target);
             }
             else
             {
-                hediff = HediffMaker.MakeHediff(TSOAR_DefOf.TSOA_PsychicFever_Failure, target);
+                hediff = HediffMaker.MakeHediff(Anomaly_HediffDefOf.TSOA_PsychicFever_Failure, target);
             }
-            Hediff existing = target.health.hediffSet.GetFirstHediffOfDef(TSOAR_DefOf.TSOA_PsychicFever_Success);
-            Hediff existing2 = target.health.hediffSet.GetFirstHediffOfDef(TSOAR_DefOf.TSOA_PsychicFever_Failure);
+            Hediff existing = target.health.hediffSet.GetFirstHediffOfDef(Anomaly_HediffDefOf.TSOA_PsychicFever_Success);
+            Hediff existing2 = target.health.hediffSet.GetFirstHediffOfDef(Anomaly_HediffDefOf.TSOA_PsychicFever_Failure);
             if (existing != null)
             {
                 target.health.RemoveHediff(existing);
@@ -65,11 +65,11 @@ public class PsychicRitualToil_Fever : PsychicRitualToil_AnimaAffinity
         string durationDays;
         if (success)
         {
-            durationDays = TSOAR_DefOf.TSOA_PsychicFever_Success.CompProps<HediffCompProperties_PsychicFever>().durationDays.ToString("F1");
+            durationDays = Anomaly_HediffDefOf.TSOA_PsychicFever_Success.CompProps<HediffCompProperties_PsychicFever>().durationDays.ToString("F1");
         }
         else
         {
-            FloatRange failureDurationDays = TSOAR_DefOf.TSOA_PsychicFever_Failure.CompProps<HediffCompProperties_PsychicFever>().durationDaysRange;
+            FloatRange failureDurationDays = Anomaly_HediffDefOf.TSOA_PsychicFever_Failure.CompProps<HediffCompProperties_PsychicFever>().durationDaysRange;
             durationDays = failureDurationDays.ToString();
         }
 

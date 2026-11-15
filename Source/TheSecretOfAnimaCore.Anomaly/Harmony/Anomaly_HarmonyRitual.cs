@@ -76,7 +76,7 @@ public class Anomaly_HarmonyRituals
     }
     public static IOrderedEnumerable<PsychicRitualDef_InvocationCircle> RitualTargetFilter(IOrderedEnumerable<PsychicRitualDef_InvocationCircle> unfiltered, Thing target)
     {
-        bool isPsychicRitualSpot = target != null && target.def == TSOAR_DefOf.PsychicRitualSpot;
+        bool isPsychicRitualSpot = target != null && target.def == Anomaly_ThingDefOf.PsychicRitualSpot;
 
         return unfiltered
             .Where(ritualDef =>
@@ -86,7 +86,7 @@ public class Anomaly_HarmonyRituals
                 // Case: it's a psychic ritual spot and the ritual is NOT location unlocked, or is and the target is psychic ritual spot
                 if (isPsychicRitualSpot)
                 {
-                    return locationUnlocked == null || locationUnlocked.ritualFocuses.Contains(TSOAR_DefOf.PsychicRitualSpot);
+                    return locationUnlocked == null || locationUnlocked.ritualFocuses.Contains(Anomaly_ThingDefOf.PsychicRitualSpot);
                 }
 
                 // Case: it's not a psychic ritual spot and the ritual is location unlocked and the ritual focus matches the target

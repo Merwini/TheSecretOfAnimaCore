@@ -59,11 +59,11 @@ public class PsychicRitualToil_Storm : PsychicRitualToil_AnimaAffinity
             {
                 if (Rand.Chance(0.5f))
                 {
-                    newWeather = TSOAR_DefOf.Rain;
+                    newWeather = Anomaly_WeatherDefOf.Rain;
                 }
                 else if (Rand.Chance(0.5f))
                 {
-                    newWeather = TSOAR_DefOf.RainyThunderstorm;
+                    newWeather = Anomaly_WeatherDefOf.RainyThunderstorm;
                 }
                 else
                 {
@@ -74,11 +74,11 @@ public class PsychicRitualToil_Storm : PsychicRitualToil_AnimaAffinity
             {
                 if (Rand.Chance(0.66f))
                 {
-                    newWeather = TSOAR_DefOf.SnowGentle;
+                    newWeather = Anomaly_WeatherDefOf.SnowGentle;
                 }
                 else
                 {
-                    newWeather = TSOAR_DefOf.SnowHard;
+                    newWeather = Anomaly_WeatherDefOf.SnowHard;
                 }
             }
             textLetterDef = LetterDefOf.RitualOutcomePositive;
@@ -86,7 +86,7 @@ public class PsychicRitualToil_Storm : PsychicRitualToil_AnimaAffinity
         }
         else
         {
-            newWeather = TSOAR_DefOf.DryThunderstorm;
+            newWeather = Anomaly_WeatherDefOf.DryThunderstorm;
             textLetterDef = LetterDefOf.RitualOutcomeNegative;
             text = "TSOA_StormFailure".Translate(invoker, newWeather.label, psychicRitual.def.Named("RITUAL"));
         }

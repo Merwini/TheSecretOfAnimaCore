@@ -49,7 +49,7 @@ public class PsychicRitualToil_Regrowth : PsychicRitualToil_AnimaAffinity
         {
             if (hediff is Hediff_MissingPart mp && mp.Part != null)
             {
-                if (ModsConfig.IdeologyActive && targetPawn.Ideo != null && targetPawn.Ideo.HasMeme(TSOAR_DefOf.Blindsight) && mp.Part.def == BodyPartDefOf.Eye)
+                if (ModsConfig.IdeologyActive && targetPawn.Ideo != null && targetPawn.Ideo.HasMeme(Anomaly_MiscDefOf.Blindsight) && mp.Part.def == BodyPartDefOf.Eye)
                     continue;
 
                 missingParts.Add(hediff);
@@ -84,7 +84,7 @@ public class PsychicRitualToil_Regrowth : PsychicRitualToil_AnimaAffinity
         if (curingMissingPart && Hediff_RegrowingPart.TryRemoveMissingFrom(targetPawn, random.Part))
         {
 
-            Hediff_RegrowingPart regrow = (Hediff_RegrowingPart)HediffMaker.MakeHediff(TSOAR_DefOf.TSOA_RegrowingPart, targetPawn, random.Part);
+            Hediff_RegrowingPart regrow = (Hediff_RegrowingPart)HediffMaker.MakeHediff(Anomaly_HediffDefOf.TSOA_RegrowingPart, targetPawn, random.Part);
             targetPawn.health.AddHediff(regrow);
         }
         else if (random != null)

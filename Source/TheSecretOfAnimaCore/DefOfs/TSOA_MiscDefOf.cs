@@ -35,4 +35,9 @@ public class TSOA_MiscDefOf
     public static QuestScriptDef TSOA_Opportunity_FontOfAnima;
 
     public static QuestScriptDef TSOA_RecoverAmberQuest;
+
+    static TSOA_MiscDefOf()
+	{
+		DefOfHelper.EnsureInitializedInCtor(typeof(TSOA_MiscDefOf));
+	}
 }

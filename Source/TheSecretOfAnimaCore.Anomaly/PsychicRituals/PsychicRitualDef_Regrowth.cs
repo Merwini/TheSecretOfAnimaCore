@@ -49,7 +49,7 @@ public class PsychicRitualDef_Regrowth : PsychicRitualDef_Unlocked
             if (hediff is Hediff_MissingPart mp)
             {
                 // Skip regrowing eyes for Blindsight pawns
-                if (ModsConfig.IdeologyActive && pawn.Ideo != null && pawn.Ideo.HasMeme(TSOAR_DefOf.Blindsight) && mp.Part.def == BodyPartDefOf.Eye)
+                if (ModsConfig.IdeologyActive && pawn.Ideo != null && pawn.Ideo.HasMeme(Anomaly_MiscDefOf.Blindsight) && mp.Part.def == BodyPartDefOf.Eye)
                     continue;
 
                 return true;

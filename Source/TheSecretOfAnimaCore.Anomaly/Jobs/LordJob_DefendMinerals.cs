@@ -52,7 +52,7 @@ public class LordToil_DefendMinerals : LordToil_DefendPoint
         {
             if (pawn?.mindState?.duty != null)
             {
-                pawn.mindState.duty.def = TSOAR_DefOf.TSOA_DefendMinerals;
+                pawn.mindState.duty.def = Anomaly_MiscDefOf.TSOA_DefendMinerals;
                 pawn.mindState.duty.radius = LordJob_DefendMinerals.DefendRadius;
             }
         }

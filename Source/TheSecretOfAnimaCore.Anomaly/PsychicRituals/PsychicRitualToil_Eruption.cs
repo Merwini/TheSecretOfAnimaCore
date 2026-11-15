@@ -103,7 +103,7 @@ public class PsychicRitualToil_Eruption : PsychicRitualToil_AnimaAffinity
         if (!candidates.TryRandomElement(out IntVec3 spawnCell))
             return false;
 
-        TunnelHiveSpawner_Eruption tunnelHiveSpawner = (TunnelHiveSpawner_Eruption)ThingMaker.MakeThing(TSOAR_DefOf.TSOA_EruptionTunnel);
+        TunnelHiveSpawner_Eruption tunnelHiveSpawner = (TunnelHiveSpawner_Eruption)ThingMaker.MakeThing(Anomaly_ThingDefOf.TSOA_EruptionTunnel);
         tunnelHiveSpawner.defendPoint = defendPoint;
         tunnelHiveSpawner.spawnHive = false;
         tunnelHiveSpawner.insectsPoints = Mathf.Clamp(StorytellerUtility.DefaultThreatPointsNow(map) * Rand.Range(0.3f, 0.6f), 200f, 1000f);

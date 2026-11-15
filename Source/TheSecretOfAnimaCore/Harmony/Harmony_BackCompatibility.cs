@@ -6,7 +6,7 @@ using Verse;
 namespace tsoa.core;
 
 [HarmonyPatch(typeof(BackCompatibility), nameof(BackCompatibility.GetBackCompatibleType))]
-public static class SavedClassNames_Patch
+public static class BackCompatibility_GetBackCompatibleType_Patch
 {
     private static readonly Dictionary<string, Type> aliases =
         new(StringComparer.Ordinal)

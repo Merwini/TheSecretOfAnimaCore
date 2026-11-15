@@ -36,11 +36,11 @@ public class PsychicRitualToil_Severing : PsychicRitualToil_AnimaAffinity
 
     private void ApplyOutcome(PsychicRitual psychicRitual, Pawn invoker, bool positiveOutcome)
     {
-        float severityPerDay = TSOAR_DefOf.TSOA_PsychicSevering.CompProps<HediffCompProperties_SeverityPerDay>().severityPerDay;
+        float severityPerDay = Anomaly_HediffDefOf.TSOA_PsychicSevering.CompProps<HediffCompProperties_SeverityPerDay>().severityPerDay;
 
         foreach (Pawn humanLike in invoker.Map.mapPawns.AllHumanlikeSpawned)
         {
-            Hediff hediff = HediffMaker.MakeHediff(TSOAR_DefOf.TSOA_PsychicSevering, humanLike);
+            Hediff hediff = HediffMaker.MakeHediff(Anomaly_HediffDefOf.TSOA_PsychicSevering, humanLike);
             if (positiveOutcome)
             {
                 hediff.Severity = 2 * -severityPerDay;
@@ -49,7 +49,7 @@ public class PsychicRitualToil_Severing : PsychicRitualToil_AnimaAffinity
             {
                 hediff.Severity = Rand.Range(failureDurationDays.min * -severityPerDay, failureDurationDays.max * -severityPerDay);
             }
-            Hediff existing = humanLike.health.hediffSet.GetFirstHediffOfDef(TSOAR_DefOf.TSOA_PsychicSevering);
+            Hediff existing = humanLike.health.hediffSet.GetFirstHediffOfDef(Anomaly_HediffDefOf.TSOA_PsychicSevering);
             if (existing != null)
             {
                 humanLike.health.RemoveHediff(existing);
