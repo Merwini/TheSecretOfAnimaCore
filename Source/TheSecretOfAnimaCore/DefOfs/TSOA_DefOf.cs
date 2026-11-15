@@ -11,27 +11,15 @@ namespace tsoa.core;
 [DefOf]
 public class TSOA_DefOf
 {
-    
-    
-
-    //public static ThoughtDef TSOA_AnimaGrassScream;
-
-    //public static JobDef TSOA_HarvestAnimaGrassJob;
-
-
-
     public static SoundDef AnimaTreeScream;
 
     public static DesignationDef TSOA_LoadSapNow;
 
     public static DesignationDef TSOA_EmptyNow;
 
-
     public static ResearchProjectDef TSOA_AnimaOne;
 
     public static ResearchProjectDef TSOA_AnimaThree;
-
-
 
     [MayRequireAnomaly]
     public static MeditationFocusDef Void;

@@ -105,7 +105,7 @@ public class DamageWorker_EntropyExtraDamage : DamageWorker_AddInjury
         }
 
         // make sure a misconfigured damageDef doesn't create an infinite loop
-        DamageDef newDamage = extension.damageDef.Worker is not DamageWorker_EntropyExtraDamage ? extension.damageDef : TSOAA_DefOf.TSOA_EntropicDischarge;
+        DamageDef newDamage = extension.damageDef.Worker is not DamageWorker_EntropyExtraDamage ? extension.damageDef : TSOA_DamageDefOf.TSOA_EntropicDischarge;
 
         DamageInfo newDinfo = new DamageInfo(dinfo);
         newDinfo.Def = newDamage;

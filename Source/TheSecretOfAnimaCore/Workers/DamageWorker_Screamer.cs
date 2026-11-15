@@ -25,7 +25,7 @@ public class DamageWorker_Screamer : DamageWorker
         {
             if (pawn.needs?.mood?.thoughts?.memories is MemoryThoughtHandler handler)
             {
-                handler.TryGainMemory(TSOAA_DefOf.TSOA_AnimaArrowScream);
+                handler.TryGainMemory(TSOA_ThoughtDefOf.TSOA_AnimaArrowScream);
             }
         }
         else if (pawn.RaceProps.Animal && pawn.Faction == null)

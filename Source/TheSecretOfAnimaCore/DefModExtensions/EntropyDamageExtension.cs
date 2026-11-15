@@ -58,7 +58,7 @@ public class EntropyDamageExtension : DefModExtension
 
         if (damageDef == null)
         {
-            damageDef = TSOAA_DefOf.TSOA_EntropicDischarge;
+            damageDef = TSOA_DamageDefOf.TSOA_EntropicDischarge;
             Log.Error($"[TSOA] EntropyDamageExtension on {parentDef.defName} had no damageDef defined. Defaulted to EntropicDischarge.");
         }
     }
