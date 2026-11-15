@@ -45,37 +45,6 @@ public class HarmonyPatches
         }
     }
 
-    // Replaced with CompSpecialMeditationFocus
-    /*
-    [HarmonyPatch(typeof(CompSpawnSubplant), nameof(CompSpawnSubplant.AddProgress))]
-    public class CompSpawnSubplant_AddProgress_Prefix
-    {
-        public static bool Prefix(CompSpawnSubplant __instance, ref float progressPerTick, bool ignoreMultiplier = false)
-        {
-            if (__instance.parent.def != ThingDefOf.Plant_TreeAnima) // TODO mke it work with different anima tree growth stages which will be different ThingDefs
-                return true;
-
-            CompAffectedByGroupedFacilities compABGF = __instance.parent.TryGetComp<CompAffectedByGroupedFacilities>();
-            if (compABGF == null || compABGF.LinkedFacilities.NullOrEmpty())
-                return true;
-
-            float initialProgressPerTick = progressPerTick;
-
-            foreach (Thing thing in compABGF.LinkedFacilities)
-            {
-                if (thing is Building_AnimaSapBasin basin && !ignoreMultiplier && basin.IsHarvesting)
-                {
-                    float progressToRemove = Mathf.Min(progressPerTick, initialProgressPerTick * basin.harvestPercent);
-                    progressPerTick -= progressToRemove;
-                    basin.AddProgress(progressToRemove);
-                }
-            }
-
-            return true;
-        }
-    }
-    */
-
     [HarmonyPatch(typeof(Need_Comfort), nameof(Need_Comfort.ComfortUsed))]
     public static class Need_Comfort_ComfortUsed_Patch
     {
@@ -84,47 +53,6 @@ public class HarmonyPatches
             comfort *= __instance.pawn.GetStatValue(TSOA_StatDefOf.TSOA_ComfortFactor);
         }
     }
-
-    // Scrapped this
-    /*
-    [HarmonyPatch(typeof(RitualOutcomeEffectWorker_AnimaTreeLinking), nameof(RitualOutcomeEffectWorker_AnimaTreeLinking.Apply))]
-    public static class RitualOutcomeEffectWorker_AnimaTreeLinking_Apply_Patch
-    {
-        public static bool Prefix(RitualOutcomeEffectWorker_AnimaTreeLinking __instance, float progress, LordJob_Ritual jobRitual)
-        {
-            Pawn pawn = jobRitual.PawnWithRole("organizer");
-            CompPsylinkable obj = jobRitual.selectedTarget.Thing?.TryGetComp<CompPsylinkable>();
-            float quality = __instance.GetQuality(jobRitual, progress);
-            int plantsToKeep = (int)RitualOutcomeEffectWorker_AnimaTreeLinking.RestoredGrassFromQuality.Evaluate(quality);
-            Thing animaTree = jobRitual.selectedTarget.Thing;
-
-            obj?.FinishLinkingRitual(pawn, num);
-            Hediff hediff = HediffMaker.MakeHediff(TSOA_DefOf.TSOA_AnimaLinkHediff, pawn);
-            ((Hediff_AnimaTreeLink)hediff).AnimaTree = animaTree;
-            pawn.health.AddHediff(hediff);
-
-            CompAnimaTreePawnLink comp = animaTree.TryGetComp<CompAnimaTreePawnLink>();
-            if (comp!= null)
-            {
-                comp.linkedPawns.Add(pawn);
-            }
-            return false;
-        }
-    }
-    */
-
-    /*
-			SkillRequirement skillRequirement = bill.recipe.FirstSkillRequirementPawnDoesntSatisfy(pawn);
-			if (skillRequirement != null)
-			{
-				JobFailReason.Is("UnderRequiredSkill".Translate(skillRequirement.minLevel), bill.Label);
-				continue;
-			}
-        
-        STUFF GOES HERE
-
-			if (bill is Bill_Medical bill_Medical)
-    */
 
     [HarmonyPatch(typeof(WorkGiver_DoBill), nameof(WorkGiver_DoBill.StartOrResumeBillJob))]
     public static class WorkGiver_DoBill_StartOrResumeBillJob_Patch

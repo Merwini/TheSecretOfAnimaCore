@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="EtherealThingBase">
+        <defName>TSOA_EruptionTunnel</defName>
+        <label>tunnel</label>
+        <thingClass>tsoa.core.anomaly.TunnelHiveSpawner_Eruption</thingClass>
+        <tickerType>Normal</tickerType>
+        <drawerType>RealtimeOnly</drawerType>
+        <alwaysFlee>true</alwaysFlee>
+        <building>
+            <groundSpawnerSustainedEffecter>EmergencePointSustained2X2</groundSpawnerSustainedEffecter>
+            <groundSpawnerCompleteEffecter>EmergencePointComplete2X2</groundSpawnerCompleteEffecter>
+        </building>
+    </ThingDef>
+
+    <DutyDef>
+        <defName>TSOA_DefendMinerals</defName>
+        <thinkNode Class="ThinkNode_Priority">
+            <subNodes>
+                <li Class="tsoa.core.anomaly.JobGiver_DefendMinerals">
+                    <needLOSToAcquireNonPawnTargets>true</needLOSToAcquireNonPawnTargets>
+                    <targetAcquireRadius>30</targetAcquireRadius>
+                    <chaseTarget>false</chaseTarget>
+                </li>
+                <li Class="ThinkNode_ForbidOutsideFlagRadius">
+                    <maxDistToSquadFlag>10</maxDistToSquadFlag>
+                    <subNodes>
+                        <li Class="JobGiver_GetFood" />
+                        <li Class="JobGiver_GetRest" />
+                    </subNodes>
+                </li>
+                <li Class="JobGiver_WanderNearDutyLocation">
+                    <wanderRadius>5</wanderRadius>
+                    <maxDanger>Deadly</maxDanger>
+                </li>
+            </subNodes>
+        </thinkNode>
+    </DutyDef>
+</Defs>

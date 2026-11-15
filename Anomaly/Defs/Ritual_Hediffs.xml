@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- Severing -->
+	<HediffDef>
+		<defName>TSOA_PsychicSevering</defName>
+		<hediffClass>HediffWithComps</hediffClass>
+		<label>psychic severing</label>
+		<description>An intentional severing from all psychic attunement, essentially causing psychic deafness.</description>
+		<isBad>false</isBad>
+		<tendable>false</tendable>
+		<alwaysShowSeverity>true</alwaysShowSeverity>
+		<maxSeverity>1</maxSeverity>
+		<stages>
+			<li>
+				<label>psychically severed</label>
+				<statFactors>
+					<PsychicSensitivity>0</PsychicSensitivity>
+				</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.1666</severityPerDay>
+				<showHoursToRecover>true</showHoursToRecover>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<!-- Fever -->
+	<HediffDef Abstract="True" Name="TSOA_PsychicFeverBase">
+		<hediffClass>HediffWithComps</hediffClass>
+		<label>psychic fever</label>
+		<description>A psychically-induced fever that supercharges immune response, but will cause the patient to die if not tended frequently. Leaves the patient delirious and unable to medically care for themself or others.</description>
+		<tendable>true</tendable>
+		<isBad>true</isBad>
+		<initialSeverity>0.0001</initialSeverity>
+		<minSeverity>0.0001</minSeverity>
+		<lethalSeverity>1.0</lethalSeverity>
+		<stages>
+			<li>
+				<statFactors>
+					<ImmunityGainSpeed>2.0</ImmunityGainSpeed>
+				</statFactors>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<setMax>0.5</setMax>
+					</li>
+				</capMods>
+				<disabledWorkTags>
+					<li>Caring</li>
+				</disabledWorkTags>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<baseTendDurationHours>3</baseTendDurationHours>
+				<tendOverlapHours>0.5</tendOverlapHours>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_PsychicFeverBase">
+		<defName>TSOA_PsychicFever_Success</defName>
+		<label>psychic fever</label>
+		<comps>
+			<li Class="tsoa.core.anomaly.HediffCompProperties_PsychicFever">
+				<hoursToLethal>6</hoursToLethal>
+				<severityAfterTend>0.0001</severityAfterTend>
+				<durationDays>2</durationDays>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_PsychicFeverBase">
+		<defName>TSOA_PsychicFever_Failure</defName>
+		<label>psychic fever (unstable)</label>
+		<comps>
+			<li Class="tsoa.core.anomaly.HediffCompProperties_PsychicFever">
+				<hoursToLethal>6</hoursToLethal>
+				<severityAfterTend>0.0001</severityAfterTend>
+				<durationDaysRange>4~6</durationDaysRange>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<!-- Regrowing -->
+	<HediffDef>
+		<defName>TSOA_RegrowingPart</defName>
+		<label>regrowing</label>
+		<description>A body part is regrowing. It will regain function over time.</description>
+		<hediffClass>tsoa.core.anomaly.Hediff_RegrowingPart</hediffClass>
+		<isBad>false</isBad>
+		<tendable>false</tendable>
+		<displayWound>false</displayWound>
+		<initialSeverity>0.0</initialSeverity>
+
+		<stages>
+			<li>
+				<label>sprouting</label>
+				<minSeverity>0.0</minSeverity>
+				<partEfficiencyOffset>-1</partEfficiencyOffset>
+			</li>
+			<li>
+				<label>budding</label>
+				<minSeverity>0.25</minSeverity>
+				<partEfficiencyOffset>-0.80</partEfficiencyOffset>
+			</li>
+			<li>
+				<label>growing</label>
+				<minSeverity>0.5</minSeverity>
+				<partEfficiencyOffset>-0.50</partEfficiencyOffset>
+			</li>
+			<li>
+				<label>ripening</label>
+				<minSeverity>0.75</minSeverity>
+				<partEfficiencyOffset>-0.25</partEfficiencyOffset>
+			</li>
+			<li>
+				<label>bugged</label>
+				<minSeverity>1</minSeverity>
+				<partEfficiencyOffset>0</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<!-- Kodama Lifespan -->
+	<!-- <HediffDef>
+		<defName>TSOA_KodamaLifespan</defName>
+		<label>limited lifespan</label>
+		<description>Kodama are not real living creatures, they are constructs animated by pschic energy. When that energy runs out, they will revert to an inanimate state.</description>
+		<hediffClass>tsoa.core.anomaly.Hediff_KodamaLifespan</hediffClass>
+		<isBad>false</isBad>
+		<tendable>false</tendable>
+		<displayWound>false</displayWound>
+		<modExtensions>
+			<li Class ="tsoa.core.anomaly.HediffDefExtension_KodamaLifetime">
+				<lifespanDays>3</lifespanDays>
+				<vanishEffecter>ForcedVisible</vanishEffecter>
+				<vanishSound>PsychicRitual_Interrupted</vanishSound>
+				Placeholder, TODO make leafy filth
+				<vanishFilth>Filth_Ash</vanishFilth>
+				<vanishFilthCountRange>2~6</vanishFilthCountRange>
+			</li>
+		</modExtensions>
+	</HediffDef> -->
+	
+</Defs>

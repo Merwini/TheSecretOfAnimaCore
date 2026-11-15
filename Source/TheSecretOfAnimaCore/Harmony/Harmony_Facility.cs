@@ -13,7 +13,7 @@ using Verse.AI;
 namespace tsoa.core;
 
 [StaticConstructorOnStartup]
-public class FacilityHarmony
+public class Harmony_Facility
 {
     // So dictionaries will recache the first time a CompProperties_Facility_Grouped has ResolveRefernces called
     [HarmonyPatch(typeof(PlayDataLoader), nameof(PlayDataLoader.DoPlayLoad))]

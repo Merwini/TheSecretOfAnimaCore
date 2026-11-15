@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<TSOA_RelocationNoMove>Anima tree failed to move to a new location.</TSOA_RelocationNoMove>
+
+	<TSOA_HungryGraveRitualBlocker>There are no anima root graves on this map.</TSOA_HungryGraveRitualBlocker>
+	
+	<TSOA_RegrowthRitualBlocker>Ritual target has no missing body parts or permanent injuries.</TSOA_RegrowthRitualBlocker>
+	<TSOA_RegrowthRitualNoInjuryOnComplete>Regrowth ritual completed, but the target had no permanent injuries by the time it finished!</TSOA_RegrowthRitualNoInjuryOnComplete>
+	
+	<TSOA_BeckoningRitualBlocker>No faction can currently send the selected kind of trader.</TSOA_BeckoningRitualBlocker>
+
+	<TSOA_AnimagenesisRitualBlocker>Sacrifant needs at least {0} anima tree affinity.</TSOA_AnimagenesisRitualBlocker>
+
+	<TSOA_FlowerPowerInactive>Must be empowered by ritual to change temperature.</TSOA_FlowerPowerInactive>
+	<TSOA_FlowerPowerDuration>Empowered for the next {0}.</TSOA_FlowerPowerDuration>
+
+</LanguageData>

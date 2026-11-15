@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<PsychicRitualRoleDef>
+		<defName>TSOA_FeverTarget</defName>
+		<label>feverant</label>
+		<allowedConditions>Default, Downed, Prisoner, Sleeping, IdeoUnwilling</allowedConditions>
+		<applyPowerOffset>false</applyPowerOffset>
+		<removeOnLost>false</removeOnLost>
+		<allowedCount>1~6</allowedCount>
+	</PsychicRitualRoleDef>
+
+	<PsychicRitualRoleDef>
+		<defName>TSOA_RegrowthTarget</defName>
+		<label>target</label>
+		<allowedConditions>Default, Downed, Sleeping, IdeoUnwilling</allowedConditions>
+		<applyPowerOffset>false</applyPowerOffset>
+		<removeOnLost>false</removeOnLost>
+		<allowedCount>1</allowedCount>
+	</PsychicRitualRoleDef>
+
+	<PsychicRitualRoleDef>
+		<defName>TSOA_AnimagenesisTarget</defName>
+		<label>sacrifant</label>
+		<allowedCount>1</allowedCount>
+		<allowedConditions>Default, Downed, Sleeping, IdeoUnwilling</allowedConditions>
+		<applyPowerOffset>false</applyPowerOffset>
+		<removeOnLost>false</removeOnLost>
+	</PsychicRitualRoleDef>
+
+	<PsychicRitualRoleDef ParentName="ChanterBase">
+		<defName>TSOA_ChanterUnlimited</defName>
+		<label>chanter</label>
+		<allowedCount>0~9999</allowedCount>
+		<applyPowerOffset>false</applyPowerOffset>
+		<removeOnLost>false</removeOnLost>
+	</PsychicRitualRoleDef>
+	
+</Defs>

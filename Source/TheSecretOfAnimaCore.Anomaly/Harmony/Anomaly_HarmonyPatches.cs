@@ -7,13 +7,13 @@ using Verse;
 namespace tsoa.core;
 
 [StaticConstructorOnStartup]
-public class HarmonyPatches_Anomaly
+public class Anomaly_HarmonyPatches
 {
-    static HarmonyPatches_Anomaly()
+    static Anomaly_HarmonyPatches()
     {
-        Harmony harmonyAnoamly = new Harmony("tsoa.core.anomaly");
+        Harmony harmonyAnomaly = new Harmony("tsoa.core.anomaly");
 
-        harmonyAnoamly.PatchAll();
+        harmonyAnomaly.PatchAll();
     }
 
     [HarmonyPatch(typeof(SkillRecord), nameof(SkillRecord.Interval))]

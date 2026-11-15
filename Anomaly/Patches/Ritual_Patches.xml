@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="TSOA_Plant_AnimaFlower"]/comps//li[@Class="tsoa.core.CompProperties_BiHeatPusher"]</xpath>
+		<value>
+			<compClass>tsoa.core.anomaly.CompBiHeatPusherRitualized</compClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="TSOA_AnimaRootGrave"]/thingClass</xpath>
+		<value>
+			<thingClass>tsoa.core.anomaly.Building_RootGraveRitualized</thingClass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/comps</xpath>
+		<value>
+			<li Class="CompProperties_PsychicRitualSpot"/>
+		</value>
+	</Operation>
+	
+</Patch>

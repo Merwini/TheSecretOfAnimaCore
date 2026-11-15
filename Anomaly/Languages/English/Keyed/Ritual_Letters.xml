@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<TSOA_RelocateSuccess>{0_nameDef} has completed performing {RITUAL_definite} ritual successfully. The anima tree has been skipgated to the new location.</TSOA_RelocateSuccess>
+	<TSOA_RelocateFailure>{0_nameDef} has completed performing {RITUAL_definite} ritual, but failed to control it. The anima tree has been skipgated, but not to the desired location.</TSOA_RelocateFailure>
+
+	<TSOA_FlowerPowerSuccess>{0_nameDef} has completed performing {RITUAL_definite}. For the next {1} days, anima flowers on this map will be able to influence the temperature of the room they're in. Based on ritual quality, their heating and cooling power is multiplied by {2}.</TSOA_FlowerPowerSuccess>
+	
+	<TSOA_HungryGraveSuccess>{0_nameDef} has completed performing {RITUAL_definite}. For the next {1} hours, anima root graves will consume corpses significantly faster.</TSOA_HungryGraveSuccess>
+
+	<TSOA_CreateKodamaSuccess>{0_nameDef} has completed performing {RITUAL_definite}. The ritual participants have managed to animate {1} kodama with psychic energy. This energy will dissipate after 3 days, and the kodama will disappear.</TSOA_CreateKodamaSuccess>
+	
+	<TSOA_SeveringSuccess>{0_nameDef} has completed performing {RITUAL_definite} ritual successfully. For the next {1} days, all colonists will be psychically deafened.</TSOA_SeveringSuccess>
+	<TSOA_SeveringFailure>{0_nameDef} has completed performing {RITUAL_definite} ritual, but failed to control it. For the next {1} days, all colonists will be psychically deafened.</TSOA_SeveringFailure>
+
+	<TSOA_FeverSuccess>{0_nameDef} has completed performing {RITUAL_definite} ritual successfully. For the next {1} days, the ritual targets will experience psychic fever.</TSOA_FeverSuccess>
+	<TSOA_FeverFailure>{0_nameDef} has completed performing {RITUAL_definite} ritual, but failed to control it. For the next {1} days, the ritual targets will experience psychic fever.</TSOA_FeverFailure>
+
+	<TSOA_BeckoningSuccess>{0_nameDef} has completed performing the {RITUAL_definite} ritual successfully. In a day or two, the desired trade caravan will arrive.</TSOA_BeckoningSuccess>
+	<TSOA_BeckoningFailure>{0_nameDef} has failed at performing the {RITUAL_definite} ritual, and called a hostile group instead. In a day or two, a raid will arrive.</TSOA_BeckoningFailure>
+	
+	<TSOA_EruptionSuccess>{0_nameDef} has completed performing the {RITUAL_definite} ritual successfully. Valuable minerals have been pulled to the surface.</TSOA_EruptionSuccess>
+	<TSOA_EruptionFailure>{0_nameDef} has failed at performing the {RITUAL_definite} ritual, and an insectoid infestation has been brought to the surface along with the minerals. The insectoids are guarding the minerals and will attack anyone who approaches.</TSOA_EruptionFailure>
+	<TSOA_EruptionNoOre>{0_nameDef} has completed performing the {RITUAL_definite} ritual, but no minerals could be brought to the surface.</TSOA_EruptionNoOre>
+
+	<TSOA_StormSuccess>{0_nameDef} has completed performing the {RITUAL_definite} ritual successfully. The weather has been changed to {1}.</TSOA_StormSuccess>
+	<TSOA_StormFailure>{0_nameDef} has failed at performing the {RITUAL_definite} ritual. The weather has been changed to {1}.</TSOA_StormFailure>
+
+</LanguageData>

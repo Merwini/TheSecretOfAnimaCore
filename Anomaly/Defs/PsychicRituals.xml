@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<tsoa.core.anomaly.PsychicRitualDef_Relocate>
+		<defName>TSOA_RelocationRitual</defName>
+		<label>tree relocation</label>
+		<description>Relocates the anima tree to a new location. If the ritual is successful, the tree will move to the desired location. If it is unsuccessful, it will end up at a random location near the desired target.</description>
+		<outcomeDescription>At the current ritual quality, the chance of success is {0}.</outcomeDescription>
+		<iconPath>TSOA/UI/Gizmos/RelocationRitualGizmo</iconPath>
+		<researchPrerequisite>TSOA_AnimaOne</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaGrassResource</li>
+				</thingDefs>
+			</filter>
+			<count>5</count>
+		</requiredOffering>
+		<cooldownHours>120</cooldownHours>
+		<chanterRole>Chanter</chanterRole>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<targetsCell>true</targetsCell>
+		<relocateCurve>
+			<points>
+				<li>(0, 0)</li>
+				<li>(0.5, 15)</li>
+				<li>(1, 22)</li>
+			</points>
+		</relocateCurve>
+	</tsoa.core.anomaly.PsychicRitualDef_Relocate>
+
+	<tsoa.core.anomaly.PsychicRitualDef_FlowerPower>
+		<defName>TSOA_FlowerPowerRitual</defName>
+		<label>flower endowment</label>
+		<description>Temporarily empowers anima flowers on the map to manipulate energy around them, heating or cooling the room they are in to bring it closer to comfortable levels for humans. The temperature change is greater depending on ritual quality, and adding additional flowers to a room increases the effect.</description>
+		<iconPath>TSOA/UI/Gizmos/FlowerEmpowermentRitualGizmo</iconPath>
+		<researchPrerequisite>TSOA_AnimaOne</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaGrassResource</li>
+				</thingDefs>
+			</filter>
+			<count>2</count>
+		</requiredOffering>
+		<cooldownHours>120</cooldownHours>
+		<durationHours>180</durationHours>
+		<chanterRole>Chanter</chanterRole>
+		<invokerAffinity>0.02</invokerAffinity>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<flowerCurve>
+			<points>
+				<li>(0, 0.5)</li>
+				<li>(0.3, 1)</li>
+				<li>(1, 3)</li>
+			</points>
+		</flowerCurve>
+	</tsoa.core.anomaly.PsychicRitualDef_FlowerPower>
+
+	<tsoa.core.anomaly.PsychicRitualDef_HungryGrave>
+		<defName>TSOA_HungryGraveRitual</defName>
+		<label>hungry grave</label>
+		<description>Temporarily empowers anima root graves on the map to consume corpses significantly faster. The duration is longer depending on ritual quality.</description>
+		<iconPath>TSOA/UI/Gizmos/HungryGraveRitualGizmo</iconPath>
+		<researchPrerequisite>TSOA_AnimaOne</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaGrassResource</li>
+				</thingDefs>
+			</filter>
+			<count>2</count>
+		</requiredOffering>
+		<cooldownHours>120</cooldownHours>
+		<baseDurationHours>12</baseDurationHours>
+		<chanterRole>Chanter</chanterRole>
+		<invokerAffinity>0.02</invokerAffinity>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<graveCurve>
+			<points>
+				<li>(0, 0.5)</li>
+				<li>(0.4, 1)</li>
+				<li>(1, 3)</li>
+			</points>
+		</graveCurve>
+	</tsoa.core.anomaly.PsychicRitualDef_HungryGrave>
+
+	<!-- <tsoa.core.anomaly.PsychicRitualDef_CreateKodama>
+		<defName>TSOA_CreateKodamaRitual</defName>
+		<label>create kodama</label>
+		<description>Animates bundles of anima tree leaves with psychic energy, creating semi-sentient beings capable of performing specific simple tasks. The energy animating them will dissipate rapidly, returning them to their original state. The number of kodama created is based on the ritual quality.</description>
+		<outcomeDescription>At the current ritual quality, the ritual with create between 1 and {0} kodama, with an average of {1}.</outcomeDescription>
+		<researchPrerequisite>TSOA_AnimaOne</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaGrassResource</li>
+				</thingDefs>
+			</filter>
+			<count>5</count>
+		</requiredOffering>
+		<cooldownHours>24</cooldownHours>
+		<chanterRole>ChanterAdvanced</chanterRole>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<gizmoMakesFloatMenu>true</gizmoMakesFloatMenu>
+	</tsoa.core.anomaly.PsychicRitualDef_CreateKodama> -->
+	
+	<tsoa.core.anomaly.PsychicRitualDef_Severing>
+		<defName>TSOA_SeveringRitual</defName>
+		<label>psychic severing</label>
+		<description>Temporarily severs the psychic attunement of all humanlike creatures on the map, to protect them from negative psychic forces like psychic drones. Performed properly, the effects will last for two days: just long enough to outlast most psychic drones. Performed improperly, the effects will last for much longer.</description>
+		<outcomeDescription>At the current ritual quality, the chance of successfully controlling the duration is {0}.</outcomeDescription>
+		<iconPath>TSOA/UI/Gizmos/SeveringRitualGizmo</iconPath>
+		<researchPrerequisite>TSOA_SeveringResearch</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaGrassResource</li>
+				</thingDefs>
+			</filter>
+			<count>5</count>
+		</requiredOffering>
+		<cooldownHours>120</cooldownHours>
+		<chanterRole>Chanter</chanterRole>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<failureDurationDays>4~6</failureDurationDays>
+	</tsoa.core.anomaly.PsychicRitualDef_Severing>
+
+
+	<tsoa.core.anomaly.PsychicRitualDef_Fever>
+		<defName>TSOA_FeverRitual</defName>
+		<label>induce psychic fever</label>
+		<description>Induces a psychic fever in the ritual targets, a desperate action, for those who have little chance of surviving a disease otherwise. The psychic fever greatly increases immunity gain speed, but makes the target delirious and unable to care for themself and others. Those experiencing psychic fever require frequent tending, or they will die in 6 hours. The invoker will attempt to control the fever, limiting its duration to just a couple days, but if the ritual goes wrong the duration will be much longer.</description>
+		<outcomeDescription>At the current ritual quality, the chance of success is {0}.</outcomeDescription>
+		<iconPath>TSOA/UI/Gizmos/FeverRitualGizmo</iconPath>
+		<researchPrerequisite>TSOA_FeverResearch</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaGrassResource</li>
+				</thingDefs>
+			</filter>
+			<count>5</count>
+		</requiredOffering>
+		<cooldownHours>120</cooldownHours>
+		<chanterRole>Chanter</chanterRole>
+		<targetRole>TSOA_FeverTarget</targetRole>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<successCurve>
+			<points>
+				<li>(0, 0.25)</li>
+				<li>(0.5, 0.75)</li>
+				<li>(1, 1)</li>
+			</points>
+		</successCurve>
+	</tsoa.core.anomaly.PsychicRitualDef_Fever>
+
+	<tsoa.core.anomaly.PsychicRitualDef_Regrowth>
+		<defName>TSOA_RegrowthRitual</defName>
+		<label>somatic regrowth</label>
+		<description>Induces the target's body to begin regrowing a lost or permanently damaged body part. A missing body part will regrow over a period of days or weeks, or an injury will be healed immediately. The invoker will attempt to control the growth, but if the ritual goes wrong it may induce uncontrolled growth in another part of the body, resulting in a carcinoma.</description>
+		<outcomeDescription>At the current ritual quality, the chance of success is {0}.</outcomeDescription>
+		<iconPath>TSOA/UI/Gizmos/RegrowthRitualGizmo</iconPath>
+		<researchPrerequisite>TSOA_RegrowthResearch</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaSap</li>
+				</thingDefs>
+			</filter>
+			<count>3</count>
+		</requiredOffering>
+		<cooldownHours>120</cooldownHours>
+		<targetRole>TSOA_RegrowthTarget</targetRole>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<successCurve>
+			<points>
+				<li>(0, 0.25)</li>
+				<li>(0.5, 0.75)</li>
+				<li>(1, 1)</li>
+			</points>
+		</successCurve>
+	</tsoa.core.anomaly.PsychicRitualDef_Regrowth>
+
+	<tsoa.core.anomaly.PsychicRitualDef_Beckoning>
+		<defName>TSOA_BeckoningRitual</defName>
+		<label>beckoning</label>
+		<description>Psychically beckons across great distances, trying to influence a trader to visit your colony. With additional research and increased difficulty, you can even choose what kind of trader it will be that receives the beckoning. However, if the ritual is unsuccessful, it will be a group that means to do you harm, instead.</description>
+		<outcomeDescription>At the current ritual quality, the chance of success is {0}.</outcomeDescription>
+		<iconPath>TSOA/UI/Gizmos/BeckoningRitualGizmo</iconPath>
+		<researchPrerequisite>TSOA_BeckoningResearch</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaGrassResource</li>
+				</thingDefs>
+			</filter>
+			<count>10</count>
+		</requiredOffering>
+		<cooldownHours>120</cooldownHours>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<gizmoMakesFloatMenu>true</gizmoMakesFloatMenu>
+		<anyTraderOptionString>any trader</anyTraderOptionString>
+		<advancedResearchProject>TSOA_BeckoningAdvancedResearch</advancedResearchProject>
+		<successCurve>
+			<points>
+				<li>(0, 0)</li>
+				<li>(1, 1)</li>
+			</points>
+		</successCurve>
+		<successCurveAnyTrader>
+			<points>
+				<li>(0, 0.25)</li>
+				<li>(0.5, 0.75)</li>
+				<li>(1, 1)</li>
+			</points>
+		</successCurveAnyTrader>
+	</tsoa.core.anomaly.PsychicRitualDef_Beckoning>
+
+	<tsoa.core.anomaly.PsychicRitualDef_Eruption>
+		<defName>TSOA_EruptionRitual</defName>
+		<label>eruption</label>
+		<description>Psychically searches out useful minerals deep below the earth, and pulls them to the surface. With additional research and increased difficulty, the type of mineral can be chosen. If the ritual goes wrong, however, it may pull unwanted things to the surface as well.</description>
+		<outcomeDescription>At the current ritual quality, the chance of success is {0}.</outcomeDescription>
+		<iconPath>TSOA/UI/Gizmos/EruptionRitualGizmo</iconPath>
+		<researchPrerequisite>TSOA_EruptionResearch</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaGrassResource</li>
+				</thingDefs>
+			</filter>
+			<count>10</count>
+		</requiredOffering>
+		<cooldownHours>120</cooldownHours>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<gizmoMakesFloatMenu>true</gizmoMakesFloatMenu>
+		<anyOreOptionString>any ore</anyOreOptionString>
+		<advancedResearchProject>TSOA_EruptionAdvancedResearch</advancedResearchProject>
+		<successCurve>
+			<points>
+				<li>(0, 0)</li>
+				<li>(1, 1)</li>
+			</points>
+		</successCurve>
+		<successCurveAnyOre>
+			<points>
+				<li>(0, 0.25)</li>
+				<li>(0.5, 0.75)</li>
+				<li>(1, 1)</li>
+			</points>
+		</successCurveAnyOre>
+	</tsoa.core.anomaly.PsychicRitualDef_Eruption>
+	
+	<tsoa.core.anomaly.PsychicRitualDef_Storm>
+		<defName>TSOA_StormRitual</defName>
+		<label>storm</label>
+		<description>Attempts to psychically manipulate the weather in the area around the anima tree. If the ritual succeeds, expect rain, snow, or a thunderstorm, and to end a drought if it is not being caused by some other force. If the ritual fails, expect a dry thunderstorm. The ritual is much more difficult during a drought.</description>
+		<outcomeDescription>At the current ritual quality, the chance of success is {0}.</outcomeDescription>
+		<iconPath>TSOA/UI/Gizmos/StormRitualGizmo</iconPath>
+		<researchPrerequisite>TSOA_StormResearch</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaGrassResource</li>
+				</thingDefs>
+			</filter>
+			<count>5</count>
+		</requiredOffering>
+		<cooldownHours>120</cooldownHours>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<successCurve>
+			<points>
+				<li>(0, 0.25)</li>
+				<li>(0.5, 0.75)</li>
+				<li>(1, 1)</li>
+			</points>
+		</successCurve>
+	</tsoa.core.anomaly.PsychicRitualDef_Storm>
+
+	<tsoa.core.anomaly.PsychicRitualDef_Animagenesis>
+		<defName>TSOA_AnimagenesisRitual</defName>
+		<label>genesis</label>
+		<description>Sacrifice a colonist with high affinity to the anima tree to create the seed of a new tree. A high quality ritual will also create a psychic soothe, to ameliorate the pain of losing a friend.</description>
+		<outcomeDescription>There is no chance of failure.</outcomeDescription>
+		<iconPath>TSOA/UI/Gizmos/AnimagenesisRitualGizmo</iconPath>
+		<researchPrerequisite>TSOA_AnimaTwo</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>TSOA_AnimaSap</li>
+				</thingDefs>
+			</filter>
+			<count>5</count>
+		</requiredOffering>
+		<cooldownHours>120</cooldownHours>
+		<targetRole>TSOA_AnimagenesisTarget</targetRole>
+		<chanterRole>ChanterAdvanced</chanterRole>
+		<ritualFocuses>
+			<li>Plant_TreeAnima</li>
+		</ritualFocuses>
+		<successCurve>
+			<points>
+				<li>(0, 0.25)</li>
+				<li>(0.5, 0.75)</li>
+				<li>(1, 1)</li>
+			</points>
+		</successCurve>
+	</tsoa.core.anomaly.PsychicRitualDef_Animagenesis>
+	
+	<!-- TODO avatar of anima for TSOA_AnimaThree -->
+	
+</Defs>

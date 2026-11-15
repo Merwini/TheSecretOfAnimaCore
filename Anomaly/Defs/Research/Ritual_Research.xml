@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- Now given by TSOA_AnimaOne-->
+	<!--<ResearchProjectDef>
+		<defName>TSOA_RelocationResearch</defName>
+		<label>tree relocation ritual</label>
+		<description>Perform a psychic ritual that skipgates an anima tree to a new location.</description>
+		<baseCost>400</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_AnimaOne</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>1.00</researchViewX>
+		<researchViewY>0.60</researchViewY>
+	</ResearchProjectDef>-->
+
+	<ResearchProjectDef>
+		<defName>TSOA_StormResearch</defName>
+		<label>storm ritual</label>
+		<description>Perform a psychic ritual to try to invoke a rainstorm.</description>
+		<baseCost>600</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<prerequisites>
+			<li>TSOA_AnimaOne</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>1.00</researchViewX>
+		<researchViewY>0.70</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_SeveringResearch</defName>
+		<label>severing ritual</label>
+		<description>Perform a psychic ritual that temporarily severs the psychic connection of all humans and humanlike creatures in the area, making them psychically deaf.</description>
+		<baseCost>600</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<prerequisites>
+			<li>TSOA_AnimaOne</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>1.00</researchViewX>
+		<researchViewY>1.40</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_FeverResearch</defName>
+		<label>fever ritual</label>
+		<description>Perform a psychic ritual that induces a psychic fever in the targets. The fever helps rapidly cure disease, but requires frequent medical tending or the target will die.</description>
+		<baseCost>600</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<prerequisites>
+			<li>TSOA_AnimaOne</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>1.00</researchViewX>
+		<researchViewY>2.10</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_RegrowthResearch</defName>
+		<label>regrowth ritual</label>
+		<description>Perform a psychic ritual that regrows missing body parts and heals permanent injuries.</description>
+		<baseCost>900</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_FeverResearch</li>
+			<li>TSOA_AnimaTwo</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>2.10</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_BeckoningResearch</defName>
+		<label>beckoning ritual</label>
+		<description>Perform a psychic ritual that induces distant traders to visit the colony.</description>
+		<baseCost>600</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_AnimaTwo</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>0.70</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TSOA_BeckoningAdvancedResearch</defName>
+		<label>advanced beckoning</label>
+		<description>Improve the beckoning ritual, to make the invoker able to select what kind of trader receives the call.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_BeckoningResearch</li>
+			<li>TSOA_AnimaThree</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>5.00</researchViewX>
+		<researchViewY>0.70</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_EruptionResearch</defName>
+		<label>eruption ritual</label>
+		<description>Perform a psychic ritual to pull valuable minerals to the surface from deep underground.</description>
+		<baseCost>600</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_AnimaTwo</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>1.40</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_EruptionAdvancedResearch</defName>
+		<label>advanced eruption</label>
+		<description>Improve the eruption ritual, to make the invoker able to select what kind of mineral to pull to the surface.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_EruptionResearch</li>
+			<li>TSOA_AnimaThree</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>5.00</researchViewX>
+		<researchViewY>1.40</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TSOA_RitualPlaceholderOne</defName>
+		<label>coming soon(ish)</label>
+		<description>Planned future content.</description>
+		<baseCost>99999</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_ArchotechOne</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>1.00</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_RitualPlaceholderTwo</defName>
+		<label>coming soon(ish)</label>
+		<description>Planned future content.</description>
+		<baseCost>99999</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_ArchotechOne</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_RitualPlaceholderThree</defName>
+		<label>coming soon(ish)</label>
+		<description>Planned future content.</description>
+		<baseCost>99999</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_ArchotechOne</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>5.00</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_RitualPlaceholderFour</defName>
+		<label>coming soon(ish)</label>
+		<description>Planned future content.</description>
+		<baseCost>99999</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_ArchotechOne</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>5.00</researchViewX>
+		<researchViewY>2.10</researchViewY>
+	</ResearchProjectDef>
+	
+</Defs>
