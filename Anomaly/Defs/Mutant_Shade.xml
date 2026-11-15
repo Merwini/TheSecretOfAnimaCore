@@ -150,6 +150,29 @@
         </tools>
     </MutantDef>
 
+    <PawnKindDef ParentName="MutantBase">
+        <defName>TSOA_ShadeKind</defName>
+        <label>shade</label>
+        <defaultFactionDef>PlayerColony</defaultFactionDef>
+        <mutant>TSOA_ShadeMutant</mutant>
+        <generateInitialNonFamilyRelations>false</generateInitialNonFamilyRelations>
+        <combatPower>90</combatPower>
+        <gearHealthRange>0.0~0.0</gearHealthRange>
+        <itemQuality>Poor</itemQuality>
+        <apparelMoney>0~0</apparelMoney>
+        <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+        <apparelTags>
+            <li>IndustrialBasic</li>
+            <li>Neolithic</li>
+        </apparelTags>
+        <techHediffsTags>
+            <li>Poor</li>
+        </techHediffsTags>
+        <techHediffsChance>0.1</techHediffsChance>
+        <techHediffsMoney>0~600</techHediffsMoney>
+        <techHediffsMaxAmount>3</techHediffsMaxAmount>
+    </PawnKindDef>
+
     <HediffDef>
         <defName>TSOA_ShadeHediff</defName>
         <label>shade</label>
