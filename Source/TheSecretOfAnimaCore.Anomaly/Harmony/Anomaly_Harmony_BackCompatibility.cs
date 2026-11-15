@@ -11,14 +11,23 @@ public static class SavedClassNames_Patch
     private static readonly Dictionary<string, Type> aliases =
         new(StringComparer.Ordinal)
         {
-            {
-                "tsoa.rituals.MapComponent_AnimaRitual",
-                typeof(MapComponent_AnimaRitual)
-            },
-            {
-                "tsoa.rituals.PsychicRitualToil_Relocate",
-                typeof(PsychicRitualToil_Relocate)
-            }
+            // Rituals
+            { "tsoa.rituals.Building_RootGraveRitualized", typeof(Building_RootGraveRitualized) },
+            { "tsoa.rituals.TunnelHiveSpawner_Eruption", typeof(TunnelHiveSpawner_Eruption) },
+            { "tsoa.rituals.Hediff_RegrowingPart", typeof(Hediff_RegrowingPart) },
+            { "tsoa.rituals.LordJob_DefendMinerals", typeof(LordJob_DefendMinerals) },
+            { "tsoa.rituals.MapComponent_AnimaRitual", typeof(MapComponent_AnimaRitual) },
+
+            { "tsoa.rituals.PsychicRitualToil_Animagenesis", typeof(PsychicRitualToil_Animagenesis) },
+            { "tsoa.rituals.PsychicRitualToil_Beckoning", typeof(PsychicRitualToil_Beckoning) },
+            { "tsoa.rituals.PsychicRitualToil_Eruption", typeof(PsychicRitualToil_Eruption) },
+            { "tsoa.rituals.PsychicRitualToil_Fever", typeof(PsychicRitualToil_Fever) },
+            { "tsoa.rituals.PsychicRitualToil_FlowerPower", typeof(PsychicRitualToil_FlowerPower) },
+            { "tsoa.rituals.PsychicRitualToil_HungryGrave", typeof(PsychicRitualToil_HungryGrave) },
+            { "tsoa.rituals.PsychicRitualToil_Regrowth", typeof(PsychicRitualToil_Regrowth) },
+            { "tsoa.rituals.PsychicRitualToil_Relocate", typeof(PsychicRitualToil_Relocate) },
+            { "tsoa.rituals.PsychicRitualToil_Severing", typeof(PsychicRitualToil_Severing) },
+            { "tsoa.rituals.PsychicRitualToil_Storm", typeof(PsychicRitualToil_Storm) },
         };
 
     public static void Postfix(Type baseType, string providedClassName, ref Type __result)
