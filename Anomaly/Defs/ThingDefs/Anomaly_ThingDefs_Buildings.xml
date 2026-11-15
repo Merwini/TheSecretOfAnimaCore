@@ -1,0 +1,31 @@
+<Defs>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>TSOA_VoidGate</defName>
+        <label>void gate</label>
+        <description>A circular gateway, punching a hole in reality to create an opening into the Void. With upgrades, can form a semi-safe tunnel through the Void to distant locations, like a more stable form of Skipgates.</description>
+        <graphicData>
+			<texPath>TSOA/Things/Building/VoidGate/VoidGatePLACEHOLDER</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3.3, 3.3)</drawSize>
+			<shadowData>
+				<volume>(1, 0.45, 2)</volume>
+			</shadowData>
+		</graphicData>
+		<size>(3, 3)</size>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<fillPercent>1</fillPercent>
+        <statBases>
+			<MaxHitPoints>2000</MaxHitPoints>
+			<Beauty>-15</Beauty>
+		</statBases>
+        <altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<canOverlapZones>true</canOverlapZones>
+		<tickerType>Rare</tickerType>
+		<rotatable>false</rotatable>
+		<designationCategory>TSOA_DesignationCategory</designationCategory>
+    </ThingDef>
+
+</Defs>
