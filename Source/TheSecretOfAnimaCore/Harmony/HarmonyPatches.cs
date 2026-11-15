@@ -344,13 +344,13 @@ public class HarmonyPatches
     {
         public static bool Prefix(Pawn p, MeditationFocusDef type, ref bool __result)
         {
-            if (type == MeditationFocusDefOf.Natural && TSOA_DefOf.TSOA_AnimaOne.IsFinished && p.IsColonist)
+            if (type == MeditationFocusDefOf.Natural && TSOA_MiscDefOf.TSOA_AnimaOne.IsFinished && p.IsColonist)
             {
                 __result = true;
                 return false;
             }
 
-            if (TSOA_DefOf.Void is MeditationFocusDef voidF && type == voidF && TSOA_DefOf.TSOA_VoidOne is ResearchProjectDef rpd && rpd.IsFinished && p.IsColonist)
+            if (TSOA_MiscDefOf.Void is MeditationFocusDef voidF && type == voidF && TSOA_MiscDefOf.TSOA_VoidOne is ResearchProjectDef rpd && rpd.IsFinished && p.IsColonist)
             {
                 __result = true;
                 return false;
@@ -368,7 +368,7 @@ public class HarmonyPatches
 
         public static void Postfix(Settlement __instance, ref IEnumerable<Gizmo> __result, Caravan caravan)
         {
-            if (__instance.CanTradeNow && TSOA_DefOf.TSOA_AnimaThree.IsFinished)
+            if (__instance.CanTradeNow && TSOA_MiscDefOf.TSOA_AnimaThree.IsFinished)
             {
                 List<Gizmo> gizmosList = __result.ToList();
 

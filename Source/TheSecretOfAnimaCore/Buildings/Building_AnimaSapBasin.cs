@@ -225,12 +225,12 @@ public class Building_AnimaSapBasin : Building, IThingHolder
     {
         if (!Spawned) return;
 
-        Designation designation = Map.designationManager.DesignationOn(this, TSOA_DefOf.TSOA_EmptyNow);
+        Designation designation = Map.designationManager.DesignationOn(this, TSOA_MiscDefOf.TSOA_EmptyNow);
 
         if (emptyNow)
         {
             if (designation == null)
-                Map.designationManager.AddDesignation(new Designation(this, TSOA_DefOf.TSOA_EmptyNow));
+                Map.designationManager.AddDesignation(new Designation(this, TSOA_MiscDefOf.TSOA_EmptyNow));
         }
         else
         {

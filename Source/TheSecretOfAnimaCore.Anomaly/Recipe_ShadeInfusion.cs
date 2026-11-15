@@ -38,7 +38,7 @@ public class Recipe_ShadeInfusion : Recipe_Surgery
 		{
 			bool flag = IsViolationOnPawn(pawn, part, Faction.OfPlayer);
 			Faction homeFaction = pawn.HomeFaction;
-			MutantUtility.SetPawnAsMutantInstantly(pawn, TSOA_DefOf.TSOA_ShadeMutant);
+			MutantUtility.SetPawnAsMutantInstantly(pawn, TSOA_MiscDefOf.TSOA_ShadeMutant);
 			SkillRecord melee = pawn.skills.GetSkill(SkillDefOf.Melee);
 			melee.Level = 0;
 			melee.xpSinceLastLevel = 0f;

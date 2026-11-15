@@ -368,7 +368,7 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
         parms.target = map;
         parms.points = recoverableAmber; // just stashing this here, incident worker will read this then reassign a real point value
 
-        Find.Storyteller.incidentQueue.Add(TSOA_DefOf.TSOA_AmberRecoveryOffer, fireTick, parms);
+        Find.Storyteller.incidentQueue.Add(TSOA_MiscDefOf.TSOA_AmberRecoveryOffer, fireTick, parms);
     }
 
     public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Caravan caravan)

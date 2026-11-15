@@ -286,11 +286,11 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
     {
         if (!Spawned) return;
 
-        Designation loadDesignation = Map.designationManager.DesignationOn(this, TSOA_DefOf.TSOA_LoadSapNow);
+        Designation loadDesignation = Map.designationManager.DesignationOn(this, TSOA_MiscDefOf.TSOA_LoadSapNow);
         if (loadNow)
         {
             if (loadDesignation == null)
-                Map.designationManager.AddDesignation(new Designation(this, TSOA_DefOf.TSOA_LoadSapNow));
+                Map.designationManager.AddDesignation(new Designation(this, TSOA_MiscDefOf.TSOA_LoadSapNow));
         }
         else
         {
@@ -298,11 +298,11 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
                 loadDesignation.Delete();
         }
 
-        Designation emptyDesignation = Map.designationManager.DesignationOn(this, TSOA_DefOf.TSOA_EmptyNow);
+        Designation emptyDesignation = Map.designationManager.DesignationOn(this, TSOA_MiscDefOf.TSOA_EmptyNow);
         if (forceEmpty)
         {
             if (emptyDesignation == null)
-                Map.designationManager.AddDesignation(new Designation(this, TSOA_DefOf.TSOA_EmptyNow));
+                Map.designationManager.AddDesignation(new Designation(this, TSOA_MiscDefOf.TSOA_EmptyNow));
         }
         else
         {

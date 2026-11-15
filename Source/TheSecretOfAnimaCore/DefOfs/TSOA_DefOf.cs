@@ -9,7 +9,7 @@ using RimWorld;
 namespace tsoa.core;
 
 [DefOf]
-public class TSOA_DefOf
+public class TSOA_MiscDefOf
 {
     public static SoundDef AnimaTreeScream;
 

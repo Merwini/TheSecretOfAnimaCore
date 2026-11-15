@@ -116,7 +116,7 @@ public class TSOA_Utils
 
     public static bool SpawnFontOfAnima()
     {
-        Quest quest = QuestUtility.GenerateQuestAndMakeAvailable(TSOA_DefOf.TSOA_Opportunity_FontOfAnima, new Slate());
+        Quest quest = QuestUtility.GenerateQuestAndMakeAvailable(TSOA_MiscDefOf.TSOA_Opportunity_FontOfAnima, new Slate());
 
         // Should only be one, since the gizmo should be disabled if any already exists, but just in case
         FontOfAnimaWorldObject fontWorldObject = Find.WorldObjects.AllWorldObjects.FirstOrDefault(o => o is FontOfAnimaWorldObject) as FontOfAnimaWorldObject;

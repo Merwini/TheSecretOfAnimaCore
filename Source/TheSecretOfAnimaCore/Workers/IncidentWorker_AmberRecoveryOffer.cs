@@ -25,7 +25,7 @@ public class IncidentWorker_AmberRecoveryOffer : IncidentWorker
             return false;
         }
 
-        if (TSOA_DefOf.TSOA_RecoverAmberQuest == null)
+        if (TSOA_MiscDefOf.TSOA_RecoverAmberQuest == null)
         {
             Log.Error("TSOA_RecoverAmberQuest def is missing.");
             return false;
@@ -62,7 +62,7 @@ public class IncidentWorker_AmberRecoveryOffer : IncidentWorker
         slate.Set("points", sitePoints);
         slate.Set("itemPodsContents", itemPodsContents);
 
-        Quest quest = QuestUtility.GenerateQuestAndMakeAvailable(TSOA_DefOf.TSOA_RecoverAmberQuest, slate);
+        Quest quest = QuestUtility.GenerateQuestAndMakeAvailable(TSOA_MiscDefOf.TSOA_RecoverAmberQuest, slate);
         if (quest == null)
         {
             Log.Error("Failed to generate amber recovery quest.");

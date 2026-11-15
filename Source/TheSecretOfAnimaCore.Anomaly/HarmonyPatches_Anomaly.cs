@@ -21,7 +21,7 @@ public class HarmonyPatches_Anomaly
     {
         public static bool Prefix(SkillRecord __instance)
         {
-            if (__instance.pawn.IsMutant && __instance.pawn.mutant.def == TSOA_DefOf.TSOA_ShadeMutant)
+            if (__instance.pawn.IsMutant && __instance.pawn.mutant.def == TSOA_MiscDefOf.TSOA_ShadeMutant)
             {
                 switch (__instance.levelInt)
                 {
@@ -88,7 +88,7 @@ public class HarmonyPatches_Anomaly
                 pawn.Faction == Faction.OfPlayer &&
                 (pawn.HostFaction == null || pawn.IsSlave) &&
                 pawn.IsMutant &&
-                pawn.mutant.Def == TSOA_DefOf.TSOA_ShadeMutant &&
+                pawn.mutant.Def == TSOA_MiscDefOf.TSOA_ShadeMutant &&
                 !pawn.DevelopmentalStage.Baby() &&
                 pawn.workSettings?.EverWork == true);
 
