@@ -11,15 +11,6 @@ namespace tsoa.core;
 [DefOf]
 public class TSOA_DefOf
 {
-    public static ThingDef TSOA_AnimaGrassResource;
-
-    public static ThingDef TSOA_AnimaSap;
-
-    public static ThingDef TSOA_AnimaAmber;
-
-    public static ThingDef TSOA_AnimaSapBasin;
-
-    public static ThingDef TSOA_FontOfAnima;
     
     public static HediffDef TSOA_AnimaAffinityHediff;
 
@@ -27,17 +18,7 @@ public class TSOA_DefOf
 
     //public static JobDef TSOA_HarvestAnimaGrassJob;
 
-    public static JobDef TSOA_AddAnimaSapToFontJob;
 
-    public static JobDef TSOA_TakeAnimaSapOutOfBasinJob;
-
-    public static JobDef TSOA_TakeAnimaAmberOutOfFontJob;
-
-    public static JobDef TSOA_PlantAnimaPearl;
-
-    public static JobDef TSOA_ComfortAnimaTree;
-
-    public static ThingDef TSOA_AnimaPearl;
 
     public static SoundDef AnimaTreeScream;
 
@@ -51,10 +32,7 @@ public class TSOA_DefOf
 
     public static ResearchProjectDef TSOA_AnimaThree;
 
-    public static ThingDef TSOA_TreeAnimaSilent;
 
-    [MayRequireAnomaly]
-    public static ThingDef TSOA_SignalAction_AnomalyAmbush;
 
     [MayRequireAnomaly]
     public static MeditationFocusDef Void;

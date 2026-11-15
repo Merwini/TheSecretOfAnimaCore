@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>TSOA_AnimaBow</defName>
+		<statBases>
+			<SightsEfficiency>0.8</SightsEfficiency>
+			<ShotSpread>1</ShotSpread>
+			<SwayFactor>2</SwayFactor>
+			<Bulk>4.00</Bulk>
+			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<WoodLog>25</WoodLog>
+			<TSOA_AnimaGrassResource>5</TSOA_AnimaGrassResource>
+			<TSOA_AnimaBark>2</TSOA_AnimaBark>
+		</costList>
+		<Properties>
+			<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+			<hasStandardCommand>true</hasStandardCommand>
+			<defaultProjectile>TSOA_Projectile_ArrowBowArrow_Anima</defaultProjectile>
+			<warmupTime>1.2</warmupTime>
+			<range>22</range>
+			<soundCast>Bow_Recurve</soundCast>
+		</Properties>
+		<AmmoUser>
+			<ammoSet>AmmoSet_AnimaBowArrow</ammoSet>
+			<AmmoGenPerMagOverride>5</AmmoGenPerMagOverride>
+		</AmmoUser>
+		<FireModes />
+		<weaponTags>
+			<li>CE_Bow</li>
+		</weaponTags>
+		<AllowWithRunAndGun>false</AllowWithRunAndGun>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="TSOA_AnimaBow"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>7</power>
+					<cooldownTime>1.6</cooldownTime>
+					<armorPenetrationBlunt>0.65</armorPenetrationBlunt>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="TSOA_AnimaBow"]</xpath>
+		<value>
+			<li Class="tsoa.core.EntropyDamageExtension">
+				<damageDef>TSOA_EntropicDischarge</damageDef>
+				<entropyCountedFlat>1</entropyCountedFlat>
+				<entropySpentFlat>-4</entropySpentFlat>
+				<damagePerEntropy>8</damagePerEntropy>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="TSOA_AnimaBow"]/description</xpath>
+		<value>
+			<description>A bow carved from anima tree bark. When wielded by someone with a psylink, passively imparts a psychic bond on every arrow. If the arrow hits, it will deal additional damage, at the cost of building up neural heat in the wielder.</description>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_Arrow"]/ammoTypes</xpath>
+		<value>
+			<TSOA_Ammo_Arrow_Anima>TSOA_Projectile_Arrow_Anima</TSOA_Ammo_Arrow_Anima>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_StreamlinedArrow"]/ammoTypes</xpath>
+		<value>
+			<TSOA_Ammo_Arrow_Anima>TSOA_Projectile_Arrow_Anima</TSOA_Ammo_Arrow_Anima>
+		</value>
+	</Operation>
+
+</Patch>

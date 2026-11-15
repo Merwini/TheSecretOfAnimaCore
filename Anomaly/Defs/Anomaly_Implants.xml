@@ -1,0 +1,1078 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>TSOA_BodyPartsBioferrite</defName>
+		<label>bioferrite</label>
+		<parent>BodyParts</parent>
+	</ThingCategoryDef>
+
+	<ThingDef>
+		<defName>TSOA_AnomalyFakeBench</defName>
+		<label>Virion Implant Surgery</label>
+		<description>This is a fake workbench to make the research tab work correctly. If you see this in-game please report it as a bug.</description>
+		<thingClass>Building</thingClass>
+	</ThingDef>
+	
+	<ThingDef ParentName="BodyPartBase" Abstract="True" Name="TSOA_BioferriteBodyPartBase">
+		<techLevel>Medieval</techLevel>
+		<thingCategories>
+			<li>TSOA_BodyPartsBioferrite</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(100,80,80)</color>
+		</graphicData>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
+		<statBases>
+			<Mass>5</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef Abstract="True" Name="TSOA_CraftBioferritePartBase">
+		<workSkill>Crafting</workSkill>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<skillRequirements>
+			<Crafting>8</Crafting>
+		</skillRequirements>
+		<effectWorking>Smith</effectWorking>
+		<soundWorking>Recipe_Smith</soundWorking>
+		<workAmount>26000</workAmount>
+		<researchPrerequisite>TSOA_BioferriteImplants</researchPrerequisite>
+		<unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
+		<recipeUsers>
+			<li>ElectricSmithy</li>
+			<li>FueledSmithy</li>
+		</recipeUsers>
+		<displayPriority>300</displayPriority>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>75</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Shard</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+	
+	<!-- Bioferrite Clawed Arm -->
+	<tsoa.core.EvolvingImplantDef>
+		<defName>TSOA_BioferriteArmEvolving</defName>
+		<thingDef>TSOA_BioferriteArmThing</thingDef>
+		<evolvingStat>PsychicSensitivity</evolvingStat>
+		<lowerThresholds>
+			<li>0</li>
+			<li>0.5</li>
+			<li>0.9</li>
+			<li>1.2</li>
+			<li>1.8</li>
+		</lowerThresholds>
+		<tiers>
+			<li>TSOA_BioferriteArmOne</li>
+			<li>TSOA_BioferriteArmTwo</li>
+			<li>TSOA_BioferriteArmThree</li>
+			<li>TSOA_BioferriteArmFour</li>
+			<li>TSOA_BioferriteArmFive</li>
+		</tiers>
+	</tsoa.core.EvolvingImplantDef>
+
+	<HediffDef ParentName="AddedBodyPartBase" Abstract="True" Name="TSOA_BioferriteArmBase">
+		<labelNoun>a bioferrite clawed arm</labelNoun>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteArmThing</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>TSOA_BioferriteArmThing</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteArmBase">
+		<defName>TSOA_BioferriteArmOne</defName>
+		<label>bioferrite clawed arm (inert)</label>
+		<description>A bioferrite arm ending in clawed fingers, animated by psychic attunement to its user. The user's psychic connection is too weak to even move the fingers, leaving the arm as little more than a hand-shaped lump of metal.</description>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>fist</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>10</power>
+						<armorPenetration>0.1</armorPenetration>
+						<cooldownTime>2.4</cooldownTime>
+						<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+					</li>
+				</tools>
+			</li>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteArmEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>0.5</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteArmBase">
+		<defName>TSOA_BioferriteArmTwo</defName>
+		<label>bioferrite clawed arm (dampened)</label>
+		<description>A bioferrite arm ending in clawed fingers, animated by psychic attunement to its user. The user's weak psychic connection leaves them dull and clumsy.</description>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>claw</label>
+						<capacities>
+							<li>Scratch</li>
+						</capacities>
+						<power>12</power>
+						<armorPenetration>0.15</armorPenetration>
+						<cooldownTime>2</cooldownTime>
+						<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+					</li>
+				</tools>
+			</li>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteArmEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>0.75</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteArmBase">
+		<defName>TSOA_BioferriteArmThree</defName>
+		<label>bioferrite clawed arm</label>
+		<description>A bioferrite arm ending in clawed fingers, animated by psychic attunement to its user. The user's psychic connection keeps the claws moderately sharp and gives the fingers humanlike dexterity.</description>
+		<stages>
+			<li>
+				<statOffsets>
+					<MentalBreakThreshold>0.01</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>claw</label>
+						<capacities>
+							<li>Scratch</li>
+						</capacities>
+						<power>14</power>
+						<armorPenetration>0.3</armorPenetration>
+						<cooldownTime>1.6</cooldownTime>
+						<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+						<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+					</li>
+				</tools>
+			</li>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteArmEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>1</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteArmBase">
+		<defName>TSOA_BioferriteArmFour</defName>
+		<label>bioferrite clawed arm (jagged)</label>
+		<description>A bioferrite arm ending in clawed fingers, animated by psychic attunement to its user. The claws are responding to the user's psychic strength, becoming sharper and more jagged. This makes them more useful as a weapon, but less useful for work.</description>
+		<stages>
+			<li>
+				<statOffsets>
+					<MentalBreakThreshold>0.02</MentalBreakThreshold>
+					<WorkSpeedGlobal>-0.05</WorkSpeedGlobal>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>claw</label>
+						<capacities>
+							<li>Scratch</li>
+						</capacities>
+						<power>16</power>
+						<armorPenetration>0.6</armorPenetration>
+						<cooldownTime>1.4</cooldownTime>
+						<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+						<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+					<extraMeleeDamages>
+						<li>
+							<def>TSOA_PsychicLeech</def>
+							<amount>0.1</amount>
+						</li>
+					</extraMeleeDamages>
+					</li>
+				</tools>
+			</li>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteArmEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>1.1</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteArmBase">
+		<defName>TSOA_BioferriteArmFive</defName>
+		<label>bioferrite clawed arm (ascended)</label>
+		<description>A bioferrite arm ending in clawed fingers, animated by psychic attunement to its user. The claws are responding to the user's immense psychic strength, making them as sharp as a Monosword. Unfortunately, this makes them much less useful for work.</description>
+		<stages>
+			<li>
+				<statOffsets>
+					<MentalBreakThreshold>0.04</MentalBreakThreshold>
+					<WorkSpeedGlobal>-0.1</WorkSpeedGlobal>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>claw</label>
+						<capacities>
+							<li>Scratch</li>
+						</capacities>
+						<power>20</power>
+						<armorPenetration>0.9</armorPenetration>
+						<cooldownTime>1.2</cooldownTime>
+						<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+						<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+					<extraMeleeDamages>
+						<li>
+							<def>TSOA_PsychicLeech</def>
+							<amount>0.15</amount>
+						</li>
+					</extraMeleeDamages>
+					</li>
+				</tools>
+			</li>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteArmEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>1.25</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="TSOA_BioferriteBodyPartBase">
+		<defName>TSOA_BioferriteArmThing</defName>
+		<label>bioferrite clawed arm</label>
+		<description>An arm made of bioferrite, ending in clawed fingers. The psychically-reactive metal is animated by its psychic attunement to the user. Becomes sharper and more dangerous as the user's psychic powers grow, growing more effective as a weapon but less effective for work. Replacing human parts with bioferrite also has deleterious effects on the psyche, driving the user closer to madness.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>TSOA_InstallBioferriteArm</RecipeDef>
+			<HediffDef>TSOA_BioferriteArmThree</HediffDef>
+		</descriptionHyperlinks>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_CraftBioferritePartBase">
+		<defName>TSOA_CraftBioferriteArm</defName>
+		<label>make bioferrite arm</label>
+		<jobString>Making bioferrite arm.</jobString>
+		<products>
+			<TSOA_BioferriteArmThing>1</TSOA_BioferriteArmThing>
+		</products>
+
+		<recipeUsers Inherit="false">
+			<li>TSOA_AnomalyFakeBench</li>
+		</recipeUsers>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>60</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>TSOA_InstallBioferriteArm</defName>
+		<label>install bioferrite arm</label>
+		<description>Install bioferrite arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteArmThing</ThingDef>
+			<HediffDef>TSOA_BioferriteArmThree</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing bioferrite clawed arm.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>TSOA_BioferriteArmThing</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>TSOA_BioferriteArmThing</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>TSOA_BioferriteArmThree</addsHediff>
+	</RecipeDef>
+
+	<!-- Bioferrite Leg -->
+	<tsoa.core.EvolvingImplantDef>
+		<defName>TSOA_BioferriteLegEvolving</defName>
+		<thingDef>TSOA_BioferriteLegThing</thingDef>
+		<evolvingStat>PsychicSensitivity</evolvingStat>
+		<lowerThresholds>
+			<li>0</li>
+			<li>0.5</li>
+			<li>0.9</li>
+			<li>1.2</li>
+			<li>1.8</li>
+		</lowerThresholds>
+		<tiers>
+			<li>TSOA_BioferriteLegOne</li>
+			<li>TSOA_BioferriteLegTwo</li>
+			<li>TSOA_BioferriteLegThree</li>
+			<li>TSOA_BioferriteLegFour</li>
+			<li>TSOA_BioferriteLegFive</li>
+		</tiers>
+	</tsoa.core.EvolvingImplantDef>
+
+	<HediffDef ParentName="AddedBodyPartBase" Abstract="True" Name="TSOA_BioferriteLegBase">
+		<labelNoun>a bioferrite leg</labelNoun>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteLegThing</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>TSOA_BioferriteLegThing</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteLegBase">
+		<defName>TSOA_BioferriteLegOne</defName>
+		<label>bioferrite leg (inert)</label>
+		<description>A bioferrite leg, animated by psychic attunement to its user. The user's psychic connection is too weak to animate it, leaving it as little better than a metal peg leg.</description>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteLegEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>0.5</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteLegBase">
+		<defName>TSOA_BioferriteLegTwo</defName>
+		<label>bioferrite leg (dampened)</label>
+		<description>A bioferrite leg, animated by psychic attunement to its user. The user's weak psychic connection leaves it stiff and slow.</description>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteLegEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>0.75</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteLegBase">
+		<defName>TSOA_BioferriteLegThree</defName>
+		<label>bioferrite leg</label>
+		<description>A bioferrite leg, animated by psychic attunement to its user. The user's psychic connection makes it function about as well as a natural limb.</description>
+		<stages>
+			<li>
+				<statOffsets>
+					<MentalBreakThreshold>0.01</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteLegEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>1.05</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteLegBase">
+		<defName>TSOA_BioferriteLegFour</defName>
+		<label>bioferrite leg (empowered)</label>
+		<description>A bioferrite leg, animated by psychic attunement to its user. The user's high psychic strength makes it faster and more agile than a natural leg, but at the cost of consuming more nutrition.</description>
+		<stages>
+			<li>
+				<statOffsets>
+					<MentalBreakThreshold>0.02</MentalBreakThreshold>
+				</statOffsets>
+				<hungerRateFactor>1.05</hungerRateFactor>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteLegEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>1.2</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteLegBase">
+		<defName>TSOA_BioferriteLegFive</defName>
+		<label>bioferrite leg (ascended)</label>
+		<description>A bifoerrite leg, animated by psychic attunement to its user. The user's immense psychic strength makes it superhumanly fast and agile, but at the cost of consuming much more nutrition.</description>
+		<stages>
+			<li>
+				<statOffsets>
+					<MentalBreakThreshold>0.04</MentalBreakThreshold>
+				</statOffsets>
+				<hungerRateFactor>1.1</hungerRateFactor>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteLegEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>1.4</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="TSOA_BioferriteBodyPartBase">
+		<defName>TSOA_BioferriteLegThing</defName>
+		<label>bioferrite leg</label>
+		<description>A leg made of bioferrite. The psychically-reactive metal is animated by its psychic attunement to the user. Becomes faster and more agile as the user's psychic powers grow, but also consumes more of the user's energy. Replacing human parts with bioferrite also has deleterious effects on the psyche, driving the user closer to madness.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>TSOA_InstallBioferriteLeg</RecipeDef>
+			<HediffDef>TSOA_BioferriteLegThree</HediffDef>
+		</descriptionHyperlinks>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_CraftBioferritePartBase">
+		<defName>TSOA_CraftBioferriteLeg</defName>
+		<label>make bioferrite leg</label>
+		<jobString>Making bioferrite leg.</jobString>
+		<products>
+			<TSOA_BioferriteLegThing>1</TSOA_BioferriteLegThing>
+		</products>
+		
+		<recipeUsers Inherit="false">
+			<li>TSOA_AnomalyFakeBench</li>
+		</recipeUsers>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>60</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>TSOA_InstallBioferriteLeg</defName>
+		<label>install bioferrite leg</label>
+		<description>Install bioferrite leg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteLegThing</ThingDef>
+			<HediffDef>TSOA_BioferriteLegThree</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing bioferrite leg.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>TSOA_BioferriteLegThing</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>TSOA_BioferriteLegThing</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>TSOA_BioferriteLegThree</addsHediff>
+	</RecipeDef>
+
+	<!-- Bioferrite Eye -->
+	<tsoa.core.EvolvingImplantDef>
+		<defName>TSOA_BioferriteEyeEvolving</defName>
+		<thingDef>TSOA_BioferriteEyeThing</thingDef>
+		<evolvingStat>PsychicSensitivity</evolvingStat>
+		<lowerThresholds>
+			<li>0</li>
+			<li>0.5</li>
+			<li>0.9</li>
+			<li>1.2</li>
+			<li>1.8</li>
+		</lowerThresholds>
+		<tiers>
+			<li>TSOA_BioferriteEyeOne</li>
+			<li>TSOA_BioferriteEyeTwo</li>
+			<li>TSOA_BioferriteEyeThree</li>
+			<li>TSOA_BioferriteEyeFour</li>
+			<li>TSOA_BioferriteEyeFive</li>
+		</tiers>
+	</tsoa.core.EvolvingImplantDef>
+
+	<HediffDef ParentName="AddedBodyPartBase" Abstract="True" Name="TSOA_BioferriteEyeBase">
+		<labelNoun>a bioferrite eye</labelNoun>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteEyeThing</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>TSOA_BioferriteEyeThing</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+		<renderNodeProperties>
+			<li Class="PawnRenderNodeProperties_Eye">
+				<workerClass>PawnRenderNodeWorker_HediffEye</workerClass>
+				<texPath>Things/Pawn/Wounds/BionicEye</texPath>
+				<parentTagDef>Head</parentTagDef>
+				<drawSize>0.15</drawSize>
+				<color>(100,60,60)</color>
+				<drawData>
+					<defaultData>
+						<layer>56</layer>
+						<offset>(0, 0, -0.25)</offset>
+					</defaultData>
+					<dataWest>
+						<flip>true</flip>
+					</dataWest>
+				</drawData>
+			</li>
+		</renderNodeProperties>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteEyeBase">
+		<defName>TSOA_BioferriteEyeOne</defName>
+		<label>bioferrite eye (inert)</label>
+		<description>A bioferrite eye implanted into the skull, animated by psychic attunement to its user. The user's psychic connection is too weak to fully animate it, and it shows the world only as shapes and shadows.</description>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteEyeEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>0.5</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteEyeBase">
+		<defName>TSOA_BioferriteEyeTwo</defName>
+		<label>bioferrite eye (dampened)</label>
+		<description>A bioferrite eye implanted into the skull, animated by psychic attunement to its user. The user's weak psychic connection causes the eye to show the world as a blurry grayscale.</description>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteEyeEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+		<addedPartProps>
+			<partEfficiency>0.75</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteEyeBase">
+		<defName>TSOA_BioferriteEyeThree</defName>
+		<label>bioferrite eye</label>
+		<description>A bioferrite eye implanted into the skull, animated by psychic attunement to its user. The eye functions about as well as a natural eye, though it shows the world more clearly when violence is involved.</description>
+		<stages>
+			<li>
+				<statOffsets>
+					<MeleeHitChance>0.04</MeleeHitChance>
+					<ShootingAccuracyPawn>0.04</ShootingAccuracyPawn>
+					<MentalBreakThreshold>0.01</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteEyeEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteEyeBase">
+		<defName>TSOA_BioferriteEyeFour</defName>
+		<label>bioferrite eye (empowered)</label>
+		<description>A bioferrite eye implanted into the skull, animated by psychic attunement to its user. The eye distorts the user's view of reality, diminishing things of beauty and joy and showing visions of violence instead.</description>
+		<stages>
+			<li>
+				<statOffsets>
+					<MeleeHitChance>1.5</MeleeHitChance>
+					<MeleeDodgeChance>1.5</MeleeDodgeChance>
+					<ShootingAccuracyPawn>1</ShootingAccuracyPawn>
+					<AimingDelayFactor>-0.05</AimingDelayFactor>
+					<JoyFallRateFactor>0.05</JoyFallRateFactor>
+					<RestFallRateFactor>0.05</RestFallRateFactor>
+					<MentalBreakThreshold>0.02</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteEyeEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteEyeBase">
+		<defName>TSOA_BioferriteEyeFive</defName>
+		<label>bioferrite eye (ascended)</label>
+		<description>A bioferrite eye implanted into the skull, animated by psychic attunement to its user. The eye no longer shows the world as it is, instead revealing a stark and joyless world of predators and prey.</description>
+		<stages>
+			<li>
+				<statOffsets>
+					<MeleeHitChance>3</MeleeHitChance>
+					<MeleeDodgeChance>3</MeleeDodgeChance>
+					<ShootingAccuracyPawn>2</ShootingAccuracyPawn>
+					<AimingDelayFactor>-0.1</AimingDelayFactor>
+					<JoyFallRateFactor>0.1</JoyFallRateFactor>
+					<RestFallRateFactor>0.1</RestFallRateFactor>
+					<MentalBreakThreshold>0.04</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteEyeEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<ThingDef ParentName="TSOA_BioferriteBodyPartBase">
+		<defName>TSOA_BioferriteEyeThing</defName>
+		<label>bioferrite eye</label>
+		<description>An eye shaped from bioferrite. The psychically-reactive metal is animated by its psychic attunement to the user. As the user's psychic sensitivity increases, it alters perception to show the darkness and violence of the world more clearly, at the expense of everything else. Replacing human parts with bioferrite also has deleterious effects on the psyche, driving the user closer to madness.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>TSOA_InstallBioferriteEye</RecipeDef>
+			<HediffDef>TSOA_BioferriteEyeThree</HediffDef>
+		</descriptionHyperlinks>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_CraftBioferritePartBase">
+		<defName>TSOA_CraftBioferriteEye</defName>
+		<label>make bioferrite eye</label>
+		<jobString>Making bioferrite eye.</jobString>
+		<products>
+			<TSOA_BioferriteEyeThing>1</TSOA_BioferriteEyeThing>
+		</products>
+
+		<recipeUsers Inherit="false">
+			<li>TSOA_AnomalyFakeBench</li>
+		</recipeUsers>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>60</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>TSOA_InstallBioferriteEye</defName>
+		<label>install bioferrite eye</label>
+		<description>Install a bioferrite eye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteEyeThing</ThingDef>
+			<HediffDef>TSOA_BioferriteEyeThree</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing bioferrite eye.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>TSOA_BioferriteEyeThing</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>TSOA_BioferriteEyeThing</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>TSOA_BioferriteEyeThree</addsHediff>
+	</RecipeDef>
+
+	<!-- Bioferrite Skin -->
+	<tsoa.core.EvolvingImplantDef>
+		<defName>TSOA_BioferriteSkinEvolving</defName>
+		<thingDef>TSOA_BioferriteSkinThing</thingDef>
+		<evolvingStat>PsychicSensitivity</evolvingStat>
+		<lowerThresholds>
+			<li>0</li>
+			<li>0.5</li>
+			<li>0.9</li>
+			<li>1.2</li>
+			<li>1.8</li>
+		</lowerThresholds>
+		<tiers>
+			<li>TSOA_BioferriteSkinOne</li>
+			<li>TSOA_BioferriteSkinTwo</li>
+			<li>TSOA_BioferriteSkinThree</li>
+			<li>TSOA_BioferriteSkinFour</li>
+			<li>TSOA_BioferriteSkinFive</li>
+		</tiers>
+	</tsoa.core.EvolvingImplantDef>
+
+	<HediffDef ParentName="ImplantHediffBase" Abstract="True" Name="TSOA_BioferriteSkinBase">
+		<labelNoun>a bioferrite skin graft</labelNoun>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteSkinThing</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>TSOA_BioferriteSkinThing</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+		<tags>
+			<li>ArmorGland</li>
+		</tags>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteSkinBase">
+		<defName>TSOA_BioferriteSkinOne</defName>
+		<label>bioferrite skin graft (inert)</label>
+		<description>A plate of bioferrite grafted into the skin, animated by psychic attunement to its user. The user's psychic connection is too weak to bond with it, leaving it as nothing more than a painful, jagged chunk of metal.</description>
+		<stages>
+			<li>
+				<painFactor>1.5</painFactor>
+				<naturalHealingFactor>0.95</naturalHealingFactor>
+				<statOffsets>
+					<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.3</SlaveSuppressionOffset>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteSkinEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteSkinBase">
+		<defName>TSOA_BioferriteSkinTwo</defName>
+		<label>bioferrite skin graft (dampened)</label>
+		<description>A plate of bioferrite grafted into the skin, animated by psychic attunement to its user. The user's weak psychic connection makes the metal brittle and offers minimal protection.</description>
+		<stages>
+			<li>
+				<naturalHealingFactor>0.9</naturalHealingFactor>
+				<painFactor>1.25</painFactor>
+				<statOffsets>
+					<ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+					<ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+					<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.15</SlaveSuppressionOffset>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteSkinEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteSkinBase">
+		<defName>TSOA_BioferriteSkinThree</defName>
+		<label>bioferrite skin graft</label>
+		<description>A plate of bioferrite grafted into the skin, animated by psychic attunement to its user. The metal feeds on the user's psychic strength, spreading tendrils of bioferrite under the skin that make the user more resistant to harm.</description>
+		<stages>
+			<li>
+				<naturalHealingFactor>0.80</naturalHealingFactor>
+				<statOffsets>
+					<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+					<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+					<ArmorRating_Heat>0.3</ArmorRating_Heat>
+					<MentalBreakThreshold>0.01</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteSkinEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteSkinBase">
+		<defName>TSOA_BioferriteSkinFour</defName>
+		<label>bioferrite skin graft (empowered)</label>
+		<description>A plate of bioferrite grafted into the skin, animated by psychic attunement to its user. Tendrils of bioferrite spread under the user's skin, hardening it against attacks, but interfering with natural wound healing.</description>
+		<stages>
+			<li>
+				<naturalHealingFactor>0.65</naturalHealingFactor>
+				<statOffsets>
+					<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+					<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+					<ArmorRating_Heat>0.4</ArmorRating_Heat>
+					<MentalBreakThreshold>0.02</MentalBreakThreshold>
+					<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteSkinEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="TSOA_BioferriteSkinBase">
+		<defName>TSOA_BioferriteSkinFive</defName>
+		<label>bioferrite skin graft (ascended)</label>
+		<description>A plate of bioferrite grafted into the skin, animated by psychic attunement to its user. Numerous tendrils of bioferrite spread under the user's skin, making them highly resistant to attacks, but greatly interfering with natural wound healing.</description>
+		<stages>
+			<li>
+				<naturalHealingFactor>0.5</naturalHealingFactor>
+				<statOffsets>
+					<ArmorRating_Sharp>0.65</ArmorRating_Sharp>
+					<ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+					<ArmorRating_Heat>0.5</ArmorRating_Heat>
+					<MentalBreakThreshold>0.04</MentalBreakThreshold>
+					<SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.2</SlaveSuppressionOffset>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_Evolving">
+				<evolvingImplantDef>TSOA_BioferriteSkinEvolving</evolvingImplantDef>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<ThingDef ParentName="TSOA_BioferriteBodyPartBase">
+		<defName>TSOA_BioferriteSkinThing</defName>
+		<label>bioferrite skin graft</label>
+		<description>A plate of bioferrite metal, grafted into the skin. The psychically-reactive metal is animated by its psychic attunement to the user. The metal spreads in tendrils under the user's skin, hardening it against attacks but interfering with the body's ability to heal. Replacing human parts with bioferrite also has deleterious effects on the psyche, driving the user closer to madness.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>TSOA_InstallBioferriteSkin</RecipeDef>
+			<HediffDef>TSOA_BioferriteSkinThree</HediffDef>
+		</descriptionHyperlinks>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_CraftBioferritePartBase">
+		<defName>TSOA_CraftBioferriteSkin</defName>
+		<label>make bioferrite skin</label>
+		<jobString>Making bioferrite skin.</jobString>
+		<products>
+			<TSOA_BioferriteSkinThing>1</TSOA_BioferriteSkinThing>
+		</products>
+
+		<recipeUsers Inherit="false">
+			<li>TSOA_AnomalyFakeBench</li>
+		</recipeUsers>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>80</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBase">
+		<defName>TSOA_InstallBioferriteSkin</defName>
+		<label>install bioferrite skin graft</label>
+		<description>Install bioferrite skin graft.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteSkinThing</ThingDef>
+			<HediffDef>TSOA_BioferriteSkinThree</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing bioferrite skin graft.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>TSOA_BioferriteSkinThing</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>TSOA_BioferriteSkinThing</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>TSOA_BioferriteSkinThree</addsHediff>
+		<incompatibleWithHediffTags>
+			<li>ArmorGland</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+	
+	<!-- Sovereign Crown -->
+	<HediffDef ParentName="TSOA_StatExchangerBase">
+		<defName>TSOA_SovereignCrown</defName>
+		<label>sovereign crown</label>
+		<description>A band of bioferrite infused with dark archotech, fused to the skull. Allows the user to form psychic links to those implanted with Thrall Crowns, stealing their psychic power. This transfer is wasteful, however, and much of the thralls' psychic sensitivity is wasted.</description>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_StatExchanger">
+				<isMaster>true</isMaster>
+				<maxLinks>5</maxLinks>
+				<recipientGainFlat>0.20</recipientGainFlat>
+				<affectedStat>PsychicSensitivity</affectedStat>
+				<targetHediffs>
+					<li>TSOA_ThrallCrown</li>
+				</targetHediffs>
+				<linkCompleteEffecter>PsychicRitual_Complete</linkCompleteEffecter>
+				<linkCompleteEffecterScale>0.25</linkCompleteEffecterScale>
+				<linkCompleteSound>PsychicShockLanceCast</linkCompleteSound>
+				<unlinkCompleteEffecter>PsychicRitual_Complete</unlinkCompleteEffecter>
+				<unlinkCompleteEffecterScale>0.25</unlinkCompleteEffecterScale>
+				<unlinkCompleteSound>PsychicShockLanceCast</unlinkCompleteSound>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<ThingDef ParentName="TSOA_BioferriteBodyPartBase">
+		<defName>TSOA_SovereignCrown</defName>
+		<label>sovereign crown implant</label>
+		<description>A band of bioferrite infused with dark archotech, fused to the skull. Allows the user to form psychic links to those implanted with a Thrall Crown, stealing their psychic power.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>TSOA_InstallSovereignCrown</RecipeDef>
+			<HediffDef>TSOA_SovereignCrown</HediffDef>
+		</descriptionHyperlinks>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_CraftBioferritePartBase">
+		<defName>TSOA_CraftSovereignCrown</defName>
+		<label>make sovereign crown implant</label>
+		<jobString>Making sovereign crown implant.</jobString>
+		<products>
+			<TSOA_SovereignCrown>1</TSOA_SovereignCrown>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="TSOA_InstallImplantCrownBase">
+		<defName>TSOA_InstallSovereignCrown</defName>
+		<label>install sovereign crown implant</label>
+		<description>Install a sovereign crown implant.</description>
+		<jobString>Installing sovereign crown implant.</jobString>
+		<workAmount>2500</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>TSOA_SovereignCrown</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<addsHediff>TSOA_SovereignCrown</addsHediff>
+	</RecipeDef>
+
+	<!-- Thrall Crown -->
+	<HediffDef ParentName="TSOA_StatExchangerBase">
+		<defName>TSOA_ThrallCrown</defName>
+		<label>thrall crown</label>
+		<description>A band of bioferrite, fused to the skull. Exposes the user's mind, allowing those implanted with a Sovereign Crown to link to the user and steal their psychic power.</description>
+		<comps>
+			<li Class="tsoa.core.HediffCompProperties_StatExchanger">
+				<isMaster>false</isMaster>
+				<isDonor>true</isDonor>
+				<maxLinks>1</maxLinks>
+				<donorLossPercent>0.50</donorLossPercent>
+				<affectedStat>PsychicSensitivity</affectedStat>
+			</li>
+		</comps>
+	</HediffDef>
+	
+	<ThingDef ParentName="TSOA_BioferriteBodyPartBase">
+		<defName>TSOA_ThrallCrown</defName>
+		<label>thrall crown implant</label>
+		<description>A band of bioferrite, fused to the skull. Exposes the user's mind, allowing those implanted with a Sovereign Crown to link to the user and steal their psychic power.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>TSOA_InstallThrallCrown</RecipeDef>
+			<HediffDef>TSOA_ThrallCrown</HediffDef>
+		</descriptionHyperlinks>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_CraftBioferritePartBase">
+		<defName>TSOA_CraftThrallCrown</defName>
+		<label>make sovereign thrall implant</label>
+		<jobString>Making thrall crown implant.</jobString>
+		<products>
+			<TSOA_ThrallCrown>1</TSOA_ThrallCrown>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="TSOA_InstallImplantCrownBase">
+		<defName>TSOA_InstallThrallCrown</defName>
+		<label>install thrall crown implant</label>
+		<description>Install a thrall crown implant.</description>
+		<jobString>Installing thrall crown implant.</jobString>
+		<workAmount>2500</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>TSOA_ThrallCrown</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<addsHediff>TSOA_ThrallCrown</addsHediff>
+	</RecipeDef>
+
+</Defs>

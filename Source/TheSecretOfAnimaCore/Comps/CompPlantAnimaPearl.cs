@@ -49,7 +49,7 @@ public class CompPlantAnimaPearl : ThingComp
                 },
                 delegate (LocalTargetInfo target)
                 {
-                    Job job = JobMaker.MakeJob(TSOA_DefOf.TSOA_PlantAnimaPearl, parent, target.Cell);
+                    Job job = JobMaker.MakeJob(TSOA_JobDefOf.TSOA_PlantAnimaPearl, parent, target.Cell);
                     job.count = 1;
                     selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
                 });

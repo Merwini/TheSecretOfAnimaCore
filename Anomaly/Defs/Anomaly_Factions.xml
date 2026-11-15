@@ -1,0 +1,64 @@
+<Defs>
+
+    <FactionDef ParentName="PlayerFactionBase">
+    <defName>TSOA_VoidColony</defName>
+    <label>Void Disciples</label>
+    <description>A colony of disciples exiled from a larger void cult, to test their worthiness.</description>
+    <isPlayer>true</isPlayer>
+    <basicMemberKind>Disciple</basicMemberKind>
+    <pawnSingular>disciple</pawnSingular>
+    <pawnsPlural>disciples</pawnsPlural>
+    <basicMemberKind>TSOA_VoidColonist</basicMemberKind>
+    <techLevel>Medieval</techLevel>
+    <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+    <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+    <allowedCultures>
+        <li>Corunan</li>
+        <li>Rustican</li>
+        <li>Kriminul</li>
+    </allowedCultures>
+    <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
+    <backstoryFilters>
+    <li>
+        <categories>
+            <li>Tribal</li>
+            <li>Offworld</li>
+        </categories>
+    </li>
+    </backstoryFilters>
+    <startingResearchTags>
+      <li>TribalStart</li>
+      <li>TSOA_VoidStart</li>
+    </startingResearchTags>
+    <startingTechprintsResearchTags>
+      <li>TribalStart</li>
+      <li>TribalStartTechprints</li>
+    </startingTechprintsResearchTags>
+    <apparelStuffFilter>
+      <thingDefs>
+        <li>Cloth</li>
+      </thingDefs>
+    </apparelStuffFilter>
+  </FactionDef>
+
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>TSOA_VoidColonist</defName>
+    <label>disciple</label>
+    <race>Human</race>
+    <defaultFactionDef>TSOA_VoidColony</defaultFactionDef>
+    <chemicalAddictionChance>0.05</chemicalAddictionChance>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+    </apparelTags>
+    <apparelMoney>200~200</apparelMoney>
+    <backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
+    <techHediffsMoney>50~800</techHediffsMoney>
+    <techHediffsTags>
+      <li>Poor</li>
+      <li>Simple</li>
+    </techHediffsTags>
+    <techHediffsChance>0.03</techHediffsChance>
+    <initialResistanceRange>13~21</initialResistanceRange>
+  </PawnKindDef>
+
+</Defs>

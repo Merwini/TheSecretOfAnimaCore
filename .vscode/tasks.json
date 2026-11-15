@@ -8,6 +8,7 @@
             "args": [
                 "build",
                 "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.sln",
+                "-m:1",
                 "--configuration",
                 "Release"
             ],
@@ -27,6 +28,7 @@
             "args": [
                 "build",
                 "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.sln",
+                "-m:1",
                 "--configuration",
                 "Release",
                 "--framework",
@@ -45,6 +47,7 @@
             "args": [
                 "build",
                 "${workspaceFolder}/Source/TheSecretOfAnimaCore/TheSecretOfAnimaCore.sln",
+                "-m:1",
                 "--configuration",
                 "Release",
                 "--framework",
@@ -63,6 +66,7 @@
             "args": [
                 "build",
                 "${workspaceFolder}/Source/TheSecretOfAnimaCore.Anomaly/TheSecretOfAnimaCore.Anomaly.csproj",
+                "-m:1",
                 "--configuration",
                 "Release"
             ],
@@ -79,6 +83,7 @@
             "args": [
                 "build",
                 "${workspaceFolder}/Source/TheSecretOfAnimaCore.Anomaly/TheSecretOfAnimaCore.Anomaly.csproj",
+                "-m:1",
                 "--configuration",
                 "Release",
                 "--framework",
@@ -97,6 +102,117 @@
             "args": [
                 "build",
                 "${workspaceFolder}/Source/TheSecretOfAnimaCore.Anomaly/TheSecretOfAnimaCore.Anomaly.csproj",
+                "-m:1",
+                "--configuration",
+                "Release",
+                "--framework",
+                "net10.0"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build CE Release",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore.CE/TheSecretOfAnimaCore.CE.csproj",
+                "-m:1",
+                "--configuration",
+                "Release"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build CE Release 1.6",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore.CE/TheSecretOfAnimaCore.CE.csproj",
+                "-m:1",
+                "--configuration",
+                "Release",
+                "--framework",
+                "net48"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build CE Release 1.7",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretOfAnimaCore.CE/TheSecretOfAninaCore.CE.csproj",
+                "-m:1",
+                "--configuration",
+                "Release",
+                "--framework",
+                "net10.0"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build PNMBP Release",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretofAnimaCore.PNMBP/TheSecretOfAnimaCore.PNMBP.csproj",
+                "-m:1",
+                "--configuration",
+                "Release"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build PNMBP Release 1.6",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretofAnimaCore.PNMBP/TheSecretOfAnimaCore.PNMBP.csproj",
+                "-m:1",
+                "--configuration",
+                "Release",
+                "--framework",
+                "net48"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Build PNMBP Release 1.7",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/Source/TheSecretofAnimaCore.PNMBP/TheSecretOfAnimaCore.PNMBP.csproj",
+                "-m:1",
                 "--configuration",
                 "Release",
                 "--framework",

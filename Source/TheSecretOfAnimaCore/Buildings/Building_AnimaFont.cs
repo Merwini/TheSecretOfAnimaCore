@@ -323,7 +323,7 @@ public class Building_AnimaFont : Building, IVirtualThingHolder
     {
         if (amberAmount > 1)
         {
-            Thing amber = GenSpawn.Spawn(TSOA_DefOf.TSOA_AnimaAmber, InteractionCell, Map);
+            Thing amber = GenSpawn.Spawn(TSOA_ThingDefOf.TSOA_AnimaAmber, InteractionCell, Map);
             amber.stackCount = (int)(amberAmount / FontOfAnimaWorldObject.recoveryDivisor);
         }
 

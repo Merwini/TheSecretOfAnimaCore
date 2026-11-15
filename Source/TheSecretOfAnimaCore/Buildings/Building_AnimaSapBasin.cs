@@ -20,7 +20,7 @@ public class Building_AnimaSapBasin : Building, IThingHolder
     public bool IsHarvesting => harvestingToggled && !IsFull;
     public bool IsFull => CurrentSap >= MaximumSap;
     public int CurrentSap => (!innerContainer.NullOrEmpty() && innerContainer[0] != null) ? innerContainer[0].stackCount : 0;
-    public int MaximumSap => TSOA_DefOf.TSOA_AnimaSap.stackLimit;
+    public int MaximumSap => TSOA_ThingDefOf.TSOA_AnimaSap.stackLimit;
 
     public bool allowEmptying = true;
     public bool emptyNow;
@@ -114,7 +114,7 @@ public class Building_AnimaSapBasin : Building, IThingHolder
     private void TryAddSap()
     {
         bool addingFirst = CurrentSap == 0;
-        Thing sap = ThingMaker.MakeThing(TSOA_DefOf.TSOA_AnimaSap);
+        Thing sap = ThingMaker.MakeThing(TSOA_ThingDefOf.TSOA_AnimaSap);
         sap.stackCount = 1;
         innerContainer.TryAddOrTransfer(sap);
         if (addingFirst)

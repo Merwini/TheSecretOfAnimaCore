@@ -13,4 +13,48 @@
 		<showOnDrones>false</showOnDrones>
 	</StatDef>
 
+	<StatDef>
+		<defName>TSOA_PsyScaling</defName>
+		<label>psychic scaling</label>
+		<description>Shows how this equipment scales with the wearer's psychic sensitivity.</description>
+		<defaultBaseValue>0</defaultBaseValue>
+		<category>CapacityEffects</category>
+		<displayPriorityInCategory>5</displayPriorityInCategory>
+		<toStringStyle>PercentZero</toStringStyle>
+		<workerClass>tsoa.core.StatWorker_PsyScalingDisplay</workerClass>
+	</StatDef>
+
+	<StatDef>
+		<defName>TSOA_EntropyDamagePercent</defName>
+		<label>entropy damage</label>
+		<description>Shows what percentage of the wielder's current neural heat is counted to deal extra damage.</description>
+		<defaultBaseValue>0</defaultBaseValue>
+		<category>CapacityEffects</category>
+		<displayPriorityInCategory>6</displayPriorityInCategory>
+		<toStringStyle>PercentZero</toStringStyle>
+		<workerClass>tsoa.core.StatWorker_EntropyDamageDisplay</workerClass>
+	</StatDef>
+
+	<StatDef>
+		<defName>TSOA_EntropyDamageFlat</defName>
+		<label>entropy damage</label>
+		<description>Shows how much extra damage this weapon will deal if the wielder is able to pay the neural heat cost.</description>
+		<defaultBaseValue>0</defaultBaseValue>
+		<category>CapacityEffects</category>
+		<displayPriorityInCategory>6</displayPriorityInCategory>
+		<toStringStyle>FloatOne</toStringStyle>
+		<workerClass>tsoa.core.StatWorker_EntropyDamageDisplay</workerClass>
+	</StatDef>
+
+	<StatDef>
+		<defName>TSOA_PsychicLeech</defName>
+		<label>psychic leech</label>
+		<description>Shows how much psychic sensitivity the weapon will steal from the target, if that amount is available.</description>
+		<defaultBaseValue>0</defaultBaseValue>
+		<category>CapacityEffects</category>
+		<displayPriorityInCategory>6</displayPriorityInCategory>
+		<toStringStyle>PercentZero</toStringStyle>
+		<workerClass>tsoa.core.StatWorker_PsychicLeechDisplay</workerClass>
+	</StatDef>
+
 </Defs>

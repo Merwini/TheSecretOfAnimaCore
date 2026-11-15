@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	
+	<TSOA_OutOfEntropy>Too much neural heat!</TSOA_OutOfEntropy>
+	<TSOA_NotACaster>Not a psycaster!</TSOA_NotACaster>
+	
+	<TSOA_EntropyDamageWorkerExplanationPercent>When wielded by a psycaster, this weapon deals extra damage with every successful attack based on accumulated neural heat in the wielder.\n\nDeals extra damage based on {0} of neural heat\nReduces neural heat by {1}\nDamage per heat counted: {2}</TSOA_EntropyDamageWorkerExplanationPercent>
+	<TSOA_EntropyDamageWorkerExplanationFlat>When wielded by a psycaster, this weapon deals extra damage with every successful attack and {0} neural heat {1} the wielder.\n\nDeals {2} extra damage and {0} {3} neural heat.</TSOA_EntropyDamageWorkerExplanationFlat>
+	<TSOA_Adds>adds</TSOA_Adds>
+	<TSOA_Removes>removes</TSOA_Removes>
+	<TSOA_To>to</TSOA_To>
+	<TSOA_From>from</TSOA_From>
+
+	<TSOA_PsychicLeechDescription>This person is leeching psychic power from others.</TSOA_PsychicLeechDescription>
+	<TSOA_PsychicLeechVictimDescription>This person has had their psychic power leeched by another.</TSOA_PsychicLeechVictimDescription>
+	<TSOA_PsychicLeechWorkerExplanation>Psychic sensitivity leeched from target per attack: {0}</TSOA_PsychicLeechWorkerExplanation>
+
+	<TSOA_PsyScalingWorkerExplanation>This equipment scales its effectiveness based on psychic sensitivity.\nFor example, at 150% psychic sensitivity and 50% scaling:\nArmor or weapon damage is increased by 25%.\n\nScaling factor: {0}</TSOA_PsyScalingWorkerExplanation>
+	<TSOA_PsyScaling_StatPartExplanation>Psychic sensitivity: {0}\nScaling factor: {1}\nEffective multiplier: {2}</TSOA_PsyScaling_StatPartExplanation>
+	
+	<TSOA_StatExchangerNoComp>Can't form psychic bond, target lacks a matching crown implant.</TSOA_StatExchangerNoComp>
+	<TSOA_StatExchangerAlreadyLinked>Can't form psychic bond, target is already linked to {0}.</TSOA_StatExchangerAlreadyLinked>
+	<TSOA_StatExchangerAtCapacity>{0} already has the maximum number of psychic links.</TSOA_StatExchangerAtCapacity>
+	<TSOA_StatExchangerUnlinkDeath>{0} has lost their psychic link to {1}, because {0} has died.</TSOA_StatExchangerUnlinkDeath>
+	<TSOA_StatExchangerUnlinkSurgery>{0} has lost their psychic link to {1}, because {0}'s crown has been removed.</TSOA_StatExchangerUnlinkSurgery>
+	<TSOA_StatExchangeGizmoLinkLabel>Form link to:</TSOA_StatExchangeGizmoLinkLabel>
+	<TSOA_StatExchangeGizmoLinkDescription>Select a pawn to form a psychic link.</TSOA_StatExchangeGizmoLinkDescription>
+	<TSOA_StatExchangeGizmoUnlinkLabel>Break link with:</TSOA_StatExchangeGizmoUnlinkLabel>
+	<TSOA_StatExchangeGizmoUnlinkDescription>Break an existing psychic link.</TSOA_StatExchangeGizmoUnlinkDescription>
+	<TSOA_StatExchangeGizmoNoLinks>No links</TSOA_StatExchangeGizmoNoLinks>
+	<TSOA_StatExchangeHediffLabelExtraLinked>linked to {0}</TSOA_StatExchangeHediffLabelExtraLinked>
+	<TSOA_StatExchangeHediffLabelExtraUnlinked></TSOA_StatExchangeHediffLabelExtraUnlinked>
+	<TSOA_StatExchangeHediffLabelExtraLinkCount>{0} links</TSOA_StatExchangeHediffLabelExtraLinkCount>
+	<TSOA_StatPartExchangerExplanation>Stat Exchange: </TSOA_StatPartExchangerExplanation>
+	<TSOA_StatExchangeInactive> (inactive)</TSOA_StatExchangeInactive>
+
+	<TSOA_VirionNotSpawned>{0} died outside of your map, and their Virion was wasted.</TSOA_VirionNotSpawned>
+	<TSOA_VirionIncomplete>{0} has died before their Virion finished gestating, and it has emerged as a hostile entity!</TSOA_VirionIncomplete>
+	<TSOA_VirionDiedComplete>{0} has died with a fully gestated Virion, which emerged successfully from their corpse.</TSOA_VirionDiedComplete>
+	<TSOA_VirionExtractedKilled>{0} has had their Virion successfully extracted, killing them in the process.</TSOA_VirionExtractedKilled>
+	<TSOA_VirionExtractedAlive>{0} has had their Virion successfully extracted.</TSOA_VirionExtractedAlive>
+	<TSOA_GestatingStage>Gestating</TSOA_GestatingStage>
+	<TSOA_CompleteStage>Complete</TSOA_CompleteStage>
+
+	<TSOA_VirionAlertLabel>Virion ready to extract</TSOA_VirionAlertLabel>
+	<TSOA_VirionAlertLabelPlural>{0} virions ready to extract</TSOA_VirionAlertLabelPlural>
+	<TSOA_VirionAlertDesc>These people have completed gestating their virions:\n{0}</TSOA_VirionAlertDesc>
+
+	<TSOA_VirionActiveMessage>{0}'s virion has become active, causing internal damage with its movements. Its activity will increase until it is successfully tended.</TSOA_VirionActiveMessage>
+	<TSOA_VirionTendSuccessMote>Virion pacified!</TSOA_VirionTendSuccessMote>
+	<TSOA_VirionTendSuccessMessage>{0}'s virion was medically pacified.</TSOA_VirionTendSuccessMessage>
+	<TSOA_VirionTendFailureMote>Failed tending. Tend quality: {0}, required: {1}.</TSOA_VirionTendFailureMote>
+	<TSOA_VirionTendFailureMessage>{0}'s virion was not successfully tended. It is still active.</TSOA_VirionTendFailureMessage>
+	<TSOA_VirionActivityDeathMessage>{0} has died from their virion's activity!</TSOA_VirionActivityDeathMessage>
+	
+</LanguageData>

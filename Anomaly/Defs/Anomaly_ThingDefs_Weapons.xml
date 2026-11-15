@@ -1,0 +1,817 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- Void Initiate Kris -->
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+		<defName>TSOA_VoidKris</defName>
+		<label>void initiate kris</label>
+		<description>A bioferrite blade in the style of a kris. The bioferrite acts like a living organism, reshaping itself and growing more powerful when wielded by the psychically gifted.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Weapons/BioferriteKris</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.1, 1.1)</drawSize>
+		</graphicData>
+		<equippedAngleOffset>-15</equippedAngleOffset>
+		<techLevel>Medieval</techLevel>
+		<relicChance>2</relicChance>
+
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>1</Mass>
+			<MarketValue>355</MarketValue>
+			<TSOA_PsyScaling>0.25</TSOA_PsyScaling>
+		</statBases>
+
+		<costList>
+			<Bioferrite>20</Bioferrite>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>TSOA_VoidInitiateWeapons</researchPrerequisite>
+			<recipeUsers Inherit="false">
+				<li>TSOA_AnomalyFakeBench</li>
+			</recipeUsers>
+		</recipeMaker>
+
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>1.5</cooldownTime>
+			</li>
+			<li>
+				<label>blade</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>1</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>13</power>
+				<cooldownTime>1.5</cooldownTime>
+			</li>
+		</tools>
+
+		<weaponTags>
+			<li>TSOA_VoidWeaponsBasic</li>
+		</weaponTags>
+		<generateCommonality>0.25</generateCommonality>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVoidKris</defName>
+		<label>implant virion (void kris)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite kris, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_VoidKris</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>TSOA_VoidKris</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidInitiateWeapons</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_VoidKris</producedItem>
+				<gestationDays>7</gestationDays>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>1</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!-- Void Initiate Flamberge -->
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+		<defName>TSOA_VoidFlamberge</defName>
+		<label>void initiate flamberge</label>
+		<description>A bioferrite blade in the style of a flamberge. The bioferrite acts like a living organism, reshaping itself and growing more powerful when wielded by the psychically gifted.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Weapons/BioferriteFlamberge</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.4, 1.4)</drawSize>
+		</graphicData>
+		<equippedAngleOffset>-15</equippedAngleOffset>
+		<techLevel>Medieval</techLevel>
+		<relicChance>2</relicChance>
+
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>3.1</Mass>
+			<MarketValue>505</MarketValue>
+			<TSOA_PsyScaling>0.25</TSOA_PsyScaling>
+		</statBases>
+
+		<costList>
+			<Bioferrite>25</Bioferrite>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>TSOA_VoidInitiateWeapons</researchPrerequisite>
+			<recipeUsers Inherit="false">
+				<li>TSOA_AnomalyFakeBench</li>
+			</recipeUsers>
+		</recipeMaker>
+
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>2.1</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>2.1</cooldownTime>
+			</li>
+		</tools>
+
+		<weaponTags>
+			<li>TSOA_VoidWeaponsBasic</li>
+		</weaponTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVoidFlamberge</defName>
+		<label>implant virion (void flamberge)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite flamberge, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_VoidFlamberge</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>TSOA_VoidFlamberge</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidInitiateWeapons</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_VoidFlamberge</producedItem>
+				<gestationDays>9</gestationDays>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>1</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!-- Void Initiate Flanged Mace -->
+	<ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+		<defName>TSOA_VoidFlangedMace</defName>
+		<label>void initiate flanged mace</label>
+		<description>A bioferrite weapon in the style of a flanged mace. The bioferrite acts like a living organism, reshaping itself and growing more powerful when wielded by the psychically gifted.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Weapons/BioferriteFlangedMace</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.0, 1.0)</drawSize>
+		</graphicData>
+		<equippedAngleOffset>-75</equippedAngleOffset>
+		<techLevel>Medieval</techLevel>
+		<relicChance>2</relicChance>
+
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>1.9</Mass>
+			<MarketValue>405</MarketValue>
+			<TSOA_PsyScaling>0.25</TSOA_PsyScaling>
+		</statBases>
+
+		<costList>
+			<Bioferrite>25</Bioferrite>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>TSOA_VoidInitiateWeapons</researchPrerequisite>
+			<recipeUsers Inherit="false">
+				<li>TSOA_AnomalyFakeBench</li>
+			</recipeUsers>
+		</recipeMaker>
+
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>19</power>
+				<cooldownTime>1.8</cooldownTime>
+			</li>
+		</tools>
+
+		<weaponClasses>
+			<li>Melee</li>
+		</weaponClasses>
+		<weaponTags>
+			<li>TSOA_VoidWeaponsBasic</li>
+		</weaponTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVoidFlangedMace</defName>
+		<label>implant virion (void flanged mace)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite flanged mace, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_VoidFlangedMace</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>TSOA_VoidFlangedMace</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidInitiateWeapons</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_VoidFlangedMace</producedItem>
+				<gestationDays>7</gestationDays>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>1</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!-- Void Initiate Ranseur -->
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+		<defName>TSOA_VoidRanseur</defName>
+		<label>void initiate ranseur</label>
+		<description>A bioferrite weapon in the style of a ranseur. The bioferrite acts like a living organism, reshaping itself and growing more powerful when wielded by the psychically gifted.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Weapons/BioferriteRanseur</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.4, 1.4)</drawSize>
+		</graphicData>
+		<equippedAngleOffset>-15</equippedAngleOffset>
+		<techLevel>Medieval</techLevel>
+		<relicChance>2</relicChance>
+
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Mass>1.9</Mass>
+			<MarketValue>480</MarketValue>
+			<TSOA_PsyScaling>0.25</TSOA_PsyScaling>
+            <VEF_MeleeWeaponRange MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">2.84</VEF_MeleeWeaponRange>
+		</statBases>
+
+		<costList>
+			<Bioferrite>25</Bioferrite>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>TSOA_VoidInitiateWeapons</researchPrerequisite>
+			<recipeUsers Inherit="false">
+				<li>TSOA_AnomalyFakeBench</li>
+			</recipeUsers>
+		</recipeMaker>
+
+		<tools>
+			<li>
+				<label>shaft</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.4</cooldownTime>
+				<chanceFactor>0.25</chanceFactor>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>1.9</cooldownTime>
+				<armorPenetration>0.6</armorPenetration>
+			</li>
+		</tools>
+
+		<weaponClasses>
+			<li>Melee</li>
+		</weaponClasses>
+		<weaponTags>
+			<li>TSOA_VoidWeaponsBasic</li>
+		</weaponTags>
+
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVoidRanseur</defName>
+		<label>implant virion (void ranseur)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite ranseur, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_VoidRanseur</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>TSOA_VoidRanseur</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidInitiateWeapons</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_VoidRanseur</producedItem>
+				<gestationDays>8</gestationDays>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>1</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!-- Void Knight Khopesh -->
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+		<defName>TSOA_VoidKhopesh</defName>
+		<label>void knight khopesh</label>
+		<description>A bioferrite sword styled after an ancient khopesh. The bioferrite acts like a living organism, reshaping itself and reacting to psychic potential. To its wielder, it acts as a symbiote, growing more powerful when wielded by the psychically gifted. To its victims, it is a parasite, sapping their psychic sensitivity and channeling it into its wielder with every blow.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Weapons/BioferriteKopesh</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.1, 1.1)</drawSize>
+		</graphicData>
+		<equippedAngleOffset>-15</equippedAngleOffset>
+		<techLevel>Medieval</techLevel>
+		<relicChance>3</relicChance>
+
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Mass>1.6</Mass>
+			<MarketValue>775</MarketValue>
+			<TSOA_PsyScaling>0.5</TSOA_PsyScaling>
+		</statBases>
+
+		<costList>
+			<Bioferrite>40</Bioferrite>
+			<Gold>5</Gold>
+			<Shard>1</Shard>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>TSOA_VoidInitiateWeapons</researchPrerequisite>
+			<recipeUsers Inherit="false">
+				<li>TSOA_AnomalyFakeBench</li>
+			</recipeUsers>
+		</recipeMaker>
+
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>18</power>
+				<cooldownTime>1.9</cooldownTime>
+				<armorPenetration>0.3</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>TSOA_PsychicLeech</def>
+						<amount>0.1</amount>
+					</li>
+				</extraMeleeDamages>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>24</power>
+				<cooldownTime>1.7</cooldownTime>
+				<armorPenetration>0.25</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>TSOA_PsychicLeech</def>
+						<amount>0.1</amount>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+
+		<weaponTags>
+			<li>TSOA_VoidWeaponsElite</li>
+		</weaponTags>
+		<modExtensions>
+			<li Class="tsoa.core.PsychicLeechExtension">
+				<sensitivityOffset>0.1</sensitivityOffset>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVoidKhopesh</defName>
+		<label>implant virion (void khopesh)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite khopesh, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_VoidKhopesh</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>TSOA_VoidKhopesh</uiIconThing>
+		<researchPrerequisites>
+			<li>TSOA_VoidThree</li>
+			<li>TSOA_VoidInitiateWeapons</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Gold</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Shard</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+				<li>Gold</li>
+				<li>Shard</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_VoidKhopesh</producedItem>
+				<gestationDays>12</gestationDays>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>2</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!-- Void Knight Axe -->
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+		<defName>TSOA_VoidAxe</defName>
+		<label>void knight axe</label>
+		<description>A bioferrite blade styled after a bearded axe. The bioferrite acts like a living organism, reshaping itself and reacting to psychic potential. To its wielder, it acts as a symbiote, growing more powerful when wielded by the psychically gifted. To its victims, it is a parasite, sapping their psychic sensitivity and channeling it into its wielder with every blow.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Weapons/BioferriteAxe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.6, 1.6)</drawSize>
+		</graphicData>
+		<equippedAngleOffset>-15</equippedAngleOffset>
+		<techLevel>Medieval</techLevel>
+		<relicChance>3</relicChance>
+
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Mass>2.3</Mass>
+			<MarketValue>875</MarketValue>
+			<TSOA_PsyScaling>0.5</TSOA_PsyScaling>
+		</statBases>
+
+		<costList>
+			<Bioferrite>50</Bioferrite>
+			<Gold>5</Gold>
+			<Shard>1</Shard>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>TSOA_VoidInitiateWeapons</researchPrerequisite>
+			<recipeUsers Inherit="false">
+				<li>TSOA_AnomalyFakeBench</li>
+			</recipeUsers>
+		</recipeMaker>
+
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>31</power>
+				<cooldownTime>2.4</cooldownTime>
+				<armorPenetration>0.5</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>TSOA_PsychicLeech</def>
+						<amount>0.15</amount>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+
+		<weaponTags>
+			<li>TSOA_VoidWeaponsElite</li>
+		</weaponTags>
+		<generateCommonality>0.75</generateCommonality>
+		<modExtensions>
+			<li Class="tsoa.core.PsychicLeechExtension">
+				<sensitivityOffset>0.15</sensitivityOffset>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVoidAxe</defName>
+		<label>implant virion (void axe)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite axe, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_VoidAxe</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>TSOA_VoidAxe</uiIconThing>
+		<researchPrerequisites>
+			<li>TSOA_VoidThree</li>
+			<li>TSOA_VoidInitiateWeapons</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>50</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Gold</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Shard</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+				<li>Gold</li>
+				<li>Shard</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_VoidAxe</producedItem>
+				<gestationDays>12</gestationDays>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>2</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!-- Void Knight Kanabo -->
+	<ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+		<defName>TSOA_VoidKanabo</defName>
+		<label>void knight kanabo</label>
+		<description>A bioferrite greatclub styled after a Kanabo. The bioferrite acts like a living organism, reshaping itself and reacting to psychic potential. To its wielder, it acts as a symbiote, growing more powerful when wielded by the psychically gifted. To its victims, it is a parasite, sapping their psychic sensitivity and channeling it into its wielder with every blow.</description>
+		<graphicData>
+			<texPath>TSOA/Things/Weapons/BioferriteKanabo</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.6, 1.6)</drawSize>
+		</graphicData>
+		<equippedAngleOffset>-15</equippedAngleOffset>
+		<techLevel>Medieval</techLevel>
+		<relicChance>3</relicChance>
+		
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Mass>6</Mass>
+			<MarketValue>850</MarketValue>
+			<TSOA_PsyScaling>0.5</TSOA_PsyScaling>
+		</statBases>
+
+		<costList>
+			<Bioferrite>60</Bioferrite>
+			<Gold>5</Gold>
+			<Shard>1</Shard>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>TSOA_VoidInitiateWeapons</researchPrerequisite>
+			<recipeUsers Inherit="false">
+				<li>TSOA_AnomalyFakeBench</li>
+			</recipeUsers>
+		</recipeMaker>
+
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>39</power>
+				<cooldownTime>3.1</cooldownTime>
+				<armorPenetration>0.75</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>TSOA_PsychicLeech</def>
+						<amount>0.2</amount>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+
+		<weaponClasses>
+			<li>Melee</li>
+		</weaponClasses>
+		<weaponTags>
+			<li>TSOA_VoidWeaponsElite</li>
+		</weaponTags>
+		<generateCommonality>0.25</generateCommonality>
+		<modExtensions>
+			<li Class="tsoa.core.PsychicLeechExtension">
+				<sensitivityOffset>0.2</sensitivityOffset>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVoidKanabo</defName>
+		<label>implant virion (void kanabo)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite kanabo, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_VoidKanabo</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>TSOA_VoidKanabo</uiIconThing>
+		<researchPrerequisites>
+			<li>TSOA_VoidThree</li>
+			<li>TSOA_VoidInitiateWeapons</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>60</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Gold</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Shard</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+				<li>Gold</li>
+				<li>Shard</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_VoidKanabo</producedItem>
+				<gestationDays>12</gestationDays>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>2</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+</Defs>

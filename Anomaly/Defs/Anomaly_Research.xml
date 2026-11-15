@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ResearchProjectDef>
+		<defName>TSOA_VoidInitiateArmor</defName>
+		<label>void initiate armor</label>
+		<description>Craft armor made from bioferrite and gold. The bioferrite feeds on the wearer's psychic prescence to grow stronger.</description>
+		<baseCost>1500</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_VoidTwo</li>
+			<li>PlateArmor</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>9.00</researchViewX>
+		<researchViewY>3.50</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_VoidInitiateWeapons</defName>
+		<label>void initiate weapons</label>
+		<description>Craft weapons made from bioferrite and gold. The bioferrite feeds on the wearer's psychic prescence to grow stronger.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_VoidTwo</li>
+			<li>LongBlades</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>9.00</researchViewX>
+		<researchViewY>4.20</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TSOA_BioferriteImplants</defName>
+		<label>bioferrite limbs</label>
+		<description>Learn how to implant humans (willing or unwilling) with bioferrite virions, which grow into useable body parts but kill the host when extrcted.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites>
+			<li>TSOA_VoidThree</li>
+		</prerequisites>
+		<tab>TSOA_ResearchTab</tab>
+		<researchViewX>7.00</researchViewX>
+		<researchViewY>4.20</researchViewY>
+	</ResearchProjectDef>
+</Defs>

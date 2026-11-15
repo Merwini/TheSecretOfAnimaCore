@@ -21,7 +21,7 @@ public class GenStep_AnomalyAmbush : GenStep_Ambush
 
     public override SignalAction_Ambush MakeAmbushSignalAction(CellRect rectToDefend, IntVec3 root, GenStepParams parms)
     {
-        SignalAction_AnomalyAmbush signalAction_AnomalyAmbush = (SignalAction_AnomalyAmbush)ThingMaker.MakeThing(TSOA_DefOf.TSOA_SignalAction_AnomalyAmbush);
+        SignalAction_AnomalyAmbush signalAction_AnomalyAmbush = (SignalAction_AnomalyAmbush)ThingMaker.MakeThing(TSOA_ThingDefOf.TSOA_SignalAction_AnomalyAmbush);
         if (parms.sitePart != null)
         {
             signalAction_AnomalyAmbush.points = parms.sitePart.parms.threatPoints;

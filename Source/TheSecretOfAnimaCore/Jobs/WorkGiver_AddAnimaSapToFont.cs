@@ -61,14 +61,14 @@ public class WorkGiver_AddAnimaSapToFont : WorkGiver
         {
             return null;
         }
-        Job job = JobMaker.MakeJob(TSOA_DefOf.TSOA_AddAnimaSapToFontJob, fontWO.Font, sap);
+        Job job = JobMaker.MakeJob(TSOA_JobDefOf.TSOA_AddAnimaSapToFontJob, fontWO.Font, sap);
         job.count = Math.Min(sap.stackCount, fontWO.Font.SapRoomLeft);
         return job;
     }
 
     private Thing FindSap(Pawn pawn)
     {
-        ThingRequest sapRequest = ThingRequest.ForDef(TSOA_DefOf.TSOA_AnimaSap);
+        ThingRequest sapRequest = ThingRequest.ForDef(TSOA_ThingDefOf.TSOA_AnimaSap);
         return GenClosest.ClosestThingReachable(pawn.Position, pawn.Map, sapRequest, PathEndMode.ClosestTouch, TraverseParms.For(pawn), 9999f, Predicate);
 
         bool Predicate(Thing t)

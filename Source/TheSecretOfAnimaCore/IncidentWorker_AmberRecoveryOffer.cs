@@ -53,7 +53,7 @@ public class IncidentWorker_AmberRecoveryOffer : IncidentWorker
         parms.points = sitePoints;
         parms.target = map;
 
-        Thing amber = ThingMaker.MakeThing(TSOA_DefOf.TSOA_AnimaAmber);
+        Thing amber = ThingMaker.MakeThing(TSOA_ThingDefOf.TSOA_AnimaAmber);
         amber.stackCount = amberAmount;
         List<Thing> itemPodsContents = new List<Thing> { amber };
 

@@ -1,0 +1,107 @@
+<Defs>
+
+    <ScenarioDef ParentName="ScenarioBase">
+        <defName>TSOA_InitiateStart</defName>
+        <label>Void Initiates</label>
+        <description>The god of the void demands strength from his followers. To prove their worthiness and build their own kingdom, your people have been exiled from their former lands. Do not expect support or mercy from your fellow void worshippers. Select one person as the void initiate, who will receive a Sovereign Crown implant. The other people will receive Thrall Crown implants, that can be linked by the Initiate to transfer a portion of their psychic sensitivity.</description>
+        
+        <scenario>
+            <summary>An initiate of the void and four thralls build a new kingdom.</summary>
+            <playerFaction>
+                <factionDef>TSOA_VoidColony</factionDef>
+            </playerFaction>
+            <parts>
+
+                <!-- Config pages -->
+                <li Class="tsoa.core.ScenPart_ConfigPage_ConfigureStartingPawns_Extra">
+                    <def>TSOA_ConfigurePawnsExtra</def>
+                    <groups>
+                        <li>
+                            <count>1</count>
+                            <groupLabel>sovereign</groupLabel>
+                            <hediffs>
+                                <li>
+                                    <def>TSOA_SovereignCrown</def>
+                                    <bodyPart>Head</bodyPart>
+                                </li>
+                            </hediffs>
+                        </li>
+                        <li>
+                            <count>4</count>
+                            <groupLabel>thralls</groupLabel>
+                            <hediffs>
+                                <li>
+                                    <def>TSOA_ThrallCrown</def>
+                                    <bodyPart>Head</bodyPart>
+                                </li>
+                            </hediffs>
+                        </li>
+                    </groups>
+                    <pawnChoiceCount>10</pawnChoiceCount>
+                </li>
+
+                <!-- Player starting stuff spawn method-->
+                <li Class="ScenPart_PlayerPawnsArriveMethod">
+                    <def>PlayerPawnsArriveMethod</def>
+                    <method>Standing</method>
+                </li>
+
+                <!-- Player pawns modifiers -->
+
+                <!-- Player starting things -->
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Silver</thingDef>
+                    <count>200</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Bioferrite</thingDef>
+                    <count>50</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Pemmican</thingDef>
+                    <count>400</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>MedicineHerbal</thingDef>
+                    <count>10</count>
+                </li>
+
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>TSOA_VoidInitiateArmor</thingDef>
+                    <quality>Good</quality>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>TSOA_VoidInitiateHelm</thingDef>
+                    <quality>Good</quality>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>TSOA_VoidFlamberge</thingDef>
+                    <quality>Good</quality>
+                </li>
+
+                <!-- Scatter some things near player start -->
+                <li Class="ScenPart_ScatterThingsNearPlayerStart">
+                    <def>ScatterThingsNearPlayerStart</def>
+                    <thingDef>WoodLog</thingDef>
+                    <count>500</count>
+                </li>
+
+                <!-- Game start dialog -->
+                <li Class="ScenPart_GameStartDialog">
+                    <def>GameStartDialog</def>
+                    <text>You have arrived at the site of your future kingdom.</text>
+                    <closeSound>GameStartSting</closeSound>
+                </li>
+
+            </parts>
+        </scenario>
+    </ScenarioDef>
+
+</Defs>

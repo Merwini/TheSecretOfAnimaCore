@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ScenPartDef>
+        <defName>TSOA_ConfigurePawnsExtra</defName>
+        <label>starting people</label>
+        <scenPartClass>tsoa.core.ScenPart_ConfigPage_ConfigureStartingPawns_Extra</scenPartClass>
+        <selectionWeight>0</selectionWeight>
+        <pageClass>tsoa.core.Page_ConfigureStartingPawns_Extra</pageClass>
+        <summaryPriority>500</summaryPriority>
+        <category>Fixed</category>
+    </ScenPartDef>
+    
+    <ScenarioDef ParentName="ScenarioBase">
+        <defName>TSOA_AcolyteStart</defName>
+        <label>Anima Acolytes</label>
+        <description>Explorers from your old tribe discovered a distant, neglected anima tree here. It was possibly left behind by a tribe that died or fled long ago. Your people volunteered to found a new tribe nearby, to protect and nurture the tree. Select one person to be the acolyte, and four followers. The acolyte will receive a free psylink and the Psychically Sensitive trait as the game begins.</description>
+        
+        <scenario>
+            <summary>Five tribespeople build a new home. The Secret of Anima start, easier than normal tribal.</summary>
+            <playerFaction>
+                <factionDef>PlayerTribe</factionDef>
+            </playerFaction>
+            <parts>
+
+                <!-- Config pages -->
+                <li Class="tsoa.core.ScenPart_ConfigPage_ConfigureStartingPawns_Extra">
+                    <def>TSOA_ConfigurePawnsExtra</def>
+                    <groups>
+                        <li>
+                            <count>1</count>
+                            <groupLabel>acolyte</groupLabel>
+                            <hediffs>
+                                <li>
+                                    <def>PsychicAmplifier</def>
+                                    <bodyPart>Brain</bodyPart>
+                                    <stage>1</stage>
+                                </li>
+                            </hediffs>
+                            <traits>
+                                <li>
+                                    <def>PsychicSensitivity</def>
+                                    <degree>1</degree>
+                                </li>
+                            </traits>
+                        </li>
+                        <li>
+                            <count>4</count>
+                            <groupLabel>followers</groupLabel>
+                        </li>
+                    </groups>
+                    <pawnChoiceCount>8</pawnChoiceCount>
+                </li>
+
+                <!-- Player starting stuff spawn method-->
+                <li Class="ScenPart_PlayerPawnsArriveMethod">
+                    <def>PlayerPawnsArriveMethod</def>
+                    <method>Standing</method>
+                </li>
+
+                <!-- Player pawns modifiers -->
+
+                <!-- Player starting things -->
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Silver</thingDef>
+                    <count>200</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Jade</thingDef>
+                    <count>30</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Pemmican</thingDef>
+                    <count>400</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>MedicineHerbal</thingDef>
+                    <count>20</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>MeleeWeapon_Club</thingDef>
+                    <stuff>WoodLog</stuff>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>MeleeWeapon_Knife</thingDef>
+                    <stuff>Jade</stuff>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Bow_Short</thingDef>
+                    <count>2</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>TSOA_AnimaTomahawk</thingDef>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>TSOA_AnimaAcolyteArmor</thingDef>
+                    <stuff>Leather_Plain</stuff>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>TSOA_AnimaAcolyteHelmet</thingDef>
+                    <stuff>Leather_Plain</stuff>
+                </li>
+                <li Class="ScenPart_StartingAnimal">
+                    <def>StartingAnimal</def>
+                    <count>2</count>
+                    <bondToRandomPlayerPawnChance>1.0</bondToRandomPlayerPawnChance>
+                </li>
+
+                <!-- Scatter some things near player start -->
+                <li Class="ScenPart_ScatterThingsNearPlayerStart">
+                    <def>ScatterThingsNearPlayerStart</def>
+                    <thingDef>WoodLog</thingDef>
+                    <count>500</count>
+                </li>
+
+                <!-- Game start dialog -->
+                <li Class="ScenPart_GameStartDialog">
+                    <def>GameStartDialog</def>
+                    <text>You have arrived at the abandoned anima tree. Time to found a new village to protect it until it can protect you.</text>
+                    <closeSound>GameStartSting</closeSound>
+                </li>
+
+            </parts>
+        </scenario>
+    </ScenarioDef>
+</Defs>

@@ -43,7 +43,7 @@ public class JobDriver_ComfortAnimaTree : JobDriver
             Map map = pawn.Map;
             Thing tree = Tree;
             IntVec3 treeCell = tree.Position;
-            Thing pearl = ThingMaker.MakeThing(TSOA_DefOf.TSOA_AnimaPearl);
+            Thing pearl = ThingMaker.MakeThing(TSOA_ThingDefOf.TSOA_AnimaPearl);
             if (!GenPlace.TryPlaceThing(pearl, pawn.Position, map, ThingPlaceMode.Near,
                 extraValidator: cell => cell != pawn.Position && cell.InHorDistOf(pawn.Position, 1.5f)))
             {
@@ -57,7 +57,7 @@ public class JobDriver_ComfortAnimaTree : JobDriver
 
             tree.DeSpawn(DestroyMode.WillReplace);
             tree.Destroy(DestroyMode.WillReplace);
-            Plant silentTree = (Plant)GenSpawn.Spawn(TSOA_DefOf.TSOA_TreeAnimaSilent, treeCell, map);
+            Plant silentTree = (Plant)GenSpawn.Spawn(TSOA_ThingDefOf.TSOA_TreeAnimaSilent, treeCell, map);
             silentTree.Growth = 1f;
 
             Find.LetterStack.ReceiveLetter(

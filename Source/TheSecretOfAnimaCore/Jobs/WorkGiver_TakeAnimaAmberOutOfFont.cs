@@ -57,6 +57,6 @@ public class WorkGiver_TakeAnimaAmberOutOfFont : WorkGiver
             return null;
         }
 
-        return JobMaker.MakeJob(TSOA_DefOf.TSOA_TakeAnimaAmberOutOfFontJob, fontWO.Font);
+        return JobMaker.MakeJob(TSOA_JobDefOf.TSOA_TakeAnimaAmberOutOfFontJob, fontWO.Font);
     }
 }

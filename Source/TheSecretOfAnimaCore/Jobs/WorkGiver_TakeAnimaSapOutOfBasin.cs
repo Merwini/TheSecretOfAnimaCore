@@ -12,7 +12,7 @@ namespace tsoa.core;
 
 public class WorkGiver_TakeAnimaSapOutOfBasin : WorkGiver_Scanner
 {
-    public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForDef(TSOA_DefOf.TSOA_AnimaSapBasin);
+    public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForDef(TSOA_ThingDefOf.TSOA_AnimaSapBasin);
 
     public override PathEndMode PathEndMode => PathEndMode.Touch;
 
@@ -35,6 +35,6 @@ public class WorkGiver_TakeAnimaSapOutOfBasin : WorkGiver_Scanner
 
     public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
     {
-        return JobMaker.MakeJob(TSOA_DefOf.TSOA_TakeAnimaSapOutOfBasinJob, t);
+        return JobMaker.MakeJob(TSOA_JobDefOf.TSOA_TakeAnimaSapOutOfBasinJob, t);
     }
 }

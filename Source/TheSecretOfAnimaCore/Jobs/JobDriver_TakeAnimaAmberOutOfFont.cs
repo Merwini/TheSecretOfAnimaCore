@@ -49,7 +49,7 @@ public class JobDriver_TakeAnimaAmberOutOfFont : JobDriver
                 return;
             }
 
-            Thing amberToPlace = ThingMaker.MakeThing(TSOA_DefOf.TSOA_AnimaAmber);
+            Thing amberToPlace = ThingMaker.MakeThing(TSOA_ThingDefOf.TSOA_AnimaAmber);
             amberToPlace.stackCount = Font.AmberAmount;
             if (GenPlace.TryPlaceThing(amberToPlace, pawn.Position, Map, ThingPlaceMode.Near, out Thing amber, null))
             {
@@ -63,7 +63,7 @@ public class JobDriver_TakeAnimaAmberOutOfFont : JobDriver
 
             if (Font.SapAmount > 0)
             {
-                Thing sapToPlace = ThingMaker.MakeThing(TSOA_DefOf.TSOA_AnimaSap);
+                Thing sapToPlace = ThingMaker.MakeThing(TSOA_ThingDefOf.TSOA_AnimaSap);
                 sapToPlace.stackCount = Font.SapAmount;
                 if (GenPlace.TryPlaceThing(sapToPlace, pawn.Position, Map, ThingPlaceMode.Near, null))
                 {

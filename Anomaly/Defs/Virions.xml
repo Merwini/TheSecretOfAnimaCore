@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	
+	<!-- Fake "Grown from seed workbench" so when player inspects equipment it will say how to acquire it -->
+	<!-- Seeds themselves -->
+	<!-- Hediffs for each seed? Or one hediff with the target object stored somehow -->
+
+
+	<RecipeDef ParentName="SurgeryInstallImplantBase" Abstract="True" Name="TSOA_ImplantVirionBase" >
+		<workAmount>500</workAmount>
+		<jobString>Implanting virion in TargetA.</jobString>
+		<hideBodyPartNames>true</hideBodyPartNames>
+		<isViolation>true</isViolation>
+		<targetsBodyPart>true</targetsBodyPart>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>TSOA_VirionHediff</addsHediff>
+		<workerClass>tsoa.core.Recipe_ImplantVirion</workerClass>
+		
+		<incompatibleWithHediffTags>
+			<li>TSOA_Virion</li>
+		</incompatibleWithHediffTags>
+
+		<researchPrerequisites>
+			<li>TSOA_BioferriteImplants</li>
+		</researchPrerequisites>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>TSOA_ExtractVirion</defName>
+		<label>extract virion</label>
+		<description>Extract a fully-grown virion from the target, potentially killing them messily in the process.</description>
+		<workerClass>tsoa.core.Recipe_ExtractVirion</workerClass>
+		<jobString>Extracting virion from TargetA</jobString>
+		<surgerySuccessChanceFactor>3</surgerySuccessChanceFactor>
+		<removesHediff>TSOA_VirionHediff</removesHediff>
+		<hideBodyPartNames>true</hideBodyPartNames>
+		<targetsBodyPart>false</targetsBodyPart>
+		<uiIconThing>Shard</uiIconThing>
+	</RecipeDef>
+
+	<!-- Resource Virions -->
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantBioferriteResourceVirion</defName>
+		<label>implant virion (bioferrite resource)</label>
+		<description>Implant a virion in the target. This will gestate into a larger quantity of bioferrite.</description>
+		<descriptionHyperlinks>
+			<ThingDef>Bioferrite</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>10</surgerySuccessChanceFactor>
+		<uiIconThing>Shard</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidOne</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>Bioferrite</producedItem>
+				<producedCount>50</producedCount>
+				<gestationDays>3</gestationDays>
+				<alwaysKillsHost>false</alwaysKillsHost>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>0</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantShardVirion</defName>
+		<label>implant virion (Shard)</label>
+		<description>Implant a virion in the target. This will gestate into a dark archotech Shard.</description>
+		<descriptionHyperlinks>
+			<ThingDef>Shard</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>10</surgerySuccessChanceFactor>
+		<uiIconThing>Shard</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidTwo</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>Shard</producedItem>
+				<gestationDays>6</gestationDays>
+				<alwaysKillsHost>false</alwaysKillsHost>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>1</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!-- Vanilla Armor Virions -->
+	 <RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVirionPlateArmor</defName>
+		<label>implant virion (plate armor)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a suit of bioferrite plate armor.</description>
+		<descriptionHyperlinks>
+			<ThingDef>Apparel_PlateArmor</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>Apparel_PlateArmor</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidTwo</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>Apparel_PlateArmor</producedItem>
+				<productStuff>Bioferrite</productStuff>
+				<gestationDays>7</gestationDays>
+				<alwaysKillsHost>false</alwaysKillsHost>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>1</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVirionSimpleHelmet</defName>
+		<label>implant virion (simple helmet)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite simple helmet.</description>
+		<descriptionHyperlinks>
+			<ThingDef>Apparel_SimpleHelmet</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>Apparel_SimpleHelmet</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidTwo</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>Apparel_SimpleHelmet</producedItem>
+				<productStuff>Bioferrite</productStuff>
+				<gestationDays>5</gestationDays>
+				<alwaysKillsHost>false</alwaysKillsHost>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>1</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!-- Vanilla Weapon Virions -->
+	 <RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVirionMace</defName>
+		<label>implant virion (mace)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite mace.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MeleeWeapon_Mace</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>MeleeWeapon_Mace</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidOne</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>MeleeWeapon_Mace</producedItem>
+				<productStuff>Bioferrite</productStuff>
+				<gestationDays>4</gestationDays>
+				<alwaysKillsHost>false</alwaysKillsHost>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>1</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVirionGladius</defName>
+		<label>implant virion (gladius)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite gladius.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MeleeWeapon_Gladius</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>MeleeWeapon_Gladius</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidOne</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>MeleeWeapon_Gladius</producedItem>
+				<productStuff>Bioferrite</productStuff>
+				<gestationDays>4</gestationDays>
+				<alwaysKillsHost>false</alwaysKillsHost>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>1</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVirionLongsword</defName>
+		<label>implant virion (longsword)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite longsword.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MeleeWeapon_LongSword</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>MeleeWeapon_LongSword</uiIconThing>
+		<researchPrerequisites Inherit="false">
+			<li>TSOA_VoidOne</li>
+		</researchPrerequisites>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>15</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>MeleeWeapon_LongSword</producedItem>
+				<productStuff>Bioferrite</productStuff>
+				<gestationDays>6</gestationDays>
+				<alwaysKillsHost>false</alwaysKillsHost>
+				<entitySpawn>
+					<kind>Metalhorror</kind>
+					<forcedLifeStageIndex>1</forcedLifeStageIndex>
+					<count>1</count>
+				</entitySpawn>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!-- Implant Virions -->
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVirionArm</defName>
+		<label>implant virion (bioferrite arm)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite arm, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteArmThing</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>Shard</uiIconThing>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>60</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_BioferriteArmThing</producedItem>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!--<ThingDef ParentName="TSOA_VirionBase">
+		<defName>TSOA_VirionLeg</defName>
+		<label>bioferrite virion (leg)</label>
+		<description>A strange device made from dark archotech nanites, that blurs the lines between organic and inorganic. Implanted into a human, it will slowly consume the recipient's body to grow a piece of bioferrite equipment. If the recipient dies before the growth is complete, a hostile entity will emerge. When complete, it can be surgically removed from the host, although this still kills the host in the process. Takes 10 days for gestation to complete.</description>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_BioferriteLeg</producedItem>
+				<initialGestationDays>10</initialGestationDays>
+			</li>
+		</modExtensions>
+	</ThingDef>-->
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVirionLeg</defName>
+		<label>implant virion (bioferrite leg)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite leg, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteLegThing</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>Shard</uiIconThing>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>60</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_BioferriteLegThing</producedItem>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!--<ThingDef ParentName="TSOA_VirionBase">
+		<defName>TSOA_VirionEye</defName>
+		<label>bioferrite virion (eye)</label>
+		<description>A strange device made from dark archotech nanites, that blurs the lines between organic and inorganic. Implanted into a human, it will slowly consume the recipient's body to grow a piece of bioferrite equipment. If the recipient dies before the growth is complete, a hostile entity will emerge. When complete, it can be surgically removed from the host, although this still kills the host in the process. Takes 10 days for gestation to complete.</description>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_BioferriteEye</producedItem>
+				<initialGestationDays>10</initialGestationDays>
+			</li>
+		</modExtensions>
+	</ThingDef>-->
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVirionEye</defName>
+		<label>implant virion (bioferrite eye)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite eye, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteEyeThing</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>Shard</uiIconThing>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>60</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_BioferriteEyeThing</producedItem>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+
+	<!--<ThingDef ParentName="TSOA_VirionBase">
+		<defName>TSOA_VirionSkin</defName>
+		<label>bioferrite virion (skin)</label>
+		<description>A strange device made from dark archotech nanites, that blurs the lines between organic and inorganic. Implanted into a human, it will slowly consume the recipient's body to grow a piece of bioferrite equipment. If the recipient dies before the growth is complete, a hostile entity will emerge. When complete, it can be surgically removed from the host, although this still kills the host in the process. Takes 10 days for gestation to complete.</description>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_BioferriteSkin</producedItem>
+				<initialGestationDays>10</initialGestationDays>
+			</li>
+		</modExtensions>
+	</ThingDef>-->
+
+	<RecipeDef ParentName="TSOA_ImplantVirionBase">
+		<defName>TSOA_ImplantVirionSkin</defName>
+		<label>implant virion (bioferrite skin)</label>
+		<description>Implant a bioferrite virion in the target. This will gestate into a bioferrite skin implant, killing the host in the process.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TSOA_BioferriteSkinThing</ThingDef>
+		</descriptionHyperlinks>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<uiIconThing>Shard</uiIconThing>
+		<ingredients Inherit="false">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bioferrite</li>
+					</thingDefs>
+				</filter>
+				<count>80</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="false">
+			<thingDefs>
+				<li>Bioferrite</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<modExtensions>
+			<li Class="tsoa.core.VirionExtension">
+				<producedItem>TSOA_BioferriteSkinThing</producedItem>
+			</li>
+		</modExtensions>
+	</RecipeDef>
+	
+</Defs>

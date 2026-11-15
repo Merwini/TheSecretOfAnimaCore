@@ -85,14 +85,14 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
 
             if (font == null)
             {
-                font = Map.listerThings.ThingsOfDef(TSOA_DefOf.TSOA_FontOfAnima).FirstOrDefault() as Building_AnimaFont;
+                font = Map.listerThings.ThingsOfDef(TSOA_ThingDefOf.TSOA_FontOfAnima).FirstOrDefault() as Building_AnimaFont;
             }
 
             return font;
         }
         set
         {
-            if (value.def == TSOA_DefOf.TSOA_FontOfAnima)
+            if (value.def == TSOA_ThingDefOf.TSOA_FontOfAnima)
             {
                 font = value;
             }
@@ -306,7 +306,7 @@ public class FontOfAnimaWorldObject : MapParent, IThingGlower
             amberLeftBehind += Font.AmberAmount;
         }
 
-        foreach (var amber in Map.listerThings.ThingsOfDef(TSOA_DefOf.TSOA_AnimaAmber))
+        foreach (var amber in Map.listerThings.ThingsOfDef(TSOA_ThingDefOf.TSOA_AnimaAmber))
         {
             amberLeftBehind += amber.stackCount;
         }

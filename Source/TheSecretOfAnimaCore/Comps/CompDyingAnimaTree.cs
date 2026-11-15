@@ -55,7 +55,7 @@ public class CompDyingAnimaTree : ThingComp
 
         yield return new FloatMenuOption("TSOA_ComfortAnimaTree".Translate(), () =>
         {
-            Job job = JobMaker.MakeJob(TSOA_DefOf.TSOA_ComfortAnimaTree, parent);
+            Job job = JobMaker.MakeJob(TSOA_JobDefOf.TSOA_ComfortAnimaTree, parent);
             selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
         });
     }

@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<CombatExtended.AmmoCategoryDef>
+		<defName>TSOA_AnimaArrowCategory</defName>
+		<label>screamer arrow</label>
+		<description>Wrapped with anima grass and infused with psychic energy, releases a miniature psychic scream on impact that reduces humans' moods and makes wild animals turn manhunter.</description>
+		<advanced>true</advanced>
+	</CombatExtended.AmmoCategoryDef>
+
+	<!-- Ammoset -->
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_AnimaBowArrow</defName>
+		<label>arrows</label>
+		<ammoTypes>
+			<Ammo_Arrow_Stone>TSOA_Projectile_AnimaBowArrow_Stone</Ammo_Arrow_Stone>
+			<Ammo_Arrow_Steel>TSOA_Projectile_AnimaBowArrow_Steel</Ammo_Arrow_Steel>
+			<Ammo_Arrow_Plasteel>TSOA_Projectile_AnimaBowArrow_Plasteel</Ammo_Arrow_Plasteel>
+			<Ammo_Arrow_Venom>TSOA_Projectile_AnimaBowArrow_Venom</Ammo_Arrow_Venom>
+			<Ammo_Arrow_Flame>TSOA_Projectile_AnimaBowArrow_Flame</Ammo_Arrow_Flame>
+			<TSOA_Ammo_Arrow_Anima>TSOA_Projectile_ArrowBowArrow_Anima</TSOA_Ammo_Arrow_Anima>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- Arrow ThingDef -->
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoArrowBase">
+		<defName>TSOA_Ammo_Arrow_Anima</defName>
+		<label>arrow (screamer)</label>
+		<graphicData>
+			<texPath>TSOA/Things/Ammo/AnimaArrow</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>0.018</Mass>
+		</statBases>
+		<ammoClass>TSOA_AnimaArrowCategory</ammoClass>
+		<generateAllowChance>0.05</generateAllowChance>
+	</ThingDef>
+
+	<ThingDef Name="TSOA_BaseAnimaBowArrowProjectile" ParentName="BaseBulletCE" Abstract="true">
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ArrowHighVelocity</damageDef>
+			<speed>46</speed>
+			<secondaryDamage>
+				<li>
+					<def>TSOA_EntropyExtraDamage</def>
+					<amount>1</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+		<modExtensions>
+			<li Class="tsoa.core.EntropyDamageExtension">
+				<damageDef>TSOA_EntropicDischarge</damageDef>
+				<entropyCountedFlat>1</entropyCountedFlat>
+				<entropySpentFlat>-4</entropySpentFlat>
+				<damagePerEntropy>8</damagePerEntropy>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_BaseAnimaBowArrowProjectile">
+		<defName>TSOA_Projectile_AnimaBowArrow_Stone</defName>
+		<label>anima bow arrow (stone)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Stone</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>40</speed>
+			<damageAmountBase>8</damageAmountBase>
+			<armorPenetrationSharp>0.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>2.78</armorPenetrationBlunt>
+			<preExplosionSpawnChance>0.2</preExplosionSpawnChance>
+			<preExplosionSpawnThingDef>Ammo_Arrow_Stone</preExplosionSpawnThingDef>
+		</projectile>
+		<modExtensions>
+			<li Class="ProjectileImpactFX.EffectProjectileExtension">
+				<AutoAssign>false</AutoAssign>
+				<CreateTerrainEffects>true</CreateTerrainEffects>
+				<StuckProjectileFleckDef>Fleck_CELandedArrow_Stone</StuckProjectileFleckDef>
+				<StuckProjectileFleckSize>0.65</StuckProjectileFleckSize>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_BaseAnimaBowArrowProjectile">
+		<defName>TSOA_Projectile_AnimaBowArrow_Steel</defName>
+		<label>anima bow arrow (steel)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Steel</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>9</damageAmountBase>
+			<armorPenetrationSharp>1.0</armorPenetrationSharp>
+			<armorPenetrationBlunt>5.9</armorPenetrationBlunt>
+			<preExplosionSpawnChance>0.6</preExplosionSpawnChance>
+			<preExplosionSpawnThingDef>Ammo_Arrow_Steel</preExplosionSpawnThingDef>
+		</projectile>
+		<modExtensions>
+			<li Class="ProjectileImpactFX.EffectProjectileExtension">
+				<AutoAssign>false</AutoAssign>
+				<CreateTerrainEffects>true</CreateTerrainEffects>
+				<StuckProjectileFleckDef>Fleck_CELandedArrow_Steel</StuckProjectileFleckDef>
+				<StuckProjectileFleckSize>0.65</StuckProjectileFleckSize>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_BaseAnimaBowArrowProjectile">
+		<defName>TSOA_Projectile_AnimaBowArrow_Plasteel</defName>
+		<label>anima bow arrow (plasteel)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Plasteel</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>50</speed>
+			<damageAmountBase>7</damageAmountBase>
+			<armorPenetrationSharp>1.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>5.54</armorPenetrationBlunt>
+			<preExplosionSpawnChance>0.75</preExplosionSpawnChance>
+			<preExplosionSpawnThingDef>Ammo_Arrow_Plasteel</preExplosionSpawnThingDef>
+		</projectile>
+		<modExtensions>
+			<li Class="ProjectileImpactFX.EffectProjectileExtension">
+				<AutoAssign>false</AutoAssign>
+				<CreateTerrainEffects>true</CreateTerrainEffects>
+				<StuckProjectileFleckDef>Fleck_CELandedArrow_Plasteel</StuckProjectileFleckDef>
+				<StuckProjectileFleckSize>0.65</StuckProjectileFleckSize>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_BaseAnimaBowArrowProjectile">
+		<defName>TSOA_Projectile_AnimaBowArrow_Venom</defName>
+		<label>anima bow arrow (venom)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Venom</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ArrowVenom</damageDef>
+			<damageAmountBase>9</damageAmountBase>
+			<armorPenetrationSharp>1.0</armorPenetrationSharp>
+			<armorPenetrationBlunt>5.9</armorPenetrationBlunt>
+			<preExplosionSpawnChance>0.6</preExplosionSpawnChance>
+			<preExplosionSpawnThingDef>Ammo_Arrow_Steel</preExplosionSpawnThingDef>
+		</projectile>
+		<modExtensions>
+			<li Class="ProjectileImpactFX.EffectProjectileExtension">
+				<AutoAssign>false</AutoAssign>
+				<CreateTerrainEffects>true</CreateTerrainEffects>
+				<StuckProjectileFleckDef>Fleck_CELandedArrow_Venom</StuckProjectileFleckDef>
+				<StuckProjectileFleckSize>0.65</StuckProjectileFleckSize>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_BaseAnimaBowArrowProjectile">
+		<defName>TSOA_Projectile_AnimaBowArrow_Flame</defName>
+		<label>anima bow arrow (flame)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Flame</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ArrowFire</damageDef>
+			<damageAmountBase>4</damageAmountBase>
+			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.16</preExplosionSpawnChance>
+			<targetParams>
+        		<canTargetLocations>true</canTargetLocations>
+      		</targetParams>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_ExplosiveCE">
+				<damageAmountBase>1</damageAmountBase>
+				<explosiveDamageType>ArrowFire</explosiveDamageType>
+				<explosiveRadius>0.1</explosiveRadius>
+				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</li>
+		</comps>
+		<modExtensions>
+			<li Class="ProjectileImpactFX.EffectProjectileExtension">
+				<AutoAssign>false</AutoAssign>
+				<CreateTerrainEffects>true</CreateTerrainEffects>
+				<StuckProjectileFleckDef>Fleck_CELandedArrow_Flame</StuckProjectileFleckDef>
+				<StuckProjectileFleckSize>0.85</StuckProjectileFleckSize>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="TSOA_BaseAnimaBowArrowProjectile">
+		<defName>TSOA_Projectile_ArrowBowArrow_Anima</defName>
+		<label>arrow (screamer)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Stone</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>31</speed>
+			<damageAmountBase>6</damageAmountBase>
+			<armorPenetrationSharp>0.2</armorPenetrationSharp>
+			<armorPenetrationBlunt>1.42</armorPenetrationBlunt>
+			<preExplosionSpawnChance>0.333</preExplosionSpawnChance>
+			<preExplosionSpawnThingDef>TSOA_Ammo_Arrow_Anima</preExplosionSpawnThingDef>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_ExplosiveCE">
+				<damageAmountBase>1</damageAmountBase>
+				<explosiveDamageType>TSOA_AnimaScreamer</explosiveDamageType>
+				<explosiveRadius>3</explosiveRadius>
+				<explosionSound>TSOA_AnimaScreamer</explosionSound>
+				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</li>
+		</comps>
+		<modExtensions>
+			<li Class="ProjectileImpactFX.EffectProjectileExtension">
+				<AutoAssign>false</AutoAssign>
+				<CreateTerrainEffects>true</CreateTerrainEffects>
+				<StuckProjectileFleckDef>Fleck_CELandedArrow_Stone</StuckProjectileFleckDef>
+				<StuckProjectileFleckSize>0.65</StuckProjectileFleckSize>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseArrowProjectile">
+		<defName>TSOA_Projectile_Arrow_Anima</defName>
+		<label>arrow (screamer)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Stone</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>31</speed>
+			<damageAmountBase>6</damageAmountBase>
+			<armorPenetrationSharp>0.2</armorPenetrationSharp>
+			<armorPenetrationBlunt>1.42</armorPenetrationBlunt>
+			<preExplosionSpawnChance>0.333</preExplosionSpawnChance>
+			<preExplosionSpawnThingDef>TSOA_Ammo_Arrow_Anima</preExplosionSpawnThingDef>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_ExplosiveCE">
+				<damageAmountBase>1</damageAmountBase>
+				<explosiveDamageType>TSOA_AnimaScreamer</explosiveDamageType>
+				<explosiveRadius>3</explosiveRadius>
+				<explosionSound>TSOA_AnimaScreamer</explosionSound>
+				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</li>
+		</comps>
+		<modExtensions>
+			<li Class="ProjectileImpactFX.EffectProjectileExtension">
+				<AutoAssign>false</AutoAssign>
+				<CreateTerrainEffects>true</CreateTerrainEffects>
+				<StuckProjectileFleckDef>Fleck_CELandedArrow_Stone</StuckProjectileFleckDef>
+				<StuckProjectileFleckSize>0.65</StuckProjectileFleckSize>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<RecipeDef ParentName="AmmoRecipeNeolithicBase">
+		<defName>MakeTSOA_Ammo_Arrow_Anima</defName>
+		<label>make screamer arrows x10</label>
+		<description>Craft 10 screamer arrows.</description>
+		<jobString>Making screamer arrows.</jobString>
+		<workAmount>200</workAmount>
+		<researchPrerequisite>TSOA_AnimaOne</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>TSOA_AnimaGrassResource</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+				<li>TSOA_AnimaGrassResource</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<TSOA_Ammo_Arrow_Anima>10</TSOA_Ammo_Arrow_Anima>
+		</products>
+	</RecipeDef>
+	
+</Defs>

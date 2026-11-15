@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<SoundDef>
+		<defName>TSOA_AnimaScreamer</defName>
+		<context>MapOnly</context>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Misc/AnimaTree/Scream</clipFolderPath>
+					</li>
+				</grains>
+				<onCamera>True</onCamera>
+				<volumeRange>15</volumeRange>
+				<pitchRange>1.95~2.05</pitchRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+</Defs>

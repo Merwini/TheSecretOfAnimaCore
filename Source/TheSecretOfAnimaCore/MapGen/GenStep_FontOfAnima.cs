@@ -30,7 +30,7 @@ public class GenStep_FontOfAnima : GenStep
             return;
         }
 
-        GenSpawn.Spawn(TSOA_DefOf.TSOA_FontOfAnima, fontCell, map, Rot4.North);
+        GenSpawn.Spawn(TSOA_ThingDefOf.TSOA_FontOfAnima, fontCell, map, Rot4.North);
 
         bool ValidLocation(IntVec3 center)
         {
@@ -51,7 +51,7 @@ public class GenStep_FontOfAnima : GenStep
                 }
             }
 
-            IntVec3 interactionCell = ThingUtility.InteractionCellWhenAt(TSOA_DefOf.TSOA_FontOfAnima, center, Rot4.North, map);
+            IntVec3 interactionCell = ThingUtility.InteractionCellWhenAt(TSOA_ThingDefOf.TSOA_FontOfAnima, center, Rot4.North, map);
 
             return map.reachability.CanReachMapEdge(interactionCell, TraverseParms.For(TraverseMode.NoPassClosedDoorsOrWater));
         }

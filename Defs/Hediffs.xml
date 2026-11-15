@@ -8,5 +8,125 @@
 		<description>This person has become more in tune with the psychic realm due to repeated exposure to the anima tree.</description>
 		<isBad>false</isBad>
 	</HediffDef>
+
+	<HediffDef ParentName="InjuryBase">
+		<defName>TSOA_EntropicDischarge_Injury</defName>
+		<label>entropic scorch</label>
+		<labelNoun>an entropic scorch</labelNoun>
+		<description>a scorch caused by discharged psychic entropy</description>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<labelTendedWell>treated</labelTendedWell>
+				<labelTendedWellInner>treated</labelTendedWellInner>
+				<labelSolidTendedWell>treated</labelSolidTendedWell>
+			</li>
+			<li Class="HediffCompProperties_GetsPermanent">
+				<permanentLabel>neural scarring</permanentLabel>
+			</li>
+		</comps>
+		<injuryProps>
+			<painPerSeverity>0.015</painPerSeverity>
+			<averagePainPerSeverityPermanent>0.0075</averagePainPerSeverityPermanent>
+			<canMerge>true</canMerge>
+			<destroyedLabel>Entropically destroyed</destroyedLabel>
+			<alwaysUseDestroyedLabel>true</alwaysUseDestroyedLabel>
+		</injuryProps>
+	</HediffDef>
+
+	<HediffDef ParentName="InjuryBase">
+		<defName>TSOA_EntropicDischarge_Skin</defName>
+		<label>entropic scorch</label>
+		<labelNoun>an entropic scorch</labelNoun>
+		<description>a scorch caused by discharged psychic entropy</description>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<labelTendedWell>bandaged</labelTendedWell>
+				<labelTendedWellInner>dressed</labelTendedWellInner>
+				<labelSolidTendedWell>treated</labelSolidTendedWell>
+			</li>
+			<li Class="HediffCompProperties_Infecter">
+				<infectionChance>0.1</infectionChance>
+			</li>
+			<li Class="HediffCompProperties_GetsPermanent">
+				<permanentLabel>entropic scarring</permanentLabel>
+			</li>
+		</comps>
+		<injuryProps>
+			<painPerSeverity>0.012</painPerSeverity>
+			<averagePainPerSeverityPermanent>0.006</averagePainPerSeverityPermanent>
+			<canMerge>true</canMerge>
+			<destroyedLabel>Entropically destroyed</destroyedLabel>
+			<alwaysUseDestroyedLabel>true</alwaysUseDestroyedLabel>
+		</injuryProps>
+	</HediffDef>
+
+	<HediffDef ParentName="InjuryBase">
+		<defName>TSOA_EntropicDischarge_Solid</defName>
+		<label>entropic scorch</label>
+		<labelNoun>an entropic scorch</labelNoun>
+		<description>a scorch caused by discharged psychic entropy</description>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<labelTendedWell>treated</labelTendedWell>
+				<labelTendedWellInner>treated</labelTendedWellInner>
+				<labelSolidTendedWell>treated</labelSolidTendedWell>
+			</li>
+			<li Class="HediffCompProperties_GetsPermanent">
+				<permanentLabel>permanent entropic scarring</permanentLabel>
+			</li>
+		</comps>
+		<injuryProps>
+			<painPerSeverity>0.0125</painPerSeverity>
+			<averagePainPerSeverityPermanent>0.0065</averagePainPerSeverityPermanent>
+			<destroyedLabel>Entropically destroyed</destroyedLabel>
+			<alwaysUseDestroyedLabel>true</alwaysUseDestroyedLabel>
+		</injuryProps>
+	</HediffDef>
+
+	<!-- Needs to be here so I don't have to put the DefOf in a separate assembly -->
+	<HediffDef>
+		<defName>TSOA_VirionHediff</defName>
+		<hediffClass>tsoa.core.Hediff_Virion</hediffClass>
+		<label>gestating</label>
+		<labelNoun>gestating a bioferrite virion</labelNoun>
+		<description>a bioferrite virion is gestating inside this person</description>
+		<isBad>false</isBad>
+		<tendable>false</tendable>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+			</li>
+		</stages>
+		<tags>
+			<li>TSOA_Virion</li>
+		</tags>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>TSOA_VirionActiveHediff</defName>
+		<hediffClass>tsoa.core.Hediff_VirionActivity</hediffClass>
+		<label>virion active</label>
+		<labelNoun>virion activity</labelNoun>
+		<description>a virion is causing internal damage</description>
+		<isBad>true</isBad>
+		<tendable>true</tendable>
+		<scenarioCanAdd>false</scenarioCanAdd>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>TSOA_PsychicLeechHediff</defName>
+		<hediffClass>tsoa.core.Hediff_PsychicLeech</hediffClass>
+		<label>psychic leeching</label>
+		<description>Placeholder description, if you see this in-game report it to the mod developer.</description>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>3600</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+				<canUseDecimalsShortForm>true</canUseDecimalsShortForm>
+			</li>
+		</comps>
+	</HediffDef>
 	
 </Defs>

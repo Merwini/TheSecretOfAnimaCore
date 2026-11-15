@@ -5,11 +5,21 @@
 		<li>1.6/</li>
 		<li IfModActive="Ludeon.Rimworld.Anomaly">Anomaly</li>
 		<li IfModActive="Ludeon.Rimworld.Anomaly">Anomaly/1.6</li>
+		<li IfModActive="ComfyCuddles.WithEuterpe">ModCompat/SimpleMending</li>
+		<li IfModActive="CETeam.CombatExtended">ModCompat/CE</li>
+		<li IfModActive="CETeam.CombatExtended">ModCompat/CE/1.6</li>
+		<li IfModActiveAll="Ludeon.Rimworld.Anomaly, CETeam.CombatExtended">ModCompat/CE/Anomaly</li>
+		<li IfModActiveAll="Ludeon.Rimworld.Anomaly, mlie.prostheticnomissingbodyparts">ModCompat/PNMBP/1.6</li>
 	</v1.6>
 	<v1.7>
 		<li>/</li>
 		<li>1.7/</li>
 		<li IfModActive="Ludeon.Rimworld.Anomaly">Anomaly</li>
 		<li IfModActive="Ludeon.Rimworld.Anomaly">Anomaly/1.7</li>
+		<li IfModActive="ComfyCuddles.WithEuterpe">ModCompat/SimpleMending</li>
+		<li IfModActive="CETeam.CombatExtended">ModCompat/CE</li>
+		<li IfModActive="CETeam.CombatExtended">ModCompat/CE/1.7</li>
+		<li IfModActiveAll="Ludeon.Rimworld.Anomaly, CETeam.CombatExtended">ModCompat/CE/Anomaly</li>
+		<li IfModActiveAll="Ludeon.Rimworld.Anomaly, mlie.prostheticnomissingbodyparts">ModCompat/PNMBP/1.7</li>
 	</v1.7>
 </loadFolders>

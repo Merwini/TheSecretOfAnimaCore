@@ -67,7 +67,7 @@ public class CaravanArrivalAction_VisitFontOfAnima : CaravanArrivalAction
         Pawn caravanLeader = caravan.PawnsListForReading[0];
         CaravanEnterMapUtility.Enter(caravan, map, CaravanEnterMode.Edge, CaravanDropInventoryMode.UnloadIndividually);
 
-        Thing font = map.spawnedThings.FirstOrDefault(t => t.def == TSOA_DefOf.TSOA_FontOfAnima);
+        Thing font = map.spawnedThings.FirstOrDefault(t => t.def == TSOA_ThingDefOf.TSOA_FontOfAnima);
 
         if (initialVisit && font != null)
         {
