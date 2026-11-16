@@ -34,5 +34,28 @@
 		<applyPowerOffset>false</applyPowerOffset>
 		<removeOnLost>false</removeOnLost>
 	</PsychicRitualRoleDef>
+
+	<tsoa.core.anomaly.PsychicRitualRoleDef_VoidGate>
+        <defName>TSOA_VoidGateInvoker</defName>
+        <label>invoker</label>
+        <allowedCount>1</allowedCount>
+        <canHandleOfferings>true</canHandleOfferings>
+        <showInvocationVfx>true</showInvocationVfx>
+        <allowedConditions>DefaultInvoker</allowedConditions>
+    </tsoa.core.anomaly.PsychicRitualRoleDef_VoidGate>
+
+    <tsoa.core.anomaly.PsychicRitualRoleDef_VoidGate ParentName="ChanterBase">
+        <defName>TSOA_VoidGateChanter</defName>
+        <allowedCount>0~4</allowedCount>
+    </tsoa.core.anomaly.PsychicRitualRoleDef_VoidGate>
+
+	<tsoa.core.anomaly.PsychicRitualRoleDef_VoidGate>
+		<defName>TSOA_VoidGateSacrifice</defName>
+		<label>sacrifant</label>
+		<allowedCount>1</allowedCount>
+		<allowedConditions>Default, Downed, Sleeping, IdeoUnwilling</allowedConditions>
+		<applyPowerOffset>false</applyPowerOffset>
+		<removeOnLost>false</removeOnLost>
+	</tsoa.core.anomaly.PsychicRitualRoleDef_VoidGate>
 	
 </Defs>

@@ -1,0 +1,27 @@
+<Defs>
+
+    <tsoa.core.anomaly.PsychicRitualDef_VoidDive>
+        <defName>TSOA_VoidDiveRitual</defName>
+        <label>prepare void dive</label>
+        <description>Energize the void gate, to prepare it to open a portal between this reality and the void.</description>
+        <researchPrerequisite>TSOA_VoidOne</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+        <requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>Bioferrite</li>
+				</thingDefs>
+			</filter>
+			<count>50</count>
+		</requiredOffering>
+        <cooldownHours>120</cooldownHours>
+        <ritualFocuses>
+			<li>TSOA_VoidGate</li>
+		</ritualFocuses>
+		<invokerRole>TSOA_VoidGateInvoker</invokerRole>
+		<chanterRole>TSOA_VoidGateChanter</chanterRole>
+		<invokerUseInteractionCell>true</invokerUseInteractionCell>
+    </tsoa.core.anomaly.PsychicRitualDef_VoidDive>
+    
+</Defs>

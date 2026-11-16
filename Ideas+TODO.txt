@@ -10,26 +10,13 @@ TODO:
 		Void content
 			Something to happen when meditating at monolith
 
-
 	Arsenal:
-		Start scenarios with anima / void gear
-		Shard virion recipe
-		More void weapons
-			Existing weapons become Virion weapons (bioferrite + gold Virion recipe)
-				Add new effect: steals psychic sensitivity on hit, extra damage if target has low sensitivity
-			Add new lower-tier weapons (become the new Initiate weapons)
-				Have current effect of extra damage based on sensitivity
-				Kris
-				Flamberge
-				Flanged Mace
-				Aesthetic is angular instead of wavy, bioferrite coloring
-			Virion bow (arrows) - implants a metalhorror in the target, that grows rapidly and erupts if they die
+		Virion bow (arrows) - implants a metalhorror in the target, that grows rapidly and erupts if they die
 		Rewrite HediffComp_StatExchanger as a Hediff subclass? overriding CurStage instead of affecting stats with a StatPart
 		Eye of Entity Study - StudyEfficiency / EntityStudyRate
 		Ideo: Void / Anima WeaponClassDefs
 
 	Rituals:
-		Avatar - give target pawn extreme psychic buffs, but an unavoidable death timer. last resort when colony is otherwise doomed
 		Monolith as ritual spot
 			Relocate monolith
 
@@ -43,11 +30,13 @@ TODO:
 		Elite and boss Anomaly entities
 		Elite Ghoul
 
+
 	Voidwalking submod:
-		Build void gate(s). Maybe as a monolith linkable?
+		Build void gate
 			Activate with human sacrifice, places a world map object. Can form carvan and send them through the void to that object and back
 			Caravan moves much faster through the void, but has a chance of entity ambush. Ambush chance and power increases the longer the gate is left open.
-		Pull chunks of the void into our dimension (home map), bringing resources but also threats
+		
+
 
 	Factions submod (require Arsenal at least):
 		Anima
@@ -66,12 +55,4 @@ TODO:
 			monolith breakpoints are based on entities encountered, so need something different for tree
 			quests to capture special psychically-attuned world pawns and merge them with the tree?
 			maybe only happens with story mod, with stages based on story progress
-
-
-Textures to commission:
-	Void weapons
-		Kris
-		Flamberge
-		Flanged Mace
-	Voidwalking gateway (stargate + shards / bioferrite)
 	

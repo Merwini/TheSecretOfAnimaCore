@@ -4,7 +4,8 @@
         <defName>TSOA_VoidGate</defName>
         <label>void gate</label>
         <description>A circular gateway, punching a hole in reality to create an opening into the Void. With upgrades, can form a semi-safe tunnel through the Void to distant locations, like a more stable form of Skipgates.</description>
-        <graphicData>
+		<thingClass>tsoa.core.anomaly.Building_VoidGate</thingClass>
+		<graphicData>
 			<texPath>TSOA/Things/Building/VoidGate/VoidGatePLACEHOLDER</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
             <drawSize>(3.3, 3.3)</drawSize>
@@ -26,6 +27,15 @@
 		<tickerType>Rare</tickerType>
 		<rotatable>false</rotatable>
 		<designationCategory>TSOA_DesignationCategory</designationCategory>
+        <comps>
+            <li Class="CompProperties_PsychicRitualSpot"/>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ShardBeacon</li>
+					<li>VoidSculpture</li>
+				</linkableFacilities>
+     		 </li>
+        </comps>
     </ThingDef>
 
 </Defs>

@@ -16,6 +16,9 @@ public class PsychicRitualDef_Unlocked : PsychicRitualDef_InvocationCircle
 
     public ResearchProjectDef advancedResearchProject;
 
+    public bool invokerUseInteractionCell;
+    public IntVec3 invokerOffset = IntVec3.Invalid; // default invoker position is either 3 or 4 cells to the right of the focus, TODO double check which
+
     public bool targetsCell;
     public IntVec3 targetCell;
 

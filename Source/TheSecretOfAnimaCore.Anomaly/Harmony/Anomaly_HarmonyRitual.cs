@@ -295,7 +295,7 @@ public class Anomaly_HarmonyRituals
     {
         public static void Postfix(PsychicRitualDef_InvocationCircle __instance, PsychicRitualRoleAssignments assignments, ref IReadOnlyDictionary<PsychicRitualRoleDef, List<IntVec3>> __result)
         {
-            if (__instance is not PsychicRitualDef_Unlocked)
+            if (__instance is not PsychicRitualDef_Unlocked unlocked)
                 return;
 
             Map map = assignments.Target.Map;
@@ -304,15 +304,15 @@ public class Anomaly_HarmonyRituals
             if (map == null || __result == null)
                 return;
 
-            Pawn invoker = assignments.FirstAssignedPawn(__instance.InvokerRole);
+            Pawn invoker = assignments.FirstAssignedPawn(unlocked.InvokerRole);
 
             HashSet<IntVec3> alreadyUsedCells = new();
             Dictionary<PsychicRitualRoleDef, List<IntVec3>> newDict = new();
 
             // Will find a spot for the invoker(s) first, then target(s), then everyone else.
             var roles = __result.Keys.OrderBy(role =>
-                role == __instance.InvokerRole ? 0 :
-                role == __instance.TargetRole ? 1 : 2);
+                role == unlocked.InvokerRole ? 0 :
+                role == unlocked.TargetRole ? 1 : 2);
 
             foreach (PsychicRitualRoleDef role in roles)
             {
@@ -322,7 +322,7 @@ public class Anomaly_HarmonyRituals
 
                 if (pawns.Count != originalCells.Count)
                 {
-                    Log.Error($"[TSOA] Role position count mismatch for {__instance.defName} role {role.defName}.");
+                    Log.Error($"[TSOA] Role position count mismatch for {unlocked.defName} role {role.defName}.");
                     return;
                 }
 
@@ -331,7 +331,7 @@ public class Anomaly_HarmonyRituals
                     Pawn pawn = pawns[i];
 
                     // A downed or imprisoned pawn might be being carried by the invoker
-                    Pawn movingPawn = role == __instance.TargetRole
+                    Pawn movingPawn = role == unlocked.TargetRole
                         && (pawn.Downed || pawn.IsPrisoner)
                             ? invoker
                             : pawn;
@@ -346,11 +346,23 @@ public class Anomaly_HarmonyRituals
                         && movingPawn.CanReach(
                             cell, PathEndMode.OnCell, Danger.Deadly);
 
-                    // Start the search at the original position if it's a valid IntVec3, otherwise start at the ritual focus
-                    IntVec3 preferredCell = originalCells[i].IsValid
-                        ? originalCells[i]
-                        : ritualFocus;
+                    IntVec3 preferredCell;
 
+                    if (role == unlocked.InvokerRole && unlocked.invokerUseInteractionCell && assignments.Target.Thing is Building building && building.def.hasInteractionCell)
+                    {
+                        preferredCell = building.InteractionCell;
+                    }
+                    else if (role == unlocked.InvokerRole && unlocked.invokerOffset != IntVec3.Invalid)
+                    {
+                        preferredCell = originalCells[i] + unlocked.invokerOffset;
+                    }
+                    else
+                    {
+                        preferredCell = originalCells[i].IsValid
+                            ? originalCells[i]
+                            : ritualFocus;
+                    }
+                    
                     // Find a good cell in a small radius near the preferredCell
                     IntVec3 chosenCell = CellFinder.StandableCellNear(preferredCell, map, 3f, Valid);
 

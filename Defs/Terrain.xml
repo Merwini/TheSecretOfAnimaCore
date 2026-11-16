@@ -1,0 +1,19 @@
+<Defs>
+
+    <TerrainDef ParentName="FloorBase">
+        <defName>TSOA_VoidTerrain</defName>
+        <label>endless void</label>
+        <description>An endless void. Lacking even the background radiation of our universe, it is emptier than even empty space should be.</description>
+        <texturePath>TSOA/Terrain/Void</texturePath>
+        <passability>Impassable</passability>
+        <pathCost>300</pathCost>
+        <changeable>false</changeable>
+        <fertility>0</fertility>
+        <natural>true</natural>
+        <avoidWander>true</avoidWander>
+        <filthAcceptanceMask>
+            <li>None</li>
+        </filthAcceptanceMask>
+    </TerrainDef>
+
+</Defs>
