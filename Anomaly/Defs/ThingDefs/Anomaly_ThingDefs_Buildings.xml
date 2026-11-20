@@ -4,9 +4,9 @@
         <defName>TSOA_VoidGate</defName>
         <label>void gate</label>
         <description>A circular gateway, punching a hole in reality to create an opening into the Void. With upgrades, can form a semi-safe tunnel through the Void to distant locations, like a more stable form of Skipgates.</description>
-		<thingClass>tsoa.core.anomaly.Building_VoidGate</thingClass>
+		<thingClass>tsoa.core.anomaly.Building_VoidGateEntrance</thingClass>
 		<graphicData>
-			<texPath>TSOA/Things/Building/VoidGate/VoidGatePLACEHOLDER</texPath>
+			<texPath>TSOA/Things/Building/VoidGate/VoidGatePLACEHOLDER</texPath> <!-- TODO some kind of bioferrite stargate-looking thing -->
 			<graphicClass>Graphic_Single</graphicClass>
             <drawSize>(3.3, 3.3)</drawSize>
 			<shadowData>
@@ -24,11 +24,18 @@
         <altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
 		<canOverlapZones>true</canOverlapZones>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<rotatable>false</rotatable>
 		<designationCategory>TSOA_DesignationCategory</designationCategory>
         <comps>
-            <li Class="CompProperties_PsychicRitualSpot"/>
+            <li Class="CompProperties_Transporter">
+                <compClass>tsoa.core.anomaly.CompVoidGateTransporter</compClass>
+                <massCapacity>100000</massCapacity>
+                <max1PerGroup>true</max1PerGroup>
+                <canChangeAssignedThingsAfterStarting>false</canChangeAssignedThingsAfterStarting>
+                <showOverallStats>false</showOverallStats>
+            </li>
+            <li Class="tsoa.core.anomaly.CompProperties_PsychicRitualSpotSolid"/>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
 					<li>ShardBeacon</li>
@@ -36,6 +43,49 @@
 				</linkableFacilities>
      		 </li>
         </comps>
+        <inspectorTabs>
+            <li>tsoa.core.anomaly.ITab_VoidGateContents</li>
+        </inspectorTabs>
+    </ThingDef>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>TSOA_VoidGateExit</defName>
+        <label>void gate exit</label>
+        <description>The expedition's route home. Load the surviving expedition and any cargo you want to bring back. Everyone must return together. Returning closes the entrance and destroys this encounter map, including anything left behind.</description>
+        <thingClass>tsoa.core.anomaly.Building_VoidGateExit</thingClass>
+        <graphicData>
+            <texPath>TSOA/Things/Building/VoidGate/VoidGatePLACEHOLDER</texPath> <!-- TODO will probably be a blank texture, then draw a swirling portal with a comp -->
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3.3, 3.3)</drawSize>
+            <shadowData>
+                <volume>(1, 0.45, 2)</volume>
+            </shadowData>
+        </graphicData>
+        <size>(3, 3)</size>
+        <hasInteractionCell>true</hasInteractionCell>
+        <interactionCellOffset>(0, 0, -2)</interactionCellOffset>
+        <fillPercent>1</fillPercent>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>Impassable</passability>
+        <tickerType>Normal</tickerType>
+        <rotatable>false</rotatable>
+        <destroyable>false</destroyable>
+        <useHitPoints>false</useHitPoints>
+        <building>
+            <deconstructible>false</deconstructible>
+        </building>
+        <comps>
+            <li Class="CompProperties_Transporter">
+                <compClass>tsoa.core.anomaly.CompVoidGateTransporter</compClass>
+                <massCapacity>100000</massCapacity>
+                <max1PerGroup>true</max1PerGroup>
+                <canChangeAssignedThingsAfterStarting>false</canChangeAssignedThingsAfterStarting>
+                <showOverallStats>false</showOverallStats>
+            </li>
+        </comps>
+        <inspectorTabs>
+            <li>tsoa.core.anomaly.ITab_VoidGateContents</li>
+        </inspectorTabs>
     </ThingDef>
 
 </Defs>

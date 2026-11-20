@@ -20,7 +20,7 @@ public class PsychicRitualDef_VoidDive : PsychicRitualDef_Unlocked
         {
             yield return item;
         }
-        if (assignments.Target.Thing is Building_VoidGate gate && gate.IsGateOpen)
+        if (assignments.Target.Thing is Building_VoidGateEntrance gate && gate.IsGateOpen)
         {
             yield return "TSOA_RitualBlockedGateOpen".Translate();
         }

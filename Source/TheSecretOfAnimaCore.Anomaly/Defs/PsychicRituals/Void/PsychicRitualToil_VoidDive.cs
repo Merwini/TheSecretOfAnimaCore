@@ -20,16 +20,18 @@ public class PsychicRitualToil_VoidDive : PsychicRitualToil
     public override void Start(PsychicRitual psychicRitual, PsychicRitualGraph parent)
     {
         base.Start(psychicRitual, parent);
+
+        
         // not much to do here
-        if (psychicRitual.assignments.Target.Thing is Building_VoidGate gate)
+        if (psychicRitual.assignments.Target.Thing is Building_VoidGateEntrance gate)
         {
-            ApplyOutcome(gate);
+            ApplyOutcome(gate, psychicRitual.PowerPercent);
         }
     }
 
-    private void ApplyOutcome(Building_VoidGate gate)
+    private void ApplyOutcome(Building_VoidGateEntrance gate, float ritualQuality)
     {
-        gate.StartVoidDive();
+        gate.PrepareVoidDive(ritualQuality);
     }
 
     public override void ExposeData()

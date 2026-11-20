@@ -19,6 +19,9 @@ public class Anomaly_MiscDefOf
     [MayRequireIdeology]
     public static MemeDef Blindsight;
 
+    public static MapGeneratorDef TSOA_VoidDive_Test;
+    public static WorldObjectDef TSOA_VoidTunnelExit;
+
     static Anomaly_MiscDefOf()
 	{
 		DefOfHelper.EnsureInitializedInCtor(typeof(Anomaly_MiscDefOf));

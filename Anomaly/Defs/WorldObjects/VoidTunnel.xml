@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorldObjectDef ParentName="StaticWorldObjectBase">
+        <defName>TSOA_VoidTunnelExit</defName>
+        <label>void tunnel exit</label>
+        <description>An opening into the Void, anchored to a distant void gate.</description>
+        <worldObjectClass>tsoa.core.anomaly.WorldObject_VoidTunnelExit</worldObjectClass>
+        <texture>TSOA/Things/Building/VoidGate/VoidGatePLACEHOLDER</texture>
+        <expandingIcon>true</expandingIcon>
+        <expandingIconTexture>TSOA/Things/Building/VoidGate/VoidGatePLACEHOLDER</expandingIconTexture>
+        <expandingIconPriority>50</expandingIconPriority>
+        <canHaveMap>false</canHaveMap>
+    </WorldObjectDef>
+</Defs>

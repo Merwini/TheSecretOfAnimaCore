@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
+    <!-- General -->
 	<TSOA_RitualBlockedGateOpen>The void gate is already open.</TSOA_RitualBlockedGateOpen>
+    <TSOA_VoidGateClosed>The void gate is closed.</TSOA_VoidGateClosed>
+    <TSOA_VoidGateLoadGate>Load gate</TSOA_VoidGateLoadGate>
+
+    <!-- Dive-specific-->
+    <TSOA_VoidGateDivePrepared>The void gate is open, prepared for a Void Dive. Load your entire expedition to begin.</TSOA_VoidGateDivePrepared>
+    <TSOA_VoidGateDiveReady>Ready for a Void Dive.</TSOA_VoidGateDiveReady>
+    <TSOA_VoidGateExpeditionAway>An expedition is in the Void. No further colonists or cargo can enter.</TSOA_VoidGateExpeditionAway>
+    <TSOA_VoidGateLoadReturn>Load return expedition</TSOA_VoidGateLoadReturn>
+    <TSOA_VoidGateLoadDesc>Select the colonists and cargo to load. The expedition departs automatically when everything is loaded. Everyone must travel together; additional trips are not possible during this dive.</TSOA_VoidGateLoadDesc>
+
+    <TSOA_VoidGateAlreadyLoading>The expedition is already loading or departing.</TSOA_VoidGateAlreadyLoading>
+    <TSOA_VoidGateCancelLoadDesc>Cancel loading and unload all colonists and cargo.</TSOA_VoidGateCancelLoadDesc>
+    <TSOA_VoidGateNeedsColonist>Select at least one conscious, player-controlled colonist for the expedition.</TSOA_VoidGateNeedsColonist>
+    <TSOA_VoidGateReturnNeedsPawn>Select the returning expedition.</TSOA_VoidGateReturnNeedsPawn>
+    <TSOA_VoidGateReturnEveryone>The entire surviving expedition must return together. Also select: {0}.</TSOA_VoidGateReturnEveryone>
+    <TSOA_VoidGateEntranceMissing>The entrance gate is no longer available.</TSOA_VoidGateEntranceMissing>
+    <TSOA_VoidGateExpeditionNotLoaded>A surviving expedition member is not loaded.</TSOA_VoidGateExpeditionNotLoaded>
+    <TSOA_VoidGateGenerationFailed>The Void encounter could not be generated with a usable exit. The expedition has not departed.</TSOA_VoidGateGenerationFailed>
+    <TSOA_VoidGateTransferFailed>The gate could not place all colonists and cargo at the destination. Remaining contents are still held by the gate. Clear space around the destination and retry.</TSOA_VoidGateTransferFailed>
+    <TSOA_VoidGateRetryTransfer>Retry transfer</TSOA_VoidGateRetryTransfer>
+    <TSOA_VoidGateRetryTransferDesc>Try transferring the remaining colonists and cargo again.</TSOA_VoidGateRetryTransferDesc>
+    <TSOA_VoidGateClose>Close void gate</TSOA_VoidGateClose>
+    <TSOA_VoidGateCloseDesc>Close the gate and end the expedition. Expedition members and items left inside will be lost forever.</TSOA_VoidGateCloseDesc>
+    <TSOA_VoidGateCloseWarning>There are still {0} colonists inside the Void. If the gate closes, the expedition members and everything with them will be lost forever. Close the gate anyway?</TSOA_VoidGateCloseWarning>
+
+    <!-- Tunnel-specific-->
+    <TSOA_VoidGateTunnelPrepared>The void gate is open, prepared for a Void Tunnel. Select a location on the world map to place the exit.</TSOA_VoidGateTunnelPrepared>
+    <TSOA_VoidGateTunnelExitNotSpawned>The void gate is prepared to form a tunnel, but no destination has been set.</TSOA_VoidGateTunnelExitNotSpawned>
+    <TSOA_VoidGateSelectTunnelExit>Select tunnel exit</TSOA_VoidGateSelectTunnelExit>
+    <TSOA_VoidGateSelectTunnelExitDesc>Select a destination on the world map. The tile must be passable and border at least one passable tile. The tile and its neighbors must be clear of map markers and travelling groups.</TSOA_VoidGateSelectTunnelExitDesc>
+    <TSOA_VoidGateChooseTunnelExit>Choose this tile for the Void Tunnel exit.</TSOA_VoidGateChooseTunnelExit>
+    <TSOA_VoidGateTunnelInvalidTile>Select a world tile.</TSOA_VoidGateTunnelInvalidTile>
+    <TSOA_VoidGateTunnelImpassable>The tunnel exit must be on a passable tile.</TSOA_VoidGateTunnelImpassable>
+    <TSOA_VoidGateTunnelNoPassableNeighbor>The tunnel exit must border at least one passable tile.</TSOA_VoidGateTunnelNoPassableNeighbor>
+    <TSOA_VoidGateTunnelWorldObjectNearby>The tunnel exit cannot be on or next to a map marker or travelling group.</TSOA_VoidGateTunnelWorldObjectNearby>
+    <TSOA_VoidGateTunnelOpened>The Void Tunnel exit has been established.</TSOA_VoidGateTunnelOpened>
+    <TSOA_VoidGateTunnelReady>Void Tunnel open.</TSOA_VoidGateTunnelReady>
+
 </LanguageData>
