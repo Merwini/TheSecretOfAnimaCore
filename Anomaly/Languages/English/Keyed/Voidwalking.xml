@@ -40,5 +40,8 @@
     <TSOA_VoidGateTunnelWorldObjectNearby>The tunnel exit cannot be on or next to a map marker or travelling group.</TSOA_VoidGateTunnelWorldObjectNearby>
     <TSOA_VoidGateTunnelOpened>The Void Tunnel exit has been established.</TSOA_VoidGateTunnelOpened>
     <TSOA_VoidGateTunnelReady>Void Tunnel open.</TSOA_VoidGateTunnelReady>
+    <TSOA_VoidGateTunnelTo>Void tunnel to {0}</TSOA_VoidGateTunnelTo>
+    <TSOA_VoidGateTunnelReport>Entering void tunnel to {0}</TSOA_VoidGateTunnelReport>
+    <TSOA_VoidGateEnterTunnelTo>Enter void tunnel to {0}</TSOA_VoidGateEnterTunnelTo>
 
 </LanguageData>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+
     <WorldObjectDef ParentName="StaticWorldObjectBase">
         <defName>TSOA_VoidTunnelExit</defName>
         <label>void tunnel exit</label>
@@ -10,5 +11,26 @@
         <expandingIconTexture>TSOA/Things/Building/VoidGate/VoidGatePLACEHOLDER</expandingIconTexture>
         <expandingIconPriority>50</expandingIconPriority>
         <canHaveMap>false</canHaveMap>
+    </WorldObjectDef>
+
+    <WorldObjectDef>
+        <defName>TSOA_VoidTunnelCaravan</defName>
+        <label>caravan</label>
+        <description>A group of traveling people.</description>
+        <worldObjectClass>Caravan</worldObjectClass>
+        <texture>World/WorldObjects/Caravan</texture>
+        <useDynamicDrawer>true</useDynamicDrawer>
+        <expandingIcon>true</expandingIcon>
+        <expandingIconTexture>World/WorldObjects/Expanding/Caravan</expandingIconTexture>
+        <expandingIconPriority>100</expandingIconPriority>
+        <expandMore>true</expandMore>
+        <inspectorTabs>
+            <li>WITab_Caravan_Health</li>
+            <li>WITab_Caravan_Needs</li>
+            <li>WITab_Caravan_Gear</li>
+            <li>WITab_Caravan_Social</li>
+            <li>WITab_Caravan_Items</li>
+            <li>WITab_Caravan_Feeding</li>
+        </inspectorTabs>
     </WorldObjectDef>
 </Defs>

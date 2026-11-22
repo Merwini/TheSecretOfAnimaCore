@@ -8,6 +8,11 @@ public class Building_VoidGateExit : Building_VoidGateEndpoint
 {
     protected override string LoadLabelKey => "TSOA_VoidGateLoadReturn";
 
+    public Building_VoidGateExit()
+    {
+        gateMode = GateMode.VoidDiveStarted;
+    }
+
     protected override bool CanBeginLoading(out string blockingReason)
     {
         if (!base.CanBeginLoading(out blockingReason))
@@ -28,9 +33,8 @@ public class Building_VoidGateExit : Building_VoidGateEndpoint
     protected override bool ValidatePawns(List<Pawn> pawns, out string invalidReason)
     {
         invalidReason = null;
+
         Building_VoidGateEntrance partner = PartnerGate as Building_VoidGateEntrance;
-
-
         List<Pawn> missing = partner.RequiredReturnPawns().Where(p => !pawns.Contains(p)).ToList();
         if (missing.Count > 0)
             invalidReason = "TSOA_VoidGateReturnEveryone".Translate(string.Join(", ", missing.Select(p => p.LabelShortCap)));

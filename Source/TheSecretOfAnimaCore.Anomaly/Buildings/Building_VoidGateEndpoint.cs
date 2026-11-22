@@ -10,12 +10,15 @@ namespace tsoa.core.anomaly;
 
 public abstract class Building_VoidGateEndpoint : Building
 {
+    public enum GateMode { Closed, VoidDivePrepared, VoidDiveStarted, VoidTunnelPrepared, VoidTunnelOpen }
+
     // state flags
     private bool loadingAccepted;
     private bool transferQueued;
     private bool transferFailed;
     private bool transferStarted;
 
+    protected GateMode gateMode;
     protected List<Pawn> loadingPawns = new();
 
     public CompTransporter compTransporter;
@@ -63,10 +66,11 @@ public abstract class Building_VoidGateEndpoint : Building
             return;
         }
 
-        if (!compTransporter.AnythingLeftToLoad && compTransporter.innerContainer.Any)
+        if (gateMode == GateMode.VoidDivePrepared && !compTransporter.AnythingLeftToLoad && compTransporter.innerContainer.Any)
         {
             transferQueued = true;
-            LongEventHandler.QueueLongEvent(CompleteTransfer, "GeneratingMap", false, null);
+            LongEventHandler.QueueLongEvent(CompleteVoidDiveTransfer, "GeneratingMap", false, null);
+            return;
         }
     }
 
@@ -145,7 +149,7 @@ public abstract class Building_VoidGateEndpoint : Building
         loadingPawns.Clear();
     }
 
-    private void CompleteTransfer()
+    private void CompleteVoidDiveTransfer()
     {
         try
         {

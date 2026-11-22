@@ -9,9 +9,8 @@ namespace tsoa.core.anomaly;
 
 public class Building_VoidGateEntrance : Building_VoidGateEndpoint, IThingGlower
 {
-    public enum GateMode { Closed, VoidDivePrepared, VoidDiveStarted, VoidTunnelPrepared, VoidTunnelOpen }
+    
 
-    private GateMode gateMode;
     private WorldObject tunnelExit;
     public WorldObject TunnelExit => tunnelExit;
     private List<Pawn> expeditionPawns = new();
@@ -24,6 +23,13 @@ public class Building_VoidGateEntrance : Building_VoidGateEndpoint, IThingGlower
     public override void Tick()
     {
         base.Tick();
+        // base covers early returns while loading, waiting to retry transfer
+        // also covers Void Dive transfer so Entrance and Exit can use it
+
+        if (gateMode == GateMode.VoidTunnelOpen && !compTransporter.AnythingLeftToLoad && compTransporter.innerContainer.Any)
+        {
+            
+        }
 
         // TODO periodic entities emerge from gate if open, interval reduced by ritualQuality
         // this is to force players to do expeditions quickly, and also not send their entire colony out

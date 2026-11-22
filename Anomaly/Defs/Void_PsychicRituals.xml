@@ -23,5 +23,29 @@
 		<chanterRole>TSOA_VoidGateChanter</chanterRole>
 		<invokerUseInteractionCell>true</invokerUseInteractionCell>
     </tsoa.core.anomaly.PsychicRitualDef_VoidDive>
+
+	<tsoa.core.anomaly.PsychicRitualDef_VoidTunnel>
+        <defName>TSOA_VoidTunnelRitual</defName>
+        <label>prepare void tunnel</label>
+        <description>Energize the void gate, to prepare it to open a portal to a distant location, by stabilizing a passage through the void.</description>
+        <researchPrerequisite>TSOA_VoidTwo</researchPrerequisite>
+		<hoursUntilOutcome>1</hoursUntilOutcome>
+		<castableOnPocketMaps>true</castableOnPocketMaps>
+        <requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>Bioferrite</li>
+				</thingDefs>
+			</filter>
+			<count>100</count>
+		</requiredOffering>
+        <cooldownHours>120</cooldownHours>
+        <ritualFocuses>
+			<li>TSOA_VoidGate</li>
+		</ritualFocuses>
+		<invokerRole>TSOA_VoidGateInvoker</invokerRole>
+		<chanterRole>TSOA_VoidGateChanter</chanterRole>
+		<invokerUseInteractionCell>true</invokerUseInteractionCell>
+    </tsoa.core.anomaly.PsychicRitualDef_VoidTunnel>
     
 </Defs>
