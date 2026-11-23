@@ -9,31 +9,23 @@ namespace tsoa.core.anomaly;
 
 public class Building_VoidGateEntrance : Building_VoidGateEndpoint, IThingGlower
 {
-    
-
     private WorldObject tunnelExit;
     public WorldObject TunnelExit => tunnelExit;
     private List<Pawn> expeditionPawns = new();
+    // TODO use ritual quality to space out entities emerging from the open gate
     private float ritualQuality;
+    private bool forceAmbush;
 
+    internal float RitualQuality => ritualQuality;
+    internal bool ForceAmbush => forceAmbush;
     public override bool IsGateOpen => gateMode != GateMode.Closed || tunnelExit != null || DestinationMap != null;
+    protected override bool CanTransferLoadedContents => base.CanTransferLoadedContents || gateMode == GateMode.VoidTunnelOpen;
     protected override string LoadLabelKey => "TSOA_VoidGateLoadGate";
     public bool ShouldBeLitNow() => IsGateOpen;
 
-    public override void Tick()
-    {
-        base.Tick();
-        // base covers early returns while loading, waiting to retry transfer
-        // also covers Void Dive transfer so Entrance and Exit can use it
-
-        if (gateMode == GateMode.VoidTunnelOpen && !compTransporter.AnythingLeftToLoad && compTransporter.innerContainer.Any)
-        {
-            
-        }
-
-        // TODO periodic entities emerge from gate if open, interval reduced by ritualQuality
-        // this is to force players to do expeditions quickly, and also not send their entire colony out
-    }
+    internal bool HasOpenTunnel(WorldObject_VoidTunnelExit exit) => Spawned && gateMode == GateMode.VoidTunnelOpen
+        && Map.Parent != null && Map.Tile.Valid && exit != null && exit.Spawned && exit.Entrance == this && exit == tunnelExit
+        && exit.Tile.Valid && exit.Tile.Layer == Map.Tile.Layer && exit.Tile.LayerDef.canFormCaravans;
 
     public void PrepareVoidDive(float ritualQuality)
     {
@@ -69,7 +61,8 @@ public class Building_VoidGateEntrance : Building_VoidGateEndpoint, IThingGlower
         {
             blockingReason = "TSOA_VoidGateExpeditionAway".Translate();
         }
-        else if (gateMode == GateMode.VoidTunnelPrepared && TunnelExit == null)
+        else if (gateMode == GateMode.VoidTunnelPrepared
+            || (gateMode == GateMode.VoidTunnelOpen && !HasOpenTunnel(tunnelExit as WorldObject_VoidTunnelExit)))
         {
             blockingReason = "TSOA_VoidGateTunnelExitNotSpawned".Translate();
         }
@@ -92,6 +85,25 @@ public class Building_VoidGateEntrance : Building_VoidGateEndpoint, IThingGlower
 
     protected override bool TransferContents(out string transferFailureReason)
     {
+        if (gateMode == GateMode.VoidTunnelOpen)
+        {
+            if (WorldObject_VoidTunnelCaravan.IsOverCapacity(compTransporter.innerContainer))
+            {
+                transferFailureReason = "CaravanImmobilizedByMass".Translate();
+                return false;
+            }
+
+            if (WorldObject_VoidTunnelCaravan.TryDepart(compTransporter.innerContainer, this,
+                tunnelExit as WorldObject_VoidTunnelExit, Faction, outgoing: true))
+            {
+                transferFailureReason = null;
+                return true;
+            }
+
+            transferFailureReason = "TSOA_VoidGateTunnelDepartureFailed".Translate();
+            return false;
+        }
+
         transferFailureReason = "TSOA_VoidGateGenerationFailed".Translate();
 
         if (gateMode == GateMode.VoidDivePrepared)
@@ -120,6 +132,9 @@ public class Building_VoidGateEntrance : Building_VoidGateEndpoint, IThingGlower
 
     protected override void PostTransferCompleted()
     {
+        if (gateMode == GateMode.VoidTunnelOpen)
+            return;
+
         Current.Game.CurrentMap = DestinationMap;
         CameraJumper.TryJump(PartnerGate);
     }
@@ -138,6 +153,18 @@ public class Building_VoidGateEntrance : Building_VoidGateEndpoint, IThingGlower
     {
         foreach (Gizmo gizmo in base.GetGizmos())
             yield return gizmo;
+
+        if (DebugSettings.godMode)
+        {
+            yield return new Command_Toggle
+            {
+                defaultLabel = "DEV: Force void tunnel ambush",
+                defaultDesc = "Guarantee an ambush on new trips in either direction through this gate.",
+                icon = def.uiIcon,
+                isActive = () => forceAmbush,
+                toggleAction = () => forceAmbush = !forceAmbush
+            };
+        }
 
         if (DebugSettings.godMode && !IsGateOpen)
         {
@@ -216,13 +243,18 @@ public class Building_VoidGateEntrance : Building_VoidGateEndpoint, IThingGlower
             extraLabelGetter: target => CanPlaceTunnelExit(target.Tile, out string reason) ? "TSOA_VoidGateChooseTunnelExit".Translate() : reason);
     }
 
-    private static bool CanPlaceTunnelExit(PlanetTile tile, out string failureReason)
+    private bool CanPlaceTunnelExit(PlanetTile tile, out string failureReason)
     {
         failureReason = null;
 
         if (!tile.Valid)
         {
             failureReason = "TSOA_VoidGateTunnelInvalidTile".Translate();
+            return false;
+        }
+        if (!Map.Tile.Valid || tile.Layer != Map.Tile.Layer || !tile.LayerDef.canFormCaravans)
+        {
+            failureReason = "TSOA_VoidGateTunnelWrongLayer".Translate();
             return false;
         }
         if (Find.World.Impassable(tile))
@@ -276,7 +308,6 @@ public class Building_VoidGateEntrance : Building_VoidGateEndpoint, IThingGlower
         {
             Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("TSOA_VoidGateCloseWarning".Translate(pawnCount), CloseGate, destructive: true));
         }
-        // TODO warning about losing void tunnel caravans
         else
         {
             CloseGate();
@@ -330,6 +361,7 @@ public class Building_VoidGateEntrance : Building_VoidGateEndpoint, IThingGlower
         Scribe_Collections.Look(ref expeditionPawns, "expeditionPawns", LookMode.Reference);
         Scribe_Values.Look(ref gateMode, "gateMode");
         Scribe_Values.Look(ref ritualQuality, "ritualQuality");
+        Scribe_Values.Look(ref forceAmbush, "forceAmbush");
         if (Scribe.mode == LoadSaveMode.PostLoadInit)
         {
             expeditionPawns ??= new();

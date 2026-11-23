@@ -28,6 +28,8 @@ public static class BackCompatibility_GetBackCompatibleType_Patch
             { "tsoa.rituals.PsychicRitualToil_Relocate", typeof(PsychicRitualToil_Relocate) },
             { "tsoa.rituals.PsychicRitualToil_Severing", typeof(PsychicRitualToil_Severing) },
             { "tsoa.rituals.PsychicRitualToil_Storm", typeof(PsychicRitualToil_Storm) },
+
+            { "tsoa.core.anomaly.WorldObject_VoidGateCaravan", typeof(WorldObject_VoidTunnelCaravan) },
         };
 
     public static void Postfix(Type baseType, string providedClassName, ref Type __result)

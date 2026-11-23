@@ -16,9 +16,15 @@ public class GenStep_VoidDiveTest : GenStep
         foreach (IntVec3 cell in map.AllCells)
             map.terrainGrid.SetTerrain(cell, cell.DistanceToSquared(map.Center) <= radius * radius ? islandTerrain : voidTerrain);
 
-        Building_VoidGateExit exit = (Building_VoidGateExit)GenSpawn.Spawn(exitDef, map.Center, map);
-        exit.SetFaction(Faction.OfPlayer);
-        MapGenerator.PlayerStartSpot = exit.InteractionCell;
-        MapGenerator.rootsToUnfog.Add(exit.InteractionCell);
+        IntVec3 start = map.Center;
+        if (exitDef != null)
+        {
+            Building_VoidGateExit exit = (Building_VoidGateExit)GenSpawn.Spawn(exitDef, map.Center, map);
+            exit.SetFaction(Faction.OfPlayer);
+            start = exit.InteractionCell;
+        }
+
+        MapGenerator.PlayerStartSpot = start;
+        MapGenerator.rootsToUnfog.Add(start);
     }
 }

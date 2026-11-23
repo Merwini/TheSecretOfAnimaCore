@@ -43,5 +43,18 @@
     <TSOA_VoidGateTunnelTo>Void tunnel to {0}</TSOA_VoidGateTunnelTo>
     <TSOA_VoidGateTunnelReport>Entering void tunnel to {0}</TSOA_VoidGateTunnelReport>
     <TSOA_VoidGateEnterTunnelTo>Enter void tunnel to {0}</TSOA_VoidGateEnterTunnelTo>
+    <TSOA_VoidGateTunnelWrongLayer>Place the exit on the same planet layer as the entrance, where caravans can travel.</TSOA_VoidGateTunnelWrongLayer>
+    <TSOA_VoidGateTunnelDepartureFailed>The caravan could not enter the void tunnel. Its contents are still at the departure gate.</TSOA_VoidGateTunnelDepartureFailed>
+    <TSOA_VoidGateCaravanTraveling>Traveling through the void tunnel ({0}).</TSOA_VoidGateCaravanTraveling>
+    <TSOA_VoidGateCaravanResting>Resting until morning.</TSOA_VoidGateCaravanResting>
+    <TSOA_VoidGateCaravanWaitingToUnload>Waiting for room to emerge from the void tunnel.</TSOA_VoidGateCaravanWaitingToUnload>
+    <TSOA_VoidGateCaravanEmerged>{0} emerged from the void tunnel.</TSOA_VoidGateCaravanEmerged>
+    <TSOA_VoidGateCaravanAmbushLetter>Void tunnel ambush</TSOA_VoidGateCaravanAmbushLetter>
+    <TSOA_VoidGateCaravanAmbushText>{0} has been ambushed by entities in the void tunnel. Clear the threat, then select the ambush on the world map to reform the caravan.</TSOA_VoidGateCaravanAmbushText>
+    <TSOA_VoidGateCaravanViewAmbush>View ambush</TSOA_VoidGateCaravanViewAmbush>
+    <TSOA_VoidGateCaravanResume>Reform tunnel caravan</TSOA_VoidGateCaravanResume>
+    <TSOA_VoidGateCaravanResumeDesc>Gather the surviving caravan members. The caravan will automatically continue along its original route.</TSOA_VoidGateCaravanResumeDesc>
+    <TSOA_VoidGateCaravanAmbushHostiles>Defeat the active threats before continuing.</TSOA_VoidGateCaravanAmbushHostiles>
+    <TSOA_VoidGateCaravanReformFailed>The caravan could not load {0}. Try reforming again.</TSOA_VoidGateCaravanReformFailed>
 
 </LanguageData>

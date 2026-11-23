@@ -21,6 +21,8 @@ public class Anomaly_MiscDefOf
 
     public static MapGeneratorDef TSOA_VoidDive_Test;
     public static WorldObjectDef TSOA_VoidTunnelExit;
+    public static WorldObjectDef TSOA_VoidTunnelCaravan;
+    public static WorldObjectDef TSOA_VoidTunnelAmbushSite;
 
     static Anomaly_MiscDefOf()
 	{

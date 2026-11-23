@@ -12,21 +12,29 @@ public class WorldObject_VoidTunnelExit : WorldObject
 
     public void SendCaravan(Caravan caravan)
     {
-        // Convert caravan into different world object, similar to a transport pod
-        // Pre-calculate an ambush chance, and when it will be encountered
+        if (caravan.Tile != Tile || !CaravanArrivalAction_EnterVoidTunnel.CanEnter(caravan, this))
+            return;
+
+        if (WorldObject_VoidTunnelCaravan.TryDepart(caravan.GetDirectlyHeldThings(), entrance, this,
+            caravan.Faction, outgoing: false, caravanName: caravan.Name))
+        {
+            caravan.Destroy();
+        }
+        else
+        {
+            Messages.Message("TSOA_VoidGateTunnelDepartureFailed".Translate(), caravan, MessageTypeDefOf.RejectInput);
+        }
     }
 
     public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Caravan caravan)
     {
-        foreach (var f in base.GetFloatMenuOptions(caravan))
-        {
-            yield return f;
-        }
-        
+        foreach (FloatMenuOption option in base.GetFloatMenuOptions(caravan))
+            yield return option;
+
         foreach (FloatMenuOption option in CaravanArrivalActionUtility.GetFloatMenuOptions(
             () => CaravanArrivalAction_EnterVoidTunnel.CanEnter(caravan, this),
             () => new CaravanArrivalAction_EnterVoidTunnel(this),
-            "TSOA_VoidTunnelEnter".Translate(),
+            "TSOA_VoidGateEnterTunnelTo".Translate(entrance?.Map?.Parent?.Label ?? Label),
             caravan,
             Tile,
             this))
@@ -46,12 +54,10 @@ public class CaravanArrivalAction_EnterVoidTunnel : CaravanArrivalAction
 {
     private WorldObject_VoidTunnelExit tunnelExit;
 
-    private Map Map => tunnelExit?.Entrance?.Map;
-    private string ColonyName => Map?.Parent?.Label;
+    private string ColonyName => tunnelExit?.Entrance?.Map?.Parent?.Label ?? tunnelExit?.Label ?? string.Empty;
 
     public override string Label => "TSOA_VoidGateTunnelTo".Translate(ColonyName);
-    
-	public override string ReportString => "TSOA_VoidGateTunnelReport".Translate(ColonyName);
+    public override string ReportString => "TSOA_VoidGateTunnelReport".Translate(ColonyName);
 
     public CaravanArrivalAction_EnterVoidTunnel()
     {
@@ -63,41 +69,33 @@ public class CaravanArrivalAction_EnterVoidTunnel : CaravanArrivalAction
     }
 
     public override FloatMenuAcceptanceReport StillValid(Caravan caravan, PlanetTile destinationTile)
-	{
-		FloatMenuAcceptanceReport floatMenuAcceptanceReport = base.StillValid(caravan, destinationTile);
-		if (!floatMenuAcceptanceReport)
-		{
-			return floatMenuAcceptanceReport;
-		}
-        if (tunnelExit == null)
-        {
+    {
+        FloatMenuAcceptanceReport report = base.StillValid(caravan, destinationTile);
+        if (!report)
+            return report;
+
+        if (tunnelExit == null || tunnelExit.Tile != destinationTile)
             return false;
-        }
-		if (tunnelExit != null && tunnelExit.Tile != destinationTile)
-		{
-			return false;
-		}
-		return true;
-	}
 
-	public override void Arrived(Caravan caravan)
-	{
-		// TODO call method on void gate exit to send caravan through tunnel
-	}
+        return CanEnter(caravan, tunnelExit);
+    }
 
-	public override void ExposeData()
-	{
-		base.ExposeData();
-		Scribe_References.Look(ref tunnelExit, "tunnelExit");
-	}
+    public override void Arrived(Caravan caravan) => tunnelExit?.SendCaravan(caravan);
+
+    public override void ExposeData()
+    {
+        base.ExposeData();
+        Scribe_References.Look(ref tunnelExit, "tunnelExit");
+    }
 
     public static FloatMenuAcceptanceReport CanEnter(Caravan caravan, WorldObject_VoidTunnelExit tunnelExit)
     {
-        return tunnelExit != null && tunnelExit.Entrance != null;
-    }
+        if (tunnelExit?.Entrance?.HasOpenTunnel(tunnelExit) != true)
+            return FloatMenuAcceptanceReport.WithFailReason("TSOA_VoidGateEntranceMissing".Translate());
 
-	public static IEnumerable<FloatMenuOption> GetFloatMenuOptions(Caravan caravan, WorldObject_VoidTunnelExit tunnelExit)
-	{
-		return CaravanArrivalActionUtility.GetFloatMenuOptions(() => CanEnter(caravan, tunnelExit), () => new CaravanArrivalAction_EnterVoidTunnel(tunnelExit), "TSOA_VoidGateEnterTunnelTo".Translate(tunnelExit.Entrance.Map.Parent.Label), caravan, tunnelExit.Tile, tunnelExit);
-	}
+        if (caravan.ImmobilizedByMass)
+            return FloatMenuAcceptanceReport.WithFailReason("CaravanImmobilizedByMass".Translate());
+
+        return true;
+    }
 }

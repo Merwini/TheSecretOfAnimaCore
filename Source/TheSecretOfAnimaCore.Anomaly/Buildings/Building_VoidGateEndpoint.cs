@@ -24,6 +24,7 @@ public abstract class Building_VoidGateEndpoint : Building
     public CompTransporter compTransporter;
 
     protected bool TransferQueued => transferQueued;
+    protected virtual bool CanTransferLoadedContents => gateMode == GateMode.VoidDivePrepared;
     public virtual bool IsGateOpen => false;
 
     private Building_VoidGateEndpoint partnerGate;
@@ -57,21 +58,30 @@ public abstract class Building_VoidGateEndpoint : Building
     {
         base.Tick();
 
-        if (!this.IsHashIntervalTick(60) || transferQueued || transferFailed || !loadingAccepted)
+        if (!this.IsHashIntervalTick(60) || transferQueued || transferFailed)
             return;
 
         if (!compTransporter.LoadingInProgressOrReadyToLaunch)
         {
-            ResetLoadingFlags();
+            if (loadingAccepted)
+            {
+                ResetLoadingFlags();
+            }
             return;
         }
 
-        if (gateMode == GateMode.VoidDivePrepared && !compTransporter.AnythingLeftToLoad && compTransporter.innerContainer.Any)
-        {
-            transferQueued = true;
-            LongEventHandler.QueueLongEvent(CompleteVoidDiveTransfer, "GeneratingMap", false, null);
+        if (!CanTransferLoadedContents)
             return;
-        }
+
+        // Pick up loads that started before the gate recorded the selected pawns.
+        if (!loadingAccepted && !Notify_LoadingAccepted())
+            return;
+
+        if (compTransporter.AnythingLeftToLoad || !compTransporter.innerContainer.Any)
+            return;
+
+        transferQueued = true;
+        LongEventHandler.QueueLongEvent(CompleteTransfer, "GeneratingMap", false, null);
     }
 
     public override IEnumerable<Gizmo> GetGizmos()
@@ -94,7 +104,8 @@ public abstract class Building_VoidGateEndpoint : Building
         }
         yield return load;
 
-        if (compTransporter.LoadingInProgressOrReadyToLaunch && !transferQueued && !transferStarted)
+        if (compTransporter.LoadingInProgressOrReadyToLaunch && !transferQueued
+            && (!transferStarted || gateMode == GateMode.VoidTunnelOpen))
         {
             yield return new Command_Action
             {
@@ -117,7 +128,10 @@ public abstract class Building_VoidGateEndpoint : Building
 
     public bool Notify_LoadingAccepted()
     {
-        List<Pawn> pawns = TransferableUtility.GetPawnsFromTransferables(compTransporter.leftToLoad);
+        // Instant loading fills the container without making a to-load list.
+        List<Pawn> pawns = compTransporter.leftToLoad != null
+            ? TransferableUtility.GetPawnsFromTransferables(compTransporter.leftToLoad)
+            : new List<Pawn>();
         pawns.AddRange(compTransporter.innerContainer.OfType<Pawn>());
         if (!ValidatePawns(pawns, out string reason))
         {
@@ -149,11 +163,11 @@ public abstract class Building_VoidGateEndpoint : Building
         loadingPawns.Clear();
     }
 
-    private void CompleteVoidDiveTransfer()
+    private void CompleteTransfer()
     {
         try
         {
-            if (!Spawned || !loadingAccepted || compTransporter.AnythingLeftToLoad)
+            if (!Spawned || !loadingAccepted || !CanTransferLoadedContents || compTransporter.AnythingLeftToLoad || !compTransporter.innerContainer.Any)
                 return;
 
             if (loadingPawns.Any(p => p != null && !p.Dead && !p.Destroyed && !compTransporter.innerContainer.Contains(p) && (DestinationMap == null || p.MapHeld != DestinationMap)))
@@ -169,7 +183,8 @@ public abstract class Building_VoidGateEndpoint : Building
             }
 
             compTransporter.TryRemoveLord(Map);
-            transferStarted = true;
+            // Dive transfers can make partial progress. A failed tunnel departure leaves the load together.
+            transferStarted = gateMode != GateMode.VoidTunnelOpen;
             if (!TransferContents(out string transferFailureReason))
             {
                 FailTransfer(transferFailureReason);
@@ -199,6 +214,9 @@ public abstract class Building_VoidGateEndpoint : Building
     }
 
     protected bool DropContentsNear(Building destinationGate, out string dropFailureReason)
+        => DropContentsNear(compTransporter.innerContainer, destinationGate, out dropFailureReason);
+
+    internal static bool DropContentsNear(ThingOwner contents, Building destinationGate, out string dropFailureReason)
     {
         dropFailureReason = "TSOA_VoidGateTransferFailed".Translate();
         if (destinationGate == null || !destinationGate.Spawned || destinationGate.Destroyed)
@@ -206,33 +224,37 @@ public abstract class Building_VoidGateEndpoint : Building
 
         Map map = destinationGate.Map;
         IntVec3 exitCell = destinationGate.InteractionCell;
-        foreach (Thing thing in compTransporter.innerContainer.ToList())
+        // Leave the pawns aboard until there is room for the loose cargo as well.
+        foreach (Thing thing in contents.OrderBy(thing => thing is Pawn).ToList())
         {
-            bool ValidCell(IntVec3 c) => c.InBounds(map) && c.Standable(map)
-                && (thing is not Pawn || c.GetFirstPawn(map) == null)
-                && map.reachability.CanReach(exitCell, c, PathEndMode.OnCell, TraverseMode.PassDoors, Danger.Deadly);
-
-            IntVec3 cell = CellFinder.StandableCellNear(exitCell, map, 12f, ValidCell);
-            if (!cell.IsValid)
+            if (!TryDropNear(contents, thing, map, exitCell, unloadInventory: map.IsPlayerHome))
                 return false;
-
-            if (thing is Pawn pawn)
-            {
-                pawn.jobs?.StopAll();
-            }
-
-            if (!compTransporter.innerContainer.TryDrop(thing, cell, map, ThingPlaceMode.Near, out Thing placed, nearPlaceValidator: ValidCell))
-                return false;
-
-            if (placed is Pawn arrived && arrived.inventory != null)
-            {
-                arrived.inventory.UnloadEverything = map.IsPlayerHome;
-            }
-
-            placed?.SetForbidden(false, false);
         }
 
         dropFailureReason = null;
+        return true;
+    }
+
+    internal static bool TryDropNear(ThingOwner contents, Thing thing, Map map, IntVec3 exitCell, bool unloadInventory)
+    {
+        bool ValidCell(IntVec3 cell) => cell.InBounds(map) && cell.Standable(map)
+            && (thing is not Pawn || cell.GetFirstPawn(map) == null)
+            && map.reachability.CanReach(exitCell, cell, PathEndMode.OnCell, TraverseMode.PassDoors, Danger.Deadly);
+
+        IntVec3 cell = CellFinder.StandableCellNear(exitCell, map, 12f, ValidCell);
+        if (!cell.IsValid)
+            return false;
+
+        if (thing is Pawn pawn)
+            pawn.jobs?.StopAll();
+
+        if (!contents.TryDrop(thing, cell, map, ThingPlaceMode.Near, out Thing placed, nearPlaceValidator: ValidCell))
+            return false;
+
+        if (placed is Pawn arrived && arrived.inventory != null)
+            arrived.inventory.UnloadEverything = unloadInventory;
+
+        placed?.SetForbidden(false, false);
         return true;
     }
 

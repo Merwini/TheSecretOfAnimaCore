@@ -14,6 +14,19 @@
         </pocketMapProperties>
     </MapGeneratorDef>
 
+    <MapGeneratorDef>
+        <defName>TSOA_VoidTunnelAmbush</defName>
+        <label>void tunnel ambush</label>
+        <genSteps>
+            <li>TSOA_VoidTunnelAmbushIsland</li>
+        </genSteps>
+        <!-- Older ambush saves still use this generator for a pocket map. -->
+        <pocketMapProperties>
+            <biome>Labyrinth</biome>
+            <temperature>21</temperature>
+        </pocketMapProperties>
+    </MapGeneratorDef>
+
     <GenStepDef>
         <defName>TSOA_VoidDive_TestIsland</defName>
         <order>200</order>
@@ -21,6 +34,15 @@
             <voidTerrain>TSOA_VoidTerrain</voidTerrain>
             <islandTerrain>Gravel</islandTerrain>
             <exitDef>TSOA_VoidGateExit</exitDef>
+        </genStep>
+    </GenStepDef>
+
+    <GenStepDef>
+        <defName>TSOA_VoidTunnelAmbushIsland</defName>
+        <order>200</order>
+        <genStep Class="tsoa.core.anomaly.GenStep_VoidDiveTest">
+            <voidTerrain>TSOA_VoidTerrain</voidTerrain>
+            <islandTerrain>Gravel</islandTerrain>
         </genStep>
     </GenStepDef>
 </Defs>
